@@ -5,10 +5,11 @@
 > Default working file for review discussion.
 >
 > Concepts are named things under discussion — models, tools, platforms, modules,
-> lineages. They are not keywords. When this map is formalized into
-> `literature/refs.bib` (via the `map-to-bib` skill), each concept is resolved by
-> judgment: to a publication entry, to a `keywords` tag on a parent publication,
-> or to dismissal (no resolvable DOI). `refs.bib` is only edited through that skill.
+> lineages. When this map is formalized into `literature/refs.bib` (via the
+> `map-to-bib` skill), every concept resolves to exactly one place: its own entry
+> (it has a citable publication), a `keywords` tag on the paper that describes it,
+> or the map (it has no citable publication). `refs.bib` is only edited through
+> that skill.
 >
 > Scope: this field (AI-assisted drug discovery) moves very fast — explosive in
 > 2026. References dated before 2025 are generally out of scope, except when they
@@ -27,22 +28,30 @@ Predictive architectures that solve the forward problem: \\text{Sequence / Chemi
 * **Protenix-v1 & Protenix-v2 (2025/2026)**
   * *Role:* Open-source (Apache-2.0) all-atom foundation model featuring custom CUDA kernels, local ColabFold search integration, and antibody–antigen interface optimization.
   * *Link:* [ByteDance Protenix GitHub](https://github.com/bytedance/Protenix)
-  * *Also covers:* PXDesign (de novo binder design engine) and PXMeter (evaluation toolkit) — modules of the Protenix project.
+  * *Also:* PXDesign and PXMeter have their own bioRxiv 2025 publications — see the dedicated bullets in §2.2 and §3.
 * **Boltz-1 & Boltz-2 (2024–2026)**
   * *Role:* Boltz-1 provides open-source all-atom co-folding; Boltz-2 incorporates thermodynamic binding affinity estimation (\\log\_{10}(\\text{IC}\_{50}) in \\mu\\text{M}).
   * *Links:* [PMC Article (Boltz-1)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11601547/) | [MIT Jameel Clinic GitHub](https://github.com/jwohlwend/boltz)
   * *Also covers:* BoltzGen (generative design engine on the Boltz foundation) — module of the Boltz project.
 * **Chai Predictive Lineage (Chai-1 & Chai-3)**
   * **Chai-1 (2024):** Multi-modal structure prediction model supporting single-sequence inputs, SMILES strings, and protein glycosylations. [bioRxiv Preprint](https://www.biorxiv.org/content/10.1101/2024.10.10.615955v1) | [GitHub](https://github.com/chaidiscovery/chai-lab)
-  * **Chai-3 (2026):** High-throughput 3D foundation model expanding predictive accuracy across large macromolecular assemblies. [Chai Discovery Web Platform](https://lab.chaidiscovery.com/) *(dismissed — commercial platform, no preprint/DOI; covered as a `chai-3` tag on Chai-1)*
-* **AlphaFold 2 / AlphaFold-Multimer (Historical Lineage Anchor)**
-  * *Role:* Single-chain and multimer structure predictor that established modern deep learning structural biology.
+  * **Chai-3 (2026):** High-throughput 3D foundation model expanding predictive accuracy across large macromolecular assemblies. [Chai Discovery Web Platform](https://lab.chaidiscovery.com/) *(dismissed — commercial platform, no publication; map-only, not in refs.bib)*
+* **AlphaFold 2 (Historical Lineage Anchor)**
+  * *Role:* Single-chain and multimer structure predictor that established modern deep learning structural biology. AlphaFold-Multimer (2021 preprint; pre-2025 → out of scope, kept as map-only context).
   * *Links:* [Nature Article](https://www.nature.com/articles/s41586-021-03819-2) | [DeepMind AlphaFold GitHub](https://github.com/google-deepmind/alphafold)
-  * *OpenFold lineage:* see dedicated bullet below (OpenFold → OpenFold3); OpenFold is kept as the `openfold` keyword on this entry.
+  * *OpenFold lineage:* see dedicated bullet below (OpenFold → OpenFold3).
 * **OpenFold lineage (OpenFold → OpenFold3)**
-  * *Role:* AQ Laboratory's open-source reimplementations of the AlphaFold models. OpenFold (2022/2024) reproduces AlphaFold2 (kept as an `openfold` keyword on the AlphaFold 2 entry). OpenFold3 (The OpenFold3 Team, *OpenFold3-preview* v0.4.1, 2025) is a fully open-source, all-atom model based on AlphaFold3.
+  * *Role:* AQ Laboratory's open-source reimplementations of the AlphaFold models. OpenFold (2022/2024) reproduces AlphaFold2; OpenFold3 (The OpenFold3 Team, *OpenFold3-preview* v0.4.1, 2025) is a fully open-source, all-atom model based on AlphaFold3.
   * *Links:* [OpenFold3 GitHub](https://github.com/aqlaboratory/openfold-3) | [OpenFold GitHub](https://github.com/aqlaboratory/openfold)
-  * *Note:* OpenFold3 is a 2025 code release with no paper/DOI, so it cannot enter `refs.bib`; it stays in the map (cited as a benchmark baseline in the ESMC paper, ref 38) for the knowledge base. The map is a superset of `refs.bib`.
+  * *(dismissed — code releases, no paper/DOI; OpenFold3 cited as a benchmark baseline in the ESMC paper (ref 38); map-only, not in refs.bib)*
+
+* **OpenDDE (Aureka AI, 2026)**
+  * *Role:* Open-source, all-atom biomolecular foundation model using co-folding as the entry point to a drug discovery engine; achieves IsoDDE-level co-folding accuracy.
+  * *Link:* [arXiv](https://arxiv.org/abs/2607.03787)
+* **IsoDDE (Isomorphic Labs — Demis Hassabis, 2025/2026)**
+  * *Role:* Private frontier drug design engine, marketed as "beyond AlphaFold".
+  * *Link:* [Isomorphic Labs](https://www.isomorphiclabs.com/)
+  * *(dismissed — private project, no publication; too heavy to ignore; map-only, not in refs.bib)*
 
 ### **1.2 Protein Language Models & Sequence Predictors**
 
@@ -76,10 +85,6 @@ Generative frameworks operating over continuous vector fields and Ordinary Diffe
   * *Focus:* Protein-Protein Interactions & VHH Design.
   * *Role:* SE(3) flow matching coupled with in silico maturation for direct generation of picomolar and nanomolar protein binders and single-domain antibodies.
   * *Link:* [ResearchGate / bioRxiv](https://www.researchgate.net/publication/400111229_High-Affinity_Protein_Binder_Design_via_Flow_Matching_and_In_Silico_Maturation)
-* **IgFlow-LM (2025/2026)**
-  * *Focus:* Antibody Sequence-Structure Co-Design.
-  * *Role:* Multimodal conditional flow matching framework integrating antibody language models (IgBert) with SE(3) flow matching for joint backbone and latent sequence generation.
-  * *Link:* [OpenReview PDF](https://openreview.net/pdf?id=cf01412a650fdfae28e931a168bc1c1d25079915) *(dismissed — OpenReview-only preprint, no DOI)*
 * **ATOMFLOW (2025/2026)**
   * *Focus:* Ligand-Binding Protein Design.
   * *Role:* Atomic flow-matching model on unified biotokens, generating target-binding protein pockets directly from 2D molecular graphs without bound conformer structures.
@@ -100,11 +105,10 @@ Generative frameworks operating over continuous vector fields and Ordinary Diffe
   * *Focus:* Backbone Frame Generation.
   * *Role:* Recasts FrameDiff into an SE(3) flow matching framework, delivering 2\\times higher designability with 5\\times fewer sampling steps.
   * *Link:* [arXiv Preprint](https://arxiv.org/abs/2310.01234)
-* **DrugFlow, FLOWR, & SemlaFlow (2024–2026)**
+* **DrugFlow & FLOWR (2024–2026)**
   * *Focus:* Small-Molecule Ligand Design.
   * *Role:* Flow matching models for pocket-conditioned ligand generation, generating 3D atom types, coordinates, and bond topologies directly.
-  * *Links:* [DrugFlow bioRxiv](https://www.biorxiv.org/content/10.64898/2026.06.28.734975v1) | [SemlaFlow / FLOWR Paper](https://www.biorxiv.org/content/10.1101/2025.10.20.683377)
-  * SemlaFlow *(dismissed — AISTATS proceedings without DOI)*.
+  * *Links:* [DrugFlow bioRxiv](https://www.biorxiv.org/content/10.64898/2026.06.28.734975v1) | [FLOWR Paper](https://www.biorxiv.org/content/10.1101/2025.10.20.683377)
 * **ProtFlow (2026)**
   * *Focus:* Sequence Space Generation.
   * *Role:* Rectified flow-matching model capturing global protein semantic distributions for antimicrobial peptide and functional sequence generation.
@@ -119,10 +123,10 @@ Generative frameworks operating over continuous vector fields and Ordinary Diffe
   * **Latent-X1 & Latent-X2 (2025/2026):** All-atom binder design platforms generating low-immunogenicity antibodies, macrocycles, and minibinders. [arXiv Link](https://arxiv.org/abs/2512.20263)
   * **Chai-2 (2025/2026):** Multimodal zero-shot antibody design system achieving a 16% wet-lab hit rate in 24-well plate assays across 52 unbiased targets. [ResearchGate Link](https://www.researchgate.net/publication/393457212_Zero-shot_antibody_design_in_a_24-well_plate)
 * **PXDesign (2025)**
-  * *Role:* Open-source de novo protein binder design platform built directly on top of the Protenix all-atom predictor. *(module — covered by the Protenix entries)*
-  * *Link:* [ByteDance Protenix GitHub](https://github.com/bytedance/Protenix)
+  * *Role:* Open-source de novo protein binder design platform built on the Protenix all-atom predictor.
+  * *Link:* [bioRxiv](https://doi.org/10.1101/2025.08.15.670450) | [ByteDance Protenix GitHub](https://github.com/bytedance/Protenix)
 * **BoltzGen (2025/2026)**
-  * *Role:* Unified generative design engine built on the Boltz foundation targeting proteins, peptides, nanobodies, antibodies, and small molecules. *(module — covered by the Boltz entries)*
+  * *Role:* Unified generative design engine built on the Boltz foundation targeting proteins, peptides, nanobodies, antibodies, and small molecules. *(dismissed — no separate publication; map-only, not in refs.bib)*
   * *Link:* [MIT Jameel Clinic GitHub](https://github.com/jwohlwend/boltz)
 * **AlphaProteo (2024/2025)**
   * *Role:* Google DeepMind's generative diffusion engine and multi-stage filtering pipeline for picomolar/nanomolar binder design.
@@ -140,19 +144,16 @@ Generative frameworks operating over continuous vector fields and Ordinary Diffe
 ### **2.4 Sequence Optimization & Inverse Folding Submodules**
 
 * **ProteinMPNN & LigandMPNN (2022–2024)**
-  * *Role:* Autoregressive message-passing networks assigned to generate optimal amino acid sequences given fixed backbones and ligand environments. *(LigandMPNN covered as a `ligandmpnn` tag on the ProteinMPNN entry)*
+  * *Role:* Autoregressive message-passing networks assigned to generate optimal amino acid sequences given fixed backbones and ligand environments. *(LigandMPNN — dismissed, no in-scope publication; map-only, not in refs.bib)*
   * *Links:* [Science Article](https://www.science.org/doi/10.1126/science.add2187) | [ProteinMPNN GitHub](https://github.com/dauparas/ProteinMPNN)
 
 ## **SECTION 3: AUXILIARY STEERING, FILTERING, & EVALUATION INFRASTRUCTURE**
 
 Biophysical constraints, energy modules, and benchmark suites used to refine and evaluate generated candidates.
 
-* **ProteinGS (2025)**
-  * *Role:* Differentiable Gauss-Seidel projection module enforcing stereochemical constraints directly into generative diffusion/flow trajectories.
-  * *Link:* [arXiv Preprint](https://arxiv.org/abs/2410.03456) *(dismissed — seed link mismatched; could not be resolved reliably to a clear DOI)*
 * **PoseBusters & PoseBusters V2 (2023/2025)**
-  * *Role:* Automated 18-check physical and chemical validity testing suite for evaluating generated ligand poses. *(PoseBusters V2 covered as a `posebusters-v2` tag on the PoseBusters entry)*
+  * *Role:* Automated 18-check physical and chemical validity testing suite for evaluating generated ligand poses. *(PoseBusters V2 — dismissed, no in-scope publication; map-only, not in refs.bib)*
   * *Links:* [Chemical Science Article](https://pubs.rsc.org/en/content/articlelanding/2024/sc/d3sc04185a) | [PoseBusters GitHub](https://github.com/michellab/PoseBusters)
 * **PXMeter (2025)**
-  * *Role:* Open-source evaluation toolkit and artifact-filtered dataset for benchmarking multi-entity complex predictors and binder design outputs. *(module — covered by the Protenix entries)*
-  * *Link:* [ByteDance Protenix GitHub](https://github.com/bytedance/Protenix)
+  * *Role:* Open-source evaluation toolkit and artifact-filtered dataset for benchmarking multi-entity complex predictors and binder design outputs.
+  * *Link:* [bioRxiv](https://doi.org/10.1101/2025.07.17.664878) | [ByteDance Protenix GitHub](https://github.com/bytedance/Protenix)
