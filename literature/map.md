@@ -9,6 +9,11 @@
 > `literature/refs.bib` (via the `map-to-bib` skill), each concept is resolved by
 > judgment: to a publication entry, to a `keywords` tag on a parent publication,
 > or to dismissal (no resolvable DOI). `refs.bib` is only edited through that skill.
+>
+> Scope: this field (AI-assisted drug discovery) moves very fast — explosive in
+> 2026. References dated before 2025 are generally out of scope, except when they
+> belong to an active lineage, whose full history is kept for complete
+> understanding (e.g. the ESM family: ESM2/ESMFold → ESM3 → ESMC).
 
 ## **SECTION 1: BIOMOLECULAR STRUCTURE PREDICTION MODELS**
 
@@ -33,6 +38,11 @@ Predictive architectures that solve the forward problem: \\text{Sequence / Chemi
 * **AlphaFold 2 / AlphaFold-Multimer (Historical Lineage Anchor)**
   * *Role:* Single-chain and multimer structure predictor that established modern deep learning structural biology.
   * *Links:* [Nature Article](https://www.nature.com/articles/s41586-021-03819-2) | [DeepMind AlphaFold GitHub](https://github.com/google-deepmind/alphafold)
+  * *OpenFold lineage:* see dedicated bullet below (OpenFold → OpenFold3); OpenFold is kept as the `openfold` keyword on this entry.
+* **OpenFold lineage (OpenFold → OpenFold3)**
+  * *Role:* AQ Laboratory's open-source reimplementations of the AlphaFold models. OpenFold (2022/2024) reproduces AlphaFold2 (kept as an `openfold` keyword on the AlphaFold 2 entry). OpenFold3 (The OpenFold3 Team, *OpenFold3-preview* v0.4.1, 2025) is a fully open-source, all-atom model based on AlphaFold3.
+  * *Links:* [OpenFold3 GitHub](https://github.com/aqlaboratory/openfold-3) | [OpenFold GitHub](https://github.com/aqlaboratory/openfold)
+  * *Note:* OpenFold3 is a 2025 code release with no paper/DOI, so it cannot enter `refs.bib`; it stays in the map (cited as a benchmark baseline in the ESMC paper, ref 38) for the knowledge base. The map is a superset of `refs.bib`.
 
 ### **1.2 Protein Language Models & Sequence Predictors**
 
@@ -40,6 +50,9 @@ Predictive architectures that solve the forward problem: \\text{Sequence / Chemi
   * *Role:* Metagenomic sequence foundation model (6B parameters) forming the core sequence engine for Biohub's protein world model.
   * *Links:* [Biohub World Model Release](https://biohub.org/news/world-model-of-protein-biology/) | [Biohub ESM Repository](https://github.com/Biohub/esm)
   * *Also covers:* ESMFold2 (structure predictor and binder design engine) — module of the ESMC release.
+* **ESM-2 & ESMFold (2023, Science)**
+  * *Role:* Foundational ESM language-model scaling (ESM-2, 650M–15B params) and the single-sequence structure predictor (ESMFold); enabled the ESM Metagenomic Atlas (>617M predicted structures). Links the ESM-1 lineage to ESM-3.
+  * *Link:* [Science Article](https://www.science.org/doi/10.1126/science.ade2574)
 * **ESM-3 (EvolutionaryScale \- 2024\)**
   * *Role:* Multimodal promptable protein language model tokenizing sequence, 3D structure, and functional annotations into parallel tracks.
   * *Link:* [EvolutionaryScale Site](https://www.evolutionaryscale.ai/)

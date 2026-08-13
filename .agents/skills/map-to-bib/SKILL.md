@@ -22,6 +22,8 @@ literature/
 
 `literature/refs.bib` is a catalog of publications to download and parse. Every entry must have a resolvable DOI. Map concepts resolve to entries by BibTeX key or by a `keywords` tag: components, modules, and aliases without an independent publication become tags on the parent publication, not separate entries. Sources without a clear DOI are dismissed from the catalog and may re-enter when writing the knowledge base or the review.
 
+The map is a superset of `refs.bib`: a concept may remain in the map without a catalog entry — for example a dismissed code release with no paper that is still relevant to the knowledge base (such as a model cited as a benchmark baseline inside a cataloged publication).
+
 ## Workflow
 
 ### 1. Read And Inventory The Map
@@ -166,7 +168,8 @@ Before finishing, validate all of the following:
 - `literature/refs.bib` parses as valid BibTeX.
 - Every entry has a resolvable DOI.
 - Every source identified in `literature/map.md` has exactly one matching BibTeX key, unless it is explicitly a duplicate or parent-project component.
-- Every valid map concept maps to an entry key or to a `keywords` tag on some entry.
+- Every valid, non-dismissed map concept maps to an entry key or to a `keywords` tag on some entry.
+- Dismissed concepts are explicitly marked and kept in the map for the knowledge base.
 - No component or module of a published project exists as a separate stub entry.
 - Every BibTeX key is unique and stable.
 - Every DOI resolves or is explicitly marked unresolved.
