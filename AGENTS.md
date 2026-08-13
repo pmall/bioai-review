@@ -28,3 +28,10 @@ Your knowledge comes from training data with a cutoff date — it's already old 
 ## Skills
 
 - `.agents/skills/map-to-bib/SKILL.md` — formalize the living literature map (`literature/map.md`) into a verified `literature/refs.bib` catalog, including source verification, official-publication preference, preprint handling, metadata retrieval, and validation.
+
+## Scripts
+
+The project uses `uv` for Python dependencies — run `uv sync` when the environment needs updating. Run scripts with `uv run scripts/<name>.py` from the repo root. You run them on the user's behalf; the user never touches the command line. Parsing can be long-running — never start it unless the user explicitly asks.
+
+- `uv run scripts/parse_pdf.py <path/to/file.pdf>` — parse one PDF into `literature/corpus/<stem>.md` (Markdown only, no images). Errors if the output already exists.
+- `uv run scripts/parse_all_pdf.py [--dry-run]` — parse every PDF in `literature/corpus/` that lacks a `.md` beside it. `--dry-run` only lists what would be parsed.
