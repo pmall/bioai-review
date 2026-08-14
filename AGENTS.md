@@ -12,7 +12,6 @@ Your knowledge comes from training data with a cutoff date — it's already old 
 
 ## Structure
 
-- `memory.md` — hot memory.
 - `knowledge/` — the knowledge base to populate.
 - `knowledge/README.md` — rules for organizing the knowledge base.
 - `.agents/skills/` — project-local, tool-agnostic skills for repeatable review workflows.
