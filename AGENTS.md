@@ -27,6 +27,7 @@ Your knowledge comes from training data with a cutoff date — it's already old 
 ## Skills
 
 - `.agents/skills/map-to-bib/SKILL.md` — formalize the living literature map (`literature/map.md`) into a verified `literature/refs.bib` catalog, including source verification, official-publication preference, preprint handling, metadata retrieval, and validation.
+- `.agents/skills/complete-map/SKILL.md` — discover and propose the core publications the map missed by examining what its cataloged seeds cite (bibliographic-API candidate pool, gap-filling screening, user validation), then fold approved works into `literature/map.md`.
 
 ## Scripts
 
@@ -34,3 +35,4 @@ The project uses `uv` for Python dependencies — run `uv sync` when the environ
 
 - `uv run scripts/parse_pdf.py <path/to/file.pdf>` — parse one PDF into `literature/corpus/<stem>.md` (Markdown only, no images). Errors if the output already exists.
 - `uv run scripts/parse_all_pdf.py [--dry-run]` — parse every PDF in `literature/corpus/` that lacks a `.md` beside it. `--dry-run` only lists what would be parsed.
+- `uv run scripts/build_candidate_pool.py [--top N]` — build a ranked citation candidate pool from the `refs.bib` seed DOIs via OpenAlex (Semantic Scholar fallback); writes the transient, gitignored `literature/candidate_pool.json`. Used by the `complete-map` skill.

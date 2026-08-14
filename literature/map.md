@@ -45,6 +45,10 @@ Predictive architectures that solve the forward problem: \\text{Sequence / Chemi
   * *Links:* [OpenFold3 GitHub](https://github.com/aqlaboratory/openfold-3) | [OpenFold GitHub](https://github.com/aqlaboratory/openfold)
   * *(dismissed — code releases, no paper/DOI; OpenFold3 cited as a benchmark baseline in the ESMC paper (ref 38); map-only, not in refs.bib)*
 
+* **RoseTTAFold lineage (RoseTTAFold → RoseTTAFold All-Atom)**
+  * **RoseTTAFold (2021):** Three-track neural network (sequence, 1D, 2D/3D) for accurate structure and complex prediction that established the deep-learning alternative to AlphaFold2.
+  * **RoseTTAFold All-Atom (2024):** Generalized all-atom modeling and design for proteins, nucleic acids, and small molecules; the main AlphaFold3-class co-folding predictor.
+  * *Links:* [Science Article (RFAA)](https://www.science.org/doi/10.1126/science.adl2528) | [Science Article (RoseTTAFold)](https://www.science.org/doi/10.1126/science.abj8754)
 * **OpenDDE (Aureka AI, 2026)**
   * *Role:* Open-source, all-atom biomolecular foundation model using co-folding as the entry point to a drug discovery engine; achieves IsoDDE-level co-folding accuracy.
   * *Link:* [arXiv](https://arxiv.org/abs/2607.03787)
@@ -125,9 +129,12 @@ Generative frameworks operating over continuous vector fields and Ordinary Diffe
 * **PXDesign (2025)**
   * *Role:* Open-source de novo protein binder design platform built on the Protenix all-atom predictor.
   * *Link:* [bioRxiv](https://doi.org/10.1101/2025.08.15.670450) | [ByteDance Protenix GitHub](https://github.com/bytedance/Protenix)
-* **BoltzGen (2025/2026)**
-  * *Role:* Unified generative design engine built on the Boltz foundation targeting proteins, peptides, nanobodies, antibodies, and small molecules. *(dismissed — no separate publication; map-only, not in refs.bib)*
-  * *Link:* [MIT Jameel Clinic GitHub](https://github.com/jwohlwend/boltz)
+* **BoltzGen (2025)**
+  * *Role:* Unified generative design engine built on the Boltz foundation targeting proteins, peptides, nanobodies, antibodies, and small molecules.
+  * *Link:* [bioRxiv](https://www.biorxiv.org/content/10.1101/2025.11.20.689494) | [MIT Jameel Clinic GitHub](https://github.com/jwohlwend/boltz)
+* **BindCraft (2025)**
+  * *Role:* One-shot, experimentally validated de novo design of functional protein binders at scale, built on RFdiffusion scaffolding and ProteinMPNN/LigandMPNN sequence design.
+  * *Link:* [Nature Article](https://www.nature.com/articles/s41586-025-09429-6)
 * **AlphaProteo (2024/2025)**
   * *Role:* Google DeepMind's generative diffusion engine and multi-stage filtering pipeline for picomolar/nanomolar binder design.
   * *Link:* [DeepMind Technical Blog](https://deepmind.google/discover/blog/alphaproteo-generates-novel-proteins-for-biological-research/)
@@ -143,9 +150,9 @@ Generative frameworks operating over continuous vector fields and Ordinary Diffe
 
 ### **2.4 Sequence Optimization & Inverse Folding Submodules**
 
-* **ProteinMPNN & LigandMPNN (2022–2024)**
-  * *Role:* Autoregressive message-passing networks assigned to generate optimal amino acid sequences given fixed backbones and ligand environments. *(LigandMPNN — dismissed, no in-scope publication; map-only, not in refs.bib)*
-  * *Links:* [Science Article](https://www.science.org/doi/10.1126/science.add2187) | [ProteinMPNN GitHub](https://github.com/dauparas/ProteinMPNN)
+* **ProteinMPNN & LigandMPNN (2022–2025)**
+  * *Role:* Autoregressive message-passing networks assigned to generate optimal amino acid sequences given fixed backbones and ligand environments.
+  * *Links:* [Science Article (ProteinMPNN)](https://www.science.org/doi/10.1126/science.add2187) | [Nature Methods Article (LigandMPNN)](https://www.nature.com/articles/s41592-025-02626-1) | [ProteinMPNN GitHub](https://github.com/dauparas/ProteinMPNN)
 
 ## **SECTION 3: AUXILIARY STEERING, FILTERING, & EVALUATION INFRASTRUCTURE**
 
