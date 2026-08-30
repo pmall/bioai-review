@@ -19,6 +19,7 @@ Your knowledge comes from training data with a cutoff date — it's already old 
 - `literature/map.md` — the living, free-form map of concepts and references. The default working file for review discussion and the entry point of the system: concepts and references are added here together, then formalized into `literature/refs.bib`.
 - `literature/refs.bib` — the reference catalog, one BibTeX entry per publication to download (BibTeX keys match the entry slugs, e.g. `example_slug`). Metadata is fetched from Crossref/DataCite when a DOI exists; every entry carries a DOI and a `keywords` tag list, so map concepts resolve to an entry by key or by tag. Sources without a resolvable DOI are not cataloged.
 - `literature/corpus/` — the publication artifacts, named by DOI, matching `literature/refs.bib`: the source PDFs alongside their parsed Markdown (same name, different extension).
+- `literature/reports/` — intermediate reports about the publications (e.g. per-topic or per-family summaries) produced while reviewing the corpus.
 
 ## Naming
 
