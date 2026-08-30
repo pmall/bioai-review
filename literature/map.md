@@ -332,12 +332,12 @@ Boltz-2, Protenix-v1, Protenix-v2, OpenDDE and ESMC/ESMFold2 all **zero**.
 Nothing published since 2024 benchmarks against them. As *generators* they remain
 the reference the whole field cites.
 
-* **RoseTTAFold (RF1)** — `rosettatfold` · `10.1126/science.abj8754` — three-track
+* **RoseTTAFold (RF1)** — `rosettafold` · `10.1126/science.abj8754` — three-track
   (1D/2D/3D) network developed independently of AF2; complex prediction emerged
   untrained from two-segment cropping. The architecture the family fine-tunes from.
   *Intermediate steps, map-only:* RoseTTAFoldNA and RoseTTAFold2 (preprints; RF2
   is RFAA's base network).
-* **RoseTTAFold All-Atom (RFAA)** — `rosettatfold_all_atom` ·
+* **RoseTTAFold All-Atom (RFAA)** — `rosettafold_all_atom` ·
   `10.1126/science.adl2528` — all-atom generalization published two months
   *before* AF3 and independently of it; encodes chirality as architectural input
   features rather than as a loss or post-hoc penalty. No diffusion module.
