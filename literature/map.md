@@ -6,10 +6,14 @@
 > formalized into `literature/refs.bib` through the `map-to-bib` skill.
 >
 > **This file is a layout, not a review.** Every publication in the corpus is
-> named here, placed in exactly one home section, and given one line of role.
-> The analysis lives in `literature/drafts/` — one report per section, written
-> separately. Resist growing entries here; if a finding needs a paragraph, it
-> belongs in that section's report.
+> named here, placed in exactly one home section, and given a short description:
+> what it is, why it earns its place, and how it relates to the other entries.
+> Nothing beyond that. Method internals, benchmark numbers, per-paper caveats and
+> quotes are read out of the corpus at writing time, not stockpiled here — an
+> entry that has grown to a paragraph is a sign the material belongs elsewhere.
+>
+> **Citation counts are not kept here.** They live in `literature/xrefs.md`,
+> which is generated from the corpus and stays current on its own.
 >
 > **Five parts.** I — the intro narrative plan. II — the section order and why
 > it is that order. III — the nine sections and the publications in each.
@@ -20,8 +24,7 @@
 > belong but have not been decided on are held out of the map entirely, in
 > `literature/candidates.md`.
 >
-> **Coupling levels** — the review's spine, defined in Beat 4 and in
-> `drafts/structure_prediction_family_overview.md` §1.1:
+> **Coupling levels** — the review's spine, defined in Beat 4:
 > **Level 0** the generator *is* a repurposed predictor (inherited weights);
 > **Level 1** generate, then filter with a critic (no gradient);
 > **Level 2** backpropagate the predictor's loss into the design variable.
@@ -103,7 +106,12 @@ collapsing experimental budget the review's quantitative spine:
 | Screening-based, and early computational design | *"thousands to millions of designs to reliably identify hits"* | Chai-2's characterisation of prior work |
 | Current generative + filtering | 16–30 (Protenix-v2), ≤20 (Chai-2), 30–100 (Latent-X), 43–101 (Germinal), 84 (ESMFold2) | each system's own campaign |
 
-**Read the hit rates below with BoltzProt-1's distinction in hand** (§3): it separates *screening hits* from *confirmed binders*, and reports that screening hits are *"what prior binder design model literature typically reports as binders"*. Its own confirmed-binder rate is 8.0% where the screening-hit framing would give a much larger number. The percentages quoted across this review are not all measuring the same event.
+**Read the hit rates below with BoltzProt-1's distinction in hand** (§3): it
+separates *screening hits* from *confirmed binders*, and reports that screening
+hits are *"what prior binder design model literature typically reports as
+binders"*. Its own confirmed-binder rate is 8.0% where the screening-hit framing
+would give a much larger number. The percentages quoted across this review are
+not all measuring the same event.
 
 Hit rates reported in the same papers — 16% (Chai-2, de novo antibodies), up to
 48% and 16–88% on GPCRs
@@ -280,7 +288,6 @@ stays in §4 and Boltz's closed models stay in §3, each with a pointer to §9.
 
 Prediction only. The forward problem — sequence / chemical input → 3D structural
 state — and the reference every later section is defined against.
-Reviewed in `drafts/structure_prediction_family_overview.md`.
 
 * **AlphaFold2** — `alphafold2` · `10.1038/s41586-021-03819-2` — single-chain and
   multimer predictor that established modern deep-learning structural biology;
@@ -288,19 +295,13 @@ Reviewed in `drafts/structure_prediction_family_overview.md`.
   *Also serves as:* the differentiable objective in BindCraft and Germinal (§6)
   and the standard post-hoc filter across §2–5 and §7.
 * **AlphaFold-Multimer** — `alphafold_multimer` · `10.1101/2021.10.04.463034` —
-  AF2 retrained on complexes; the complex predictor the rest of the review
-  actually uses. **Kept despite the pre-2025 rule, under the active-lineage
-  exception, because §6 does not invert AlphaFold2 — it inverts this.** BindCraft
-  and Germinal both backpropagate through AF-M, and Germinal calls it AF-M
-  throughout; without this entry the predictor at the centre of the Level-2
-  section would be absent from the catalog. Mentioned by 13 corpus papers.
-  **It is also where ipTM comes from** — *"we call this metric Interface pTM, or
-  ipTM"*, with model confidence defined as 0.8·ipTM + 0.2·pTM. The canonical
-  Level-1 success criterion quoted in Beat 4 is denominated in a metric this paper
-  introduced, which makes the entry load-bearing for §2–§7 and Part IV, not just §6.
-  *Never peer-reviewed* — still a 2021 bioRxiv preprint, checked August 2026.
-  Worth one sentence in §9's terms: the most-used complex predictor in the field
-  never got a journal version.
+  AF2 retrained on complexes, and the complex predictor the review actually runs
+  on: §6 does not invert AlphaFold2, it inverts this. Kept despite the pre-2025
+  rule under the active-lineage exception.
+  *Also where ipTM comes from*, which makes it the unit half the review's numbers
+  are denominated in — load-bearing for §2–§7 and Part IV, not only §6.
+  *Never peer-reviewed:* the field's most-used complex predictor has no journal
+  version. Worth a sentence in §9's terms.
 * **AlphaFold3** — `alphafold3` · `10.1038/s41586-024-07487-w` — all-atom
   diffusion predictor for protein / nucleic-acid / small-molecule / ion
   complexes. Closed weights — the stated motivating gap behind Boltz-1, Protenix
@@ -323,14 +324,11 @@ The Baker Lab / IPD line, kept whole: two structure predictors, the three
 generative models fine-tuned from them, and the sequence-design stage the whole
 field borrowed. Level 0 in its purest form — one architecture serving prediction
 or generation depending on what it is fine-tuned for.
-Reviewed in `drafts/rfdiffusion_family_summary.md` and
-`drafts/proteinmpnn_ligandmpnn_summary.md`.
 
-**Section-defining fact:** as *predictors* these have left the conversation.
-Mentions per co-folding paper run AlphaFold3 25, Chai-1 11, then Boltz-1,
-Boltz-2, Protenix-v1, Protenix-v2, OpenDDE and ESMC/ESMFold2 all **zero**.
-Nothing published since 2024 benchmarks against them. As *generators* they remain
-the reference the whole field cites.
+**Section-defining fact:** as *predictors* these have left the conversation —
+nothing published since 2024 benchmarks against them, and the recent co-folding
+papers do not mention them at all. As *generators* they remain the reference the
+whole field cites.
 
 * **RoseTTAFold (RF1)** — `rosettafold` · `10.1126/science.abj8754` — three-track
   (1D/2D/3D) network developed independently of AF2; complex prediction emerged
@@ -351,31 +349,22 @@ the reference the whole field cites.
 * **RFdiffusion3** — `rfdiffusion3` · `10.1101/2025.09.18.676967` *(inherits RF1)*
   — transformer-based all-atom diffusion across proteins, DNA, RNA and ligands;
   inherits AF3's non-equivariant diffusion approach.
-* **RFantibody** — `rfantibody` · `10.1038/s41586-025-09721-5` (*Nature* **649**,
-  183–193; online 5 Nov 2025, issue 1 Jan 2026; preprint
-  `10.1101/2024.03.14.585103`) *(inherits RFdiffusion)*
+* **RFantibody** — `rfantibody` · `10.1038/s41586-025-09721-5` *(inherits RFdiffusion)*
   — the lineage's antibody arm: a fine-tuned RFdiffusion designing VHHs, scFvs and
-  full antibodies against user-specified epitopes, with cryo-EM confirming the
-  designed CDR poses at atomic accuracy.
+  full antibodies against chosen epitopes.
   *Why it matters to the argument:* it pairs design with **yeast-display library
-  screening**, and says why in its own words — the screen is *"currently necessary
-  due to the quite low design success rate"*. That is the honest baseline Beat 3's
-  collapsing-budget table is measured against: §3, §4 and §6 report binders from
-  tens of designs, and this is the paper they cite when claiming they no longer
-  need library selection or directed evolution.
-  Cited by seven corpus papers — Chai-2, Germinal, BoltzProt-1, BoltzGen,
-  Protenix-v2, OpenGerminal, PPIFlow.
+  screening**, and says the screen is still necessary. That makes it the honest
+  baseline Beat 3's collapsing-budget table is measured against, and the paper
+  §3, §4 and §6 cite when claiming they no longer need library selection.
 * **ProteinMPNN** — `proteinmpnn` · `10.1126/science.add2187` · and
   **LigandMPNN** — `ligandmpnn` · `10.1038/s41592-025-02626-1` — autoregressive
   message-passing networks generating sequences for a fixed backbone (and ligand
   / nucleic-acid environment, for LigandMPNN). The standard inverse-folding stage
   between backbone generation and structural validation, introduced here because
   §3–7 all rely on it. [GitHub](https://github.com/dauparas/ProteinMPNN)
-  *Adoption is field-wide, not lineage-bound* — corpus papers referencing it:
-  RFdiffusion3 (27), BoltzGen (14), RFdiffusion (10), RFdiffusion2 (6), RFAA (5),
-  Latent-X1 (5), PXDesign (5), BindCraft (5), PPIFlow (4), AtomFlow (3),
-  AlphaProteo (3), FrameFlow (2), D-Flow (2), OriginFlow (2), SaProt (2). Nine
-  distinct labs, both coupling levels.
+  *Adoption is field-wide, not lineage-bound* — used across nine distinct labs and
+  both coupling levels, which is why it is introduced here as shared machinery
+  rather than treated as a Baker-lab component.
 
 ## §3 — Boltz
 
@@ -387,12 +376,11 @@ the review needs: the **trained-critic** refinement to Level 1, and the
 
 **The fork.** Boltz enters the review as the open answer to AlphaFold3's closed
 weights and exits it with its own frontier closed. Boltz-1, Boltz-2 and BoltzGen
-remain MIT with weights released; BoltzProt-1 and BoltzMol-1 are API-only, no
-weights, commercially distributed (from $0.025/prediction, partner integrations
-at Benchling, Tamarind, Phylo and others). Both closed models still publish
-papers and wet-lab numbers. This is the only lineage where the review holds the
-before and the after with publications on both sides — which makes it a better
-§9 exhibit than IsoDDE, where only the after exists.
+remain MIT with weights released; BoltzProt-1 and BoltzMol-1 are API-only and
+commercial. Both closed models still publish papers and wet-lab numbers, so this
+is the only lineage where the review holds the before *and* the after with
+publications on both sides — a better §9 exhibit than IsoDDE, where only the
+after exists.
 
 * **Boltz-1** — `boltz1` · `10.1101/2024.11.19.624167` — first fully open (MIT)
   AF3-class co-folder; Boltz-1x adds Feynman-Kac inference-time steering for
@@ -406,40 +394,24 @@ before and the after with publications on both sides — which makes it a better
   independently by ESMC, Protenix-v1 and Protenix-v2.
 * **BoltzGen** — `boltzgen` · `10.1101/2025.11.20.689494` *(inherits Boltz)* —
   unified generative design across proteins, peptides, nanobodies, antibodies and
-  small molecules; filters 10,000-design pools by refolding with Boltz-2
-  (RMSD < 2.5 Å) plus a composite interaction score. Level 1,
+  small molecules, filtered by refolding with Boltz-2. Level 1,
   confidence-as-critic — the baseline BoltzProt-1 then beats by changing only the
   critic.
-* **BoltzProt-1** — `boltzprot1` · `10.64898/2026.06.23.733997` *(inherits BoltzGen)* — refined
-  BoltzGen generator ranked by **BoltzPPI**, a protein-protein interaction
-  predictor built on Boltz-2 and trained to answer "will this bind" directly.
-  Swapping the filter alone takes the confirmed-binder hit rate from **3.3% to
-  8.0%** across 10 novel targets; 58% of designs pass all developability criteria
-  simultaneously vs 40% for BoltzGen, 25% for clinical-stage IgG and 21% for
-  clinical-stage VHH controls. On a second panel of 10 prior-literature targets it
-  gets screening hits on **7/10, against the 6/10 Chai-2 reported** — the one
-  direct §3-vs-§4 comparison in the map.
-  *Still Level 1 — no gradient — but the critic is no longer the predictor's own
-  confidence head.* API-only, no weights.
-  **Definitional contribution, and it belongs in Beat 3.** The paper separates
-  *screening hits* from *confirmed binders*, and says plainly that screening hits
-  are *"what prior binder design model literature typically reports as binders"*.
-  The 3.3→8.0% figures are confirmed-binder rates. Every hit rate quoted elsewhere
-  in this map is on the looser definition, which makes cross-paper comparison
-  worse than caveat 2 of the intro currently admits.
-  * **BoltzPPI** — the trained critic itself; introduced inside the BoltzProt-1
-    paper, no separate publication. *(resolves to the `boltzppi` keyword on
-    `boltzprot1`.)*
-* **BoltzMol-1** — `boltzmol1` · `10.64898/2026.07.04.736485` — small-molecule hit-discovery
-  pipeline over an optimized Boltz-2, with an ADMET triage layer (logS, logD,
-  Caco-2 permeability); functional actives or binders on **6/10 targets** on
-  experimental budgets of **28–96 compounds per target**. API-only, no weights.
-  *Out of scope by modality* — small-molecule virtual screening, ranking
-  commercial catalogue compounds rather than generating binders, so the same
-  exclusion that puts DrugFlow and FLOWR in Part V. **Kept here rather than
-  there** because it is a Boltz model first: the open→closed fork is the section's
-  argument and needs both closed models in one place. It contributes nothing to
-  the review beyond that.
+* **BoltzProt-1** — `boltzprot1` · `10.64898/2026.06.23.733997` *(inherits BoltzGen)*
+  — a refined BoltzGen ranked by **BoltzPPI**, a critic trained to answer "will
+  this bind" rather than a confidence head reused as one. Changing only the filter
+  sharply raises the hit rate — the map's cleanest evidence that the critic, not
+  the generator, is where hit rate lives. *Level 1 still, but the trained-critic
+  regime.* API-only: the closed half of the fork above. It also splits *screening
+  hits* from *confirmed binders*, a definition problem Beat 3 and Part IV inherit.
+  * **BoltzPPI** — the critic itself, no separate publication.
+    *(resolves to the `boltzppi` keyword on `boltzprot1`.)*
+* **BoltzMol-1** — `boltzmol1` · `10.64898/2026.07.04.736485` — small-molecule hit
+  discovery over an optimized Boltz-2. API-only, no weights.
+  *Out of scope by modality* — it screens catalogue compounds rather than
+  generating binders, the same exclusion that puts DrugFlow and FLOWR in Part V.
+  **Kept here rather than there** because it is a Boltz model first, and the fork
+  above needs both closed models in one place. It contributes nothing else.
 * **BoltzDesign1** — `boltzdesign1` · `10.1101/2025.04.06.647261` — inverts the
   Boltz predictor for binder design. *Level 2; reviewed in full in §6*, where the
   portability argument needs it next to BindCraft.
@@ -482,20 +454,17 @@ molecules or unconditioned sequences are in Part V.
 * **AtomFlow** — `atomflow` · `10.48550/arXiv.2409.12080` — atomic flow matching
   on unified biotokens; generates ligand-binding pockets from 2D molecular graphs
   without bound conformers.
-* **D-Flow** — `dflow` · `10.1109/JBHI.2026.3683934` — full-atom flow matching on
-  SE(3) frames and torus manifolds for bioorthogonal D-peptide binders.
-  *Borderline on modality, and included deliberately:* D-peptides are mirror-image
-  peptides built from D-amino acids, an exotic chemistry unlike anything else in
-  this map. But the paper is explicitly *"conditioned on receptor binding"* for
-  *"de novo D-peptide design"*, so the scope rule makes it binder design and it
-  stays. Revisit only if the review decides to bound the modality more tightly
-  than the rule does.
+* **D-Flow** — `dflow` · `10.1109/JBHI.2026.3683934` — full-atom flow matching for
+  bioorthogonal D-peptide binders.
+  *Borderline on modality, included deliberately:* mirror-image peptides are an
+  exotic chemistry unlike anything else here, but the paper is target-conditioned
+  binder design, so the scope rule keeps it. Revisit only if the review decides to
+  bound the modality more tightly than the rule does.
 
-**Known weakness of this section, to budget for.** PPIFlow, OriginFlow, AtomFlow
-and D-Flow are each cited by zero other papers in this corpus; only FrameFlow, at
-3, has traction as the methodological ancestor. It will read as a survey of
-parallel isolated efforts rather than a lineage. One combined report, not one per
-model.
+**Known weakness of this section.** Only FrameFlow has traction as the
+methodological ancestor; the other four are cited by nothing else in the corpus
+(see `xrefs.md`). The section will read as a survey of parallel isolated efforts
+rather than a lineage, and should be planned as one piece rather than four.
 
 ## §6 — Inversion as a portable technique
 
@@ -514,8 +483,7 @@ The arc to carry into the section:
    significantly outperforms Hallucination (with RF) at unconditional monomer
    generation"* (z = 9.5, P = 1.6 × 10⁻⁹). Diffusion won, and Level 2 went quiet.
 3. *Revived.* It returns on predictors strong enough to be run single-sequence
-   without falling off-distribution — the precondition argued in Beat 4 and in
-   `drafts/structure_prediction_family_overview.md` §1.2.
+   without falling off-distribution — the precondition argued in Beat 4.
 4. *Portable.* Counting the two Level-2 systems housed in §7 and §8, five systems
    from four groups now invert four different predictor families.
 
@@ -531,49 +499,18 @@ review, returning under conditions that did not previously hold.
   compensate for.
 * **BoltzDesign1** — `boltzdesign1` · `10.1101/2025.04.06.647261` — the same
   inversion moved from AlphaFold2 to the Boltz all-atom predictor (§3).
-  *Lineage:* Cho, Pacesa, Zhang, **Correia** and **Ovchinnikov** — the last two
-  are also BindCraft's senior authors, so these two entries are one research
-  programme porting one method, not two independent data points. The independence
-  of the technique rests on Germinal, PXDesign-h and ESMFold2, not on this pair.
-  *(In the corpus, not yet reviewed in depth. Cited by six corpus papers:
-  PXDesign, RFdiffusion3, Latent-X1, Boltz-2, BoltzGen, ESMC.)*
-* **Germinal** — `germinal` · `10.1038/s41587-026-03187-0` (*Nature Biotechnology*,
-  23 Jun 2026; preprint `10.1101/2025.09.19.677421`) — gradient-based
-  hallucination through AlphaFold-Multimer (AF-M) via ColabDesign, designing
-  epitope-targeted CDRs onto a user-specified framework, in nanobody and scFv
-  formats. Four diverse targets, nanomolar affinities, **43–101 designs tested
-  per antigen**.
-  *Essentially BindCraft for antibodies*, and the paper's own framing — it opens
-  by crediting BindCraft with inverting AF-M *"to achieve high experimental
-  success rates for de novo miniproteins"*. Same predictor, same inversion,
-  specialized to the CDR problem, independent group (Mille-Fragoso, Hie, Gao —
-  Stanford / Arc Institute).
-  **Mechanistically distinct in the way that matters:** the only Level-2 system
-  that puts a *sequence prior inside the loss*. AF-M and IgLM gradients are
-  merged each iteration — default a weighted sum, ∇Germinal = ∇AFM + λ∇IgLM, with
-  MGDA and weighted PCGrad as alternatives. ESMC gets the same effect by having
-  the LM and folding head be one model; Germinal bolts a separate LM onto the
-  gradient. Position it against §8 on exactly that point.
-  *Also worth carrying into the report:* three-phase optimization (logits →
-  softmax → **semigreedy** discrete updates), so like BindCraft and unlike ESMFold2
-  it is multi-stage; **AbMPNN** (antibody-fine-tuned MPNN) redesigns CDR residues
-  not contacting the antigen, a lineage variant of §2's inverse-folding stage;
-  and the input antigen structures come from **AlphaFold3**, validated to
-  Cα-RMSD < 1 Å against experimental structures.
-  *Number to handle carefully:* the widely-quoted **4–22% success rate** is from
-  the September 2025 **preprint abstract**. It does not appear in the *Nature
-  Biotechnology* text, which reports design counts and per-target results instead.
-  Cite the preprint explicitly if the range is used at all.
-  *Best-connected recent addition:* cited by six corpus papers — PPIFlow,
-  Protenix-v1, Protenix-v2, BoltzGen, ESMC, Latent-X2.
-  * **OpenGerminal** — `opengerminal` · `10.64898/2026.06.25.734527` — Apache-2.0 reimplementation
-    replacing PyRosetta with OpenMM/FreeSASA/FASPR and IgLM with AbLang1, at
-    ≥1.5× per-trajectory cost. The counter-movement to §3's closure, and worth one
-    sentence for that contrast alone.
-    *Read its numbers carefully — the abstract and the body disagree.* The
-    headline 33.7% vs 18.6% (PD-L1) and 24.6% vs 8.0% (IL-3) are **cofolding
-    entry** rates; §3.3 gives the **pass** rates as 18.4% vs 10.9% and 5.2% vs
-    4.0%, a much smaller gap. Computational only — two VHH targets, no wet lab.
+  *Relation that matters:* it shares senior authors with BindCraft, so the two are
+  one research programme porting one method, not two independent data points. The
+  independence of the technique rests on Germinal, PXDesign-h and ESMFold2.
+* **Germinal** — `germinal` · `10.1038/s41587-026-03187-0` — gradient-based
+  hallucination through AlphaFold-Multimer for epitope-targeted antibody CDRs.
+  *Essentially BindCraft for antibodies*, and the paper's own framing; the group
+  is independent of BindCraft's, which is what §6's portability claim rests on.
+  *Distinct in the way that matters:* the only Level-2 system putting a **sequence
+  prior inside the loss**, merging the predictor's gradient with an antibody
+  language model's — where §8 reaches the same place with one model, not two.
+  * **OpenGerminal** — `opengerminal` · `10.64898/2026.06.25.734527` — Apache-2.0
+    reimplementation on an open stack; the counter-movement to §3's closure.
 
 ## §7 — Protenix
 
@@ -592,12 +529,11 @@ PXDesign-h measures itself against exactly BindCraft and BoltzDesign1.
   prediction through a comprehensive AlphaFold3 reproduction* technical report
   (v0.2.0/v0.5.0), cited as ref 19 by Protenix-v1; not cataloged, not in corpus.
 * **Protenix-v2** — `protenix_v2` · `10.64898/2026.04.10.717613` — both halves in
-  one paper. *Prediction:* 9–13 point antibody-antigen gains over v1, 5-seed
-  performance exceeding v1 at 1000 seeds, and the finding that the PoseBusters
-  criterion is itself incomplete. *Design (Level 1, inherits Protenix):*
-  target-conditioned generation with epitope-specific or site-agnostic modes
-  across miniproteins, VHH and Fv; per-CDR length control; 100% target-level
-  success in novelty-controlled VHH-Fc campaigns, GPCR hit rates 16–88%.
+  one paper, which is why the lineage reads as a platform rather than a model.
+  *Prediction:* antibody-antigen gains over v1, plus the finding that the
+  PoseBusters criterion is itself incomplete (Part IV). *Design (Level 1, inherits
+  Protenix):* target-conditioned generation across miniproteins, VHH and Fv, with
+  epitope-specific and site-agnostic modes.
 * **PXDesign** — `pxdesign` · `10.1101/2025.08.15.670450` — the platform that
   composes both couplings, and the reason this section sits where it does:
   * **PXDesign-d** — diffusion arm, Level 1 *(inherits Protenix)*.
@@ -628,14 +564,11 @@ building toward since §1.
   rescue path for high-perplexity sequences.
   *Covers:* ESMFold2 and ESMFold2-Fast (modules of this release, no separate paper).
   * **ESMFold2 binder design campaign** — **Level 2**, and the tightest coupling
-    in the review: *"represents sequences as continuous distributions over amino
-    acid probabilities and optimizes by backpropagation through ESMC and
-    ESMFold2"* — gradients pass through the 6B language model as well as the
-    folding head, and a **single-stage** optimization suffices, where BindCraft
-    needs four annealing stages. Minibinders and scFvs against five
-    oncology/immunology targets, BLI-validated, hit rates rising with compute.
-    Single-sequence is its native regime, so there is no off-distribution penalty
-    to compensate for. *(module of the ESMC release — no separate publication.)*
+    in the review: gradients pass through the language model as well as the
+    folding head, so there is nothing left to compose. Single-sequence is its
+    native regime, so unlike §6's systems it pays no off-distribution penalty —
+    the point the MSA throughline has been building toward since §1.
+    *(module of the ESMC release — no separate publication.)*
 
 ## §9 — The closed frontier
 
@@ -667,13 +600,9 @@ everything else. **Two tiers, and they are not the same problem.**
 **Tier 2 — no publication at all, known only through other people's benchmarks.**
 
 * **IsoDDE** (Isomorphic Labs) — the frontier reference at the top of OpenDDE's
-  scaling curve; credited with gains in protein-ligand generalisation,
-  antibody-antigen interfaces, pocket identification and affinity estimation.
-  OpenDDE states the limit plainly: *"we do not have access to its full training
-  recipe, data mixture, inference procedure, post-training strategy, or
-  engineering optimizations … we cannot yet determine which differences arise
-  from model architecture, data processing, scaling, distillation, or
-  inference-time procedures."* *(map-only — private, no publication.)*
+  scaling curve, and the purest case of the tier: everything the review can say
+  about it was measured by a competitor, which OpenDDE itself states as a limit on
+  what can be concluded. *(map-only — private, no publication.)*
 * **Chai-3** and **SeedFold** — a commercial web platform and a point on
   OpenDDE's scaling curve respectively. *(map-only.)*
 
@@ -688,9 +617,9 @@ on the half that stopped publishing.
 # PART IV — BENCHMARKING, VALIDITY & EVALUATION INFRASTRUCTURE
 
 Not models, but the instruments every number in Part III is denominated in.
-Transversal: written once, cited from any section. One combined report.
-Three blocks: the metrics primer, the instruments themselves, then the two
-summary tables that gather what they measured.
+Transversal: written once, referred to from any section. Three blocks: the
+metrics primer, the instruments themselves, then the two summary tables that
+gather what they measured.
 
 ## The metrics primer — read first, filed here
 
@@ -764,12 +693,12 @@ Protenix-v2. Together with FoldBench's common-intersection problem and
 PoseBusters' incompleteness, this is why Beat 3's tables must be read as
 self-reported rather than head-to-head.
 
-## The two summary tables — to be filled once the section reports exist
+## The two summary tables — planned, not yet filled
 
-Two tables closing this part, gathering the numbers scattered across Part III so a
+Two tables closing this part, gathering the numbers spread across Part III so a
 reader can see the whole field at once. **Numbers are deliberately not entered
-yet** — they should be transcribed from the per-section reports, once written, so
-each cell has a report behind it rather than being re-extracted from papers here.
+here yet** — this is the layout, and the map does not carry per-paper figures.
+They get gathered from the corpus when the tables are actually written.
 
 **The risk to design against.** Everything else in this part argues these numbers
 are *not* comparable. A tidy side-by-side table is read as a leaderboard, which is
