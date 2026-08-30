@@ -20,6 +20,7 @@ Your knowledge comes from training data with a cutoff date — it's already old 
 - `literature/refs.bib` — the reference catalog, one BibTeX entry per publication to download (BibTeX keys match the entry slugs, e.g. `example_slug`). Metadata is fetched from Crossref/DataCite when a DOI exists; every entry carries a DOI and a `keywords` tag list, so map concepts resolve to an entry by key or by tag. Sources without a resolvable DOI are not cataloged.
 - `literature/corpus/` — the publication artifacts, named by DOI, matching `literature/refs.bib`: the source PDFs alongside their parsed Markdown (same name, different extension).
 - `literature/reports/` — intermediate reports about the publications (e.g. per-topic or per-family summaries) produced while reviewing the corpus.
+- `literature/candidates.md` — works surfaced while reading the corpus that might belong to the review but have not been decided on. Held outside `map.md` so the map's invariant holds: every publication named in the map resolves to a `refs.bib` entry. Accepting one means writing it into the map and running `map-to-bib`; rejecting one means recording it in the map's excluded part.
 
 ## Naming
 
