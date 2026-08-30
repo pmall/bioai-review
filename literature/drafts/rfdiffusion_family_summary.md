@@ -4,7 +4,7 @@ Source paper for RFD3 details: *De novo Design of All-atom Biomolecular Interact
 
 This document consolidates the whole Baker Lab / IPD line in one place: the two structure predictors it grew out of (Part I) and the four generative models built on them (Part II), plus the reasoning and clarifications worked out in discussion.
 
-Sequence design throughout is ProteinMPNN / LigandMPNN — same lab, reviewed in `literature/reports/proteinmpnn_ligandmpnn_summary.md`. Worth stating once here because it is presented early and then relied on by every later report: MPNN is *not* a Baker-lab-only component. Corpus papers referencing it span nine labs and both coupling levels — RFdiffusion3 (27 mentions), BoltzGen (14), RFdiffusion (10), RFdiffusion2 (6), RFAA (5), Latent-X1 (5), PXDesign (5), BindCraft (5), PPIFlow (4), AtomFlow (3), AlphaProteo (3), FrameFlow (2), D-Flow (2), OriginFlow (2).
+Sequence design throughout is ProteinMPNN / LigandMPNN — same lab, reviewed in `literature/drafts/proteinmpnn_ligandmpnn_summary.md`. Worth stating once here because it is presented early and then relied on by every later report: MPNN is *not* a Baker-lab-only component. Corpus papers referencing it span nine labs and both coupling levels — RFdiffusion3 (27 mentions), BoltzGen (14), RFdiffusion (10), RFdiffusion2 (6), RFAA (5), Latent-X1 (5), PXDesign (5), BindCraft (5), PPIFlow (4), AtomFlow (3), AlphaProteo (3), FrameFlow (2), D-Flow (2), OriginFlow (2).
 
 ---
 

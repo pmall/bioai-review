@@ -11,6 +11,3 @@ wheels/
 
 # pdfs
 literature/corpus/*.pdf
-
-# transient screening pool (regenerated per pass)
-literature/candidate_pool.json

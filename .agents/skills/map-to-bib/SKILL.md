@@ -19,6 +19,8 @@ Every concept resolves to exactly one place:
 - **A `keywords` tag on an entry** — the paper describes it (a tool or component introduced there).
 - **The map** — it has no citable publication (commercial platforms, no-DOI preprints, modules without a paper).
 
+Works that might belong to the review but have not been decided on are not in the map and not in the catalog. They wait in `literature/candidates.md`. Do not catalog one until it has been accepted into the map.
+
 `keywords` lists only what the paper itself describes. Keywords never cross-reference other publications; such references belong in the map.
 
 ## Workflow
@@ -96,10 +98,14 @@ Example:
 ## Updating an existing catalog
 
 1. Preserve stable BibTeX keys.
-2. Re-check publication status; replace a preprint with the official version when available (keep the preprint DOI in a note for provenance).
+2. **Re-check every cataloged preprint for a journal version, on every pass** — not only the entries being added. This field publishes fast enough that a preprint cataloged weeks ago may now have a journal DOI, and the catalog is supposed to prefer it.
+   - Ask Crossref for the preprint DOI and look for an `is-preprint-of` relation.
+   - The relation is not always populated, so also search Crossref by title filtered to `type:journal-article` and match the result against the entry.
+   - arXiv DOIs (`10.48550/...`) are DataCite, not Crossref; a 404 there is expected and is not a finding.
+   - When a journal version exists, switch the entry to it — new DOI, venue, volume, pages, and the published author list, which is often not the preprint's — and keep the preprint DOI in a `note` for provenance.
 3. Maintain `keywords` as map concepts change.
 4. Avoid unrelated formatting churn; review the diff.
 
 ## Completion report
 
-Report: sources processed, official publications, preprints, dismissed map concepts, unresolved records, validation results, and any corrected or mismatched links.
+Report: sources processed, official publications, preprints, dismissed map concepts, unresolved records, validation results, and any corrected or mismatched links. State the outcome of the preprint re-check explicitly, including when nothing had been published — a silent report is indistinguishable from a skipped step.

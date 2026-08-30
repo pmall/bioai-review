@@ -7,21 +7,21 @@
 >
 > **This file is a layout, not a review.** Every publication in the corpus is
 > named here, placed in exactly one home section, and given one line of role.
-> The analysis lives in `literature/reports/` — one report per section, written
+> The analysis lives in `literature/drafts/` — one report per section, written
 > separately. Resist growing entries here; if a finding needs a paragraph, it
 > belongs in that section's report.
 >
 > **Five parts.** I — the intro narrative plan. II — the section order and why
 > it is that order. III — the nine sections and the publications in each.
 > IV — benchmarking and validity infrastructure, transversal to all nine.
-> V — publications examined and deliberately excluded, kept as a PRISMA trace.
+> V — publications examined and deliberately excluded, with the reason recorded.
 >
 > **Every publication named in this file is in `refs.bib`.** Works that might
 > belong but have not been decided on are held out of the map entirely, in
 > `literature/candidates.md`.
 >
 > **Coupling levels** — the review's spine, defined in Beat 4 and in
-> `reports/structure_prediction_family_overview.md` §1.1:
+> `drafts/structure_prediction_family_overview.md` §1.1:
 > **Level 0** the generator *is* a repurposed predictor (inherited weights);
 > **Level 1** generate, then filter with a critic (no gradient);
 > **Level 2** backpropagate the predictor's loss into the design variable.
@@ -280,7 +280,7 @@ stays in §4 and Boltz's closed models stay in §3, each with a pointer to §9.
 
 Prediction only. The forward problem — sequence / chemical input → 3D structural
 state — and the reference every later section is defined against.
-Reviewed in `reports/structure_prediction_family_overview.md`.
+Reviewed in `drafts/structure_prediction_family_overview.md`.
 
 * **AlphaFold2** — `alphafold2` · `10.1038/s41586-021-03819-2` — single-chain and
   multimer predictor that established modern deep-learning structural biology;
@@ -323,8 +323,8 @@ The Baker Lab / IPD line, kept whole: two structure predictors, the three
 generative models fine-tuned from them, and the sequence-design stage the whole
 field borrowed. Level 0 in its purest form — one architecture serving prediction
 or generation depending on what it is fine-tuned for.
-Reviewed in `reports/rfdiffusion_family_summary.md` and
-`reports/proteinmpnn_ligandmpnn_summary.md`.
+Reviewed in `drafts/rfdiffusion_family_summary.md` and
+`drafts/proteinmpnn_ligandmpnn_summary.md`.
 
 **Section-defining fact:** as *predictors* these have left the conversation.
 Mentions per co-folding paper run AlphaFold3 25, Chai-1 11, then Boltz-1,
@@ -515,7 +515,7 @@ The arc to carry into the section:
    generation"* (z = 9.5, P = 1.6 × 10⁻⁹). Diffusion won, and Level 2 went quiet.
 3. *Revived.* It returns on predictors strong enough to be run single-sequence
    without falling off-distribution — the precondition argued in Beat 4 and in
-   `reports/structure_prediction_family_overview.md` §1.2.
+   `drafts/structure_prediction_family_overview.md` §1.2.
 4. *Portable.* Counting the two Level-2 systems housed in §7 and §8, five systems
    from four groups now invert four different predictor families.
 
@@ -843,9 +843,9 @@ caveats, borderline calls and scope reasoning inside its section entry, and is n
 restated here.
 
 Sources retrieved, parsed into `literature/corpus/`, and then judged out of
-scope. Recorded rather than deleted, per PRISMA: an exclusion with a stated
-reason is part of the review's method, and keeping them prevents re-litigating
-the same decision later. All remain in `refs.bib` — the catalog tracks what was
+scope. Recorded rather than deleted: an exclusion with a stated reason is part of
+the review's method, and keeping them prevents re-litigating the same decision
+later. All remain in `refs.bib` — the catalog tracks what was
 obtained, the map tracks what is in scope.
 
 **Scope rule applied:** in scope = generates a **protein or peptide binder
