@@ -26,36 +26,40 @@ something; not every one gets a sentence of its own.
 
 ## Draft units
 
-Fourteen drafts. Part I is one narrative and is not sliced. Part II never becomes
-text. Part IV splits into three because its blocks have different sources, timing
-and positions in the final text. Excluded works are not a draft unit — they are a
+Fourteen drafts. `map.md` now carries one heading per draft, in render order, so
+this table is a lookup rather than a second slicing of the material. The map's
+transversal block is the one heading with no draft. The three benchmarking units
+are three drafts rather than one because they have different sources, timing and
+positions in the final text. Excluded works are not a draft unit — they are a
 record in `candidates.md`, not a part of the review.
 
 | # | Draft | File | Source |
 |---|---|---|---|
-| 1 | Introduction | `drafts/00-intro.md` | Part I, five beats |
-| 2 | Metrics primer | `drafts/01-metrics-primer.md` | Part IV, block 1 — renders before §1 |
-| 3 | §1 AlphaFold and the open co-folding cluster | `drafts/02-alphafold.md` | Part III §1 |
-| 4 | §2 RoseTTAFold → RFdiffusion | `drafts/03-rosettafold.md` | Part III §2 |
-| 5 | §3 Boltz | `drafts/04-boltz.md` | Part III §3 |
-| 6 | §4 Chai | `drafts/05-chai.md` | Part III §4 |
-| 7 | §5 Flow matching | `drafts/06-flow-matching.md` | Part III §5 |
-| 8 | §6 Inversion as a portable technique | `drafts/07-inversion.md` | Part III §6 |
-| 9 | §7 Protenix | `drafts/08-protenix.md` | Part III §7 |
-| 10 | §8 ESM | `drafts/09-esm.md` | Part III §8 |
-| 11 | §9 The closed frontier | `drafts/10-closed-frontier.md` | Part III §9 |
-| 12 | Instruments | `drafts/11-instruments.md` | Part IV, block 2 |
-| 13 | Tables A and B | `drafts/12-tables.md` | Part IV, block 3 — written after Part III |
-| 14 | Conclusion | `drafts/13-conclusion.md` | **not yet in the map** |
+| 1 | Introduction | `drafts/00-intro.md` | The introduction |
+| 2 | Metrics primer | `drafts/01-metrics-primer.md` | The metrics primer — renders before §1 |
+| 3 | §1 AlphaFold and the open co-folding cluster | `drafts/02-alphafold.md` | §1 |
+| 4 | §2 RoseTTAFold → RFdiffusion | `drafts/03-rosettafold.md` | §2 |
+| 5 | §3 Boltz | `drafts/04-boltz.md` | §3 |
+| 6 | §4 Chai | `drafts/05-chai.md` | §4 |
+| 7 | §5 Flow matching | `drafts/06-flow-matching.md` | §5 |
+| 8 | §6 Inversion as a portable technique | `drafts/07-inversion.md` | §6 |
+| 9 | §7 Protenix | `drafts/08-protenix.md` | §7 |
+| 10 | §8 ESM | `drafts/09-esm.md` | §8 |
+| 11 | §9 The closed frontier | `drafts/10-closed-frontier.md` | §9 |
+| 12 | Instruments | `drafts/11-instruments.md` | The instruments |
+| 13 | Tables A and B | `drafts/12-tables.md` | Tables A and B — written after §1–§9 |
+| 14 | Conclusion | `drafts/13-conclusion.md` | The conclusion — a stub; the map records the gap, not the answer |
 
-**Part II does not become a draft.** It turns into two things: a short roadmap
-paragraph closing the introduction, and the seam sentences between sections,
-both written at assembly time from Part II's "why this order" bullets.
+**The transversal block does not become a draft.** It turns into two things: a
+short roadmap paragraph closing the introduction, and the seam sentences between
+sections — the block supplies the two-axis logic, and each section's own
+*Why here* line supplies the seam into it.
 
 **The conclusion is written last, from the finished parts.** §9 is a coda and
 Beat 5 sets up an ending, but nothing in the map states what the review
-concludes — deliberately. What it concludes follows from the other fourteen
-drafts, so it is decided when they exist rather than planned in advance.
+concludes — deliberately, and the stub there says so. What it concludes follows
+from the other thirteen drafts, so it is decided when they exist rather than
+planned in advance.
 
 ## Size budget
 
@@ -73,7 +77,7 @@ Both columns are given so switching venue is one substitution.
 | §2 RoseTTAFold | 11.5% | 900 | 1,400 | six backbone entries, both tracks (RF1/RFAA/RF3 and RFdiffusion 1/2/3), and it owns MPNN for the whole review |
 | §3 Boltz | 10% | 800 | 1,200 | five models; owns the trained-critic result and the open→closed fork |
 | §4 Chai | 5% | 400 | 600 | two papers, one with no disclosed mechanism — short, and that is the finding |
-| §5 Flow matching | 4.5% | 350 | 550 | one comparative block; most of its argumentative weight now sits in Beat 2's step-count passage, not in the five papers |
+| §5 Flow matching | 4.5% | 350 | 550 | one comparative block; most of its argumentative weight now sits in Beat 4's step-count passage, not in the five papers |
 | §6 Inversion | 8% | 650 | 1,000 | the five-beat arc plus four systems |
 | §7 Protenix | 7% | 550 | 850 | the platform argument plus the filter-ensembling finding |
 | §8 ESM | 8% | 650 | 1,000 | the climax; the MSA throughline lands here |
@@ -88,7 +92,7 @@ the metrics primer — which already renders before §1 and is already built to 
 one distinction before the reader needs it. That trade is the relief valve; cutting
 the anatomy is not.
 
-Part III comes to 5,400 at the 8,000 target — about two thirds of the review,
+§1–§9 come to 5,400 at the 8,000 target — about two thirds of the review,
 which is right for a review whose argument is the section order.
 
 ## What a section is
@@ -119,7 +123,7 @@ from `literature/corpus/`, not from the map entry.
 lines — owns / references / must not restate — copied from the map, not
 reinvented. The standing assignments: ipTM and pAE definitions to the primer,
 MPNN to §2, the trained-critic result to §3, BoltzDesign1's analysis to §6,
-benchmark caveats to Part IV, the disclosure argument to §9.
+benchmark caveats to the instruments, the disclosure argument to §9.
 
 ## Using xrefs
 
@@ -150,9 +154,9 @@ shape and order above are computed from the current corpus.
 
 1. **Metrics primer** — before §1, which quotes pAE and ipTM immediately.
 2. **§1 → §9 in map order** — already dependency order, per the matrix above.
-3. **Introduction** — after Part III, when the numbers it promises are known to
+3. **Introduction** — after §1–§9, when the numbers it promises are known to
    be real and the beats can point at sections that exist.
-4. **Instruments, then Tables A and B** — the tables gather Part III's numbers
+4. **Instruments, then Tables A and B** — the tables gather the sections' numbers
    and cannot precede it.
 5. **Scope and exclusions**, then **Conclusion**.
 
@@ -160,13 +164,14 @@ shape and order above are computed from the current corpus.
 
 Two passes, neither of which rewrites a section.
 
-**Part III.** The nine sections group as Part II describes: §1–5 ordered by
-generative formalism, §6–8 by degree of integration, §9 outside the argument.
-Assembling Part III means writing the two block seams and smoothing the
+**The nine sections.** They group as the map's transversal block describes: §1–5
+ordered by generative formalism, §6–8 by degree of integration, §9 outside the
+argument. Assembling them means writing the two block seams and smoothing the
 handoffs — not re-editing section bodies.
 
-**The review.** Front matter (introduction, then the metrics primer), Part III,
-the instruments and tables, the conclusion. Scope is argued in Beat 1; the
+**The review.** Front matter (introduction, then the metrics primer), the nine
+sections, the instruments and tables, the conclusion. Scope is argued in Beat 1;
+the
 exclusion log stays in `candidates.md` and is never drafted.
 
 ## Placement directives
@@ -176,23 +181,23 @@ previously embedded in `map.md`; they live here so the map stays content.
 
 | Directive | Why |
 |---|---|
-| The metrics primer renders before §1, though it is filed in Part IV | §§1–9 quote pAE, pLDDT, ipTM and PB-valid from the start |
+| The metrics primer renders before §1, though it belongs with the instruments | §§1–9 quote pAE, pLDDT, ipTM and PB-valid from the start |
 | The primer is written around the two families of metric, never as an alphabetical glossary | a metric list is dead weight the reader skips; the families do the analytical work |
-| The cyclic-peptide thread is promised in Beat 1 and lands in Part IV, not §9 | so it reads as evidence about measurement, not a point scored for Latent Labs |
-| Part II never becomes text | it turns into the intro's roadmap paragraph and the seams between sections |
+| The cyclic-peptide thread is promised in Beat 1 and lands under Table B, not §9 | so it reads as evidence about measurement, not a point scored for Latent Labs |
+| The map's transversal block never becomes text | it turns into the intro's roadmap paragraph and the seams between sections |
 | §2 opens by separating RF3 (predictor) from RFdiffusion3 (generator) | the names collide; the lineage's two tracks are unreadable otherwise |
 | AtomWorks gets one line, never a passage | it is training infrastructure, not a model or an instrument; its role is that RF3 and RFdiffusion3 both come out of it |
 | Level 2 is introduced as the *oldest* idea in the review, not the newest | the §6 arc depends on the reader knowing it was tried and abandoned first |
 | Table B is sorted by designs-tested, never by hit rate | the denominator is Beat 3's argument; hit-rate order makes it a leaderboard |
 | Table B's hit-definition column is mandatory | BoltzProt-1's screening-hit / confirmed-binder split means the percentages measure different events |
 | No cell enters Table A or B without a stated benchmark, cutoff and measurer | the provenance columns are the defence against a leaderboard reading |
-| Benchmark caveats are stated once in Part IV and pointed at, never relitigated per section | three documented defects, one per instrument |
+| Benchmark caveats are stated once with the instruments and pointed at, never relitigated per section | three documented defects, one per instrument |
 
 ## Open decisions
 
 - **§5's length.** One backbone, no meat, four mentions — the only section with
   that shape. Either it compresses to a few paragraphs hung on FrameFlow, or the
-  formalism thread folds into §2–4 and §5 stops being a section. Beat 2's
+  formalism thread folds into §2–4 and §5 stops being a section. Beat 4's
   step-count argument is the strongest case for keeping it: flow matching's ODE
   formulation is what makes the structure stage short enough to backpropagate
   through, which is what PXDesign-h exploits.
@@ -203,9 +208,3 @@ previously embedded in `map.md`; they live here so the map stays content.
   Four backbone entries may well be right — Boltz spans the open→closed fork and
   the trained-critic result — but the per-claim justification is not written down
   the way §2's is. Settle it when §3 is drafted.
-
-## Open items
-
-- The three files currently in `drafts/` predate this plan and are organized
-  predictor-side vs design-side, which is not the map's organization. They are
-  not inputs to any draft above.

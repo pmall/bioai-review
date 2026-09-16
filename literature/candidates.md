@@ -48,11 +48,12 @@ Excluded entries have been read.
 - **DOI:** `10.1101/2025.02.10.637595` (bioRxiv, 14 Feb 2025)
 - **Title:** *Rēs ipSAE loquuntur: what's wrong with AlphaFold's ipTM score and how to fix it*
 - **Author:** Dunbrack, R. L.
-- **Would go in:** Part IV — benchmarking, validity and evaluation infrastructure.
+- **Would go in:** the instruments — benchmarking, validity and evaluation
+  infrastructure.
 - **Why it might belong:** ipTM is half of the canonical Level-1 success criterion
   quoted in Beat 4 (AlphaProteo's *"interchain AF2 pAE < 10 … pLDDT > 80"*) and is
   used as a filter across §2–§7. A paper arguing the metric is broken would join
-  the other known-limits findings Part IV already carries — PoseBusters'
+  the other known-limits findings the instruments already carry — PoseBusters'
   incompleteness, FoldBench's common-intersection problem, Boltz-2's temporal leakage.
 - **Why to check first:** it is a metric critique, not a model or a benchmark
   suite. Confirm it belongs in the review at all rather than in a report footnote.
@@ -62,7 +63,7 @@ Excluded entries have been read.
 
 - **DOI:** `10.1101/2025.08.14.670059` (bioRxiv, 14 Aug 2025)
 - **Title:** *Predicting experimental success in de novo binder design: a meta-analysis of 3,766 experimentally characterised binders*
-- **Would go in:** Part IV, and it would be cited from Beat 3.
+- **Would go in:** the instruments, and it would be cited from Beat 3.
 - **Why it might belong:** the only source seen so far that pools hit rates across
   labs. Beat 3's experimental-budget table is assembled from each system's own
   self-reported campaign, and the intro's second caveat admits those numbers are
@@ -111,7 +112,7 @@ Excluded entries have been read.
 - **Title:** *Cyclic peptide structure prediction and design using AlphaFold2*
 - **Authors:** Rettie, S. A., Campbell, K. V., Bera, A. K., et al. (DiMaio, Ovchinnikov, Bhardwaj)
   Preprint: `10.1101/2023.02.25.529956` (bioRxiv, 26 Feb 2023).
-- **Would go in:** §2 — as the critic RFpeptides filters on, or Part IV as an instrument.
+- **Would go in:** §2 — as the critic RFpeptides filters on, or the instruments.
 - **Why it might belong:** RFpeptides is filtered by refolding with AfCycDesign, so
   the map currently describes that filter generically ("a cyclic-encoding
   AlphaFold2 variant") to avoid naming an uncataloged publication. It is also the
@@ -120,7 +121,7 @@ Excluded entries have been read.
 - **Why to check first:** it is a 2023 preprint / 2025 journal paper about
   *prediction and monomer design*, not binder design, so the scope rule does not
   obviously admit it. Decide whether a critic used by an included system earns its
-  own entry, belongs in Part IV with the other instruments, or stays out with the
+  own entry, belongs with the other instruments, or stays out with the
   filter described generically as it is now.
 - **Surfaced from:** RFpeptides (`rfpeptides`), ref 11.
 
