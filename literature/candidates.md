@@ -66,3 +66,53 @@ stated reason, so the decision is recorded rather than re-litigated later.
   2026 systems this review centres on, in which case it characterises the previous
   generation rather than this one.
 - **Surfaced from:** Germinal (`germinal`), ref 65.
+
+## Protein Hunter
+
+- **DOI:** `10.1101/2025.10.10.681530` (bioRxiv, 10 Oct 2025)
+- **Title:** *Protein Hunter: exploiting structure hallucination within diffusion for protein design*
+- **Authors:** Cho, Y., Rangel, G., Bhardwaj, G. & Ovchinnikov, S.
+- **Would go in:** §6 — inversion as a portable technique.
+- **Why it might belong:** RFOptimization benchmarks against it directly as "an
+  independently developed cycling-based method", and it is the only external
+  baseline in that comparison. Same senior author as BoltzDesign1, which matters
+  for §6's independence bookkeeping — it would be a third point in one research
+  programme, not a new group.
+- **Why to check first:** whether it is Level 2 at all. RFO describes it as
+  cycling-based and "confined to the confidence landscape of a single model",
+  which would put it closer to RFO's cycling branch than to a gradient method.
+- **Surfaced from:** RFOptimization (`rfoptimization`), ref 13.
+
+## HalluDesign
+
+- **DOI:** `10.1101/2025.11.08.686881` (bioRxiv, 9 Nov 2025)
+- **Title:** *HalluDesign: Protein Optimization and de novo Design via Iterative Structure Hallucination and Sequence Design*
+- **Authors:** Fang, M., Wang, C., Shi, J., Lian, F., et al. (Cao, L.)
+- **Would go in:** §6 — inversion as a portable technique.
+- **Why it might belong:** RFO groups it with BoltzDesign1 and Protein Hunter as
+  predictor-guided optimization extended to all-atom models, and it is an
+  independent group (Longxing Cao's), which is the kind of evidence §6's
+  portability claim is built on. The title also pairs *optimization* with *de novo
+  design*, the same two-mode framing that made §7 read as a platform.
+- **Why to check first:** whether "hallucination" here means a gradient loop or an
+  iterative predict-then-redesign cycle — the same ambiguity as Protein Hunter.
+- **Surfaced from:** RFOptimization (`rfoptimization`), ref 12.
+
+## AfCycDesign
+
+- **DOI:** `10.1038/s41467-025-59940-7` (Nature Communications **16**, 4730, 2025)
+- **Title:** *Cyclic peptide structure prediction and design using AlphaFold2*
+- **Authors:** Rettie, S. A., Campbell, K. V., Bera, A. K., et al. (DiMaio, Ovchinnikov, Bhardwaj)
+  Preprint: `10.1101/2023.02.25.529956` (bioRxiv, 26 Feb 2023).
+- **Would go in:** §2 — as the critic RFpeptides filters on, or Part IV as an instrument.
+- **Why it might belong:** RFpeptides is filtered by refolding with AfCycDesign, so
+  the map currently describes that filter generically ("a cyclic-encoding
+  AlphaFold2 variant") to avoid naming an uncataloged publication. It is also the
+  cyclic-peptide analogue of the AF2-as-filter pattern §2–§5 run on, and the paper
+  RFpeptides' own hallucination lineage starts from.
+- **Why to check first:** it is a 2023 preprint / 2025 journal paper about
+  *prediction and monomer design*, not binder design, so the scope rule does not
+  obviously admit it. Decide whether a critic used by an included system earns its
+  own entry, belongs in Part IV with the other instruments, or stays out with the
+  filter described generically as it is now.
+- **Surfaced from:** RFpeptides (`rfpeptides`), ref 11.

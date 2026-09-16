@@ -16,7 +16,7 @@ The loop, in order. Each step has a rule attached that exists because skipping i
 
 1. **Map first.** A publication enters the review as an entry in `literature/map.md`, placed in the section where it belongs, written as a layout line — name, bib key, DOI, a sentence of role. Analysis does not go here.
 2. **Formalize with `map-to-bib`.** Verify the source is what the map says it is, prefer the official peer-reviewed version over the preprint, fetch metadata from Crossref/DataCite, and never invent a field. `refs.bib` is only ever edited through this skill.
-3. **I download and parse.** Never start parsing unless I explicitly ask — it is long-running. Say what is missing and wait.
+3. **I download, you parse.** Getting the PDF is mine — I hand you the file or drop it in `literature/corpus/`. Parsing is yours: run it yourself as soon as a PDF lands, without asking. It is cheap (`pymupdf4llm`, seconds per paper). Say what is missing and wait only when the PDF itself is missing.
 4. **Second look.** Once a publication is parsed, re-read it and check every claim you wrote into the map against the source itself. Correct what does not hold and say what changed. This is not optional: claims taken from abstracts, search results, or page summaries are **provisional** until checked against the parsed text, and they are frequently wrong in exactly the details a review depends on — numbers, method identity, what a metric measures.
 5. **Refresh the cross-references.** Run `build_xrefs.py` whenever the corpus grows. It regenerates `literature/xrefs.md` from the parsed text, so a stale file means the newest publications look uncited.
 6. **Draft.** Write intermediate drafts into `literature/drafts/` when I ask for one. What gets its own draft is a per-project decision, not a fixed rule.
@@ -27,6 +27,28 @@ The loop, in order. Each step has a rule attached that exists because skipping i
 - **A publication is either included or excluded, never both.** An included work carries its own caveats, borderline calls and scope reasoning inside its section entry; the excluded part does not restate it.
 - **Undecided works stay out of the map**, in `literature/candidates.md`, so the invariant above holds.
 - **Preprints are re-checked for a journal version** on every catalog pass. This field publishes fast; a preprint cataloged last month may have a DOI in a journal now.
+- **Every map entry carries a tier** — `**backbone**`, `**meat**` or `**mention**`, placed after the DOI. See below.
+
+## Tiers
+
+Not every publication deserves the same weight. Each map entry carries one tier, written after its DOI as `· **backbone**`, so the intended writing weight is visible in the layout rather than rediscovered each time a section gets drafted.
+
+The tier answers **how much of the review's argument rests on this work** — nothing else:
+
+| Tier | Test | Consequence when drafting |
+|---|---|---|
+| **backbone** | Remove it and a Part I beat, or a section's organizing fact, collapses | Analysed in full: mechanism, numbers, caveats, and what it is being contrasted with |
+| **meat** | It supplies evidence a backbone claim rests on, but that claim survives if another work substitutes for it | Described and cited; its numbers may be quoted; no mechanism walkthrough |
+| **mention** | It establishes that a category exists, or is a date on a timeline | One sentence. No numbers, no mechanism |
+
+Rules that keep the tier honest:
+
+- **Tier is not quality, novelty, or citation count.** A famous paper the argument does not lean on is a *mention*; an obscure one that anchors a section is *backbone*. Never derive a tier from `xrefs.md` — in-degree there is confounded by publication age and is corpus-internal.
+- **Tier is per-claim, so state which claim.** A work is backbone *for something*. Where the tier is not self-evident from the entry, name the beat or organizing fact it carries — that is what makes the tier checkable, and what makes it re-derivable when the argument moves.
+- **The tier is a property of the argument, not of the paper**, so it changes when the argument changes. Re-check tiers when a beat is rewritten or a section is reordered, not when a new paper arrives.
+- **Every backbone entry names a distinct claim; the count per section is not a target.** A lineage that explored more of the problem legitimately anchors more of the review — §2 carries six because the RoseTTAFold line covers prediction, generation, inverse folding, two modalities and optimization, and each anchors something different. What makes a tier wrong is two backbone entries carrying the *same* claim, or a section with no backbone at all, which is a survey with no anchor.
+- **Tiers apply to excluded works too** (Part V), because an excluded work can still be quoted — DrugFlow and FLOWR are excluded by modality but carry Beat 1's differentiability asymmetry.
+- **Map-only concepts are tiered as well.** Having no publication does not make a concept argumentatively light: IsoDDE has no paper and is backbone for Beat 5.
 
 ## Structure
 
@@ -50,7 +72,7 @@ The loop, in order. Each step has a rule attached that exists because skipping i
 
 ## Scripts
 
-The project uses `uv` for Python dependencies — run `uv sync` when the environment needs updating. Run scripts with `uv run scripts/<name>.py` from the repo root. You run them on my behalf; I never touch the command line. Parsing can be long-running — never start it unless I explicitly ask.
+The project uses `uv` for Python dependencies — run `uv sync` when the environment needs updating. Run scripts with `uv run scripts/<name>.py` from the repo root. You run all of them yourself, unprompted, including parsing; I never touch the command line.
 
 - `uv run scripts/parse_pdf.py <path/to/file.pdf>` — parse one PDF into `literature/corpus/<stem>.md` (Markdown only, no images). Errors if the output already exists.
 - `uv run scripts/parse_all_pdf.py [--dry-run]` — parse every PDF in `literature/corpus/` that lacks a `.md` beside it. `--dry-run` only lists what would be parsed.

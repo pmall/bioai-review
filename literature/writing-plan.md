@@ -3,13 +3,15 @@
 > How the review gets written: what the draft units are, how big each one is,
 > what shape a section takes, and in what order they are drafted.
 >
-> `literature/map.md` is the layout — what goes where. This file is the method —
-> how it gets turned into prose. Neither restates the other. Sizes and drafting
-> order live here so the map stays a layout.
+> `literature/map.md` holds the content: every publication, every fact, every
+> claim, structured in reading order — the review minus its prose. This file holds
+> everything addressed to whoever writes that prose: sizes, drafting order, section
+> shape, and the placement directives below. Neither restates the other. **No
+> instruction to the writer belongs in the map.**
 
 ## Target
 
-**8,000 words of main text**, 46 references. That is the standard scale for a
+**8,000 words of main text**, 49 references. That is the standard scale for a
 journal review at this reference count — Nature Reviews, Briefings in
 Bioinformatics, Annual Review. Not an exhaustive survey.
 
@@ -57,27 +59,35 @@ drafts, so it is decided when they exist rather than planned in advance.
 
 ## Size budget
 
-Shares are fixed; the multiplier is the only thing to change if the target moves.
+**Provisional, and expected to move.** Shares are re-derived whenever the argument
+changes — the introduction grew when Beat 2 took on the co-folder anatomy and Beat
+4 the generation taxonomy, and §2 grew when RF3 entered. The multiplier is the only
+thing to change if the *target* moves; the shares change when the content does.
 Both columns are given so switching venue is one substitution.
 
 | Draft | Share | @ 8,000 | @ 12,000 | Why that size |
 |---|---|---|---|---|
-| Introduction | 12.5% | 1,000 | 1,500 | five beats, the collapsing-budget table, two caveats |
+| Introduction | 15% | 1,200 | 1,800 | five beats, and it now carries the two conceptual frames the whole review reads through: the co-folder anatomy (Beat 2) and the prediction/generation taxonomy (Beat 4) |
 | Metrics primer | 4.5% | 350 | 550 | two families of metric, one consequence; tight by design |
 | §1 AlphaFold | 7.5% | 600 | 900 | two predictors explained properly, plus the MSA bet everything rests on |
-| §2 RoseTTAFold | 10% | 800 | 1,200 | largest roster, a real lineage, and it owns MPNN for the whole review |
+| §2 RoseTTAFold | 11.5% | 900 | 1,400 | six backbone entries, both tracks (RF1/RFAA/RF3 and RFdiffusion 1/2/3), and it owns MPNN for the whole review |
 | §3 Boltz | 10% | 800 | 1,200 | five models; owns the trained-critic result and the open→closed fork |
 | §4 Chai | 5% | 400 | 600 | two papers, one with no disclosed mechanism — short, and that is the finding |
-| §5 Flow matching | 6.5% | 500 | 800 | five papers written as one comparative block |
-| §6 Inversion | 8% | 650 | 1,000 | the four-beat arc plus three systems |
+| §5 Flow matching | 4.5% | 350 | 550 | one comparative block; most of its argumentative weight now sits in Beat 2's step-count passage, not in the five papers |
+| §6 Inversion | 8% | 650 | 1,000 | the five-beat arc plus four systems |
 | §7 Protenix | 7% | 550 | 850 | the platform argument plus the filter-ensembling finding |
 | §8 ESM | 8% | 650 | 1,000 | the climax; the MSA throughline lands here |
-| §9 Closed frontier | 5.5% | 450 | 650 | coda, restrained on purpose |
-| Instruments | 6% | 500 | 750 | four instruments, three caveats |
-| Table commentary | 3.5% | 300 | 450 | the tables are display items; only the asymmetry argument is main text |
+| §9 Closed frontier | 5% | 400 | 600 | coda, restrained on purpose |
+| Instruments | 5.5% | 450 | 650 | four instruments, three caveats |
+| Table commentary | 3% | 250 | 350 | the tables are display items; only the asymmetry argument is main text |
 | Scope and exclusions | 2.5% | 200 | 300 | five papers, one reason each |
-| Conclusion | 5% | 400 | 600 | currently unplanned |
-| **Total** | 100% | **8,150** | **12,350** | |
+| Conclusion | 4.5% | 350 | 550 | currently unplanned |
+| **Total** | 101.5% | **8,100** | **12,300** | |
+
+*If the introduction still overruns when drafted,* the co-folder anatomy moves to
+the metrics primer — which already renders before §1 and is already built to teach
+one distinction before the reader needs it. That trade is the relief valve; cutting
+the anatomy is not.
 
 Part III comes to 5,400 at the 8,000 target — about two thirds of the review,
 which is right for a review whose argument is the section order.
@@ -118,7 +128,7 @@ benchmark caveats to Part IV, the disclosure argument to §9.
 is confounded by publication age, so §6, §7 and §9 score low for being recent,
 not for being minor. Three uses that hold:
 
-- **It tells you the shape a section must take.** §2 has 22 citations internal
+- **It tells you the shape a section must take.** §2 has 34 citations internal
   to itself: a genuine lineage, written chronologically. §5 has 4 internal edges
   but 14 pointing at §2 — those five flow-matching papers are descendants of
   RFdiffusion, not of each other. §5 therefore cannot be written as a lineage;
@@ -159,6 +169,41 @@ handoffs — not re-editing section bodies.
 **The review.** Front matter (introduction, then the metrics primer), Part III,
 the instruments and tables, the conclusion. Scope and exclusions goes to an
 appendix or folds into the introduction's scope beat — decide at assembly.
+
+## Placement directives
+
+Decisions about *where* material lands and *how* it must be handled. They were
+previously embedded in `map.md`; they live here so the map stays content.
+
+| Directive | Why |
+|---|---|
+| The metrics primer renders before §1, though it is filed in Part IV | §§1–9 quote pAE, pLDDT, ipTM and PB-valid from the start |
+| The primer is written around the two families of metric, never as an alphabetical glossary | a metric list is dead weight the reader skips; the families do the analytical work |
+| The cyclic-peptide thread is promised in Beat 1 and lands in Part IV, not §9 | so it reads as evidence about measurement, not a point scored for Latent Labs |
+| Part II never becomes text | it turns into the intro's roadmap paragraph and the seams between sections |
+| §2 opens by separating RF3 (predictor) from RFdiffusion3 (generator) | the names collide; the lineage's two tracks are unreadable otherwise |
+| AtomWorks gets one line, never a passage | it is training infrastructure, not a model or an instrument; its role is that RF3 and RFdiffusion3 both come out of it |
+| Level 2 is introduced as the *oldest* idea in the review, not the newest | the §6 arc depends on the reader knowing it was tried and abandoned first |
+| Table B is sorted by designs-tested, never by hit rate | the denominator is Beat 3's argument; hit-rate order makes it a leaderboard |
+| Table B's hit-definition column is mandatory | BoltzProt-1's screening-hit / confirmed-binder split means the percentages measure different events |
+| No cell enters Table A or B without a stated benchmark, cutoff and measurer | the provenance columns are the defence against a leaderboard reading |
+| Benchmark caveats are stated once in Part IV and pointed at, never relitigated per section | three documented defects, one per instrument |
+
+## Open decisions
+
+- **§5's length.** One backbone, no meat, four mentions — the only section with
+  that shape. Either it compresses to a few paragraphs hung on FrameFlow, or the
+  formalism thread folds into §2–4 and §5 stops being a section. Beat 2's
+  step-count argument is the strongest case for keeping it: flow matching's ODE
+  formulation is what makes the structure stage short enough to backpropagate
+  through, which is what PXDesign-h exploits.
+- **§2's budget.** Five backbone entries, the most of any section, each carrying a
+  different claim. It is the longest section to draft and should be scheduled as
+  such.
+- **§3's tiers have not been re-derived** since the section last changed shape.
+  Four backbone entries may well be right — Boltz spans the open→closed fork and
+  the trained-critic result — but the per-claim justification is not written down
+  the way §2's is. Settle it when §3 is drafted.
 
 ## Open items
 
