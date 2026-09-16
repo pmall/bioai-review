@@ -10,13 +10,13 @@
 > every claim, structured in reading order. Instructions addressed to whoever
 > writes that prose live in `literature/writing-plan.md`, not here.
 >
-> **One unit per draft.** After the transversal block, the file is a flat sequence
+> **One unit per draft.** After the layout block, the file is a flat sequence
 > of the review's units in the order they render — the introduction, the metrics
 > primer, the nine sections, the instruments, the two tables, the conclusion. Each
 > heading below is one draft unit in `literature/writing-plan.md`, so there is no
-> second organization to reconcile there either. The transversal block that opens
-> the file is the only thing never drafted on its own: the section order, the two
-> threads, and the rosters that span units.
+> second organization to reconcile there either. The layout block that opens the
+> file is the only thing never drafted on its own: the section order, and the rule
+> that lineages are not split by disclosure status.
 >
 > **Everything the review left out is in `literature/candidates.md`** — undecided
 > works and examined-and-excluded ones, each with its reason. None of it is drafted,
@@ -46,12 +46,12 @@
 
 ---
 
-# Transversal — what belongs to no single unit
+# The layout
 
-Material that runs across the units below and is drafted in none of them. Where it
-surfaces in the prose is `writing-plan.md`'s business; what it says is here.
+Two ordering decisions that belong to no single unit. Where either surfaces in the
+prose is `writing-plan.md`'s business; what they say is here.
 
-## Section order and progression
+## Section order
 
 Per-lineage organization. Each section pairs a predictor with the design systems
 built on it, so a reader meets an architecture once and then follows it to its
@@ -78,58 +78,11 @@ the argument entirely.
 | 8 | **ESM** | ESM-2/ESMFold, ESM-3, ESMC/ESMFold2 and its binder campaign | Level 2, fully integrated — the analytical climax |
 | 9 | **The closed frontier** | AlphaProteo, Latent-X 1/2; IsoDDE, Chai-3, SeedFold | benchmarked but unexplainable — a coda, not a step in the argument |
 
-**Level-2 roster, spread across §2 and §6–8 by lineage.** Seven systems, six
-groups, five predictor families: BindCraft (AlphaFold2, §6), BoltzDesign1 (Boltz,
-§6), Germinal (AlphaFold2 + antibody LM, §6), mBER (AlphaFold-Multimer, §6),
-PXDesign-h (Protenix, §7), ESMFold2 campaign (ESMC/ESMFold2, §8), RFOptimization
-(RF3, §2). Any claim about Level 2 being general rather than an AF2 quirk rests on
-this spread — and on the *groups*, since mBER adds no predictor family. RFO is the
-one that also breaks the *continuous-relaxation* assumption the other six share.
-**The spread is narrower than the count:** the three AlphaFold-family systems —
-BindCraft, Germinal and mBER — all run on ColabDesign (§6), so seven systems are
-five implementations.
-
-## The two threads
-
-Two arguments run across the sections rather than living in one. Both are planted
-early and paid off late, and neither gets a section of its own.
-
-### MSA emancipation
-
-Planted in Beat 2 (coevolution as the founding bet),
-first attacked as a *cost* rather than a dependency by ColabFold (the
-instruments), turned in Beat 4 (an MSA is a database lookup on a sequence that
-does not exist yet, so a Level-2 loop must run single-sequence), paid off in §8.
-Touches §1, §4 (Chai-1's protein-LM track), §6 (BindCraft off-distribution) and §8.
-
-### Cyclic peptides and macrocycles
-
-*Not a modality section — the modality is
-the vehicle, and the payload is that this is the one place where the review's
-open-versus-closed argument is settled by measurement rather than asserted.*
-Where it appears:
-
-| Section | Entry | What the thread takes from it |
-|---|---|---|
-| §2 | AfCycDesign | where the thread starts — the cyclic encoding, and the critic RFpeptides is filtered by |
-| §2 | RFpeptides | the open method, and the corpus's low-water mark for designs tested per target |
-| §9 | Latent-X1 | the closed method that re-synthesized RFpeptides' own best binders and measured them in its own assays |
-| §9 | Latent-X2 | macrocycles claimed competitive with trillion-scale mRNA display — Beat 3's budget collapse at its most extreme |
-| Tables | — | the head-to-head itself, stated in full under Table B |
-| §6 | RFOptimization | cyclic peptides as one of its four optimization settings, seeded from RFpeptides |
-| §5 | D-Flow | mirror-image D-peptides — the modality's exotic edge, and a *mention*, not a pillar |
-
-Beat 5 argues the frontier publishes benchmarks and withholds mechanisms; this is
-the one place where a withholding system did the more disciplined experiment. The
-thread is promised in Beat 1, where macrocycles are already named in scope, and
-lands under Table B rather than §9 — evidence about measurement, not a point
-scored for Latent Labs.
-
 ## Non-disclosure
 
-**Non-disclosure covers four of the strongest results** — Chai-2, AlphaProteo,
-Latent-X and IsoDDE. Lineages are not fragmented by disclosure status, so Chai-2
-stays in §4 and Boltz's closed models stay in §3, each with a pointer to §9.
+Chai-2 (§4), AlphaProteo (§9), Latent-X (§9) and IsoDDE (§9). Lineages are not
+fragmented by disclosure status, so Chai-2 stays in §4 and Boltz's closed models
+stay in §3, each with a pointer to §9.
 
 ---
 
@@ -751,12 +704,11 @@ The arc to carry into the section:
 3. *Revived.* It returns on predictors strong enough to be run single-sequence
    without falling off-distribution — the precondition argued in Beat 4.
 4. *Portable.* Counting the systems housed in §2, §7 and §8, it now runs on five
-   predictor families across six groups — the roster counted in the transversal
-   block. mBER is the case that separates the two counts: a sixth group on a
-   predictor family already present, so it strengthens the claim about *groups*
-   and leaves the claim about *architectures* where it was. *Where the claim
-   thins:* on the AlphaFold family the portability is one codebase —
-   ColabDesign, below.
+   predictor families across six groups. mBER is the case that separates the two
+   counts: a sixth group on a predictor family already present, so it strengthens
+   the claim about *groups* and leaves the claim about *architectures* where it
+   was. *Where the claim thins:* on the AlphaFold family the portability is one
+   codebase — ColabDesign, below.
 5. *Conceded.* RFOptimization closes the arc: the Baker lab returns to the
    technique it abandoned in step 2, on its own AF3-class predictor, and reports
    beating BindCraft on cost per filter-passing design.

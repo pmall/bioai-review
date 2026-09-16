@@ -28,7 +28,7 @@ something; not every one gets a sentence of its own.
 
 Fourteen drafts. `map.md` now carries one heading per draft, in render order, so
 this table is a lookup rather than a second slicing of the material. The map's
-transversal block is the one heading with no draft. The three benchmarking units
+layout block is the one heading with no draft. The three benchmarking units
 are three drafts rather than one because they have different sources, timing and
 positions in the final text. Excluded works are not a draft unit — they are a
 record in `candidates.md`, not a part of the review.
@@ -50,7 +50,7 @@ record in `candidates.md`, not a part of the review.
 | 13 | Tables A and B | `drafts/12-tables.md` | Tables A and B — written after §1–§9 |
 | 14 | Conclusion | `drafts/13-conclusion.md` | The conclusion — a stub; the map records the gap, not the answer |
 
-**The transversal block does not become a draft.** It turns into two things: a
+**The layout block does not become a draft.** It turns into two things: a
 short roadmap paragraph closing the introduction, and the seam sentences between
 sections — the block supplies the two-axis logic, and each section's own
 *Why here* line supplies the seam into it.
@@ -164,7 +164,7 @@ shape and order above are computed from the current corpus.
 
 Two passes, neither of which rewrites a section.
 
-**The nine sections.** They group as the map's transversal block describes: §1–5
+**The nine sections.** They group as the map's layout block describes: §1–5
 ordered by generative formalism, §6–8 by degree of integration, §9 outside the
 argument. Assembling them means writing the two block seams and smoothing the
 handoffs — not re-editing section bodies.
@@ -183,8 +183,8 @@ previously embedded in `map.md`; they live here so the map stays content.
 |---|---|
 | The metrics primer renders before §1, though it belongs with the instruments | §§1–9 quote pAE, pLDDT, ipTM and PB-valid from the start |
 | The primer is written around the two families of metric, never as an alphabetical glossary | a metric list is dead weight the reader skips; the families do the analytical work |
-| The cyclic-peptide thread is promised in Beat 1 and lands under Table B, not §9 | so it reads as evidence about measurement, not a point scored for Latent Labs |
-| The map's transversal block never becomes text | it turns into the intro's roadmap paragraph and the seams between sections |
+| The Latent-X1 / RFpeptides head-to-head lands under Table B, not §9 | so it reads as evidence about measurement, not a point scored for Latent Labs |
+| The map's layout block never becomes text | it turns into the intro's roadmap paragraph and the seams between sections |
 | §2 opens by separating RF3 (predictor) from RFdiffusion3 (generator) | the names collide; the lineage's two tracks are unreadable otherwise |
 | AtomWorks gets one line, never a passage | it is training infrastructure, not a model or an instrument; its role is that RF3 and RFdiffusion3 both come out of it |
 | Level 2 is introduced as the *oldest* idea in the review, not the newest | the §6 arc depends on the reader knowing it was tried and abandoned first |
