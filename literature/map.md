@@ -609,6 +609,9 @@ second generation arm, and it is deliberately assembled from three lineages
   *Adoption is field-wide, not lineage-bound* — used across nine distinct labs and
   both coupling levels, so it is shared machinery rather than a Baker-lab
   component.
+  *Adoption, not necessity* — AlphaDesign (§6) substitutes an autoregressive
+  diffusion model of its own and benchmarks it as comparable, the corpus's one
+  alternative.
 
 # §3 — Boltz
 
@@ -739,6 +742,8 @@ The arc to carry into the section:
 2. *Abandoned.* RFdiffusion's own paper reports beating it: *"RFdiffusion
    significantly outperforms Hallucination (with RF) at unconditional monomer
    generation"* (z = 9.5, P = 1.6 × 10⁻⁹). Diffusion won, and Level 2 went quiet.
+   *Whose verdict:* the Baker lab's, on its own predecessor — AlphaDesign below is
+   the contemporaneous group that did not accept it.
 3. *Revived.* It returns on predictors strong enough to be run single-sequence
    without falling off-distribution — the precondition argued in Beat 4.
 4. *Portable.* Counting the systems housed in §2, §7 and §8, it now runs on five
@@ -750,6 +755,11 @@ The arc to carry into the section:
    technique it abandoned in step 2, on its own AF3-class predictor, and reports
    beating BindCraft on cost per filter-passing design.
 
+* **AlphaDesign** — `alphadesign` · `10.1038/s44320-025-00119-z` · **mention** —
+  hallucination through AlphaFold2, searched by an evolutionary algorithm rather
+  than descended by a gradient, so Level 1 and not part of this section's roster.
+  The independent group that hallucinated from 2021 and never abandoned it, with
+  in vivo hits — the date step 2 is qualified against.
 * **BindCraft** — `bindcraft` · `10.1038/s41586-025-09429-6` · **backbone** — backpropagates
   through AF2-multimer weights to produce an *L*×20 error gradient over
   amino-acid choices, annealed in four stages from continuous logits to one-hot.
