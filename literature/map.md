@@ -85,6 +85,9 @@ PXDesign-h (Protenix, §7), ESMFold2 campaign (ESMC/ESMFold2, §8), RFOptimizati
 (RF3, §2). Any claim about Level 2 being general rather than an AF2 quirk rests on
 this spread — and on the *groups*, since mBER adds no predictor family. RFO is the
 one that also breaks the *continuous-relaxation* assumption the other six share.
+**The spread is narrower than the count:** the three AlphaFold-family systems —
+BindCraft, Germinal and mBER — all run on ColabDesign (§6), so seven systems are
+five implementations.
 
 ## The two threads
 
@@ -94,9 +97,10 @@ early and paid off late, and neither gets a section of its own.
 ### MSA emancipation
 
 Planted in Beat 2 (coevolution as the founding bet),
-turned in Beat 4 (an MSA is a database lookup on a sequence that does not exist
-yet, so a Level-2 loop must run single-sequence), paid off in §8. Touches §1, §4
-(Chai-1's protein-LM track), §6 (BindCraft off-distribution) and §8.
+first attacked as a *cost* rather than a dependency by ColabFold (the
+instruments), turned in Beat 4 (an MSA is a database lookup on a sequence that
+does not exist yet, so a Level-2 loop must run single-sequence), paid off in §8.
+Touches §1, §4 (Chai-1's protein-LM track), §6 (BindCraft off-distribution) and §8.
 
 ### Cyclic peptides and macrocycles
 
@@ -750,7 +754,9 @@ The arc to carry into the section:
    predictor families across six groups — the roster counted in the transversal
    block. mBER is the case that separates the two counts: a sixth group on a
    predictor family already present, so it strengthens the claim about *groups*
-   and leaves the claim about *architectures* where it was.
+   and leaves the claim about *architectures* where it was. *Where the claim
+   thins:* on the AlphaFold family the portability is one codebase —
+   ColabDesign, below.
 5. *Conceded.* RFOptimization closes the arc: the Baker lab returns to the
    technique it abandoned in step 2, on its own AF3-class predictor, and reports
    beating BindCraft on cost per filter-passing design.
@@ -760,6 +766,21 @@ The arc to carry into the section:
   than descended by a gradient, so Level 1 and not part of this section's roster.
   The independent group that hallucinated from 2021 and never abandoned it, with
   in vivo hits — the date step 2 is qualified against.
+* **ColabDesign** — `colabdesign` · `10.5281/zenodo.13309080` · **mention** — the framework
+  for running AlphaFold backwards: input preparation, losses over the model's outputs, and
+  gradients from those losses to the sequence, in a continuous and a discrete regime. Three
+  of this section's systems are built on it — BindCraft, Germinal and mBER, with
+  OpenGerminal inheriting it through Germinal — as is AfCycDesign (§2), where the cyclic
+  offset lives. No paper; a versioned software release, cited as a repository by the work
+  that depends on it.
+  *What the dependence covers:* not just an AF2 wrapper. mBER runs ColabDesign's
+  `design_3stage` protocol and reports its losses and hyperparameters *"largely inherited
+  from ColabDesign and BindCraft"*; Germinal takes both the loss set and the gradient
+  scaling, *"as originally done by ColabDesign"*; BindCraft the backpropagation itself.
+  So step 4's portability holds across *groups* and across *predictors*, but on the
+  AlphaFold family it is one implementation being retargeted. BoltzDesign1,
+  RFOptimization and the ESMFold2 campaign are the instances that left it, and they are
+  what the claim about architectures actually rests on.
 * **BindCraft** — `bindcraft` · `10.1038/s41586-025-09429-6` · **backbone** — backpropagates
   through AF2-multimer weights to produce an *L*×20 error gradient over
   amino-acid choices, annealed in four stages from continuous logits to one-hot.
@@ -948,6 +969,29 @@ that organisation's work and closes on the half that stopped publishing.
 Not models, but the instruments every number in §1–§9 is denominated in. Written
 once, referred to from any section.
 
+* **ColabFold** — `colabfold` · `10.1038/s41592-022-01488-1` · **meat** — the apparatus
+  rather than a scorer: AlphaFold2 and AlphaFold-Multimer weights untouched, with the
+  HMMer/HHblits homology search replaced by a hosted MMseqs2 server over UniRef100,
+  PDB70 templates and a new environmental set (ColabFoldDB), delivered as a Colab
+  notebook and a `colabfold_batch` CLI. 40–60× faster search, ~5× end to end, ~90× in
+  batch — a 1,762-protein proteome in 48 h on one GPU. Accuracy holds: mean TM 0.887
+  against AF2's 0.888 across CASP14, 0.826 against 0.79 on the free-modeling subset, and
+  parity with AlphaFold-Multimer on ClusPro.
+  *Carries:* the AF2 numbers elsewhere in the review are ColabFold numbers. Chai-1 and
+  Chai-2 name the version they ran, and ESMC builds every evaluation MSA with it — so
+  Table A's AF2 column and Table B's AF2/AF-M filters rest on ColabFoldDB MSAs rather
+  than the BFD/MGnify pipeline AF2 shipped with. The Overath meta-analysis goes further:
+  one ColabFold MSA per target, *"reused across ColabFold, AF3, and Boltz-1"*, so the
+  design half's only cross-lab instrument reports all three of its predictors on
+  ColabFold's alignments.
+  *Where it meets the design half:* it exposes AF2's internals, and reports that
+  *"designed proteins without known homologs"* are the case extra recycling rescues —
+  Beat 4's off-distribution problem, named in 2022 and answered with a knob. The
+  corpus turns that knob in both directions: recycling to 12 lifts CASP14 targets with
+  little MSA information, while the Overath pipeline cuts recycles from ten to three
+  to afford its scale. A parameter the papers set differently, on numbers the review
+  compares.
+  *Also drives RoseTTAFold* (§2), far behind AF2 there: TM 0.754 against 0.888 over CASP14.
 * **PoseBusters** — `posebusters` · `10.1039/D3SC04185A` · **meat** — 18-check
   physical/chemical validity suite (RDKit) plus a benchmark set; source of the
   "PB-valid" metric reported by AF3, Chai-1, Boltz-1 and Protenix. Its own
