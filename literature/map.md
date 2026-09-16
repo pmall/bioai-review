@@ -73,17 +73,18 @@ the argument entirely.
 | 3 | **Boltz** | Boltz-1, Boltz-2, BoltzGen, BoltzProt-1/BoltzPPI, BoltzMol-1 | diffusion, stated outright — and the lineage that opened, then closed |
 | 4 | **Chai** | Chai-1, Chai-2 | Chai-1 is a diffusion co-folder; Chai-2's *generator* is undisclosed |
 | 5 | **Flow matching** | FrameFlow, PPIFlow, OriginFlow, AtomFlow, D-Flow | the successor formalism — FrameFlow *"adapt[s] FrameDiff … to the flow-matching generative modeling paradigm"* |
-| 6 | **Inversion as a portable technique** | BindCraft, BoltzDesign1, Germinal | Level 2 as a bare method — three groups, three predictors, one technique |
+| 6 | **Inversion as a portable technique** | BindCraft, BoltzDesign1, Germinal, mBER | Level 2 as a bare method — four groups, three predictors, one technique |
 | 7 | **Protenix** | Protenix-v1, Protenix-v2, PXDesign-d and PXDesign-h | the first pipeline to *compose* both couplings into one platform |
 | 8 | **ESM** | ESM-2/ESMFold, ESM-3, ESMC/ESMFold2 and its binder campaign | Level 2, fully integrated — the analytical climax |
 | 9 | **The closed frontier** | AlphaProteo, Latent-X 1/2; IsoDDE, Chai-3, SeedFold | benchmarked but unexplainable — a coda, not a step in the argument |
 
-**Level-2 roster, spread across §2 and §6–8 by lineage.** Six systems, five
+**Level-2 roster, spread across §2 and §6–8 by lineage.** Seven systems, six
 groups, five predictor families: BindCraft (AlphaFold2, §6), BoltzDesign1 (Boltz,
-§6), Germinal (AlphaFold2 + antibody LM, §6), PXDesign-h (Protenix, §7), ESMFold2
-campaign (ESMC/ESMFold2, §8), RFOptimization (RF3, §2). Any claim about Level 2
-being general rather than an AF2 quirk rests on this spread. RFO is the one that
-also breaks the *continuous-relaxation* assumption the other five share.
+§6), Germinal (AlphaFold2 + antibody LM, §6), mBER (AlphaFold-Multimer, §6),
+PXDesign-h (Protenix, §7), ESMFold2 campaign (ESMC/ESMFold2, §8), RFOptimization
+(RF3, §2). Any claim about Level 2 being general rather than an AF2 quirk rests on
+this spread — and on the *groups*, since mBER adds no predictor family. RFO is the
+one that also breaks the *continuous-relaxation* assumption the other six share.
 
 ## The two threads
 
@@ -106,6 +107,7 @@ Where it appears:
 
 | Section | Entry | What the thread takes from it |
 |---|---|---|
+| §2 | AfCycDesign | where the thread starts — the cyclic encoding, and the critic RFpeptides is filtered by |
 | §2 | RFpeptides | the open method, and the corpus's low-water mark for designs tested per target |
 | §9 | Latent-X1 | the closed method that re-synthesized RFpeptides' own best binders and measured them in its own assays |
 | §9 | Latent-X2 | macrocycles claimed competitive with trillion-scale mRNA display — Beat 3's budget collapse at its most extreme |
@@ -266,6 +268,25 @@ Those percentages do not all count the same event. BoltzProt-1 separates
 own confirmed-binder rate is 8.0%, where the looser definition would give a much
 larger number.
 
+**And the campaign that did not choose its targets.** Every number above comes from
+a campaign whose targets and epitopes were selected by the people reporting it. mBER
+(§6) is the corpus's one exception: 1,153,241 VHH designs against 436 human
+cell-surface proteins, hotspots drawn at random from exposed surface residues, 145
+targets screened all-against-all by phage display. Its per-design on-design hit rate
+is **0.4% median** (range 0.02–8%, library-wide 0.5% then 0.7%) — two orders of
+magnitude below Chai-2's 16% or ESMFold2's 70%, at the same coupling level and on
+the same predictor as Germinal. The headline *"45% of targets"* is not a hit rate at
+all; it is the fraction of screened targets with a statistically significant excess
+of on-design hits.
+The spread *inside* this one campaign is the finding. TFRC returns 0.4% (10/2,317)
+overall but 7.5% (6/80) at its best hotspot, and the most favourable epitopes reach
+38% (8/21) under strict ipTM filtering — back inside the range everyone else
+reports. So target and epitope selection alone move a hit rate across the full width
+of the literature's spread, which is what the introduction's second caveat asserts
+and this is the evidence for. Its hits are also phage-display enrichments, i.e.
+BoltzProt-1's *screening hits* rather than confirmed binders, with no affinity
+quantification.
+
 **The generative machinery was borrowed from image generation, and the field said
 so.** RFdiffusion introduces the technique as *"denoising diffusion probabilistic
 models (DDPMs), a powerful class of machine learning models recently demonstrated
@@ -406,13 +427,27 @@ actually runs on**:
 **The point the primer exists to make:** every Level-1 system in this review
 filters on family 2. A designed binder has no solved structure by definition, so
 the critic can only ever be a self-estimate — the generator is graded by the
-predictor's opinion of its own output. That is what makes three findings in the
+predictor's opinion of its own output. That is what makes four findings in the
 benchmarking units matter rather than being technicalities: PoseBusters'
-incompleteness, AlphaFold-Multimer's ipTM being the metric everyone inherited
-(§1), and BoltzProt-1's BoltzPPI (§3) replacing a confidence head with a critic
-trained against experimental outcomes — the first departure from family 2 in the
-corpus. The primer is those two families and that consequence; individual
-metrics appear only as far as they support it.
+incompleteness, AlphaFold-Multimer's ipTM being the metric everyone inherited (§1),
+the two measurements of what that self-estimate is worth, reconciled just below,
+and BoltzProt-1's BoltzPPI (§3) replacing a confidence head with a critic trained
+against experimental outcomes — the first departure from family 2 in the corpus.
+The primer is those two families and that consequence; individual metrics appear
+only as far as they support it.
+
+**The two measurements, and the distinction they force.** The corpus tests family 2
+twice and the results look contradictory until the question is split. Overath (the
+instruments) finds precision running 0.1 to 1.0 across targets for the best score
+available, and Germinal finds its nonbinders clearing the ipSAE threshold alongside
+its binders. mBER (§6) finds the opposite at larger scale: across 1.15M designs, hit
+rates climb with ipTM while off-design rates stay flat. Both hold, because they
+answer different questions. At population scale a confidence score **enriches**; on
+any individual design it does not **discriminate**. Enrichment is what a library
+campaign needs, discrimination is what low-*n* testing needs — so the same metric is
+validated in §6 and inadequate under Table B, and Beat 3's collapsing budget is
+exactly the move from the regime where enrichment suffices into the one where it
+does not.
 
 ---
 
@@ -550,8 +585,13 @@ second generation arm, and it is deliberately assembled from three lineages
 * **RFpeptides** — `rfpeptides` · `10.1038/s41589-025-01929-w` · **backbone** *(inherits RFdiffusion)*
   — the lineage's macrocycle arm: RFdiffusion and RF2 extended with a **cyclic
   relative positional encoding** so the generated chain closes head-to-tail;
-  sequences from ProteinMPNN, filtered by refolding with a cyclic-encoding
-  AlphaFold2 variant and by Rosetta interface metrics. Level 1.
+  sequences from ProteinMPNN, filtered by refolding with AfCycDesign and by Rosetta
+  interface metrics. Level 1.
+  * **AfCycDesign** — `afcycdesign` · `10.1038/s41467-025-59940-7` · **mention** —
+    the critic above: AlphaFold2 given a cyclic offset on its relative positional
+    encoding so the chain reads as closed, and the lineage this arm starts from.
+    Also hallucinates macrocycles de novo and designs binders from them, so the
+    cyclic thread begins here rather than at RFpeptides.
   *Carries:* the low end of Beat 3's budget — binders against all four targets
   from fewer than 20 synthesized designs each, with crystal structures on three —
   and the cyclic thread's open method, against Latent-X1's undisclosed one (§9).
@@ -702,8 +742,10 @@ The arc to carry into the section:
 3. *Revived.* It returns on predictors strong enough to be run single-sequence
    without falling off-distribution — the precondition argued in Beat 4.
 4. *Portable.* Counting the systems housed in §2, §7 and §8, it now runs on five
-   predictor families across five groups — the roster counted in the transversal
-   block.
+   predictor families across six groups — the roster counted in the transversal
+   block. mBER is the case that separates the two counts: a sixth group on a
+   predictor family already present, so it strengthens the claim about *groups*
+   and leaves the claim about *architectures* where it was.
 5. *Conceded.* RFOptimization closes the arc: the Baker lab returns to the
    technique it abandoned in step 2, on its own AF3-class predictor, and reports
    beating BindCraft on cost per filter-passing design.
@@ -720,14 +762,14 @@ The arc to carry into the section:
   compensate for.
   *Attachment (Beat 2's anatomy):* the whole network. AF2 has no diffusion stage,
   so this is the only Level-2 system that never has to choose where to attach.
-* **BoltzDesign1** — `boltzdesign1` · `10.1101/2025.04.06.647261` — the same
+* **BoltzDesign1** — `boltzdesign1` · `10.1101/2025.04.06.647261` · **meat** — the same
   inversion moved from AlphaFold2 to the Boltz all-atom predictor (§3).
   *Attachment:* stop-gradient on the diffusion module, optimizing the Pairformer
   distogram — the first system in the corpus to hit the AF3-class wall and answer
   it by retreating to the trunk. Beat 4 quotes it.
   *Relation that matters:* it shares senior authors with BindCraft, so the two are
   one research programme porting one method, not two independent data points. The
-  independence of the technique rests on Germinal, PXDesign-h and ESMFold2.
+  independence of the technique rests on Germinal, mBER, PXDesign-h and ESMFold2.
 * **Germinal** — `germinal` · `10.1038/s41587-026-03187-0` · **backbone** — gradient-based
   hallucination through AlphaFold-Multimer for epitope-targeted antibody CDRs.
   *Essentially BindCraft for antibodies*, and the paper's own framing; the group
@@ -735,9 +777,27 @@ The arc to carry into the section:
   *Distinct in the way that matters:* the only Level-2 system putting a **sequence
   prior inside the loss**, merging the predictor's gradient with an antibody
   language model's — where §8 reaches the same place with one model, not two.
+  *The claim is narrow, and mBER below is the near neighbour that tests it:* mBER
+  also carries a PLM prior through every optimization step, but as a fixed logit
+  bias from one ESM2 forward pass, with no gradient through the language model.
+  Germinal merges two live gradients; mBER biases one. Stated because the two
+  otherwise read as the same move.
   * **OpenGerminal** — `opengerminal` · `10.64898/2026.06.25.734527` · **mention** — Apache-2.0
     reimplementation on an open stack; the counter-movement to §3's closure.
-* **RFOptimization** — `rfoptimization` · `10.64898/2026.09.04.749184` —
+* **mBER** — `mber` · `10.1101/2025.09.26.678877` · **meat** — Manifold Bio's
+  open-source (MIT) VHH designer, concurrent with and independent of Germinal, which
+  both papers state. Same technique and same predictor as BindCraft — ColabDesign
+  backpropagation through AlphaFold-Multimer — so it adds a *group* to this
+  section's count, not a predictor family.
+  *Its own answer to Beat 4's off-distribution problem:* **structural templates**,
+  where BindCraft uses annealing and 5-model ensembling. With a binder template, a
+  truncated target and the ESM2 prior above, AlphaFold-Multimer produces confident
+  docked folds **with no MSA at all** — the MSA-emancipation thread's most explicit
+  statement outside §8.
+  *Carries:* Beat 3's counterweight, which is why it is here — see there. Also the
+  enrichment half of the metrics primer's conclusion: across 1.15M designs with
+  paired outcomes, hit rates climb with ipTM while off-design rates stay flat.
+* **RFOptimization** — `rfoptimization` · `10.64898/2026.09.04.749184` · **meat** —
   gradient-guided mutation through RF3, interleaved at even odds with a cycling
   move (Boltz prediction → ProteinMPNN/LigandMPNN inverse folding), under
   Metropolis-style acceptance with temperature annealing (the paper notes it
@@ -898,6 +958,26 @@ once, referred to from any section.
   *Known limit:* Protenix-v1 shows its published aggregates do not enforce a
   common intersection of successfully-evaluated targets, so coverage differences
   alone can flip model rankings.
+* **Overath binder meta-analysis** — `overath_meta` · `10.1101/2025.08.14.670059` ·
+  **meat** — the design half's only cross-lab instrument, and the only one here
+  measuring a *filter* rather than a prediction: 3,766 designs against 15 targets,
+  pooled from six published studies and re-scored under one pipeline (the paper
+  counts these per target, as 15 campaigns). AF3 `ipSAE_min` beats every other
+  score, at 1.4× the average precision of the AF2 initial-guess iPAE RFdiffusion
+  filters on.
+  * **ipSAE** — `ipsae` · `10.1101/2025.02.10.637595` · **mention** — the metric
+    that wins above, restricting the interface score to high-confidence residue
+    pairs; its own paper benchmarks PPI prediction, not design.
+  *Carries:* the metrics primer's payoff, and the sharper half of it. Precision runs
+  0.1 to 1.0 across targets at the max-F1 threshold for the best score available,
+  and Germinal (§6) reports the same failure from the other side, its nonbinders
+  clearing the ipSAE threshold alongside its binders.
+  *mBER (§6) measures the same thing at larger scale and points the other way;* the
+  primer is where the two are reconciled.
+  *Known limit:* previous-generation miniproteins, antibodies excluded — the
+  generation before the one this review centres on. Leaves Table B's missing
+  benchmark column as it is.
+
 * **PXMeter** — `pxmeter` · `10.1101/2025.07.17.664878` · **meat** — open evaluation toolkit
   and artifact-filtered dataset; basis of the PXM benchmark family. v1.1.0 extends
   PoseBusters with sp2-planarity, amide-planarity and sp3-non-planarity checks.
@@ -923,7 +1003,9 @@ once, referred to from any section.
 temporal-leakage caveat flagged independently by ESMC, Protenix-v1 and
 Protenix-v2. With FoldBench's common-intersection problem and PoseBusters'
 incompleteness, these are the three documented defects behind the intro's first
-caveat — one per instrument, which is the point.
+caveat — one per prediction instrument, which is the point. The Overath
+meta-analysis carries a fourth, of a different kind: its own, stated in its own
+discussion, and about the design half rather than the prediction half.
 
 ---
 
@@ -965,7 +1047,7 @@ numbers visually distinguishable: that distinction is Beat 5 arriving early.
 
 *Rows:* the design systems — RFdiffusion, RFantibody, RFpeptides, BoltzGen,
 BoltzProt-1, PXDesign-d/h, Protenix-v2 design, Chai-2, the flow-matching five,
-BindCraft, BoltzDesign1, Germinal, the ESMFold2 campaign, AlphaProteo,
+BindCraft, BoltzDesign1, Germinal, mBER, the ESMFold2 campaign, AlphaProteo,
 Latent-X1/X2. *RFOptimization cannot be one:* in-silico success rates only, so no
 designs-tested denominator and no hit definition. It sits beneath the table
 instead — the corpus's first system to claim a design advance on refolding
