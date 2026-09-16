@@ -73,7 +73,7 @@ scores much higher. That gap is usually the interesting part.
 **Too recent to judge** (9) — published this year, so a zero here
 carries no signal at all:
 
-- `boltzmol1` (§3, 2026)
+- `boltzmol1` (§-, 2026)
 - `boltzprot1` (§3, 2026)
 - `dflow` (§5, 2026)
 - `flowr` (§-, 2026)
@@ -100,17 +100,24 @@ defined in two sections is counted under the first.
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | **1** | 4 | 3 | 3 | 1 | · | 1 | 1 | 2 | · | · | 3 |
 | **2** | 18 | 45 | 6 | 5 | 3 | 5 | 1 | 3 | 2 | · | 3 |
-| **3** | 7 | 14 | 9 | 4 | 1 | 2 | 2 | · | 2 | · | 4 |
+| **3** | 7 | 13 | 8 | 4 | 1 | 2 | 2 | · | 2 | · | 4 |
 | **4** | 5 | 4 | 1 | 1 | · | · | · | 3 | 1 | · | 3 |
 | **5** | 8 | 14 | 1 | · | 4 | 1 | · | 3 | · | · | · |
 | **6** | 11 | 13 | 3 | 3 | · | 8 | 1 | · | 3 | · | 3 |
 | **7** | 6 | 7 | 9 | 6 | 1 | 2 | 3 | 1 | 4 | · | 9 |
 | **8** | 6 | 2 | 3 | 1 | · | 1 | 1 | 3 | 1 | 1 | 3 |
 | **9** | 6 | 9 | 3 | 4 | · | · | · | 3 | 3 | · | · |
-| **-** | 9 | 3 | · | · | 1 | · | · | 2 | · | 1 | 3 |
+| **-** | 9 | 4 | 1 | · | 1 | · | · | 2 | · | 1 | 3 |
 | **IV** | 14 | 4 | 6 | 4 | · | 1 | · | 1 | 1 | · | 6 |
 
 ## Per publication
+
+### `boltzmol1` — §-, 2026
+
+*BoltzMol-1: Towards Reliable Virtual Screening for Fast and Cost-Effective Hit Discovery* · `10.64898/2026.07.04.736485`
+
+- **Cites (2):** `boltz2` (31), `rfpeptides`
+- **Cited by (0):** —
 
 ### `drugflow` — §-, 2025
 
@@ -286,13 +293,6 @@ defined in two sections is counted under the first.
 
 - **Cites (17):** `boltz2` (22), `rfdiffusion` (13), `alphafold3` (12), `boltz1` (10), `proteinmpnn` (9), `ligandmpnn` (4), `boltzdesign1` (2), `rfdiffusion3` (2), `alphaproteo`, `frameflow`, `germinal`, `pxdesign`, `rfdiffusion2`, `rosettafold_all_atom`, `chai2`, `latentx1`, `rfantibody`
 - **Cited by (7):** `boltzprot1` (57), `protenix_v2` (3), `germinal` (2), `ppiflow` (2), `latentx2`, `opendde`, `protenix_v1`
-
-### `boltzmol1` — §3, 2026
-
-*BoltzMol-1: Towards Reliable Virtual Screening for Fast and Cost-Effective Hit Discovery* · `10.64898/2026.07.04.736485`
-
-- **Cites (2):** `boltz2` (31), `rfpeptides`
-- **Cited by (0):** —
 
 ### `boltzprot1` — §3, 2026
 

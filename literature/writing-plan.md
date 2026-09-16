@@ -11,22 +11,76 @@
 
 ## Target
 
-**8,000 words of main text**, 49 references. That is the standard scale for a
-journal review at this reference count — Nature Reviews, Briefings in
-Bioinformatics, Annual Review. Not an exhaustive survey.
+**8,000 words of main text**, 49 references — the standard scale for a journal
+review at this reference count (Nature Reviews, Briefings in Bioinformatics, Annual
+Review). Not an exhaustive survey.
 
 **Tables A and B are display items**, not main text, and do not count against the
 budget in any of those venues. Only the paragraph between them does.
 
-*Consequence, stated up front:* at this scale roughly 12–15 publications get
-individual treatment. The rest are cited in support of a claim, sometimes in a
-clause. That is correct for the genre — a review argues and cites, it does not
-enumerate. Every publication in the corpus still earns its place by supporting
-something; not every one gets a sentence of its own.
+---
+
+## Weight — the rule that governs every other rule here
+
+A review is read for its **proportions** before it is read for its sentences. A
+reader who knows this field arrives with a rough map of what matters in it, and the
+fastest way to lose them is to spend three paragraphs on a preprint they have not
+heard of and one clause on AlphaFold. The tier system exists to prevent exactly
+that, and this section is where it becomes an instruction to the writer.
+
+**Tier determines treatment. It is not a hint.**
+
+| Tier | Treatment in the prose | Test the draft must pass |
+|---|---|---|
+| **backbone** | A passage of its own: mechanism, the numbers that matter, the caveat, and what it is contrasted with | A reader could explain what this system does and why it mattered, from the review alone |
+| **meat** | Named in a sentence or two while a backbone claim is being made; its numbers may be quoted | Removing it weakens a claim's evidence; it does not leave a hole in the narrative |
+| **mention** | A clause, or a parenthetical. No mechanism, no numbers in the prose — numbers go to Table A or B | It can be read past without loss |
+
+**Twenty publications carry the review.** They are the backbone set, and they are
+the ones a reader should come away able to name:
+
+| Section | Gets a passage |
+|---|---|
+| §1 | AlphaFold2 · AlphaFold-Multimer · AlphaFold3 |
+| §2 | RoseTTAFold · RFdiffusion · RFantibody · RFpeptides · ProteinMPNN |
+| §3 | Boltz-1 · BoltzGen · BoltzProt-1 |
+| §4 | Chai-2 |
+| §5 | FrameFlow |
+| §6 | BindCraft · Germinal |
+| §7 | PXDesign |
+| §8 | ESM-2/ESMFold · ESMC/ESMFold2 · the ESMFold2 binder campaign |
+| §9 | Latent-X1 |
+| Instruments | FoldBench |
+
+Everything else in `map.md` — roughly thirty further works — appears in support of
+a claim or not at all. **That is not a demotion**; the invariant that every named
+publication resolves to a catalog entry is about the catalog's honesty, not about
+the prose owing each one a turn.
+
+**Three failure modes, in the order they actually happen.**
+
+1. **The recency inversion.** Recent preprints have long, specific, quotable
+   entries because they were read most recently and argue with each other in detail.
+   Mastodonts have short entries because their content is assumed. A draft written
+   by following entry length will invert the field's weight. *Check:* if a 2026
+   preprint gets more prose than AlphaFold2, RFdiffusion or ProteinMPNN, the draft
+   is wrong regardless of how interesting the preprint is.
+2. **The interesting-detail trap.** A small paper with an unusual result is more
+   fun to write about than a foundational one whose result everybody knows. Interest
+   is not weight. A finding earns prose in proportion to what rests on it, and
+   `map.md` states what rests on each entry under *Carries*.
+3. **Cataloguing under the guise of completeness.** Listing five flow-matching
+   papers because the corpus holds five. §5's own entry says what to do instead:
+   one argument, four examples named in support.
+
+**Where the map over-supplies, cut rather than expand.** Some entries carry more
+material than their tier warrants, because the underlying paper is recent and
+detailed. The map records what is true; this file decides what is written. When the
+two disagree, tier wins.
 
 ## Draft units
 
-Fourteen drafts. `map.md` now carries one heading per draft, in render order, so
+Fifteen drafts. `map.md` carries one heading per draft, in render order, so
 this table is a lookup rather than a second slicing of the material. The map's
 layout block is the one heading with no draft. The three benchmarking units
 are three drafts rather than one because they have different sources, timing and
@@ -46,60 +100,84 @@ record in `candidates.md`, not a part of the review.
 | 9 | §7 Protenix | `drafts/08-protenix.md` | §7 |
 | 10 | §8 ESM | `drafts/09-esm.md` | §8 |
 | 11 | §9 The closed frontier | `drafts/10-closed-frontier.md` | §9 |
-| 12 | Instruments | `drafts/11-instruments.md` | The instruments |
-| 13 | Tables A and B | `drafts/12-tables.md` | Tables A and B — written after §1–§9 |
-| 14 | Conclusion | `drafts/13-conclusion.md` | The conclusion — a stub; the map records the gap, not the answer |
+| 12 | What the field has not shown | `drafts/11-gaps.md` | The gaps unit — four stated limits, written after §1–§9 |
+| 13 | Instruments | `drafts/12-instruments.md` | The instruments |
+| 14 | Tables A and B | `drafts/13-tables.md` | Tables A and B — written after §1–§9 |
+| 15 | Conclusion | `drafts/14-conclusion.md` | The conclusion — a stub; the map records the gap, not the answer |
 
 **The layout block does not become a draft.** It turns into two things: a
 short roadmap paragraph closing the introduction, and the seam sentences between
 sections — the block supplies the two-axis logic, and each section's own
 *Why here* line supplies the seam into it.
 
-**The conclusion is written last, from the finished parts.** §9 is a coda and
-Beat 5 sets up an ending, but nothing in the map states what the review
-concludes — deliberately, and the stub there says so. What it concludes follows
-from the other thirteen drafts, so it is decided when they exist rather than
-planned in advance.
+**The conclusion is written last, from the finished parts.** §9 is a coda and Beat 5
+sets up an ending, but nothing in the map states what the review concludes —
+deliberately, and the stub there says so. What it concludes follows from the other
+fourteen drafts, so it is decided when they exist rather than planned in advance.
+
+**The gaps unit has a hard rule and it is the map's, not this file's:** a gap enters
+only when a publication in the catalog states it. The unit is four items long for
+that reason, and it is not the place to speculate about what comes next. It is
+drafted after §1–§9 because three of its four items are limits those sections
+establish and one is Tables A and B's.
 
 ## Size budget
 
-**Provisional, and expected to move.** Shares are re-derived whenever the argument
-changes — the introduction grew when Beat 2 took on the co-folder anatomy and Beat
-4 the generation taxonomy, and §2 grew when RF3 entered. The multiplier is the only
-thing to change if the *target* moves; the shares change when the content does.
-Both columns are given so switching venue is one substitution.
+**These shares are the weight rule made countable, not a quota to hit.** They exist
+so that a section's length can be checked against what the section carries, before
+anyone has written a word. The absolute counts are indicative; the **column that
+matters is the backbone count**, because that is what the share is derived from.
 
-| Draft | Share | @ 8,000 | @ 12,000 | Why that size |
+*Shares are re-derived when the argument moves, never when a paper arrives.*
+
+| Draft | Backbones | Share | @ 8,000 | Why that weight |
 |---|---|---|---|---|
-| Introduction | 15% | 1,200 | 1,800 | five beats, and it now carries the two conceptual frames the whole review reads through: the co-folder anatomy (Beat 2) and the prediction/generation taxonomy (Beat 4) |
-| Metrics primer | 4.5% | 350 | 550 | two families of metric, one consequence; tight by design |
-| §1 AlphaFold | 7.5% | 600 | 900 | two predictors explained properly, plus the MSA bet everything rests on |
-| §2 RoseTTAFold | 11.5% | 900 | 1,400 | six backbone entries, both tracks (RF1/RFAA/RF3 and RFdiffusion 1/2/3), and it owns MPNN for the whole review |
-| §3 Boltz | 10% | 800 | 1,200 | five models; owns the trained-critic result and the open→closed fork |
-| §4 Chai | 5% | 400 | 600 | two papers, one with no disclosed mechanism — short, and that is the finding |
-| §5 Flow matching | 4.5% | 350 | 550 | one comparative block; most of its argumentative weight now sits in Beat 4's step-count passage, not in the five papers |
-| §6 Inversion | 8% | 650 | 1,000 | the five-beat arc plus four systems |
-| §7 Protenix | 7% | 550 | 850 | the platform argument plus the filter-ensembling finding |
-| §8 ESM | 8% | 650 | 1,000 | the climax; the MSA throughline lands here |
-| §9 Closed frontier | 5% | 400 | 600 | coda, restrained on purpose |
-| Instruments | 5.5% | 450 | 650 | four instruments, three caveats |
-| Table commentary | 3% | 250 | 350 | the tables are display items; only the asymmetry argument is main text |
-| Conclusion | 5% | 400 | 600 | currently unplanned |
-| **Total** | 100% | **8,000** | **12,150** | |
+| Introduction | — | 15% | 1,200 | five beats, carrying the two frames the whole review reads through: the co-folder anatomy (Beat 2) and the coupling taxonomy (Beat 4) |
+| Metrics primer | — | 4% | 320 | two families of metric, one consequence; tight by design |
+| §1 AlphaFold | 3 | 10% | 800 | the three papers everything else is defined against, and the MSA bet the review's longest thread starts from |
+| §2 RoseTTAFold | 5 | 12.5% | 1,000 | the most backbones of any section — the second origin, the generative turn, the antibody and macrocycle arms, and ProteinMPNN for the whole review |
+| §3 Boltz | 3 | 9.5% | 760 | the open AF3-class model, the cleanest Level 0, and the trained-critic result |
+| §4 Chai | 1 | 4.5% | 360 | the corpus's strongest antibody result from an undisclosed generator — short, and that is the finding |
+| §5 Flow matching | 1 | 3% | 240 | one argument with four examples, not five papers taking turns; its weight sits in Beat 4's step-count passage |
+| §6 Inversion | 2 | 8% | 640 | the five-step arc plus BindCraft and Germinal; the other four systems are evidence, not subjects |
+| §7 Protenix | 1 | 6.5% | 520 | the platform argument plus the filter-ensembling finding |
+| §8 ESM | 3 | 9% | 720 | the climax: the MSA throughline lands and the coupling axis ends |
+| §9 Closed frontier | 1 | 4.5% | 360 | coda, restrained on purpose — restraint is the argument |
+| Gaps | — | 4% | 320 | four stated limits, each pointing at the entry that evidences it; no speculation |
+| Instruments | 1 | 5% | 400 | four instruments; three prediction-side defects plus Overath's own, stated once |
+| Table commentary | — | 3% | 240 | display items; only the asymmetry argument is main text |
+| Conclusion | — | 4% | 320 | written from the finished parts |
+| **Total** | **21** | 100% | **8,000** | |
 
-*If the introduction still overruns when drafted,* the co-folder anatomy moves to
-the metrics primer — which already renders before §1 and is already built to teach
-one distinction before the reader needs it. That trade is the relief valve; cutting
-the anatomy is not.
+**The check this table exists for:** §1 outweighs §6, §7 and §9; §2 outweighs
+everything. If a draft comes back the other way round, the recency inversion has
+happened and the fix is to cut the recent material, not to argue for it.
 
-§1–§9 come to 5,400 at the 8,000 target — about two thirds of the review,
-which is right for a review whose argument is the section order.
+*If the introduction overruns when drafted,* the co-folder anatomy moves to the
+metrics primer, which already renders before §1 and is already built to teach one
+distinction before the reader needs it. That trade is the relief valve; cutting the
+anatomy is not.
+
+§1–§9 come to about two thirds of the review, which is right for a review whose
+argument is the section order.
 
 ## What a section is
 
 A section is a block of argument. It is **not** a list of publications with
-commentary on each. Publications appear inside the prose, supporting claims;
-they are not headings and they do not each get a turn.
+commentary on each. Publications appear inside the prose, supporting claims; they
+are not headings and they do not each get a turn.
+
+**Its backbones are its subjects; everything else is evidence.** A section with
+three backbones has three things to explain properly and a supporting cast. Prose
+spent on the cast is prose taken from the subjects — that is the trade, and it is
+always the wrong way round when a *mention* has a sentence to itself.
+
+**Read the entry schema before drafting a section.** `map.md`'s header defines it:
+each entry's *Carries* line is the claim that must survive into the prose, *Against*
+is the comparison the passage should be built around, *Caveat* travels with the claim
+wherever it is cited, and *Collision* says what this section must not restate. A
+backbone passage that states what a system *is* without stating what it is
+**against** has described a paper instead of making an argument.
 
 Every section makes the same four moves, in this order. This is what keeps nine
 independently drafted sections reading as one review:
@@ -119,11 +197,13 @@ numbers, per-paper caveats and quotes are read out of the corpus at writing
 time."* That material is exactly what a section draft is made of, and it comes
 from `literature/corpus/`, not from the map entry.
 
-**Collisions are already assigned by the map.** Each draft opens with three
-lines — owns / references / must not restate — copied from the map, not
-reinvented. The standing assignments: ipTM and pAE definitions to the primer,
-MPNN to §2, the trained-critic result to §3, BoltzDesign1's analysis to §6,
-benchmark caveats to the instruments, the disclosure argument to §9.
+**Collisions are already assigned by the map.** Each draft opens with three lines —
+owns / references / must not restate — copied from the map, not reinvented. The
+standing assignments: ipTM and pAE definitions to the primer, ProteinMPNN to §2,
+AtomWorks to §2 in one line, the trained-critic result to §3, BoltzDesign1's analysis
+to §6, the groups-versus-architectures qualification to §6's step 4, mBER's
+unchosen-targets argument to Beat 3, the physical-validity thread and all benchmark
+caveats to the instruments, and the disclosure argument to §9.
 
 ## Using xrefs
 
@@ -154,11 +234,14 @@ shape and order above are computed from the current corpus.
 
 1. **Metrics primer** — before §1, which quotes pAE and ipTM immediately.
 2. **§1 → §9 in map order** — already dependency order, per the matrix above.
+   **Budget the time by backbone count:** §2 carries five and is the longest to
+   draft, §1, §3 and §8 three each, and §4, §5, §7 and §9 one apiece.
 3. **Introduction** — after §1–§9, when the numbers it promises are known to
    be real and the beats can point at sections that exist.
 4. **Instruments, then Tables A and B** — the tables gather the sections' numbers
    and cannot precede it.
-5. **Scope and exclusions**, then **Conclusion**.
+5. **The gaps unit**, which needs §1–§9 and both tables to exist first.
+6. **Conclusion.**
 
 ## Assembly
 
@@ -170,14 +253,13 @@ argument. Assembling them means writing the two block seams and smoothing the
 handoffs — not re-editing section bodies.
 
 **The review.** Front matter (introduction, then the metrics primer), the nine
-sections, the instruments and tables, the conclusion. Scope is argued in Beat 1;
-the
-exclusion log stays in `candidates.md` and is never drafted.
+sections, the gaps unit, the instruments and tables, the conclusion. Scope is argued
+in Beat 1; the exclusion log stays in `candidates.md` and is never drafted.
 
 ## Placement directives
 
-Decisions about *where* material lands and *how* it must be handled. They were
-previously embedded in `map.md`; they live here so the map stays content.
+Decisions about *where* material lands and *how* it must be handled, so the map
+stays content.
 
 | Directive | Why |
 |---|---|
@@ -185,26 +267,13 @@ previously embedded in `map.md`; they live here so the map stays content.
 | The primer is written around the two families of metric, never as an alphabetical glossary | a metric list is dead weight the reader skips; the families do the analytical work |
 | The Latent-X1 / RFpeptides head-to-head lands under Table B, not §9 | so it reads as evidence about measurement, not a point scored for Latent Labs |
 | The map's layout block never becomes text | it turns into the intro's roadmap paragraph and the seams between sections |
+| The gaps unit admits only limits a cataloged publication states | otherwise it becomes a wish list, which is the genre's standard filler |
+| Developability and immunogenicity are the gaps unit's, not §9's | Latent-X2 is the evidence but the point is about the field, not about Latent Labs |
 | §2 opens by separating RF3 (predictor) from RFdiffusion3 (generator) | the names collide; the lineage's two tracks are unreadable otherwise |
 | AtomWorks gets one line, never a passage | it is training infrastructure, not a model or an instrument; its role is that RF3 and RFdiffusion3 both come out of it |
 | Level 2 is introduced as the *oldest* idea in the review, not the newest | the §6 arc depends on the reader knowing it was tried and abandoned first |
 | Table B is sorted by designs-tested, never by hit rate | the denominator is Beat 3's argument; hit-rate order makes it a leaderboard |
 | Table B's hit-definition column is mandatory | BoltzProt-1's screening-hit / confirmed-binder split means the percentages measure different events |
 | No cell enters Table A or B without a stated benchmark, cutoff and measurer | the provenance columns are the defence against a leaderboard reading |
-| Benchmark caveats are stated once with the instruments and pointed at, never relitigated per section | three documented defects, one per instrument |
-
-## Open decisions
-
-- **§5's length.** One backbone, no meat, four mentions — the only section with
-  that shape. Either it compresses to a few paragraphs hung on FrameFlow, or the
-  formalism thread folds into §2–4 and §5 stops being a section. Beat 4's
-  step-count argument is the strongest case for keeping it: flow matching's ODE
-  formulation is what makes the structure stage short enough to backpropagate
-  through, which is what PXDesign-h exploits.
-- **§2's budget.** Five backbone entries, the most of any section, each carrying a
-  different claim. It is the longest section to draft and should be scheduled as
-  such.
-- **§3's tiers have not been re-derived** since the section last changed shape.
-  Four backbone entries may well be right — Boltz spans the open→closed fork and
-  the trained-critic result — but the per-claim justification is not written down
-  the way §2's is. Settle it when §3 is drafted.
+| Benchmark caveats are stated once with the instruments and pointed at, never relitigated per section | three documented defects, one per prediction instrument, plus Overath's own on the design side |
+| The physical-validity thread is stated once with the instruments | four groups assert four answers and only one pair has been measured against the other; per-section retelling implies more agreement than exists |

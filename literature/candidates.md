@@ -55,6 +55,13 @@ Two grounds for exclusion, and they differ in what is left behind:
   than binder design; the overlap is the flow-matching machinery, not the
   problem. Both are quoted in Beat 1 for their discrete/continuous hybrid
   schemes — the evidence for the differentiability asymmetry.
+* **BoltzMol-1** — `boltzmol1` · `10.64898/2026.07.04.736485` — *excluded: wrong
+  modality.* Small-molecule hit discovery over an optimized Boltz-2, API-only with
+  no weights. It **screens catalogue compounds** rather than generating binders, so
+  it fails the scope rule twice over — the same exclusion that keeps DrugFlow and
+  FLOWR out. Its one pull toward the map is that it is a second closed Boltz model,
+  but §3's open→closed fork is established by BoltzProt-1 alone.
+  In `refs.bib` and the corpus, and quotable.
 * **ProtFlow** — `protflow` · `10.64898/2026.02.14.705870` — *excluded: not
   binder design.* Rectified flow matching in sequence space for general protein
   engineering; learns the global semantic distribution of protein space. The
