@@ -26,9 +26,10 @@ something; not every one gets a sentence of its own.
 
 ## Draft units
 
-Fifteen drafts. Part I is one narrative and is not sliced. Part II never becomes
-text. Part IV splits into three because its blocks have different sources,
-different timing, and different positions in the final text.
+Fourteen drafts. Part I is one narrative and is not sliced. Part II never becomes
+text. Part IV splits into three because its blocks have different sources, timing
+and positions in the final text. Excluded works are not a draft unit — they are a
+record in `candidates.md`, not a part of the review.
 
 | # | Draft | File | Source |
 |---|---|---|---|
@@ -45,8 +46,7 @@ different timing, and different positions in the final text.
 | 11 | §9 The closed frontier | `drafts/10-closed-frontier.md` | Part III §9 |
 | 12 | Instruments | `drafts/11-instruments.md` | Part IV, block 2 |
 | 13 | Tables A and B | `drafts/12-tables.md` | Part IV, block 3 — written after Part III |
-| 14 | Scope and exclusions | `drafts/13-excluded.md` | Part V |
-| 15 | Conclusion | `drafts/14-conclusion.md` | **not yet in the map** |
+| 14 | Conclusion | `drafts/13-conclusion.md` | **not yet in the map** |
 
 **Part II does not become a draft.** It turns into two things: a short roadmap
 paragraph closing the introduction, and the seam sentences between sections,
@@ -80,9 +80,8 @@ Both columns are given so switching venue is one substitution.
 | §9 Closed frontier | 5% | 400 | 600 | coda, restrained on purpose |
 | Instruments | 5.5% | 450 | 650 | four instruments, three caveats |
 | Table commentary | 3% | 250 | 350 | the tables are display items; only the asymmetry argument is main text |
-| Scope and exclusions | 2.5% | 200 | 300 | five papers, one reason each |
-| Conclusion | 4.5% | 350 | 550 | currently unplanned |
-| **Total** | 101.5% | **8,100** | **12,300** | |
+| Conclusion | 5% | 400 | 600 | currently unplanned |
+| **Total** | 100% | **8,000** | **12,150** | |
 
 *If the introduction still overruns when drafted,* the co-folder anatomy moves to
 the metrics primer — which already renders before §1 and is already built to teach
@@ -167,8 +166,8 @@ Assembling Part III means writing the two block seams and smoothing the
 handoffs — not re-editing section bodies.
 
 **The review.** Front matter (introduction, then the metrics primer), Part III,
-the instruments and tables, the conclusion. Scope and exclusions goes to an
-appendix or folds into the introduction's scope beat — decide at assembly.
+the instruments and tables, the conclusion. Scope is argued in Beat 1; the
+exclusion log stays in `candidates.md` and is never drafted.
 
 ## Placement directives
 
@@ -207,7 +206,6 @@ previously embedded in `map.md`; they live here so the map stays content.
 
 ## Open items
 
-- Whether Part V ships as an appendix or folds into the introduction.
 - The three files currently in `drafts/` predate this plan and are organized
   predictor-side vs design-side, which is not the map's organization. They are
   not inputs to any draft above.

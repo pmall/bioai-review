@@ -24,8 +24,8 @@ The loop, in order. Each step has a rule attached that exists because skipping i
 ## Invariants
 
 - **Every publication named in `literature/map.md` resolves to a `refs.bib` entry** — by bib key, or by a `keywords` tag on the entry whose paper describes it. Concepts with no citable publication are marked *map-only* with the reason.
-- **A publication is either included or excluded, never both.** An included work carries its own caveats, borderline calls and scope reasoning inside its section entry; the excluded part does not restate it.
-- **Undecided works stay out of the map**, in `literature/candidates.md`, so the invariant above holds.
+- **The map holds only what is in the review.** Undecided and excluded works live in `literature/candidates.md` with their reason, so the invariant above holds and no decision is re-litigated. An included work carries its own caveats, borderline calls and scope reasoning inside its section entry.
+- **Excluded is not uncited.** A work excluded from the argument's structure stays in `refs.bib` and the corpus, and may still be quoted in the review — the catalog records what was obtained, the map records what is in scope.
 - **Preprints are re-checked for a journal version** on every catalog pass. This field publishes fast; a preprint cataloged last month may have a DOI in a journal now.
 - **Every map entry carries a tier** — `**backbone**`, `**meat**` or `**mention**`, placed after the DOI. See below.
 
@@ -37,7 +37,7 @@ The tier answers **how much of the review's argument rests on this work** — no
 
 | Tier | Test | Consequence when drafting |
 |---|---|---|
-| **backbone** | Remove it and a Part I beat, or a section's organizing fact, collapses | Analysed in full: mechanism, numbers, caveats, and what it is being contrasted with |
+| **backbone** | Remove it and a beat of the review's argument, or a section's organizing fact, collapses | Analysed in full: mechanism, numbers, caveats, and what it is being contrasted with |
 | **meat** | It supplies evidence a backbone claim rests on, but that claim survives if another work substitutes for it | Described and cited; its numbers may be quoted; no mechanism walkthrough |
 | **mention** | It establishes that a category exists, or is a date on a timeline | One sentence. No numbers, no mechanism |
 
@@ -46,9 +46,8 @@ Rules that keep the tier honest:
 - **Tier is not quality, novelty, or citation count.** A famous paper the argument does not lean on is a *mention*; an obscure one that anchors a section is *backbone*. Never derive a tier from `xrefs.md` — in-degree there is confounded by publication age and is corpus-internal.
 - **Tier is per-claim, so state which claim.** A work is backbone *for something*. Where the tier is not self-evident from the entry, name the beat or organizing fact it carries — that is what makes the tier checkable, and what makes it re-derivable when the argument moves.
 - **The tier is a property of the argument, not of the paper**, so it changes when the argument changes. Re-check tiers when a beat is rewritten or a section is reordered, not when a new paper arrives.
-- **Every backbone entry names a distinct claim; the count per section is not a target.** A lineage that explored more of the problem legitimately anchors more of the review — §2 carries six because the RoseTTAFold line covers prediction, generation, inverse folding, two modalities and optimization, and each anchors something different. What makes a tier wrong is two backbone entries carrying the *same* claim, or a section with no backbone at all, which is a survey with no anchor.
-- **Tiers apply to excluded works too** (Part V), because an excluded work can still be quoted — DrugFlow and FLOWR are excluded by modality but carry Beat 1's differentiability asymmetry.
-- **Map-only concepts are tiered as well.** Having no publication does not make a concept argumentatively light: IsoDDE has no paper and is backbone for Beat 5.
+- **Every backbone entry names a distinct claim; the count per section is not a target.** A lineage or topic that spans more of the field legitimately anchors more of the review, and a section carrying many backbone entries is reporting that breadth rather than failing a quota. What makes a tier wrong is two backbone entries carrying the *same* claim, or a section with no backbone at all, which is a survey with no anchor.
+- **Map-only concepts are tiered as well.** Having no publication does not make a concept argumentatively light; something the field cannot cite can still anchor a section.
 
 ## Structure
 
@@ -57,7 +56,7 @@ Rules that keep the tier honest:
 - `literature/map.md` — the living map of the field: the layout of the review, its sections in the order they will read, and every publication placed in one of them. The default working file for review discussion and the entry point of the system.
 - `literature/refs.bib` — the reference catalog, one BibTeX entry per publication (BibTeX keys match the entry slugs, e.g. `example_slug`). Metadata is fetched from Crossref/DataCite; every entry carries a DOI and a `keywords` tag list, so map concepts resolve to an entry by key or by tag. Sources without a resolvable DOI are not cataloged.
 - `literature/corpus/` — the publication artifacts, named by DOI, matching `literature/refs.bib`: the source PDFs alongside their parsed Markdown (same name, different extension).
-- `literature/candidates.md` — works surfaced while reading the corpus that might belong but have not been decided on. Held outside the map so the invariant holds. Accepting one means writing it into the map and running `map-to-bib`; rejecting one means recording it in the map's excluded part.
+- `literature/candidates.md` — the decision log for everything outside the review: works surfaced while reading the corpus but not yet judged, and works retrieved, read and then judged out of scope, each with its reason. Held outside the map so the invariant holds. Accepting one means writing it into the map and running `map-to-bib`; rejecting one means moving it to the excluded part of the same file.
 - `literature/xrefs.md` — the citation network among the cataloged publications: who cites whom, how often each is named in prose, which works nothing cites, and which map sections talk to each other. Generated, never hand-edited. Material for drafts, not a source of truth: a citation is not a comparison or an endorsement, in-degree is confounded by publication age, and the counts are internal to the corpus rather than to the field.
 - `literature/drafts/` — intermediate drafts written on the way to the final review: the introduction, a section, a transversal topic, whatever the project needs at the time.
 

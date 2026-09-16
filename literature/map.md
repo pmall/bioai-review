@@ -10,10 +10,14 @@
 > every claim, structured in reading order. Instructions addressed to whoever
 > writes that prose live in `literature/writing-plan.md`, not here.
 >
-> **Five parts.** I — the introduction, in five beats. II — the section order and
+> **Four parts.** I — the introduction, in five beats. II — the section order and
 > why it is that order. III — the nine sections and the publications in each.
-> IV — benchmarking and validity infrastructure, transversal to all nine. V —
-> publications examined and deliberately excluded, with the reason recorded.
+> IV — benchmarking and validity infrastructure, transversal to all nine.
+>
+> **Everything the review left out is in `literature/candidates.md`** — undecided
+> works and examined-and-excluded ones, each with its reason. None of it is drafted,
+> so none of it is here. A work excluded from the argument may still be *quoted* in
+> it, and carries its bib key inline like any other citation.
 >
 > **Coupling levels — the review's spine,** argued in Beat 4 and the axis §6–§8
 > escalate along:
@@ -48,9 +52,11 @@ sections are the lineages in detail.
 
 This is a review of designing **proteins and peptides that bind a chosen target**,
 not of small-molecule drug design. Antibodies, nanobodies, VHH, scFvs, minibinders
-and macrocyclic peptides are in. DrugFlow and FLOWR generate small molecules and
-are out of scope (Part V); BoltzMol-1 screens them and is out for the same reason,
-though it stays in §3 with the rest of the Boltz lineage.
+and macrocyclic peptides are in. Two works are excluded by modality yet quoted
+below, so they carry their keys here: **DrugFlow** (`drugflow` · `10.48550/arXiv.2508.17815`)
+and **FLOWR** (`flowr` · `10.1038/s43588-026-00998-8`), both small-molecule
+generators. BoltzMol-1 is out for the same reason, though it stays in §3 with the
+rest of the Boltz lineage.
 
 Two reasons, both better than "that is where the papers are":
 
@@ -560,7 +566,7 @@ publications on both sides, where IsoDDE has only an after.
 * **BoltzMol-1** — `boltzmol1` · `10.64898/2026.07.04.736485` · **mention** — small-molecule hit
   discovery over an optimized Boltz-2. API-only, no weights.
   *Out of scope by modality* — it screens catalogue compounds rather than
-  generating binders, the same exclusion that puts DrugFlow and FLOWR in Part V.
+  generating binders, the same exclusion that keeps DrugFlow and FLOWR out.
   **Kept here rather than there** because it is a Boltz model first, and the fork
   above needs both closed models in one place. It contributes nothing else.
 * **BoltzDesign1** — `boltzdesign1` · `10.1101/2025.04.06.647261` · **meat** — inverts the
@@ -593,7 +599,7 @@ Presented in these papers as the successor to diffusion rather than an
 alternative — FrameFlow explicitly recasts FrameDiff as SE(3) flow matching and
 reports 2× designability at 5× fewer sampling steps. All five generate protein or
 peptide binders conditioned on a target; flow-matching papers that generate small
-molecules or unconditioned sequences are in Part V.
+molecules or unconditioned sequences are excluded (`candidates.md`).
 
 * **FrameFlow** — `frameflow` · `10.48550/arXiv.2310.05297` · **backbone** — recasts FrameDiff as
   SE(3) flow matching; methodological ancestor of the rest of this section.
@@ -973,40 +979,3 @@ and hit definition. The prediction half of this field is measured, the design ha
 self-reported, and two adjacent tables demonstrate that as no paragraph can. That
 asymmetry is Part IV's finding and Beat 5's strongest empirical support.
 
----
-
-# PART V — EXAMINED AND EXCLUDED
-
-Sources retrieved, parsed into `literature/corpus/`, and then judged out of scope
-under the scope rule in the header. Recorded rather than deleted: an exclusion
-with a stated reason is part of the review's method, and keeping them prevents
-re-litigating the same decision later. All remain in `refs.bib` — the catalog
-tracks what was obtained, the map tracks what is in scope. Nothing below appears
-anywhere in Parts I–IV.
-
-* **DrugFlow** — `drugflow` · `10.48550/arXiv.2508.17815` · **meat** · and **FLOWR** —
-  `flowr` · `10.1038/s43588-026-00998-8` · **meat** — *excluded: wrong modality.* Both are
-  pocket-conditioned **small-molecule** generators, producing 3D atom types,
-  coordinates and bond topology for a ligand. Structure-based drug design rather
-  than binder design; the overlap is the flow-matching machinery, not the
-  problem. Both are quoted in Beat 1 for their discrete/continuous hybrid
-  schemes — the evidence for the differentiability asymmetry.
-* **ProtFlow** — `protflow` · `10.64898/2026.02.14.705870` · **mention** — *excluded: not
-  binder design.* Rectified flow matching in sequence space for general protein
-  engineering; learns the global semantic distribution of protein space. The
-  words "binder" and "binding" do not appear anywhere in the paper, and there is
-  no target conditioning.
-* **moPPIt** — `moppit` · `10.1101/2024.07.31.606098` · **mention** — *excluded: no lineage.* A
-  genetic algorithm iterating a pool from the PepMLM peptide language model,
-  scored by BindEvaluator (an ESM-2 binding-site predictor) plus perplexity. No
-  diffusion, no flow matching, no structure input at all; AlphaFold2-Multimer
-  appears only as retrospective validation. Target-conditioned, so it passes the
-  scope rule, but it shares no machinery with anything else here and is cited by
-  no other corpus paper.
-  *Recorded error, do not reintroduce:* an earlier version of this map described
-  moPPIt as discrete flow matching. That was wrong.
-* **SaProt** — `saprot` · `10.1101/2023.10.01.560349` · **mention** — *excluded: neither half of
-  the review.* A structure-aware protein language model (Foldseek 3Di alphabet,
-  441 tokens) with no folding head and no generative binder capability. It
-  neither predicts 3D structure nor designs binders, and belongs to no lineage
-  tracked here. Cited by one corpus paper.

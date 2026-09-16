@@ -71,18 +71,18 @@ carries no signal at all:
 - `boltzmol1` (§3, 2026)
 - `boltzprot1` (§3, 2026)
 - `dflow` (§5, 2026)
-- `flowr` (§V, 2026)
+- `flowr` (§-, 2026)
 - `gauss_seidel_projection` (§IV, 2026)
 - `opendde` (§1, 2026)
 - `opengerminal` (§6, 2026)
-- `protflow` (§V, 2026)
+- `protflow` (§-, 2026)
 - `rfoptimization` (§2, 2026)
 
 **Uncited despite having had time** (3) — a zero here is evidence,
 and worth a sentence in the draft that covers them:
 
 - `atomflow` (§5, 2024)
-- `moppit` (§V, 2024)
+- `moppit` (§-, 2024)
 - `originflow` (§5, 2025)
 
 ## Between sections
@@ -90,21 +90,56 @@ and worth a sentence in the draft that covers them:
 Rows cite columns. Section is where the map defines the entry; a publication
 defined in two sections is counted under the first.
 
-| cites → | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | IV | V |
+| cites → | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | - | IV |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| **1** | 4 | 3 | 3 | 1 | · | 1 | 1 | 2 | · | 2 | · |
-| **2** | 16 | 40 | 6 | 5 | 3 | 3 | 1 | 3 | 2 | 2 | · |
-| **3** | 7 | 13 | 9 | 4 | 1 | 1 | 2 | · | 2 | 2 | · |
-| **4** | 5 | 4 | 1 | 1 | · | · | · | 3 | 1 | 1 | · |
+| **1** | 4 | 3 | 3 | 1 | · | 1 | 1 | 2 | · | · | 2 |
+| **2** | 16 | 40 | 6 | 5 | 3 | 3 | 1 | 3 | 2 | · | 2 |
+| **3** | 7 | 13 | 9 | 4 | 1 | 1 | 2 | · | 2 | · | 2 |
+| **4** | 5 | 4 | 1 | 1 | · | · | · | 3 | 1 | · | 1 |
 | **5** | 8 | 14 | 1 | · | 4 | 1 | · | 3 | · | · | · |
 | **6** | 7 | 8 | 1 | 2 | · | 3 | 1 | · | 3 | · | · |
-| **7** | 6 | 6 | 9 | 6 | 1 | 1 | 3 | 1 | 4 | 6 | · |
-| **8** | 6 | 2 | 3 | 1 | · | 1 | 1 | 3 | 1 | 2 | 1 |
+| **7** | 6 | 6 | 9 | 6 | 1 | 1 | 3 | 1 | 4 | · | 6 |
+| **8** | 6 | 2 | 3 | 1 | · | 1 | 1 | 3 | 1 | 1 | 2 |
 | **9** | 6 | 8 | 3 | 4 | · | · | · | 3 | 3 | · | · |
-| **IV** | 8 | 2 | 5 | 3 | · | · | · | 1 | · | 3 | · |
-| **V** | 9 | 3 | · | · | 1 | · | · | 2 | · | 2 | 1 |
+| **-** | 9 | 3 | · | · | 1 | · | · | 2 | · | 1 | 2 |
+| **IV** | 8 | 2 | 5 | 3 | · | · | · | 1 | · | · | 3 |
 
 ## Per publication
+
+### `drugflow` — §-, 2025
+
+*Multi-domain Distribution Learning for De Novo Drug Design* · `10.48550/arXiv.2508.17815`
+
+- **Cites (4):** `posebusters` (6), `alphafold3` (2), `alphafold2`, `frameflow`
+- **Cited by (1):** `flowr` (3)
+
+### `flowr` — §-, 2026
+
+*FLOWR: flow matching for structure-aware de novo, interaction- and fragment-based ligand generation* · `10.1038/s43588-026-00998-8`
+
+- **Cites (5):** `posebusters` (9), `drugflow` (3), `alphafold3`, `alphafold2`, `rosettafold`
+- **Cited by (0):** —
+
+### `moppit` — §-, 2024
+
+*moPPIt: De Novo Generation of Motif-Specific and Functionally Active Peptide Binders via Discrete Flow Matching* · `10.1101/2024.07.31.606098`
+
+- **Cites (6):** `esm2` (7), `alphafold2` (5), `rfdiffusion` (4), `alphafold_multimer` (2), `alphafold3`, `esm3`
+- **Cited by (0):** —
+
+### `protflow` — §-, 2026
+
+*ProtFlow: Flow Matching-based Protein Sequence Design with Comprehensive Protein Semantic Distribution Learning and High-quality Generation* · `10.64898/2026.02.14.705870`
+
+- **Cites (1):** `alphafold2`
+- **Cited by (0):** —
+
+### `saprot` — §-, 2023
+
+*SaProt: Protein Language Modeling with Structure-aware Vocabulary* · `10.1101/2023.10.01.560349`
+
+- **Cites (2):** `proteinmpnn` (2), `alphafold2`
+- **Cited by (1):** `esm3` (2)
 
 ### `alphafold2` — §1, 2021
 
@@ -413,38 +448,3 @@ defined in two sections is counted under the first.
 
 - **Cites (5):** `boltz1` (54), `chai1` (50), `posebusters` (13), `alphafold3` (7), `alphafold_multimer`
 - **Cited by (4):** `opendde` (11), `protenix_v2` (9), `protenix_v1` (5), `gauss_seidel_projection` (4)
-
-### `drugflow` — §V, 2025
-
-*Multi-domain Distribution Learning for De Novo Drug Design* · `10.48550/arXiv.2508.17815`
-
-- **Cites (4):** `posebusters` (6), `alphafold3` (2), `alphafold2`, `frameflow`
-- **Cited by (1):** `flowr` (3)
-
-### `flowr` — §V, 2026
-
-*FLOWR: flow matching for structure-aware de novo, interaction- and fragment-based ligand generation* · `10.1038/s43588-026-00998-8`
-
-- **Cites (5):** `posebusters` (9), `drugflow` (3), `alphafold3`, `alphafold2`, `rosettafold`
-- **Cited by (0):** —
-
-### `moppit` — §V, 2024
-
-*moPPIt: De Novo Generation of Motif-Specific and Functionally Active Peptide Binders via Discrete Flow Matching* · `10.1101/2024.07.31.606098`
-
-- **Cites (6):** `esm2` (7), `alphafold2` (5), `rfdiffusion` (4), `alphafold_multimer` (2), `alphafold3`, `esm3`
-- **Cited by (0):** —
-
-### `protflow` — §V, 2026
-
-*ProtFlow: Flow Matching-based Protein Sequence Design with Comprehensive Protein Semantic Distribution Learning and High-quality Generation* · `10.64898/2026.02.14.705870`
-
-- **Cites (1):** `alphafold2`
-- **Cited by (0):** —
-
-### `saprot` — §V, 2023
-
-*SaProt: Protein Language Modeling with Structure-aware Vocabulary* · `10.1101/2023.10.01.560349`
-
-- **Cites (2):** `proteinmpnn` (2), `alphafold2`
-- **Cited by (1):** `esm3` (2)

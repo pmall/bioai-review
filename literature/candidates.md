@@ -1,23 +1,30 @@
-# Candidates — check before adding
+# Candidates and exclusions — the decision log
 
-Works surfaced while reading the corpus that **might** belong to the review, held
-here so they are neither lost nor silently adopted.
+Everything the review considered and did not take. `literature/map.md` holds what
+is in; this file holds what is out, and why, so no decision is re-litigated.
 
-**Nothing here is part of the review.** None of it is in `literature/refs.bib` or
-`literature/corpus/`, and no claim in `literature/map.md` depends on any of it.
-This file exists precisely so the map's invariant holds: every publication named
-in the map resolves to a `refs.bib` entry, so undecided works must live outside it.
+**Nothing here is part of the review.** No section of the map is built on any of
+it, and nothing here is drafted. Two states:
 
-Each entry below is **DOI-verified** — the identifier resolves and its metadata
-matches the description — but **the paper has not been read**. Everything stated
-is from the citing paper or the abstract, not from the source itself.
+- **Undecided** — surfaced while reading the corpus, not yet judged. Not in
+  `refs.bib` and not in `corpus/`.
+- **Excluded** — retrieved, parsed and then judged out of scope. These *stay* in
+  `refs.bib` and `corpus/`: the catalog records what was obtained, the map records
+  what is in scope. An excluded work can still be quoted in the review — the
+  exclusion is from the argument's structure, not from the bibliography.
 
-**To accept one:** read it, write it into its section in `literature/map.md`,
-then run the `map-to-bib` skill. Delete it from this file.
-**To reject one:** move it to Part V of the map (*examined and excluded*) with a
-stated reason, so the decision is recorded rather than re-litigated later.
+Undecided entries are **DOI-verified** — the identifier resolves and its metadata
+matches the description — but **the paper has not been read**. Everything stated in
+that part is from the citing paper or the abstract, not from the source itself.
+Excluded entries have been read.
+
+**To accept an undecided work:** read it, write it into its section in
+`literature/map.md`, then run the `map-to-bib` skill. Delete it from this file.
+**To reject one:** move it down to *Excluded* with a stated reason.
 
 ---
+
+# UNDECIDED
 
 ## mBER
 
@@ -116,3 +123,44 @@ stated reason, so the decision is recorded rather than re-litigated later.
   own entry, belongs in Part IV with the other instruments, or stays out with the
   filter described generically as it is now.
 - **Surfaced from:** RFpeptides (`rfpeptides`), ref 11.
+
+---
+
+# EXCLUDED
+
+Retrieved, parsed, and judged out of scope. Recorded rather than deleted: an
+exclusion with a stated reason is part of the review's method, and keeping them
+prevents re-litigating the same decision later. All remain in `refs.bib` and
+`literature/corpus/`.
+
+**Scope rule applied:** in scope = generates a **protein or peptide binder
+conditioned on a target**, or predicts the structure such a system designs against.
+Out of scope = a different modality (small molecules), or sequence generation with
+no target conditioning.
+
+* **DrugFlow** — `drugflow` · `10.48550/arXiv.2508.17815` · and **FLOWR** —
+  `flowr` · `10.1038/s43588-026-00998-8` — *excluded: wrong modality.* Both are
+  pocket-conditioned **small-molecule** generators, producing 3D atom types,
+  coordinates and bond topology for a ligand. Structure-based drug design rather
+  than binder design; the overlap is the flow-matching machinery, not the
+  problem. Both are quoted in Beat 1 for their discrete/continuous hybrid
+  schemes — the evidence for the differentiability asymmetry.
+* **ProtFlow** — `protflow` · `10.64898/2026.02.14.705870` — *excluded: not
+  binder design.* Rectified flow matching in sequence space for general protein
+  engineering; learns the global semantic distribution of protein space. The
+  words "binder" and "binding" do not appear anywhere in the paper, and there is
+  no target conditioning.
+* **moPPIt** — `moppit` · `10.1101/2024.07.31.606098` — *excluded: no lineage.* A
+  genetic algorithm iterating a pool from the PepMLM peptide language model,
+  scored by BindEvaluator (an ESM-2 binding-site predictor) plus perplexity. No
+  diffusion, no flow matching, no structure input at all; AlphaFold2-Multimer
+  appears only as retrospective validation. Target-conditioned, so it passes the
+  scope rule, but it shares no machinery with anything else here and is cited by
+  no other corpus paper.
+  *Recorded error, do not reintroduce:* an earlier version of this map described
+  moPPIt as discrete flow matching. That was wrong.
+* **SaProt** — `saprot` · `10.1101/2023.10.01.560349` — *excluded: neither half of
+  the review.* A structure-aware protein language model (Foldseek 3Di alphabet,
+  441 tokens) with no folding head and no generative binder capability. It
+  neither predicts 3D structure nor designs binders, and belongs to no lineage
+  tracked here. Cited by one corpus paper.
