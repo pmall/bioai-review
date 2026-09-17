@@ -37,12 +37,12 @@
 >
 > **One unit per draft.** After the layout block, the file is a flat sequence of
 > the review's units in the order they render — the introduction, the metrics
-> primer, *From prediction to design*, the nine sections, the gaps unit, the
-> instruments, the two tables, the conclusion. Each heading below is one draft
-> unit in `literature/writing-plan.md`, so there is no second organization to
-> reconcile there either. The layout block that opens the file is the only thing
-> never drafted on its own: the section order, and the rule that lineages are
-> not split by disclosure status.
+> primer, the nine sections, the gaps unit, the instruments, the two tables, the
+> conclusion. Each heading below is one draft unit in
+> `literature/writing-plan.md`, so there is no second organization to reconcile
+> there either. The layout block that opens the file is the only thing never
+> drafted on its own: the section order, and the rule that lineages are not
+> split by disclosure status.
 >
 > **Everything the review left out is in `literature/candidates.md`** —
 > undecided works and examined-and-excluded ones, each with its reason. None of
@@ -116,10 +116,11 @@ ______________________________________________________________________
 
 # The introduction
 
-What the introduction establishes: the problem this review is about, what is in
-and out of scope, and the limit on what a review of this literature can
-establish. The apparatus the nine sections are read through is not here — it is
-*From prediction to design*, after the metrics primer.
+What the introduction establishes, in five beats: the problem this review is
+about and what is in and out of scope; the apparatus §1–§9 are read through —
+how a co-folder is built, why that same machine is also a generator, and how
+tightly a generator can be bound to the predictor that grades it; and last, the
+limit on what a review of this literature can establish.
 
 ## Scope — proteins and peptides, not small molecules
 
@@ -160,94 +161,6 @@ none (`drugflow`, `flowr` — both excluded by modality, cited here for the
 contrast). Whether a gradient loop is reachable for small molecules at all is
 open, and this review does not settle it; the asymmetry is real, and it is why
 the two halves of binder discovery are not one field.
-
-## The disclosure limit
-
-The limit of what a literature review can establish. The strongest claimed
-results increasingly come from systems that publish benchmarks and withhold
-mechanisms — AlphaProteo, Latent-X, Chai-2's generator, and IsoDDE, which has no
-publication at all and is visible only as the top point on a competitor's
-scaling curve.
-
-**The sharpest version of this is not IsoDDE — it is Boltz.** The lineage enters
-the review as the open answer to AlphaFold3's closed weights and exits with its
-own frontier closed: Boltz-1, Boltz-2 and BoltzGen stay MIT, while BoltzProt-1
-ships API-only with no weights. It is the one lineage where the review holds the
-before _and_ the after, both with papers.
-
-The symmetry that gives §9 its force: **AlphaFold3 is a Google DeepMind _and
-Isomorphic Labs_ paper**, so the review opens on the published half of that
-organisation's work and closes on the half that stopped publishing.
-
-## Two caveats the introduction plants
-
-1. **The numbers are not as comparable as they look** — different benchmarks,
-   cutoffs and target sets, each with a documented defect, gathered under the
-   instruments and Tables A and B.
-1. **Wet-lab hit rates are self-reported and target-dependent.** Every campaign
-   chose its own targets, and the papers that disclose most about their methods
-   are not the ones reporting the highest numbers — itself a finding, and the
-   disclosure beat's justification.
-
-______________________________________________________________________
-
-# The metrics primer
-
-First of the three benchmarking units — with the instruments and the two tables,
-which render at the close. It renders here instead because §1–§9 quote pAE,
-pLDDT, ipTM and PB-valid from the start, and a reader meeting those units for
-the first time in a closing part has been reading numbers on trust. Only its
-presentation moves; it belongs with the instruments.
-
-**The problem it solves.** The coupling beat quotes the canonical success
-criterion in these units, and every section afterwards reports numbers in them.
-One place defines them, and this is it. Not inside a beat: a definitions block
-dropped into the anatomy beat or the coupling beat would stall an argument.
-
-**Do not write it as a glossary.** An alphabetical list of metrics is dead
-weight the reader skips. Organize it around the one distinction that does
-analytical work in this review — **the two families of metric, and which family
-the design half actually runs on**:
-
-1. **Ground-truth metrics** — the prediction is compared against a solved
-   structure. This family answers _was it right_, requires an experimental
-   answer to exist, and is therefore available only for prediction benchmarking
-   (Table A below).
-1. **Confidence metrics** — the model's own estimate of how much to trust
-   itself. No ground truth needed. This family answers _does the model believe
-   it_.
-
-**The point the primer exists to make:** every Level-1 system in this review
-filters on family 2. A designed binder has no solved structure by definition, so
-the critic can only ever be a self-estimate — the generator is graded by the
-predictor's opinion of its own output. That is what makes four findings in the
-benchmarking units matter rather than being technicalities: PoseBusters'
-incompleteness, AlphaFold-Multimer's ipTM being the metric everyone inherited
-(§1), the two measurements of what that self-estimate is worth, reconciled just
-below, and BoltzProt-1's BoltzPPI (§3) replacing a confidence head with a critic
-trained against experimental outcomes — the first departure from family 2 in the
-corpus. The primer is those two families and that consequence; individual
-metrics appear only as far as they support it.
-
-**The two measurements, and the distinction they force.** The corpus tests
-family 2 twice and the results look opposed until the question is split. Overath
-(the instruments) and Germinal both find confidence scores failing on individual
-designs — nonbinders clearing the threshold alongside binders. mBER (§6) finds
-them working at million-design scale, hit rates climbing with ipTM. Both hold:
-at population scale a confidence score **enriches**; on any individual design it
-does not **discriminate**. That is the primer's sharpest consequence, because
-**the identity beat's collapsing budget is precisely the move out of the regime
-where enrichment suffices and into the one where it does not.** A field testing
-twenty designs per target needs the property its metrics have not been shown to
-have.
-
-______________________________________________________________________
-
-# From prediction to design
-
-The apparatus §1–§9 are read through, in three beats: how a co-folder is built,
-why that same machine is also a generator, and how tightly a generator can be
-bound to the predictor that grades it.
 
 ## The founding bet, and how a co-folder is built
 
@@ -392,8 +305,8 @@ buys.
 
 Level 1 is still the field's default, and it is the origin of the standard
 success criterion — AlphaProteo's _"interchain AF2 pAE < 10, binder-aligned
-binder RMSD < 1 Å, pLDDT > 80"_ — stated in the units the metrics primer
-defines.
+binder RMSD < 1 Å, pLDDT > 80"_ — quoted whole and left unpacked here; the
+metrics primer, which follows the introduction, defines its units.
 
 **Why MSA emancipation was the precondition for Level 2.** This is the one
 genuinely non-obvious claim in this unit. **An MSA is a database lookup on a
@@ -427,6 +340,127 @@ agreement with a single predictor as the failure mode itself, mixing three
 predictor families across the loop and holding one of them out as an independent
 check — and it is the one that moves the response out of the filter and into the
 optimizer.
+
+## The disclosure limit
+
+The limit of what a literature review can establish. The strongest claimed
+results increasingly come from systems that publish benchmarks and withhold
+mechanisms — AlphaProteo, Latent-X, Chai-2's generator, and IsoDDE, which has no
+publication at all and is visible only as the top point on a competitor's
+scaling curve.
+
+**The sharpest version of this is not IsoDDE — it is Boltz.** The lineage enters
+the review as the open answer to AlphaFold3's closed weights and exits with its
+own frontier closed: Boltz-1, Boltz-2 and BoltzGen stay MIT, while BoltzProt-1
+ships API-only with no weights. It is the one lineage where the review holds the
+before _and_ the after, both with papers.
+
+The symmetry that gives §9 its force: **AlphaFold3 is a Google DeepMind _and
+Isomorphic Labs_ paper**, so the review opens on the published half of that
+organisation's work and closes on the half that stopped publishing.
+
+**The published results do not make up for the withheld methods, because the
+same labs supply them.** Every design campaign chose its own targets, assay and
+hit definition, so a hit rate is self-reported by the party whose method cannot
+be inspected. And the correlation runs backwards: the papers disclosing most are
+not the ones reporting the highest numbers, so the most impressive result is
+systematically the least checkable. That is this beat's finding rather than a
+warning attached to it, and it is why §9 sits outside the argument instead of
+inside it — the review reads the closed systems as evidence about the field's
+evidence, not as its strongest results.
+
+______________________________________________________________________
+
+# The metrics primer
+
+First of the three benchmarking units; the instruments and the two tables close
+the review. It renders between the introduction and §1 because §1–§9 quote pAE,
+pLDDT, ipTM and PB-valid from the start, and because the coupling beat has
+already raised the question it answers.
+
+**Two families of metric, and which one the design half runs on.**
+
+1. **Ground-truth metrics** — compared against a solved structure. Answers _was
+   it right_, needs an experimental answer to exist, so it serves prediction
+   benchmarking only (Table A).
+1. **Confidence metrics** — the model's own estimate of how much to trust
+   itself. No ground truth needed. Answers _does the model believe it_.
+
+**The point the unit exists to make:** every Level-1 system in this review
+filters on family 2. A designed binder has no solved structure by definition, so
+the critic can only be a self-estimate — the generator is graded by the
+predictor's opinion of its own output. That is what makes four findings in the
+benchmarking units arguments rather than technicalities: PoseBusters'
+incompleteness, AlphaFold-Multimer's ipTM being the metric everyone inherited
+(§1), the two measurements of what a self-estimate is worth (below), and
+BoltzProt-1's BoltzPPI (§3) replacing a confidence head with a critic trained on
+experimental outcomes — the corpus's first departure from family 2.
+
+**The two families hold the same quantities, measured once and guessed once.**
+pLDDT is a guess at lDDT, pTM at TM-score, PAE at how far off a residue pair
+will land, and AlphaFold2 (§1) publishes the fit for each pair. Most of the
+roster collapses into those three pairs, which is what makes the units with no
+twin conspicuous.
+
+**The roster** — every unit the review quotes, and where its definition comes
+from. The review's working set, not the field's inventory.
+
+| Unit           | Family                  | What it measures                                                                                                                | Definition from                                                          |
+| -------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| **LDDT**       | ground truth            | local interatomic distances, no superposition, so a correct domain in the wrong pose still scores                               | FoldBench (the instruments), also its pocket and protein-ligand variants |
+| **TM-score**   | ground truth            | global fold similarity, length-normalized                                                                                       | AlphaFold2 (§1)                                                          |
+| **DockQ**      | ground truth            | interface quality as one 0–1 number, with a conventional success threshold well below 1                                         | FoldBench (the instruments), which states the threshold                  |
+| **RMSD**       | **either — see below**  | Å deviation between two sets of atom positions; which two sets is the whole question                                            | FoldBench (the instruments) predicting, AlphaProteo (§9) designing       |
+| **PB-valid**   | ground truth, pass/fail | physical plausibility, not accuracy: chemical-validity, geometry, energy and clash tests, all to be passed                      | PoseBusters (the instruments)                                            |
+| **pLDDT**      | confidence              | per-residue guess at its own lDDT                                                                                               | AlphaFold2 (§1)                                                          |
+| **pTM**        | confidence              | guess at its own TM-score, whole prediction                                                                                     | AlphaFold2 (§1)                                                          |
+| **PAE**        | confidence              | predicted alignment error in Å per residue pair — a matrix, not a score, which the corpus reduces in mutually incompatible ways | AlphaFold-Multimer (§1); default AF2/AF3 output                          |
+| **pAE / iPAE** | confidence              | PAE over interchain pairs only: an Å error bar on interface geometry, and the unit of the canonical criterion's `< 10`          | AlphaProteo (§9) for the reduction, AlphaFold-Multimer (§1) for PAE      |
+| **ipTM**       | confidence              | pTM over interchain pairs only, scoring the interface rather than the chains                                                    | AlphaFold-Multimer (§1)                                                  |
+| **ipSAE**      | confidence              | ipTM over only the well-predicted interchain pairs, removing ipTM's dependence on how the input was trimmed                     | ipSAE (the instruments)                                                  |
+
+Three consequences:
+
+- **DockQ and PB-valid have no family-2 twin** — nothing in the corpus outputs a
+  predicted DockQ or a predicted PB-valid, so interface quality and physical
+  plausibility cannot be design filters at all.
+- **"AF2 confidence" is often none of these on its own** — AlphaFold-Multimer
+  ranks on a weighted composite of ipTM and pTM, and papers quoting "AF2
+  confidence" may mean the composite, bare ipTM, or a PAE reduction of their
+  own.
+- **RMSD's family depends on what it was compared against.** Against a solved
+  structure it is family 1, as in AlphaProteo's cryo-EM validation. Inside a
+  design pipeline it is self-consistency RMSD — designed backbone against a
+  re-prediction of the designed sequence, two computed structures and no
+  experiment — family 2 under family 1's name, and it is the `binder RMSD < 1 Å`
+  of the canonical criterion. _Carries:_ refolding statistics are not evidence
+  of binding, and RFOptimization (§6) cannot be a Table B row.
+
+Three things the reader leaves with, a sentence each:
+
+- **A shared unit is not a shared measurement.** Two ipTMs from different papers
+  were measured on different benchmarks, cutoffs and target sets, each
+  instrument carrying its own documented defect — stated once under the
+  instruments, laid out in Tables A and B.
+- **Design's ground truth is not a metric** but the wet-lab assay, so every
+  Table B hit rate counts assay outcomes rather than scores. _Collision:_ the
+  incomparability of those assays is Table B's.
+- **The self-estimates were calibrated on one population and are used on
+  another.** AlphaFold2 fitted them on solved structures, natural proteins in
+  the PDB; design applies them to molecules with no solved structure and, as
+  ColabFold (the instruments) noted in 2022, no known homologs. _Collision:_
+  off-distribution behaviour is the coupling beat's.
+
+**The two measurements, and the distinction they force.** The corpus tests
+family 2 twice and the results look opposed until the question is split. Overath
+(the instruments) and Germinal both find confidence scores failing on individual
+designs — nonbinders clearing the threshold alongside binders. mBER (§6) finds
+them working at million-design scale, hit rates climbing with ipTM. Both hold:
+at population scale a confidence score **enriches**; on any individual design it
+does not **discriminate**. That is the sharpest consequence, because **the
+identity beat's collapsing budget is precisely the move out of the regime where
+enrichment suffices and into the one where it does not.** A field testing twenty
+designs per target needs the property its metrics have not been shown to have.
 
 ______________________________________________________________________
 
@@ -752,6 +786,10 @@ alternative — FrameFlow explicitly recasts FrameDiff as SE(3) flow matching an
 reports 2× designability at 5× fewer sampling steps. All five generate protein
 or peptide binders conditioned on a target; flow-matching papers that generate
 small molecules or unconditioned sequences are excluded (`candidates.md`).
+
+_Not a lineage:_ the five cite RFdiffusion far more than they cite each other,
+so they are five independent responses to one problem, and the section is
+organized by what each does differently rather than chronologically.
 
 _Why it comes after the diffusion sections, not before:_ flow matching only
 reads as a successor once the reader has seen diffusion doing real work, and

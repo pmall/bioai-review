@@ -86,21 +86,21 @@ the two disagree, tier wins.
 Two layers: **drafts**, one per map heading, and the **parts** they collapse
 into. A draft is written from one heading and the corpus behind it; a part is
 the merge, and merging writes seams and one voice, never a rewrite of a draft.
-The introduction and *From prediction to design* are written a beat at a time,
-because the beats have different sources and merging is where they are made to
-read as one. The map's layout block is the one heading with no draft. The three
-benchmarking units are three drafts rather than one because they have different
-sources, timing and positions in the final text. Excluded works are not a draft
-unit — they are a record in `candidates.md`, not a part of the review.
+The introduction is written a beat at a time — five of them — because the beats
+have different sources and merging is where they are made to read as one. The
+map's layout block is the one heading with no draft. The three benchmarking
+units are three drafts rather than one because they have different sources,
+timing and positions in the final text. Excluded works are not a draft unit —
+they are a record in `candidates.md`, not a part of the review.
 
 | #   | Draft                                        | File                           | Source                                                           |
 | --- | -------------------------------------------- | ------------------------------ | ---------------------------------------------------------------- |
 | 1   | Scope                                        | `drafts/00-scope.md`           | The scope beat                                                   |
-| 2   | The disclosure limit                         | `drafts/01-frontier.md`        | The disclosure beat                                              |
-| 3   | Metrics primer                               | `drafts/02-metrics-primer.md`  | The metrics primer                                               |
-| 4   | The founding bet                             | `drafts/03-anatomy.md`         | The anatomy beat                                                 |
-| 5   | Prediction and generation are one machine    | `drafts/04-identity.md`        | The identity beat                                                |
-| 6   | Generator–critic coupling                    | `drafts/05-coupling.md`        | The coupling beat                                                |
+| 2   | The founding bet                             | `drafts/01-anatomy.md`         | The anatomy beat                                                 |
+| 3   | Prediction and generation are one machine    | `drafts/02-identity.md`        | The identity beat                                                |
+| 4   | Generator–critic coupling                    | `drafts/03-coupling.md`        | The coupling beat                                                |
+| 5   | The disclosure limit                         | `drafts/04-frontier.md`        | The disclosure beat                                              |
+| 6   | Metrics primer                               | `drafts/05-metrics-primer.md`  | The metrics primer                                               |
 | 7   | §1 AlphaFold and the open co-folding cluster | `drafts/06-alphafold.md`       | §1                                                               |
 | 8   | §2 RoseTTAFold → RFdiffusion                 | `drafts/07-rosettafold.md`     | §2                                                               |
 | 9   | §3 Boltz                                     | `drafts/08-boltz.md`           | §3                                                               |
@@ -117,14 +117,13 @@ unit — they are a record in `candidates.md`, not a part of the review.
 
 The parts they collapse into:
 
-| Part                      | File                                   | Merges                                                |
-| ------------------------- | -------------------------------------- | ----------------------------------------------------- |
-| Introduction              | `drafts/parts/intro.md`                | drafts 1–2, plus the layout block's roadmap paragraph |
-| From prediction to design | `drafts/parts/prediction-to-design.md` | drafts 4–6                                            |
-| The nine sections         | `drafts/parts/sections.md`             | drafts 7–15                                           |
+| Part              | File                       | Merges                                                |
+| ----------------- | -------------------------- | ----------------------------------------------------- |
+| Introduction      | `drafts/parts/intro.md`    | drafts 1–5, plus the layout block's roadmap paragraph |
+| The nine sections | `drafts/parts/sections.md` | drafts 7–15                                           |
 
-Drafts 3 and 16–19 stand on their own; the metrics primer renders between the
-two front-matter parts, and the rest close the review.
+Drafts 6 and 16–19 stand on their own; the metrics primer renders between the
+introduction and §1, and the rest close the review.
 
 **The layout block does not become a draft.** It turns into two things: a short
 roadmap paragraph closing the introduction, and the seam sentences between
@@ -145,38 +144,16 @@ sections establish and one is Tables A and B's.
 
 ## Relative weight
 
-**How much of the review each draft should occupy relative to its neighbours — a
-proportion, never a target to hit.** The **column that matters is the backbone
-count**, because that is what the share is derived from.
+**Weight follows backbone count, and the count is in the map.** No percentages:
+a share to one decimal place is precision the review does not have, and a table
+of them gets maintained instead of the argument.
 
-_Weights are re-derived when the argument moves, never when a paper arrives._
-
-| Draft                     | Backbones | Share | Why that weight                                                                                                                                    |
-| ------------------------- | --------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Introduction              | —         | 5%    | the problem, the scope argument, the disclosure limit, the roadmap                                                                                 |
-| Metrics primer            | —         | 4%    | two families of metric, one consequence; tight by design                                                                                           |
-| From prediction to design | —         | 7.5%  | the two frames the whole review reads through — the co-folder anatomy and the coupling taxonomy — plus the designs-tested spine                    |
-| §1 AlphaFold              | 3         | 10%   | the three papers everything else is defined against, and the MSA bet the review's longest thread starts from                                       |
-| §2 RoseTTAFold            | 5         | 12.5% | the most backbones of any section — the second origin, the generative turn, the antibody and macrocycle arms, and ProteinMPNN for the whole review |
-| §3 Boltz                  | 3         | 9.5%  | the open AF3-class model, the cleanest Level 0, and the trained-critic result                                                                      |
-| §4 Chai                   | 1         | 4.5%  | the corpus's strongest antibody result from an undisclosed generator — short, and that is the finding                                              |
-| §5 Flow matching          | 1         | 3%    | one argument with four examples, not five papers taking turns; its weight sits in the coupling beat's step-count passage                           |
-| §6 Inversion              | 2         | 8%    | the five-step arc plus BindCraft and Germinal; the other four systems are evidence, not subjects                                                   |
-| §7 Protenix               | 1         | 6.5%  | the platform argument plus the filter-ensembling finding                                                                                           |
-| §8 ESM                    | 3         | 9%    | the climax: the MSA throughline lands and the coupling axis ends                                                                                   |
-| §9 Closed frontier        | 1         | 4.5%  | coda, restrained on purpose — restraint is the argument                                                                                            |
-| Gaps                      | —         | 4%    | four stated limits, each pointing at the entry that evidences it; no speculation                                                                   |
-| Instruments               | 1         | 5%    | four instruments; three prediction-side defects plus Overath's own, stated once                                                                    |
-| Table commentary          | —         | 3%    | display items; only the asymmetry argument is main text                                                                                            |
-| Conclusion                | —         | 4%    | written from the finished parts                                                                                                                    |
-| **Total**                 | **21**    | 100%  |                                                                                                                                                    |
-
-**The check this table exists for:** §1 outweighs §6, §7 and §9; §2 outweighs
-everything. If a draft comes back the other way round, the recency inversion has
-happened and the fix is to cut the recent material, not to argue for it.
-
-§1–§9 come to about two thirds of the review, which is right for a review whose
-argument is the section order.
+**The one check worth making.** §2 is the heaviest section and §1 next, because
+they carry the most backbones; §6, §7 and §9 are the lightest. If a draft comes
+back the other way round, the recency inversion has happened, and the fix is to
+cut the recent material rather than argue for it. §1–§9 should come to roughly
+two thirds of the review, which is right for a review whose argument is the
+section order.
 
 ## What a section is
 
@@ -225,41 +202,16 @@ disclosure argument to §9.
 
 ## Using xrefs
 
-`literature/xrefs.md` is not a sizing instrument. Its own header says in-degree
-is confounded by publication age, so §6, §7 and §9 score low for being recent,
-not for being minor. Three uses that hold:
+`literature/xrefs.md` answers one question: which paper to read when writing
+about another. BoltzProt-1 names BoltzGen 57 times — that is §3's central
+comparison, and that passage is where the draft's material is. OpenGerminal
+names Germinal 45 times, §6's. Latent-X1 names RFdiffusion 50 times, what §9
+measures itself against.
 
-- **It tells you the shape a section must take.** §2 has 34 citations internal
-  to itself: a genuine lineage, written chronologically. §5 has 4 internal edges
-  but 14 pointing at §2 — those five flow-matching papers are descendants of
-  RFdiffusion, not of each other. §5 therefore cannot be written as a lineage;
-  it is five independent responses to one problem, organized by what they do
-  differently. The map suspected this; xrefs establishes it.
-- **It gives the drafting order.** §7 cites §3 nine times and §4 six times, so
-  §3 and §4 must exist first. Worked through the between-sections matrix, map
-  order already is dependency order.
-- **Prose-mention counts point at the passages to read.** BoltzProt-1 names
-  BoltzGen 57 times — that is §3's central comparison. OpenGerminal names
-  Germinal 45 times — §6's. Latent-X1 names RFdiffusion 50 times — what §9
-  measures itself against. Those counts say where to start reading in the
-  corpus. A high count means the papers argue with each other; it never means
-  agreement or benchmarking, which only reading the passage settles.
-
-Regenerate with `uv run scripts/build_xrefs.py` before a drafting pass, so the
-shape and order above are computed from the current corpus.
-
-## Drafting order
-
-1. **Metrics primer** — before §1, which quotes pAE and ipTM immediately.
-1. **§1 → §9 in map order** — already dependency order, per the matrix above.
-   **Budget the time by backbone count:** §2 carries five and is the longest to
-   draft, §1, §3 and §8 three each, and §4, §5, §7 and §9 one apiece.
-1. **The five beats** — after §1–§9, when the numbers they promise are known to
-   be real and they can point at sections that exist.
-1. **Instruments, then Tables A and B** — the tables gather the sections'
-   numbers and cannot precede it.
-1. **The gaps unit**, which needs §1–§9 and both tables to exist first.
-1. **Conclusion.**
+A high count means the papers argue with each other; it never means agreement or
+benchmarking, which only reading the passage settles. It is not a sizing
+instrument, and never sets a tier. Regenerate with
+`uv run scripts/build_xrefs.py` before a drafting pass.
 
 ## Assembly
 
@@ -270,29 +222,29 @@ ordered by generative formalism, §6–8 by degree of integration, §9 outside t
 argument. Assembling them means writing the two block seams and smoothing the
 handoffs — not re-editing section bodies.
 
-**The review.** Front matter (introduction, the metrics primer, then *From
-prediction to design*), the nine sections, the gaps unit, the instruments and
-tables, the conclusion. Scope is argued in the scope beat; the exclusion log
-stays in `candidates.md` and is never drafted.
+**The review.** The introduction, then the metrics primer, the nine sections,
+the gaps unit, the instruments and tables, the conclusion. Scope is argued in
+the scope beat; the exclusion log stays in `candidates.md` and is never drafted.
 
 ## Placement directives
 
 Decisions about _where_ material lands and _how_ it must be handled, so the map
 stays content.
 
-| Directive                                                                                                                   | Why                                                                                                                                             |
-| --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| The metrics primer renders between the introduction and *From prediction to design*, though it belongs with the instruments | the coupling beat and §§1–9 quote pAE, pLDDT, ipTM and PB-valid from the start                                                                  |
-| The primer is written around the two families of metric, never as an alphabetical glossary                                  | a metric list is dead weight the reader skips; the families do the analytical work                                                              |
-| The Latent-X1 / RFpeptides head-to-head lands under Table B, not §9                                                         | so it reads as evidence about measurement, not a point scored for Latent Labs                                                                   |
-| The map's layout block never becomes text                                                                                   | it turns into the intro's roadmap paragraph and the seams between sections                                                                      |
-| The gaps unit admits only limits a cataloged publication states                                                             | otherwise it becomes a wish list, which is the genre's standard filler                                                                          |
-| Developability and immunogenicity are the gaps unit's, not §9's                                                             | Latent-X2 is the evidence but the point is about the field, not about Latent Labs                                                               |
-| §2 opens by separating RF3 (predictor) from RFdiffusion3 (generator)                                                        | the names collide; the lineage's two tracks are unreadable otherwise                                                                            |
-| AtomWorks gets one line, never a passage                                                                                    | it is training infrastructure, not a model or an instrument; its role is that RF3 and RFdiffusion3 both come out of it                          |
-| Level 2 is introduced as the _oldest_ idea in the review, not the newest                                                    | the §6 arc depends on the reader knowing it was tried and abandoned first                                                                       |
-| Table B is sorted by designs-tested, never by hit rate                                                                      | the denominator is the identity beat's argument; hit-rate order makes it a leaderboard                                                          |
-| Table B's hit-definition column is mandatory                                                                                | BoltzProt-1's screening-hit / confirmed-binder split means the percentages measure different events                                             |
-| No cell enters Table A or B without a stated benchmark, cutoff and measurer                                                 | the provenance columns are the defence against a leaderboard reading                                                                            |
-| Benchmark caveats are stated once with the instruments and pointed at, never relitigated per section                        | three documented defects, one per prediction instrument, plus Overath's own on the design side                                                  |
-| The physical-validity thread is stated once with the instruments                                                            | four groups assert four answers and only one pair has been measured against the other; per-section retelling implies more agreement than exists |
+| Directive                                                                                            | Why                                                                                                                                             |
+| ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| The metrics primer renders between the introduction and §1, though it belongs with the instruments   | §§1–9 quote pAE, pLDDT, ipTM and PB-valid from the start, and the coupling beat has already raised the question the primer answers              |
+| The coupling beat quotes the success criterion without unpacking its units                           | the primer owns the definitions and follows shortly; unpacking them mid-beat stalls the argument                                                |
+| The primer is written around the two families of metric, never as an alphabetical glossary           | a metric list is dead weight the reader skips; the families do the analytical work                                                              |
+| The Latent-X1 / RFpeptides head-to-head lands under Table B, not §9                                  | so it reads as evidence about measurement, not a point scored for Latent Labs                                                                   |
+| The map's layout block never becomes text                                                            | it turns into the intro's roadmap paragraph and the seams between sections                                                                      |
+| The gaps unit admits only limits a cataloged publication states                                      | otherwise it becomes a wish list, which is the genre's standard filler                                                                          |
+| Developability and immunogenicity are the gaps unit's, not §9's                                      | Latent-X2 is the evidence but the point is about the field, not about Latent Labs                                                               |
+| §2 opens by separating RF3 (predictor) from RFdiffusion3 (generator)                                 | the names collide; the lineage's two tracks are unreadable otherwise                                                                            |
+| AtomWorks gets one line, never a passage                                                             | it is training infrastructure, not a model or an instrument; its role is that RF3 and RFdiffusion3 both come out of it                          |
+| Level 2 is introduced as the _oldest_ idea in the review, not the newest                             | the §6 arc depends on the reader knowing it was tried and abandoned first                                                                       |
+| Table B is sorted by designs-tested, never by hit rate                                               | the denominator is the identity beat's argument; hit-rate order makes it a leaderboard                                                          |
+| Table B's hit-definition column is mandatory                                                         | BoltzProt-1's screening-hit / confirmed-binder split means the percentages measure different events                                             |
+| No cell enters Table A or B without a stated benchmark, cutoff and measurer                          | the provenance columns are the defence against a leaderboard reading                                                                            |
+| Benchmark caveats are stated once with the instruments and pointed at, never relitigated per section | three documented defects, one per prediction instrument, plus Overath's own on the design side                                                  |
+| The physical-validity thread is stated once with the instruments                                     | four groups assert four answers and only one pair has been measured against the other; per-section retelling implies more agreement than exists |
