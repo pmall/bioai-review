@@ -7,3 +7,9 @@ requires-python = ">=3.14"
 dependencies = [
     "pymupdf4llm>=1.28.2",
 ]
+
+[dependency-groups]
+dev = [
+    "mdformat>=1.0.0",
+    "mdformat-gfm>=1.0.0",
+]
