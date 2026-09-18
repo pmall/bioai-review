@@ -108,7 +108,7 @@ the review.
 | 9   | §3 Boltz                                     | `drafts/08-boltz.md`           | §3                                                      |
 | 10  | §4 Chai                                      | `drafts/09-chai.md`            | §4                                                      |
 | 11  | §5 Flow matching                             | `drafts/10-flow-matching.md`   | §5                                                      |
-| 12  | §6 Inversion as a portable technique         | `drafts/11-inversion.md`       | §6                                                      |
+| 12  | §6 Design by backpropagation                 | `drafts/11-inversion.md`       | §6                                                      |
 | 13  | §7 Protenix                                  | `drafts/12-protenix.md`        | §7                                                      |
 | 14  | §8 ESM                                       | `drafts/13-esm.md`             | §8                                                      |
 | 15  | §9 The closed frontier                       | `drafts/14-closed-frontier.md` | §9                                                      |
@@ -194,10 +194,9 @@ from `literature/corpus/`, not from the map entry.
 lines — owns / references / must not restate — copied from the map, not
 reinvented. The standing assignments: ipTM and pAE definitions to the primer,
 ProteinMPNN to §2, AtomWorks to §2 in one line, the trained-critic result to §3,
-BoltzDesign1's analysis to §6, the groups-versus-architectures qualification to
-§6's step 4, mBER's unchosen-targets argument to the identity beat, the
-physical-validity thread to §7 and all benchmark caveats to Table A, and the
-disclosure argument to §9.
+BoltzDesign1's analysis to §6, mBER's unchosen-targets argument to the identity
+beat, the physical-validity thread to §7 and all benchmark caveats to Table A,
+and the disclosure argument to §9.
 
 ## Using xrefs
 
@@ -241,7 +240,6 @@ stays content.
 | §2 opens by separating RF3 (predictor) from RFdiffusion3 (generator)                                       | the names collide; the lineage's two tracks are unreadable otherwise                                                                            |
 | The ordering of §1–§9 closes the background, not the introduction                                          | it is stated in the coupling levels' vocabulary, which the coupling beat defines a few paragraphs earlier                                       |
 | AtomWorks gets one line, never a passage                                                                   | it is training infrastructure, not a model or an instrument; its role is that RF3 and RFdiffusion3 both come out of it                          |
-| Level 2 is introduced as the _oldest_ idea in the review, not the newest                                   | the §6 arc depends on the reader knowing it was tried and abandoned first                                                                       |
 | Table B is sorted by designs-tested, never by hit rate                                                     | the denominator is the identity beat's argument; hit-rate order makes it a leaderboard                                                          |
 | Table B's hit-definition column is mandatory                                                               | BoltzProt-1's screening-hit / confirmed-binder split means the percentages measure different events                                             |
 | No cell enters Table A or B without a stated benchmark, cutoff and measurer                                | the provenance columns are the defence against a leaderboard reading                                                                            |

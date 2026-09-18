@@ -186,6 +186,17 @@ already cites.
   design overlap is reported qualitatively in a figure, not as the \<10% this
   file previously recorded. _Preprint; re-check for a journal version._
 
+- **AlphaDesign** — `alphadesign` · `10.1038/s44320-025-00119-z` — _excluded:
+  below the weight the review spends a line on._ AF2 confidence scores as a
+  fitness function searched by an evolutionary algorithm, with an autoregressive
+  diffusion model of its own redesigning the surviving sequences. Held a
+  **mention** in §6 until Sep 2026, as the non-gradient version of the same
+  arrangement. _Why it is out:_ the field does not remember it — no system in
+  the corpus builds on it, and §6 is about the gradient, which this replaces
+  with a search. _What it still carries:_ ProteinMPNN's entry (§2) cites it as
+  the corpus's one alternative sequence designer, so it stays in `refs.bib` and
+  the corpus and may still be quoted there.
+
 - **joltz / mosaic** — _no publication, no DOI; not cataloguable_ — _excluded:
   its only claim on the review is a leaderboard score._ `joltz` ports Boltz-1/2
   to JAX and makes them differentiable; `mosaic` (Escalante Bio) optimizes
@@ -195,10 +206,8 @@ already cites.
   descending a Boltz-2 loss directly with no inverse-folding stage, and a
   leaderboard result with no wet-lab outcome is not weight the review should
   spend a line on. _What removing it cost, recorded so it is not rediscovered:_
-  it was the second group inverting Boltz, independent of BoltzDesign1's, and
-  §6's step 4 portability count went from seven groups to six when it left. The
-  architecture half of that claim is untouched — it rests on BoltzDesign1,
-  PXDesign-h (§7) and ESMFold2 (§8), none of them affected. _Reopen when:_ the
+  it was the second group inverting Boltz, independent of BoltzDesign1's — the
+  only loss in §6 of a group, not of an attachment point. _Reopen when:_ the
   Adaptyv Nipah competition is written up, where it is the in-silico entrant
   beside Genie 3's wet-lab one. Cannot enter `refs.bib` in any case, so it comes
   back as a map-only line or not at all.

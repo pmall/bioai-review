@@ -41,6 +41,13 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 
 ## Per publication
 
+### `alphadesign` — §-, 2025
+
+*AlphaDesign: a de novo protein design framework based on AlphaFold* · `10.1038/s44320-025-00119-z`
+
+- **Cites (7):** `tm_score` (24), `rfdiffusion` (19), `proteinmpnn` (17), `colabfold` (2), `alphafold_multimer`, `afcycdesign`, `alphafold2`
+- **Cited by (7):** `proteina_complexa` (15), `afcycdesign`, `bindcraft`, `boltzdesign1`, `germinal`, `mber`, `rfdiffusion`
+
 ### `boltzmol1` — §-, 2026
 
 *BoltzMol-1: Towards Reliable Virtual Screening for Fast and Cost-Effective Hit Discovery* · `10.64898/2026.07.04.736485`
@@ -348,13 +355,6 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 
 - **Cites (8):** `alphafold3` (9), `bindcraft` (6), `rfdiffusion` (6), `proteinmpnn` (4), `boltzgen` (2), `rfantibody`, `alphafold2`, `frameflow`
 - **Cited by (1):** `protenix_v2`
-
-### `alphadesign` — §6, 2025
-
-*AlphaDesign: a de novo protein design framework based on AlphaFold* · `10.1038/s44320-025-00119-z`
-
-- **Cites (7):** `tm_score` (24), `rfdiffusion` (19), `proteinmpnn` (17), `colabfold` (2), `alphafold_multimer`, `afcycdesign`, `alphafold2`
-- **Cited by (7):** `proteina_complexa` (15), `afcycdesign`, `bindcraft`, `boltzdesign1`, `germinal`, `mber`, `rfdiffusion`
 
 ### `bindcraft` — §6, 2025
 
