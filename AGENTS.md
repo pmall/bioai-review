@@ -7,6 +7,10 @@ primary sources into a structured, verifiable corpus. Three things stay in sync
 from all three. The map is the thinking; the catalog and corpus keep the
 thinking honest.
 
+**What the review is about, what it is for, and the test every claim must pass
+are in `GOAL.md`.** Read it before proposing anything that adds, cuts or moves
+material; this file stays about the tooling.
+
 ## Knowledge cutoff
 
 Your training data is already old news to a moving field. Two cases: things you
@@ -103,6 +107,8 @@ of rediscovered each time a section is drafted.
 
 ## Files
 
+- `GOAL.md` — the field, the goal of the review, and the test every claim is
+  weighed against.
 - `literature/map.md` — the living map of the field: the layout of the review,
   its sections in the order they will read, and every publication placed in one
   of them. The default working file and the entry point of the system.
