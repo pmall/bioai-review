@@ -74,78 +74,72 @@ ______________________________________________________________________
 
 # The introduction
 
-One unit, one draft. This is how the review opens: the problem, what changed,
-what the review covers, and how to read the numbers in it. The apparatus §1–§9
-are read through belongs to the background that follows; this unit hands the
-reader the problem and the stake, and names systems without explaining them.
+One unit, one draft. The funnel — from why a binder matters at all down to what
+this review covers. It names systems without explaining them; every mechanism
+belongs to the background that follows.
 
-**The problem is aim, not scale.** Acting on a protein target means having
-another molecule that binds it, and for protein targets that molecule is usually
-itself a protein or a peptide — an antibody, a nanobody, a minibinder, a
-macrocyclic peptide. Finding one has meant letting a library do the searching:
-immunize an animal, or screen 10¹² or more random sequences by display and keep
-whatever sticks. That works, and it is still how most binders are found. What it
-cannot do is aim. A library returns binders to whichever part of the target
-happens to be accessible or immunogenic, and RFantibody states the consequence
-plainly: _"no method currently exists to design novel, epitope-specific
-antibodies entirely in silico"_. The ambition behind everything in this review
-is to replace the library with a design: a binder invented for a site someone
-chose.
+**Binders are how biology is acted on.** Blocking a protein, detecting it,
+tagging it, drugging it — each means having another molecule that binds it, and
+for a protein target that molecule is usually itself a protein or a peptide: an
+antibody, a nanobody, a minibinder, a macrocyclic peptide. That class of
+molecule is a large share of modern medicine and of the reagents a lab runs on.
+
+**Getting one has meant searching, not designing.** Immunize an animal, or
+screen 10¹² or more random sequences by display and keep whatever sticks. That
+works, and it is still how most binders are found. It also costs a wet lab from
+the first step, runs once per target, and returns whatever the library happened
+to contain rather than something proposed on purpose. The ambition behind
+everything in this review is to propose instead — candidates for a named target,
+computed, in whatever number you want.
 
 **What changed is that structure prediction stopped being the open problem.**
-AlphaFold2 reached median 0.96 Å backbone accuracy at CASP14 against 2.8 Å for
-the next best method, and AlphaFold3 generalized the result from single chains
-to complexes of proteins, nucleic acids, ligands and ions. Prediction became a
-tool other work is built on rather than a question, and the field turned to
-design. The turn is smaller than it looks: a model that predicts how chains fold
-together is, with one chain left blank, a model that invents that chain. The two
-halves of this review are one technology used two ways, which is why they are
-reviewed together.
+AlphaFold2 closed a fifty-year-old question at CASP14, and AlphaFold3 carried
+the result from single chains to arbitrary complexes. Prediction became
+something other work is built on rather than something being argued about, and
+the field's attention moved to design. _Collision:_ the wager that made it work,
+its numbers and the anatomy of a co-folder are the founding bet beat's.
 
-**What this review is.** A map of that field for a reader entering it: the open
-lineages — AlphaFold, RoseTTAFold, Boltz, Chai, Protenix, ESM — each followed
-from its predictor to the design systems built on it, and the closed systems
-read as evidence about the field's evidence rather than as its strongest
-results. It covers proteins and peptides binding protein targets; small
-molecules are a different problem and out of scope, for reasons the background
-gives.
+**Designing a binder is not the same problem.** A predictor is asked what a
+known sequence folds into, and an experimental structure can say whether it was
+right. A generator is asked to invent a sequence that does something chosen, and
+nothing short of a wet lab says whether it did. That the two turn out to run on
+one machinery is a finding the review arrives at, not a premise it starts from.
+_Collision:_ that argument is the identity beat's.
 
-**These models are in production, at a volume where speed matters.** In one week
-of 2026, NVIDIA, Anthropic and the ESM side each shipped optimized inference
-kernels for the models this review covers — Boltz, Chai-1, Protenix, OpenFold,
-RoseTTAFold3, RFdiffusion, BindCraft, PXDesign, ESMFold2 — reporting two- to
-fourfold throughput gains. Nobody spends that on software nobody runs.
-_(map-only — blog posts and repository releases, no publication.)_
+**The last two years are an explosion, which is the reason for the review.**
+Several predictor lineages, each openly reimplemented; design systems stacked on
+every one of them; results published faster than anyone compares them; and
+vendors paying for speed on these exact models — during one week of September
+2026, NVIDIA, Anthropic and the ESM side each shipped optimized inference
+kernels for Boltz, Chai-1, Protenix, OpenFold, RoseTTAFold3, RFdiffusion,
+BindCraft, PXDesign and ESMFold2, reporting two- to fourfold throughput gains.
+Nobody spends that on software nobody runs. A newcomer cannot see the shape of
+any of this from the papers alone. _(map-only — blog posts and repository
+releases, no publication.)_
 [NVIDIA](https://developer.nvidia.com/blog/high-throughput-structure-prediction-with-bionemo-inference-runtime/)
 ·
 [Anthropic](https://www.anthropic.com/research/claude-uplifts-biomolecular-modeling)
 · [kits](https://github.com/anthropics/uplifting-biomolecular-modeling)
 
-**The stake, in one number.** How many designs must be physically made before
-one binds. Screening-era and early computational work needed thousands to
-millions of candidates per target; current systems report tens. **The measure of
-progress in this field is how few designs you must make to get a binder**, and
-§1–§9 are, read one way, a history of that number falling. _Collision:_ the
-numbers, the table and the argument are the identity beat's; the introduction
-states the number exists and what it means.
+**What the review does.** It reviews the models, lineage by lineage — AlphaFold,
+RoseTTAFold, Boltz, Chai, Protenix, ESM — each taken from its predictor through
+the design systems built on it, so an architecture is met once and then followed
+to what it produces, with its results and the caveats on them. §9 steps outside
+the open lineages to the closed systems, read as evidence about the field's
+evidence rather than as its strongest results. It covers proteins and peptides
+binding protein targets; small molecules are a different problem and out of
+scope, for reasons the background gives. What comes before §1 is preparation for
+it: what a co-folder is, why prediction and generation are one machinery, how
+tightly a generator couples to its critic, what the field's disclosure limit
+does to its evidence, and the vocabulary its numbers are quoted in.
 
-**Two caveats the reader carries through the whole review**, both established
-later and both needed from the start.
-
-1. **Not one benchmark in this literature is uncontested.** Every instrument the
-   field measures itself with has a documented defect, and two numbers from two
-   papers were almost never produced under the same conditions. Tables A and B
-   are built to show this rather than hide it.
-1. **Campaigns choose their own targets and epitopes, and that choice alone
-   moves a hit rate across the full width of the literature's spread.** mBER
-   (§6) is the one campaign that did not choose, and it is the control every
-   other reported hit rate should be read against.
-
-**The roadmap.** Each of the nine sections pairs a predictor with the design
-systems built on it, so a reader meets an architecture once and then follows it
-to its conclusion; §9 steps outside the argument to the systems that publish
-results without methods. The metrics primer comes first, since §1 quotes its
-units.
+**The thread through all of it, in one number.** How many designs must be
+physically made before one binds. Screening-era and early computational work
+needed thousands to millions of candidates per target; current systems report
+tens. **The measure of progress in this field is how few designs you must make
+to get a binder**, and §1–§9 are, read one way, a history of that number
+falling. _Collision:_ the numbers, the table and the argument are the identity
+beat's; the introduction says the number exists and what it measures.
 
 ______________________________________________________________________
 
@@ -296,8 +290,8 @@ rate lands two orders of magnitude below the headline numbers, at the same
 coupling level and on the same predictor as Germinal. The spread _inside_ that
 single campaign is the finding: its best epitopes come back up into the range
 everyone else reports. **Target and epitope selection alone move a hit rate
-across the full width of the literature's spread**, which is what the
-introduction's second caveat rests on. Its hits are phage-display enrichments —
+across the full width of the literature's spread**, and every hit rate the
+review quotes is read against it. Its hits are phage-display enrichments —
 BoltzProt-1's _screening hits_, not confirmed binders.
 
 **The generative machinery was borrowed from image generation, and the field
@@ -1000,15 +994,16 @@ The arc to carry into the section:
   _Attachment:_ the whole network. _Carries:_ scale, not method. At
   million-design scale against hundreds of targets with hotspots drawn at
   random, it is the corpus's only campaign that did not choose its own targets —
-  the control for every hit rate in Table B, and the evidence behind the
-  introduction's second caveat. It also supplies the population-scale half of
-  the conclusion's fifth gap: at that scale hit rates do climb with ipTM.
-  _Method note, one clause:_ it answers the off-distribution problem with
-  structural templates where BindCraft uses annealing, and gets confident docked
-  folds from AlphaFold-Multimer with no MSA at all. _Collision:_ the identity
-  beat owns the unchosen-targets argument; this entry does not restate it.
-  _Caveat:_ its hits are phage-display enrichments — BoltzProt-1's _screening
-  hits_, not confirmed binders, with no affinity quantification.
+  the control for every hit rate in Table B, and the evidence that target and
+  epitope selection alone move a hit rate across the literature's whole spread.
+  It also supplies the population-scale half of the conclusion's fifth gap: at
+  that scale hit rates do climb with ipTM. _Method note, one clause:_ it answers
+  the off-distribution problem with structural templates where BindCraft uses
+  annealing, and gets confident docked folds from AlphaFold-Multimer with no MSA
+  at all. _Collision:_ the identity beat owns the unchosen-targets argument;
+  this entry does not restate it. _Caveat:_ its hits are phage-display
+  enrichments — BoltzProt-1's _screening hits_, not confirmed binders, with no
+  affinity quantification.
 - **RFOptimization** — `rfoptimization` · `10.64898/2026.09.04.749184` ·
   **meat** — gradient-guided mutation through RF3, refining existing designs
   rather than generating them. _Home section §2._ _Level:_ 2, **discrete** — the
@@ -1243,8 +1238,9 @@ _Every instrument in this table has a documented defect, and the column is where
 they land._ FoldBench's aggregates do not enforce a common intersection of
 evaluated targets, PoseBusters' criterion passes structures with distorted
 geometry, and Boltz-2's numbers carry a temporal-leakage flag raised by three
-separate groups. Not one benchmark here is uncontested — which is the intro's
-first caveat, in table form.
+separate groups. Not one benchmark here is uncontested, and two numbers from two
+papers were almost never produced under the same conditions — which is what this
+table is built to show rather than hide.
 
 _One provenance note the AF2 rows carry._ Where a paper reports "AF2" it has
 almost always run ColabFold (`colabfold` · `10.1038/s41592-022-01488-1`) — same
