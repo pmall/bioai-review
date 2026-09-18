@@ -134,8 +134,7 @@ later and both needed from the start.
 systems built on it, so a reader meets an architecture once and then follows it
 to its conclusion; §9 steps outside the argument to the systems that publish
 results without methods. The metrics primer comes first, since §1 quotes its
-units. _Collision:_ the ordering principle behind §1–§5 and §6–§8 closes the
-background, where the vocabulary it uses has been defined.
+units.
 
 ______________________________________________________________________
 
@@ -388,17 +387,6 @@ warning attached to it, and it is why §9 sits outside the argument instead of
 inside it — the review reads the closed systems as evidence about the field's
 evidence, not as its strongest results.
 
-## How §1–§9 are ordered
-
-**Two axes, one block each.** §1–§5 are predominantly Level 1, and within that
-block the ordering principle is the **generative formalism**: diffusion first,
-then flow matching as its successor, then the models that do not say. §6–§8 then
-escalate by **degree of integration**: the Level-2 loop as a bare technique,
-portable and composable (§6); a platform that composes both couplings into one
-product (§7); and the case where language model, folding head and design loop
-are not composed at all but are one model (§8). §9 steps outside the argument
-entirely.
-
 ______________________________________________________________________
 
 # The metrics primer
@@ -535,11 +523,22 @@ models in the AF3 mould with no design descendant to follow.
   _Caveat:_ explicitly _"not a complete drug-discovery system"_ — design is
   roadmap only, so it belongs to the prediction half throughout.
   [GitHub](https://github.com/aurekaresearch/OpenDDE)
-- **OpenFold → OpenFold3** — AlQuraishi Lab's open reimplementations: OpenFold
-  reproduces AlphaFold2 and supplies the distillation set Boltz-1 trains on,
-  OpenFold3-preview targets bitwise AF3 reproduction. _(map-only — code
-  releases, no paper or DOI.)_ · **mention**
-  [GitHub](https://github.com/aqlaboratory/openfold-3)
+- **OpenFold** — `openfold` · `10.1038/s41592-024-02272-z` · **mention** —
+  AlQuraishi Lab's open retraining of AlphaFold2, and the source of the
+  distillation set Boltz-1 trains on.
+  [GitHub](https://github.com/aqlaboratory/openfold)
+- **OpenFold3** — `openfold3` · `10.5281/zenodo.17485509` · **meat** —
+  Apache-2.0 AF3 reproduction released with weights, training code and training
+  data. _Carries:_ the far end of the openness axis. Boltz-1's openness is a
+  downloadable model; OpenFold3 also releases the full training corpus —
+  including its reproduction of AF3's MGnify-based 13M-sequence distillation set
+  — making it the only co-folder in the review that can be retrained from
+  scratch rather than only run. Downloadable and reproducible are different
+  claims, and §9 weighs the closed systems against the second one. _Against:_
+  AlphaFold3, which it targets bitwise. _Caveat:_ a software release, not a
+  publication — its benchmark claims are self-reported, and the one technical
+  report covers the superseded preview2 weights rather than the current
+  OpenBind-0 default. [GitHub](https://github.com/aqlaboratory/openfold-3)
 
 # §2 — RoseTTAFold → RFdiffusion
 
@@ -1224,7 +1223,10 @@ _The "who measured it" column earns its place_ because the corpus contains
 genuine third-party measurement — OpenDDE's antibody-antigen head-to-head,
 Protenix-v2's baseline runs of OpenFold3 and others. Make self-reported and
 independently-run numbers visually distinguishable: that distinction is the
-disclosure beat arriving early.
+disclosure beat arriving early. **OpenFold3 is the hardest row to source**: it
+has no publication, so its self-reported figures come from a repository and a
+technical report covering superseded weights, and Protenix-v2's baseline run is
+the only version of them anyone else has checked.
 
 _Every instrument in this table has a documented defect, and the column is where
 they land._ FoldBench's aggregates do not enforce a common intersection of
@@ -1301,6 +1303,39 @@ campaign reported them — its own source table lists a different binding
 definition for nearly every campaign it pooled. Its designs are also the
 generation before the one this review centres on.
 
+**The one prospective instrument, and why it is not a row either.** The
+**AIntibody challenge** — `aintibody` · `10.1038/s41587-026-03238-6` · **meat**
+— is the field's one blinded, prospective benchmark: 511 antibodies from 29
+organizations across three tasks, expressed as full IgGs and measured by
+independent laboratories under one protocol — HT-SPR, KinExA, and a five-assay
+developability panel with a stated pass threshold. It is the complement of
+Overath: Overath standardizes the filter on designs already made, AIntibody
+standardizes the assay and the hit definition, which is the half Overath leaves
+untouched. Together they are the only two places in the corpus where anyone
+other than a method's authors decided what counted. _Carries:_ the second half
+of the conclusion's fourth gap, and the prospective version of its fifth —
+challenge 2 asked participants to rank sequences by affinity within HCDR3
+clusters, and only one group of 26 beat the baseline of picking clones at
+random. _What it does to Table B's claim:_ nothing, and the paper states why —
+it notes "the absence of several prominent groups that have publicly reported
+strong computational antibody design capabilities", so the systems in this table
+were measured neither here nor against each other. Its one contact with a map
+lineage is the challenge-1 winner, a **Protenix**-derived pairformer (§7) with a
+DPO fitness head, disclosed in the paper's Methods with code released. _What it
+found:_ the best design, 95 pM, was statistically indistinguishable from the
+best antibody the wet-lab campaign produced (113 pM), a non-ML consensus of the
+selection data ranked third, and the out-of-library design task returned 30.4%
+nonbinders and a winning 2.9 pM design that failed to elute from the HIC column.
+_Caveat, and it bounds what the review can take:_ one antigen — SARS-CoV-2 RBD,
+chosen because it is the best-characterized target available and the challenge
+was "deliberately primed for success" — a Q1-2025 snapshot, organized by the
+consortium that reports it, and blinded on organizer integrity rather than
+informatically. Its tasks are also **library-conditioned antibody engineering,
+not target-conditioned de novo binder design**: challenges 2 and 3 handed
+participants measured affinities a real campaign does not have until the end. It
+tests the review's design half on a neighbouring problem, which is why it sits
+here and not in a section.
+
 ______________________________________________________________________
 
 # The conclusion
@@ -1353,11 +1388,14 @@ Table B designed against solved or confidently predicted structures. What the
 methods do on the targets that most need them is not in the corpus.
 
 **4. No two design campaigns in the review were measured against a common
-benchmark, and one third-party wet-lab comparison exists in the whole corpus.**
-Both facts are established elsewhere — the first under Tables A and B, the
-second in §2's RFpeptides entry and §9's Latent-X1 entry. The conclusion does
-not re-argue them; it collects them as what they are, the measurement gap the
-review's caveats keep running into.
+benchmark, and the one blinded benchmark the field has built did not measure
+them.** Both facts are established elsewhere — the first under Tables A and B,
+the second under AIntibody there, which ran 29 organizations through one assay
+suite and records that the groups publicly claiming the strongest design
+capabilities did not enter. Inside the corpus the only third-party wet-lab
+comparison of two design _methods_ remains Latent-X1's, in §2's RFpeptides entry
+and §9's. The conclusion does not re-argue any of it; it collects them as what
+they are, the measurement gap the review's caveats keep running into.
 
 **5. The filters have not been shown to work on the individual design.** Every
 Level-1 pipeline selects designs on a confidence metric, and two papers report

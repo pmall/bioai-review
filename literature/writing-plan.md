@@ -216,10 +216,9 @@ instrument, and never sets a tier. Regenerate with
 
 Drafts merge into parts, parts into the review. No pass rewrites a draft.
 
-**The nine sections.** They group as the background's ordering paragraph
-describes: §1–5 ordered by generative formalism, §6–8 by degree of integration,
-§9 outside the argument. Assembling them means writing the two block seams and
-smoothing the handoffs — not re-editing section bodies.
+**The nine sections.** §1–5 are ordered by generative formalism, §6–8 by degree
+of integration, §9 outside the argument. Assembling them means writing the two
+block seams and smoothing the handoffs — not re-editing section bodies.
 
 **The review.** The introduction, the background, then the metrics primer, the
 nine sections, the two tables, then the conclusion with its gaps. Scope is
