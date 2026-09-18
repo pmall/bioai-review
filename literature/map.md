@@ -650,23 +650,17 @@ the metric it is scored on, may not track whether the sequence folds.
 
 Diffusion, stated outright: BoltzGen is _"a single all-atom diffusion model
 capable of performing both structure prediction and protein design"_ — Level 0
-in its cleanest published form. The section also carries two things the rest of
-the review needs: the **trained-critic** refinement to Level 1, and the
-**open→closed fork** that the disclosure beat and §9 turn on.
+in its cleanest published form. The section also carries the **trained-critic**
+refinement to Level 1, the **open→closed fork** the disclosure beat and §9 turn
+on, and the corpus's only affinity model.
 
-_Why it precedes Chai:_ BoltzGen states its mechanism plainly and shows the
-Level-0 identity in its purest form — one diffusion model doing prediction _and_
-design — and the two refinements below are the ones the coupling beat and §9
-need.
+_Why it precedes Chai:_ this lineage publishes the mechanism of its generator
+and §4's does not, so the reader meets a stated Level-0 design model before
+meeting the strongest one the review cannot inspect.
 
-**The fork** (stated in the disclosure beat, evidenced here): Boltz-1, Boltz-2
-and BoltzGen remain MIT with weights released; **BoltzProt-1 is API-only and
-commercial**, yet still publishes a paper and wet-lab numbers. That is what
-makes this lineage a better §9 exhibit than IsoDDE — the review holds the before
-and the after with publications on both sides, where IsoDDE has only an after.
-_(BoltzMol-1, the lineage's other closed model, is excluded by modality and
-logged in `candidates.md`; the fork is established by BoltzProt-1 alone and does
-not need it.)_
+**The fork** (argued in the disclosure beat, evidenced here): Boltz-1, Boltz-2
+and BoltzGen are MIT with weights released; **BoltzProt-1 is API-only and
+commercial**, yet still publishes a paper and wet-lab numbers.
 
 - **Boltz-1** — `boltz1` · `10.1101/2024.11.19.624167` · **backbone** — the
   first fully open (MIT) AF3-class co-folder, and the paper that made AF3's
@@ -675,21 +669,25 @@ not need it.)_
   part of the design literature exist because these weights were downloadable —
   and the thread it opens is the one the disclosure beat closes on this same
   lineage. **Boltz-1x** adds Feynman-Kac inference-time steering, the corpus's
-  first answer to AF3's physical-validity problem — which RF3 (§2) answers with
-  learned stereochemistry features instead, and argues steering _"may shift the
-  network outside the training distribution"_. _Against:_ AlphaFold3, which it
-  reproduces and releases. The comparison is not about accuracy; it is about
+  first answer to AF3's physical-validity problem. _Against:_ AlphaFold3, which
+  it reproduces and releases. The comparison is not about accuracy; it is about
   what a downloadable model makes possible downstream, and §3, §6 and §7 are the
-  evidence. [GitHub](https://github.com/jwohlwend/boltz)
-- **Boltz-2** — `boltz2` · `10.1101/2025.06.14.659707` · **meat** — adds a
+  evidence. _Collision:_ RF3 (§2) owns the objection to inference-time steering
+  and the learned-features alternative to it.
+  [GitHub](https://github.com/jwohlwend/boltz)
+- **Boltz-2** — `boltz2` · `10.1101/2025.06.14.659707` · **backbone** — adds a
   binding-affinity module and the corpus's most complete conditioning system;
-  the refolding oracle BoltzGen and BoltzProt-1 filter with, which is its role
-  here. _Carries:_ the corpus's only affinity prediction — and its scope. The
-  module is protein-ligand, and its own paper states it does not handle
-  multimeric binding partners, which is why the conclusion's gaps can say no
-  system here predicts protein-protein affinity. _Caveat:_ its benchmark numbers
-  carry a temporal-leakage caveat flagged independently by ESMC, Protenix-v1 and
-  Protenix-v2.
+  the refolding oracle BoltzGen and BoltzProt-1 filter with. _Carries:_ the
+  corpus's only affinity prediction, and its boundary — average Pearson 0.66 on
+  the FEP+ four-target subset at over 1,000× less compute, and protein-ligand
+  only, trained on single-protein assays, which is why the conclusion's gaps can
+  say no system here predicts protein-protein affinity. _Against:_ FEP, the
+  corpus's one comparison against a method that is not learned. _Caveat:_
+  temporal leakage in its benchmark numbers, flagged by ESMC, Protenix-v1 and
+  Protenix-v2; structure accuracy that _"does not significantly deviate"_ from
+  its predecessors', so the oracle §3's design models filter with is Boltz-1
+  plus conditioning; and Pearson above 0.55 on three of eight blinded industrial
+  assays, weak on the other five.
 - **BoltzGen** — `boltzgen` · `10.1101/2025.11.20.689494` · **backbone**
   _(inherits Boltz)_ — unified generative design across proteins, peptides,
   nanobodies, antibodies and small molecules, filtered by refolding with
