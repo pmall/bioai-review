@@ -27,7 +27,89 @@ ______________________________________________________________________
 
 # UNDECIDED
 
-_Empty — nothing is currently awaiting a decision._
+_Surfaced 18 Sep 2026 from Anthropic's inference-optimization release
+(`anthropics/uplifting-biomolecular-modeling`), whose kit table is a third
+party's list of the open models the field actually runs. The predictive half of
+that list is already covered by the map; these three are the design-side models
+it names that the map does not._
+
+## Genie 3
+
+- **DOI:** `10.64898/2026.05.01.722168` (bioRxiv, 5 May 2026)
+- **Title:** *Fast and Ultra-Capable Protein Design: Advancing the Frontier
+  Through Atomistic SE(3)-Equivariance with Genie 3*
+- **Authors:** Lin, Y., Lee, M., Vermani, A., Jiang, E., De Cooman, S., Špeťko,
+  M. & AlQuraishi, M.
+- **Would go in:** §6 — as the counter-case its arc currently has no entry for —
+  or a home of its own beside §2's generators. All-atom SE(3)-equivariant
+  backbone diffusion, so Level 0/1, not Level 2.
+- **Why it might belong:** it argues directly against §6's *revived* step. The
+  paper's stated aim is to close the generation–hallucination gap, and it
+  benchmarks binder design head-to-head against BindCraft, RFdiffusion, BoltzGen
+  and Proteina-Complexa over 10 design problems, reporting the most successful
+  designs on 7 of 10 at a fixed 200-structure budget and holding that lead when
+  normalized by compute. §6 currently states that Level 2 returned and beat
+  generate-and-filter; this is a generator claiming the reverse, from a group
+  independent of both the Baker lab and BindCraft's. It also reports \<10%
+  design overlap with BindCraft, which is a *complementarity* claim rather than
+  a displacement claim, and the map has no place that makes that distinction.
+- **Why to check first:** the wet-lab evidence is thin — 8 designs against Nipah
+  glycoprotein G, one binder at KD ≈ 92 nM. That is an Adaptyv-competition
+  entry, not a campaign, so it may carry no Table B row and the whole entry
+  would rest on in-silico benchmarks. Also decide whether admitting it means
+  admitting the Genie 1/2 lineage behind it, which the map does not carry.
+- **Surfaced from:** the `genie3` kit (task: *backbone diffusion, binder
+  design*).
+
+## Proteina-Complexa
+
+- **DOI:** `10.48550/arXiv.2603.27950` (arXiv, 30 Mar 2026; ICLR 2026 oral)
+- **Title:** *Scaling Atomistic Protein Binder Design with Generative
+  Pretraining and Test-Time Compute*
+- **Authors:** Didi, K., Zhang, Z., Zhou, G., Reidenbach, D., Cao, Z., Cha, S.,
+  Geffner, T., Dallago, C., Tang, J., Bronstein, M. M., Steinegger, M.,
+  Kucukbenli, E., Vahdat, A. & Kreis, K. (NVIDIA)
+- **Would go in:** §5 — flow matching — as the first instance in that section
+  aimed at binders rather than at monomer backbones.
+- **Why it might belong:** fully atomistic binder design by partially latent
+  flow matching, extending La-Proteina, with inference-time optimization on top
+  of the generative prior — a Level-0 generator with a Level-1-style search
+  bolted on, which is a coupling the map's table does not currently have a row
+  for. It is also pretrained on Teddymer, a large synthetic binder–target set
+  built from *predicted* structures, which is a data-supply argument no other
+  entry makes.
+- **Why to check first:** the paper itself is in-silico only. The wet-lab weight
+  is external — Manifold Bio reports running it at ~1M designs against 127
+  targets with binders to 68% of them — and that campaign is Manifold's, the
+  same group as §6's mBER. Decide whether that evidence attaches here, to mBER,
+  or nowhere until it is published.
+- **Surfaced from:** the `complexa` kit (task: *binder generation*).
+
+## Caliby
+
+- **DOI:** `10.1101/2025.09.30.679633` (bioRxiv, 2 Oct 2025)
+- **Title:** *Ensemble-conditioned protein sequence design with Caliby*
+- **Authors:** Shuai, R. W., Lu, T., Bhatti, S., Kouba, P. & Huang, P.-S.
+- **Would go in:** §2, as a **mention** under ProteinMPNN beside LigandMPNN.
+  Nothing larger.
+- **Why it might belong:** ProteinMPNN is the sequence stage the whole Level-1
+  pipeline borrows, and the map presents it with no current challenger. Caliby
+  is a Potts-model designer conditioned on an *ensemble* of backbone conformers
+  rather than one, and claims to beat ProteinMPNN on AF2 self-consistency while
+  scaling better across conformers. Its SolubleCaliby variant reports making
+  binder backbones designable that SolubleMPNN judged undesignable, which is the
+  only part touching the review's subject directly.
+- **Why to check first:** sequence design with no target conditioning is out of
+  scope by the rule below; it enters, if at all, only as a qualifier on
+  ProteinMPNN's standing. Its binder evidence is a designability metric on
+  Protpardelle-1c backbones, not binders tested against a target, and
+  Protpardelle is not in the map.
+- **Surfaced from:** the `caliby` kit (task: *sequence design*).
+
+**Also on that list and deliberately not entered here:** `ef2inv` is the
+ESMFold2 binder-design campaign already in §8; `esm_if1` is inverse folding that
+ProteinMPNN's entry already covers; `mosaic` (with `joltz`) has no publication
+and no DOI, so it cannot be cataloged and can only ever be a _map-only_ line.
 
 # EXCLUDED
 

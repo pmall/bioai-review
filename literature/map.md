@@ -919,12 +919,12 @@ The arc to carry into the section:
    without falling off-distribution — the precondition argued in the coupling
    beat.
 1. _Portable._ Counting the systems housed in §2, §7 and §8, it now runs on five
-   predictor families across six groups. _The claim has to be stated carefully,
-   and this is the only place it is stated._ On the AlphaFold family the
-   portability is one codebase being retargeted — BindCraft, Germinal and mBER
-   all run ColabDesign — so those three add _groups_, not architectures. What
-   the claim about **architectures** actually rests on is the three systems that
-   left that codebase: BoltzDesign1 here, PXDesign-h (§7) and the ESMFold2
+   predictor families across seven groups. _The claim has to be stated
+   carefully, and this is the only place it is stated._ On the AlphaFold family
+   the portability is one codebase being retargeted — BindCraft, Germinal and
+   mBER all run ColabDesign — so those three add _groups_, not architectures.
+   What the claim about **architectures** actually rests on is the three systems
+   that left that codebase: BoltzDesign1 here, PXDesign-h (§7) and the ESMFold2
    campaign (§8).
 1. _Conceded._ RFOptimization closes the arc: the Baker lab returns to the
    technique it abandoned in step 2, on its own AF3-class predictor, and reports
@@ -938,6 +938,14 @@ The arc to carry into the section:
   the framework for running AlphaFold backwards, and the shared substrate under
   BindCraft, Germinal, mBER and AfCycDesign (§2). Named because step 4's claim
   depends on knowing it is there. _(No paper; a versioned software release.)_
+- **joltz / mosaic** — _map-only: no publication, no DOI_ · **mention** — the
+  same substrate for Boltz: `joltz` ports Boltz-1/2 to JAX and makes them
+  differentiable, `mosaic` (Escalante Bio) optimizes against them. It took the
+  top **in-silico** score in Adaptyv's Nipah binder competition (Jan 2026) by
+  descending a Boltz-2 loss directly, with no inverse-folding stage — a second
+  group inverting Boltz, independent of BoltzDesign1's, so a group for step 4's
+  count and not an architecture. _Caveat:_ the leaderboard result is in silico;
+  no wet-lab outcome is reported for those designs.
 - **BindCraft** — `bindcraft` · `10.1038/s41586-025-09429-6` · **backbone** —
   backpropagates through AF2-multimer weights to produce an *L*×20 error
   gradient over amino-acid choices, annealed in four stages from continuous
