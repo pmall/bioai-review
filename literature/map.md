@@ -415,10 +415,11 @@ state — and the reference every later section is defined against.
 
 _Why it opens:_ AlphaFold is the elephant in the room — everything later
 reproduces it, reacts to it, or replaces its evolutionary input, so the review
-cannot begin anywhere else without the reader waiting for it. **Two poles, each
-with its open reproduction:** AlphaFold2 and AlphaFold-Multimer with OpenFold,
-then AlphaFold3 with OpenFold3. The reproductions join here rather than getting
-their own sections, since neither has a design descendant to follow.
+cannot begin anywhere else without the reader waiting for it. The open
+reproductions join their pole here rather than getting sections of their own,
+since neither has a design descendant to follow.
+
+## The AF2 pole — AlphaFold2, and its open reproduction
 
 - **AlphaFold2** — `alphafold2` · `10.1038/s41586-021-03819-2` · **backbone** —
   single-chain predictor at experimental accuracy, and the model that cashed the
@@ -453,6 +454,9 @@ their own sections, since neither has a design descendant to follow.
   AlQuraishi Lab's open retraining of AlphaFold2, and the source of the
   distillation set Boltz-1 trains on.
   [GitHub](https://github.com/aqlaboratory/openfold)
+
+## The AF3 pole — AlphaFold3, and its open reproduction
+
 - **AlphaFold3** — `alphafold3` · `10.1038/s41586-024-07487-w` · **backbone** —
   the generalization from single chains to arbitrary complexes of proteins,
   nucleic acids, ligands and ions, and the architecture the open lineages
