@@ -341,147 +341,73 @@ ______________________________________________________________________
 
 # The metrics primer
 
-First of the two benchmarking units; the two tables close the review. It renders
-between the introduction and §1 because §1–§9 quote pAE, pLDDT, ipTM and
-PB-valid from the start, and because the coupling beat has already raised the
-question it answers.
+Renders between the introduction and §1, because §1–§9 quote lDDT, DockQ,
+PB-valid, pLDDT, pAE and ipTM from the start. It defines those units and nothing
+else.
 
-**Two families of metric, and which one the design half runs on.**
-
-1. **Ground-truth metrics** — compared against a solved structure. Answers _was
-   it right_, needs an experimental answer to exist, so it serves prediction
-   benchmarking only (Table A).
-1. **Confidence metrics** — the model's own estimate of how much to trust
-   itself. No ground truth needed. Answers _does the model believe it_.
-
-**The point the unit exists to make:** every Level-1 system in this review
-filters on family 2. A designed binder has no solved structure by definition, so
-the critic can only be a self-estimate — the generator is graded by the
-predictor's opinion of its own output. That is what makes four findings
-arguments rather than technicalities: PoseBusters' incompleteness (below),
-AlphaFold-Multimer's ipTM being the metric everyone inherited (§1), the two
-measurements of what a self-estimate is worth (below), and BoltzProt-1's
-BoltzPPI (§3) replacing a confidence head with a critic trained on experimental
-outcomes — the corpus's first departure from family 2.
-
-**The two families hold the same quantities, measured once and guessed once.**
-pLDDT is a guess at lDDT, pTM at TM-score, PAE at how far off a residue pair
-will land, and AlphaFold2 (§1) publishes the fit for each pair. Most of the
-roster collapses into those three pairs, which is what makes the units with no
-twin conspicuous.
-
-**The roster** — every unit the review quotes, and where its definition comes
-from. The review's working set, not the field's inventory.
-
-| Unit           | Family                  | What it measures                                                                                                                | Definition from                                                     |
-| -------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| **LDDT**       | ground truth            | local interatomic distances, no superposition, so a correct domain in the wrong pose still scores                               | FoldBench (below), also its pocket and protein-ligand variants      |
-| **TM-score**   | ground truth            | global fold similarity, length-normalized                                                                                       | AlphaFold2 (§1)                                                     |
-| **DockQ**      | ground truth            | interface quality as one 0–1 number, with a conventional success threshold well below 1                                         | FoldBench (below), which states the threshold                       |
-| **RMSD**       | **either — see below**  | Å deviation between two sets of atom positions; which two sets is the whole question                                            | FoldBench (below) predicting, AlphaProteo (§9) designing            |
-| **PB-valid**   | ground truth, pass/fail | physical plausibility, not accuracy: chemical-validity, geometry, energy and clash tests, all to be passed                      | PoseBusters (below)                                                 |
-| **pLDDT**      | confidence              | per-residue guess at its own lDDT                                                                                               | AlphaFold2 (§1)                                                     |
-| **pTM**        | confidence              | guess at its own TM-score, whole prediction                                                                                     | AlphaFold2 (§1)                                                     |
-| **PAE**        | confidence              | predicted alignment error in Å per residue pair — a matrix, not a score, which the corpus reduces in mutually incompatible ways | AlphaFold-Multimer (§1); default AF2/AF3 output                     |
-| **pAE / iPAE** | confidence              | PAE over interchain pairs only: an Å error bar on interface geometry, and the unit of the canonical criterion's `< 10`          | AlphaProteo (§9) for the reduction, AlphaFold-Multimer (§1) for PAE |
-| **ipTM**       | confidence              | pTM over interchain pairs only, scoring the interface rather than the chains                                                    | AlphaFold-Multimer (§1)                                             |
-| **ipSAE**      | confidence              | ipTM over only the well-predicted interchain pairs, removing ipTM's dependence on how the input was trimmed                     | ipSAE (below)                                                       |
-
-**Where three of these definitions come from.** Three instruments in the corpus
-do not predict or design anything; they define units the rest of the review is
-denominated in, and each carries a documented limit that travels with every
-number measured on it.
+**Metrics that compare a prediction to a real structure.** An experimentally
+solved structure is the reference, and the metric says how close the prediction
+came. **lDDT** compares local interatomic distances without superposing the two
+structures, so a correct domain in the wrong pose still scores. **TM-score**
+measures overall fold similarity, normalized for length, and comes from
+AlphaFold2 (§1). **DockQ** reduces interface quality to one number between 0 and
+1, with a conventional success threshold well below 1. **RMSD** is the plain
+distance in ångströms between two sets of atom positions, and which two sets is
+the whole question: against a solved structure it measures accuracy, but design
+pipelines also call RMSD the comparison of a designed backbone against a
+re-prediction of its own sequence, where both sides are computed and nothing
+experimental is involved. **PB-valid** is the odd one in this family — not
+accuracy but a pass/fail verdict on physical plausibility, bundling
+chemical-validity, geometry, energy and clash tests.
 
 - **FoldBench** — `foldbench` · `10.1038/s41467-025-67127-3` · **backbone** —
   peer-reviewed all-atom prediction benchmark spanning monomers,
   protein-protein, antibody-antigen, protein-ligand and protein-nucleic
-  interfaces; it defines lDDT, DockQ and predictive RMSD as this review uses
-  them, and states DockQ's success threshold. It is the shared evaluation set
+  interfaces. It defines lDDT, DockQ and predictive RMSD as this review uses
+  them, including DockQ's success threshold, and is the shared evaluation set
   behind the AF3 / Protenix / Boltz / ESMFold2 / OpenDDE comparisons. _Carries:_
-  Table A's benchmark column, and therefore the Table A / Table B asymmetry —
-  the review's strongest finding exists only because prediction has an
-  instrument several groups ran against and design has none in common use.
-  _Against:_ the design half's nothing. Its value here is as much what its
-  absence proves on the other side as what it measures on this one. _Caveat:_
-  Protenix-v1 (§7) shows its published aggregates do not enforce a common
-  intersection of successfully-evaluated targets, so coverage differences alone
-  can flip model rankings.
+  the units and the benchmark column of Table A.
+- **PoseBusters** — `posebusters` · `10.1039/D3SC04185A` · **backbone** —
+  physical and chemical validity checks plus a benchmark set. It defines
+  PB-valid, which AF3, Chai-1, Boltz-1 and Protenix all report. _Carries:_ the
+  unit AF3-class physical validity is argued in. _(PoseBusters V2 is a
+  benchmark-set revision, not a separate publication; map-only.)_ · **mention**
 
-- **PoseBusters** — `posebusters` · `10.1039/D3SC04185A` · **meat** — physical
-  and chemical validity checks plus a benchmark set; the source of PB-valid,
-  reported by AF3, Chai-1, Boltz-1 and Protenix. _Carries:_ the unit AF3-class
-  physical validity is argued in — Boltz-1x (§3), RF3 (§2) and PXMeter (§7) are
-  all answering the failure this metric tests for — and its own finding that
-  deep-learning docking did not beat classical tools on physical plausibility or
-  generalization to novel sequences. _Caveat:_ two. It is a **ligand-side**
-  instrument doing protein-side duty here; and Protenix-v2 (§7) shows the
-  criterion is incomplete — structures pass while exhibiting twisted amides and
-  distorted aromatics. _(PoseBusters V2 is a benchmark-set revision, not a
-  separate publication; map-only.)_ · **mention**
+**Metrics the model produces about itself.** These need no solved structure:
+each is the model's own estimate of how much to trust its answer, and each is a
+guess at one of the measurements above. **pLDDT** guesses its own lDDT, per
+residue; **pTM** guesses its own TM-score for the whole prediction; **PAE** is a
+matrix rather than a score, predicting in ångströms how far off each residue
+pair will land. All three come from AlphaFold2 (§1), which published the fit
+between each guess and the quantity it estimates. AlphaFold-Multimer (§1) added
+the interface versions, computed over interchain residue pairs only: **ipTM**,
+which scores the interface rather than the chains, and the **pAE / iPAE**
+reduction of the PAE matrix that gives the canonical criterion its `< 10`. This
+family is what the design sections run on: a designed binder has no solved
+structure by definition, so nothing in the first family can be computed for it.
 
-- **ipSAE** — `ipsae` · `10.1101/2025.02.10.637595` · **meat** — restricts the
-  interface score to high-confidence residue pairs, which removes ipTM's
-  dependence on how the input was trimmed. _Carries:_ two things. It is the
-  roster's one unit defined against another unit's defect rather than against a
-  physical quantity — the field patching a metric it inherited rather than
-  replacing it. And it is the filter the design half has converged on: Germinal
-  (§6) reports its threshold, and it is now routinely described as the score
-  shown to predict wet-lab binding. _Caveat:_ that description outruns the
-  evidence in both directions. Its own paper benchmarks PPI prediction, not
-  design; and the work behind "shown to predict binding" is a single pooled
-  re-scoring of previous-generation miniproteins (Table B), with antibodies
-  excluded. A default filter adopted on one re-analysis of the previous
-  generation is the primer's thesis in miniature.
+- **ipSAE** — `ipsae` · `10.1101/2025.02.10.637595` · **backbone** — ipTM
+  restricted to the well-predicted interchain pairs, which removes ipTM's
+  dependence on how the input was trimmed. _Carries:_ the unit the design half
+  has converged on — Germinal (§6) reports its threshold and the Overath
+  meta-analysis (Table B) scores designs with it.
 
-Three consequences:
+**The roster** — every unit the review quotes, and where its definition comes
+from.
 
-- **DockQ and PB-valid have no family-2 twin** — nothing in the corpus outputs a
-  predicted DockQ or a predicted PB-valid, so interface quality and physical
-  plausibility cannot be design filters at all.
-- **"AF2 confidence" is often none of these on its own** — AlphaFold-Multimer
-  ranks on a weighted composite of ipTM and pTM, and papers quoting "AF2
-  confidence" may mean the composite, bare ipTM, or a PAE reduction of their
-  own.
-- **RMSD's family depends on what it was compared against.** Against a solved
-  structure it is family 1, as in AlphaProteo's cryo-EM validation. Inside a
-  design pipeline it is self-consistency RMSD — designed backbone against a
-  re-prediction of the designed sequence, two computed structures and no
-  experiment — family 2 under family 1's name, and it is the `binder RMSD < 1 Å`
-  of the canonical criterion. _Carries:_ refolding statistics are not evidence
-  of binding, and RFOptimization (§6) cannot be a Table B row.
-
-Three things the reader leaves with, a sentence each:
-
-- **A shared unit is not a shared measurement.** Two ipTMs from different papers
-  were measured on different benchmarks, cutoffs and target sets, each
-  instrument carrying its own documented defect — stated once with that
-  instrument, laid out in Tables A and B.
-- **Design's ground truth is not a metric** but the wet-lab assay, so every
-  Table B hit rate counts assay outcomes rather than scores. _Collision:_ the
-  incomparability of those assays is Table B's.
-- **The self-estimates were calibrated on one population and are used on
-  another.** AlphaFold2 fitted them on solved structures, natural proteins in
-  the PDB; design applies them to molecules with no solved structure and no
-  known homologs. _Collision:_ off-distribution behaviour is the coupling
-  beat's.
-
-**The two measurements, and the distinction they force.** Two §6 systems test
-family 2 and the results look opposed until the question is split. Germinal
-reports its nonbinders clearing the ipSAE threshold alongside its binders — the
-score fails on the individual design. mBER reports the opposite at
-million-design scale, hit rates climbing with ipTM. Both hold: at population
-scale a confidence score **enriches**; on any individual design it does not
-**discriminate**. BindCraft states the same limit from a third direction — the
-ipTM it ranks on predicts _whether_ a design binds but not _how tightly_. That
-is the sharpest consequence, because **the identity beat's collapsing budget is
-precisely the move out of the regime where enrichment suffices and into the one
-where it does not.** A field testing twenty designs per target needs the
-property its metrics have not been shown to have. _The evidence:_ three labs
-each reporting on their own designs, and one cross-lab test — the Overath
-meta-analysis under Table B, which re-scored 3,766 tested designs from six
-campaigns and found the best single score's average precision ranging from 0.1
-to 1 depending on the target. It holds the claim up and sharpens it: the score
-that discriminates on one target is not the one that discriminates on the next.
+| Unit           | Compared to      | What it measures                                                                                | Defined by              |
+| -------------- | ---------------- | ----------------------------------------------------------------------------------------------- | ----------------------- |
+| **lDDT**       | a real structure | local interatomic distances, no superposition                                                   | FoldBench               |
+| **TM-score**   | a real structure | global fold similarity, length-normalized                                                       | AlphaFold2 (§1)         |
+| **DockQ**      | a real structure | interface quality as one 0–1 number                                                             | FoldBench               |
+| **RMSD**       | whatever it says | Å deviation between two sets of atom positions — accuracy only when one set is a real structure | FoldBench               |
+| **PB-valid**   | nothing          | physical plausibility, pass/fail                                                                | PoseBusters             |
+| **pLDDT**      | itself           | per-residue guess at its own lDDT                                                               | AlphaFold2 (§1)         |
+| **pTM**        | itself           | guess at its own TM-score                                                                       | AlphaFold2 (§1)         |
+| **PAE**        | itself           | predicted error in Å per residue pair — a matrix, not a score                                   | AlphaFold2 (§1)         |
+| **ipTM**       | itself           | pTM over interchain pairs only                                                                  | AlphaFold-Multimer (§1) |
+| **pAE / iPAE** | itself           | PAE over interchain pairs only                                                                  | AlphaFold-Multimer (§1) |
+| **ipSAE**      | itself           | ipTM over the well-predicted interchain pairs only                                              | ipSAE                   |
 
 ______________________________________________________________________
 
@@ -636,8 +562,8 @@ _first-to-compose-both-couplings_ claim on dates and on kind.
   the Baker lab's own benchmark. That is the comparison §6 later reopens, and it
   is why §6 can be written as a return rather than an arrival. _Caveat:_ its "in
   silico success" criterion is a confidence-metric filter, so the designs-tested
-  numbers attached to it are subject to the metrics primer's discrimination
-  problem. [GitHub](https://github.com/RosettaCommons/RFdiffusion)
+  numbers attached to it are in-silico rather than measured.
+  [GitHub](https://github.com/RosettaCommons/RFdiffusion)
 - **RFdiffusion2** — `rfdiffusion2` · `10.1038/s41592-025-02975-x` · **mention**
   _(inherits RF1)_ — atom-level enzyme active-site scaffolding from
   functional-group positions, sequence-agnostic.
@@ -757,15 +683,15 @@ not need it.)_
   **trained-critic** half of the coupling beat — changing only the filter
   roughly doubles the confirmed-binder rate with the generator untouched, the
   corpus's cleanest evidence that hit rate lives in the critic. And it is the
-  first departure from the metrics primer's family 2, a critic trained against
-  experimental outcomes rather than a confidence head reused as one. It also
-  splits _screening hits_ from _confirmed binders_, the definition problem the
-  identity beat and Table B inherit. _Against:_ BoltzGen, its own unmodified
-  generator — the only controlled comparison of a filter in the corpus, and the
-  reason the claim is not confounded. _Caveat:_ API-only, no weights — the
-  closed half of the fork above, so the result cannot be independently
-  reproduced. _(BoltzPPI is the critic itself, no separate publication —
-  resolves to the `boltzppi` keyword on this entry.)_
+  corpus's first critic trained against experimental outcomes rather than a
+  confidence metric reused as a filter. It also splits _screening hits_ from
+  _confirmed binders_, the definition problem the identity beat and Table B
+  inherit. _Against:_ BoltzGen, its own unmodified generator — the only
+  controlled comparison of a filter in the corpus, and the reason the claim is
+  not confounded. _Caveat:_ API-only, no weights — the closed half of the fork
+  above, so the result cannot be independently reproduced. _(BoltzPPI is the
+  critic itself, no separate publication — resolves to the `boltzppi` keyword on
+  this entry.)_
 - **BoltzDesign1** — `boltzdesign1` · `10.1101/2025.04.06.647261` · **meat** —
   inverts the Boltz predictor for binder design. _Level 2; reviewed in full in
   §6_, where the portability argument needs it next to BindCraft.
@@ -988,12 +914,12 @@ The arc to carry into the section:
   BindCraft, which it adapts, and §8, which dissolves the two-model arrangement
   it needs. Germinal is the strongest form of the composed answer, and §8 is why
   the review does not end on it. _Caveat:_ two, both its own. Its nonbinders
-  clear the ipSAE threshold alongside its binders — the discrimination failure
-  the metrics primer reconciles. And it states that how far design success
-  depends on the quality of the antigen model remains an open question, which is
-  the conclusion's structure-availability gap. _(mBER below also carries a PLM
-  prior, but as a fixed logit bias rather than a live gradient — a distinction
-  worth a clause, not a passage.)_
+  clear the ipSAE threshold alongside its binders, so the filter does not
+  separate them — the conclusion's fifth gap. And it states that how far design
+  success depends on the quality of the antigen model remains an open question,
+  which is the conclusion's structure-availability gap. _(mBER below also
+  carries a PLM prior, but as a fixed logit bias rather than a live gradient — a
+  distinction worth a clause, not a passage.)_
   - **OpenGerminal** — `opengerminal` · `10.64898/2026.06.25.734527` ·
     **mention** — Apache-2.0 reimplementation on an open stack.
 - **mBER** — `mber` · `10.1101/2025.09.26.678877` · **meat** — Manifold Bio's
@@ -1003,14 +929,14 @@ The arc to carry into the section:
   million-design scale against hundreds of targets with hotspots drawn at
   random, it is the corpus's only campaign that did not choose its own targets —
   the control for every hit rate in Table B, and the evidence behind the
-  introduction's second caveat. It also carries the enrichment half of the
-  metrics primer's reconciliation. _Method note, one clause:_ it answers the
-  off-distribution problem with structural templates where BindCraft uses
-  annealing, and gets confident docked folds from AlphaFold-Multimer with no MSA
-  at all. _Collision:_ the identity beat owns the unchosen-targets argument;
-  this entry does not restate it. _Caveat:_ its hits are phage-display
-  enrichments — BoltzProt-1's _screening hits_, not confirmed binders, with no
-  affinity quantification.
+  introduction's second caveat. It also supplies the population-scale half of
+  the conclusion's fifth gap: at that scale hit rates do climb with ipTM.
+  _Method note, one clause:_ it answers the off-distribution problem with
+  structural templates where BindCraft uses annealing, and gets confident docked
+  folds from AlphaFold-Multimer with no MSA at all. _Collision:_ the identity
+  beat owns the unchosen-targets argument; this entry does not restate it.
+  _Caveat:_ its hits are phage-display enrichments — BoltzProt-1's _screening
+  hits_, not confirmed binders, with no affinity quantification.
 - **RFOptimization** — `rfoptimization` · `10.64898/2026.09.04.749184` ·
   **meat** — gradient-guided mutation through RF3, refining existing designs
   rather than generating them. _Home section §2._ _Level:_ 2, **discrete** — the
@@ -1053,15 +979,15 @@ instrument the same lineage built.
 - **Protenix-v1** — `protenix_v1` · `10.64898/2026.02.05.703733` · **meat** —
   ByteDance Seed's open all-atom model matching AF3 under matched cutoff, scale
   and inference budget — the second answer to AF3's closed weights, after
-  Boltz-1. _Carries:_ the common-intersection critique of FoldBench, stated with
-  the metrics primer; and the matched-conditions framing that makes "matches
-  AF3" a checkable claim rather than a leaderboard position.
+  Boltz-1. _Carries:_ the common-intersection critique of FoldBench, which lands
+  in Table A's defect column; and the matched-conditions framing that makes
+  "matches AF3" a checkable claim rather than a leaderboard position.
   [GitHub](https://github.com/bytedance/Protenix)
 - **Protenix-v2** — `protenix_v2` · `10.64898/2026.04.10.717613` · **meat** —
   both halves in one paper, which is why the lineage reads as a platform rather
   than a model. _Prediction:_ antibody-antigen gains over v1, plus the finding
-  that the PoseBusters criterion is itself incomplete (the metrics primer).
-  _Design:_ target-conditioned generation across miniproteins, VHH and Fv, with
+  that the PoseBusters criterion is itself incomplete (Table A). _Design:_
+  target-conditioned generation across miniproteins, VHH and Fv, with
   epitope-specific and site-agnostic modes. _Level:_ 1 _(inherits Protenix)_.
 - **PXDesign** — `pxdesign` · `10.1101/2025.08.15.670450` · **backbone** — the
   section's reason for existing: the first system to ship **both couplings as
@@ -1296,13 +1222,13 @@ under a single pipeline, and asked which in-silico score predicts wet-lab
 binding; AF3's ipSAE came out the best single predictor. That is the corpus's
 only cross-lab test of the **filters**, as Latent-X1 (§9) is its only
 third-party wet-lab comparison of two **methods** — and it belongs here, after
-the lineages whose designs it scores. _Carries:_ the evidence behind the metrics
-primer's discrimination claim, which without it rests on three labs each
-reporting on their own designs. _What it reaches and what it does not:_
-re-scoring reaches the designs, not the assays or the hit definitions, so it
-standardizes the filter and leaves the denominator and the hit definition
-exactly as each campaign reported them — its own source table lists a different
-binding definition for nearly every campaign it pooled. Its designs are also the
+the lineages whose designs it scores. _Carries:_ the cross-lab evidence under
+the conclusion's fifth gap, which without it rests on three labs each reporting
+on their own designs. _What it reaches and what it does not:_ re-scoring reaches
+the designs, not the assays or the hit definitions, so it standardizes the
+filter and leaves the denominator and the hit definition exactly as each
+campaign reported them — its own source table lists a different binding
+definition for nearly every campaign it pooled. Its designs are also the
 generation before the one this review centres on.
 
 ______________________________________________________________________
@@ -1314,7 +1240,7 @@ raised.** Everything it lands is already argued above and none of it is
 resolved: the open-versus-closed question the disclosure beat opens and §9
 leaves standing; the two threads, which are paid off in §8 and under Table B but
 not closed; the identity beat's designs-tested number, whose trajectory is the
-review's spine and has no shared instrument to measure it against; and the four
+review's spine and has no shared instrument to measure it against; and the five
 gaps below, which are the conclusion's material.
 
 **Order of the beats, and how it ends, are not settled** — they follow from the
@@ -1322,8 +1248,8 @@ units above rather than preceding them, so they are decided once those exist.
 
 ## What the field has not shown
 
-Four gaps, each a question §1–§9 raise and none of them answer. They sit here
-rather than after §9 because two of the four rest on Tables A and B, which a
+Five gaps, each a question §1–§9 raise and none of them answer. They sit here
+rather than after §9 because three of the five rest on Tables A and B, which a
 reader has not met before this point.
 
 **Each entry is a limit the corpus states about itself** — no gap is asserted
@@ -1362,6 +1288,20 @@ Both facts are established elsewhere — the first under Tables A and B, the
 second in §2's RFpeptides entry and §9's Latent-X1 entry. The conclusion does
 not re-argue them; it collects them as what they are, the measurement gap the
 review's caveats keep running into.
+
+**5. The filters have not been shown to work on the individual design.** Every
+Level-1 pipeline selects designs on a confidence metric, and two papers report
+the same limit from opposite directions. Germinal (§6) finds its nonbinders
+clearing the ipSAE threshold alongside its binders. mBER (§6) finds the opposite
+at million-design scale, hit rates climbing with ipTM. Both hold: across a
+population a confidence score enriches, on any one design it does not
+discriminate. The Overath meta-analysis (Table B) is the only cross-lab test and
+sharpens it — re-scoring 3,766 designs from six campaigns, the best single
+score's average precision ranged from 0.1 to 1 depending on the target, so the
+score that works on one target is not the one that works on the next. _Why this
+is a gap and not a caveat:_ the identity beat's collapsing designs-tested number
+is the move out of the regime where enrichment is enough and into the one where
+it is not.
 
 _What this subsection is not._ Not a wish list, not a speculation about what
 comes next, and not a place for limitations already attached to an entry. A gap
