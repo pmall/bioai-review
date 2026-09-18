@@ -107,6 +107,24 @@ Two grounds for exclusion, and they differ in what is left behind:
   than binder design; the overlap is the flow-matching machinery, not the
   problem. Both are quoted in the scope beat for their discrete/continuous
   hybrid schemes — the evidence for the differentiability asymmetry.
+* **OpenBind, first release** — `openbind` · `10.64898/2026.08.27.747600` —
+  _excluded: wrong modality._ An open experimental structure-affinity dataset
+  and benchmark: 925 crystallographic binding events from 699 compounds against
+  enteroviral 2A protease, affinities for 601, from one antiviral campaign.
+  Protein-**ligand** throughout; it generates no binder, and its one model
+  result is fine-tuning OpenFold3-p2 on that target's 79 fragment-bound
+  structures. Same exclusion as DrugFlow, FLOWR and BoltzMol-1. _Named here
+  because the name misleads:_ Anthropic's release presents it among folding
+  models, but its kit is `openfold3_ob0` — OpenFold3 0.5.0 on the **OpenBind-0
+  checkpoint** — so the model is OpenFold3 and OpenBind is the data initiative
+  behind its weights. _Not a Table A row, and the near miss is worth recording:_
+  it runs a genuine third-party head-to-head of six co-folders here —
+  AlphaFold3, Boltz-1, Boltz-2, OpenFold3-p2, Protenix-v1, RoseTTAFold3 — on one
+  shared precomputed MSA with stated cutoffs, which is exactly the provenance
+  Table A asks for, and Protenix-v1 leads at both Top-25 and Top-1. It still
+  does not earn the row: **one target**, on the target class §3–§8 do not design
+  for, and the authors say the ordering may not generalise. A protein-ligand row
+  needs a multi-target benchmark. In `refs.bib` and the corpus, and quotable.
 * **BoltzMol-1** — `boltzmol1` · `10.64898/2026.07.04.736485` — _excluded: wrong
   modality._ Small-molecule hit discovery over an optimized Boltz-2, API-only
   with no weights. It **screens catalogue compounds** rather than generating

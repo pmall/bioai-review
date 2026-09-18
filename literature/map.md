@@ -1096,18 +1096,26 @@ than a tenth step.
   than read the lineage backwards from its conclusion.
 - **ESM-3** — `esm3` · `10.1126/science.ads0018` · **mention** — multimodal
   promptable PLM over sequence, structure and function. A lineage step.
+- **AtlasFold** — `atlasfold` · `10.64898/2026.09.04.749352` · **mention** — a
+  second group reaching the same route independently, and the only one that
+  releases it whole: training code, training data, stage checkpoints and
+  weights, all MIT. _(Preprint, 7 Sep 2026 — too recent to have been taken up by
+  anything else here.)_
 - **ESMC & ESMFold2** — `esmc` · `10.64898/2026.06.03.729735` · **backbone** —
   Biohub / EvolutionaryScale's ~2.8B-sequence LM plus a folding head on its
   frozen representations. _Covers ESMFold2 and ESMFold2-Fast — modules of this
   release, no separate paper._ _Carries:_ the resolution of the anatomy beat's
-  divide — single-sequence antibody-antigen accuracy **exceeding AF3-with-MSA**,
+  divide — single-sequence antibody-antigen accuracy **matching AF3-with-MSA**,
   with the MSA encoder detachable and kept only as a rescue path for
   high-perplexity sequences. The retrieval step is no longer the price of
   accuracy, which is what licenses the campaign below. _Against:_ AF3 with an
   MSA, on antibody-antigen — the target class §3–§8 actually design for, which
   is why the comparison settles the thread rather than scoring a point.
   _Caveat:_ it flags the temporal-leakage problem in Boltz-2's numbers, so its
-  own comparisons should be read under Table A's defect note like everyone's.
+  own comparisons should be read under Table A's defect note like everyone's —
+  and its own margin over AF3 is inside the error bars, reversing sign when
+  AtlasFold re-runs the same benchmark. "Matching" is the claim that survives
+  both runs; "exceeding" is not.
   - **ESMFold2 binder design campaign** — **backbone**. _Level:_ 2, continuous.
     _Attachment:_ the language model **and** the folding head — the tightest
     coupling in the corpus, with nothing left to compose. _Carries:_ the claim
