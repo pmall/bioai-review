@@ -413,9 +413,10 @@ state — and the reference every later section is defined against.
 
 _Why it opens:_ AlphaFold is the elephant in the room — everything later
 reproduces it, reacts to it, or replaces its evolutionary input, so the review
-cannot begin anywhere else without the reader waiting for it. **OpenFold3 and
-OpenDDE join it here** rather than getting their own sections: open co-folding
-models in the AF3 mould with no design descendant to follow.
+cannot begin anywhere else without the reader waiting for it. **Two poles, each
+with its open reproduction:** AlphaFold2 and AlphaFold-Multimer with OpenFold,
+then AlphaFold3 with OpenFold3. The reproductions join here rather than getting
+their own sections, since neither has a design descendant to follow.
 
 - **AlphaFold2** — `alphafold2` · `10.1038/s41586-021-03819-2` · **backbone** —
   single-chain predictor at experimental accuracy, and the model that cashed the
@@ -446,6 +447,10 @@ models in the AF3 mould with no design descendant to follow.
   binder problem a distinct problem and not a corollary of folding. _Caveat:_
   never peer-reviewed. The field's most-used complex predictor has no journal
   version — a disclosure gap of a different kind from §9's.
+- **OpenFold** — `openfold` · `10.1038/s41592-024-02272-z` · **mention** —
+  AlQuraishi Lab's open retraining of AlphaFold2, and the source of the
+  distillation set Boltz-1 trains on.
+  [GitHub](https://github.com/aqlaboratory/openfold)
 - **AlphaFold3** — `alphafold3` · `10.1038/s41586-024-07487-w` · **backbone** —
   the generalization from single chains to arbitrary complexes of proteins,
   nucleic acids, ligands and ions, and the architecture the open lineages
@@ -460,18 +465,6 @@ models in the AF3 mould with no design descendant to follow.
   trade, stated by the same lab in two papers. _Caveat:_ diffusion brought a
   failure mode AF2 did not have — sampled coordinates can be chemically
   impossible — and "PB-valid" enters the literature here as the test for it.
-- **OpenDDE** — `opendde` · `10.48550/arXiv.2607.03787` · **meat** — Apache-2.0
-  all-atom co-folding model with no design descendant. _Carries:_ what it
-  _measured_, not what it is. It runs the corpus's most complete third-party
-  antibody-antigen head-to-head, which Table A's "who measured it" column rests
-  on, and its scaling curve is the only public evidence about IsoDDE (§9).
-  _Caveat:_ explicitly _"not a complete drug-discovery system"_ — design is
-  roadmap only, so it belongs to the prediction half throughout.
-  [GitHub](https://github.com/aurekaresearch/OpenDDE)
-- **OpenFold** — `openfold` · `10.1038/s41592-024-02272-z` · **mention** —
-  AlQuraishi Lab's open retraining of AlphaFold2, and the source of the
-  distillation set Boltz-1 trains on.
-  [GitHub](https://github.com/aqlaboratory/openfold)
 - **OpenFold3** — `openfold3` · `10.5281/zenodo.17485509` · **meat** —
   Apache-2.0 AF3 reproduction released with weights, training code and training
   data. _Carries:_ the far end of the openness axis. Boltz-1's openness is a
@@ -999,7 +992,7 @@ instrument the same lineage built.
   people's models. _Against:_ FoldBench (Tables A and B), the other multi-model
   prediction benchmark — and Protenix-v1's common-intersection critique of it is
   this group arguing for its own instrument, which the review states rather than
-  adjudicates. _Caveat:_ its uptake is real but narrow — OpenDDE (§1) benchmarks
+  adjudicates. _Caveat:_ its uptake is real but narrow — OpenDDE (§9) benchmarks
   on PXMeter-AB and follows its data protocol to curate its own set, and that is
   the only third-party adoption in the corpus.
   [GitHub](https://github.com/bytedance/PXMeter)
@@ -1150,6 +1143,19 @@ benchmarks.**
   scaling curve. Everything the review can say about it was measured by a
   competitor, which OpenDDE itself states as a limit on what can be concluded.
   _(map-only — private, no publication.)_ · **mention**
+- **OpenDDE** — `opendde` · `10.48550/arXiv.2607.03787` · **meat** — the open
+  challenger to IsoDDE: an Apache-2.0 all-atom co-folding model that builds on
+  Protenix-v1 and OpenFold3 and scales past them — a Pairformer three times
+  wider than AlphaFold3's, an atom-level refinement stage before diffusion, and
+  prediction and design trained as one task. It is not closed itself; it sits
+  here because IsoDDE is the model it defines itself against. _Carries:_ what it
+  _measured_. Its scaling curve is the only public evidence about IsoDDE, and
+  its antibody-antigen head-to-head of AlphaFold3, Boltz-1, Chai-1, Protenix-v1
+  and OpenFold3 is the corpus's most complete third-party comparison, which
+  Table A's "who measured it" column rests on. _Caveat:_ in its own words _"not
+  as a complete drug-discovery system"_ — design is roadmap only, so it belongs
+  to the prediction half throughout.
+  [GitHub](https://github.com/aurekaresearch/OpenDDE)
 - **Chai-3** and **SeedFold** — a commercial web platform and a point on
   OpenDDE's scaling curve respectively. _(map-only.)_ · **mention**
 
@@ -1183,11 +1189,11 @@ and measurer has no entry.
 
 ## Table A — structure prediction accuracy
 
-_Rows:_ the predictors of §1, §3, §4, §7, §8 — AlphaFold2/3, AlphaFold-Multimer,
-OpenDDE, OpenFold3, Boltz-1/2, Chai-1, Protenix-v1/v2, ESMFold/ESMFold2, plus
-the RoseTTAFold pair from §2 as the historical baseline. _Columns:_ model ·
-benchmark and version · training cutoff · target class · metric · **who measured
-it**.
+_Rows:_ the predictors of §1, §3, §4, §7, §8, §9 — AlphaFold2/3,
+AlphaFold-Multimer, OpenDDE, OpenFold3, Boltz-1/2, Chai-1, Protenix-v1/v2,
+ESMFold/ESMFold2, plus the RoseTTAFold pair from §2 as the historical baseline.
+_Columns:_ model · benchmark and version · training cutoff · target class ·
+metric · **who measured it**.
 
 _Target class is the axis that matters,_ not a single aggregate — split at
 minimum into monomer, protein-protein, **antibody-antigen**, protein-ligand,

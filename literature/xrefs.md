@@ -167,13 +167,6 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 - **Cites (3):** `dockq` (41), `colabfold` (6), `alphafold2` (4)
 - **Cited by (28):** `ipsae` (18), `mber` (18), `atlasfold` (14), `colabfold` (12), `alphafold3` (11), `genie3` (6), `opengerminal` (5), `openfold` (4), `overath_meta` (4), `chai1` (3), `foldbench` (3), `halludesign` (3), `moppit` (2), `protdbench` (2), `alphadesign`, `alphaproteo`, `bindcraft`, `chai2`, `esm2`, `esmc`, `gauss_seidel_projection`, `germinal`, `ligandmpnn`, `proteina_complexa`, `pxdesign`, `pxmeter`, `rosettafold3`, `rosettafold_all_atom`
 
-### `opendde` — §1, 2026
-
-*Folding, Reasoning, and Scaling with Open-source Drug Discovery Engine* · `10.48550/arXiv.2607.03787`
-
-- **Cites (11):** `alphafold3` (21), `boltz1` (15), `chai1` (15), `pxmeter` (11), `protenix_v2` (5), `bindcraft`, `boltz2`, `boltzgen`, `rfdiffusion`, `esmc`, `proteina_complexa`
-- **Cited by (0):** —
-
 ### `openfold` — §1, 2024
 
 *OpenFold: retraining AlphaFold2 yields new insights into its learning mechanisms and capacity for generalization* · `10.1038/s41592-024-02272-z`
@@ -467,6 +460,13 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 
 - **Cites (8):** `latentx1` (8), `alphafold3`, `alphaproteo`, `boltz2`, `boltzgen`, `chai1`, `rfdiffusion`, `chai2`
 - **Cited by (2):** `germinal`, `protenix_v2`
+
+### `opendde` — §9, 2026
+
+*Folding, Reasoning, and Scaling with Open-source Drug Discovery Engine* · `10.48550/arXiv.2607.03787`
+
+- **Cites (11):** `alphafold3` (21), `boltz1` (15), `chai1` (15), `pxmeter` (11), `protenix_v2` (5), `bindcraft`, `boltz2`, `boltzgen`, `rfdiffusion`, `esmc`, `proteina_complexa`
+- **Cited by (0):** —
 
 ### `aintibody` — §IV, 2026
 
