@@ -27,7 +27,24 @@ ______________________________________________________________________
 
 # UNDECIDED
 
-_Empty — nothing is currently awaiting a decision._
+- **ProtDBench** — `10.48550/arXiv.2605.04118` · arXiv, May 2026 (v2 22 May
+  2026), Liu, Ren, Guan, Gong, Sun, Chen, Xiao — "A Unified Benchmark of Protein
+  Binder Design and Evaluation". A standardized, throughput-aware evaluation
+  framework for binder design: fixed protocol and success criteria, ten targets,
+  open-source generative methods compared under a 24-hour compute budget, plus
+  cluster-level success criteria for structural diversity. Uses a wet-lab
+  annotated dataset to analyse structure predictors _as verifiers_ and reports
+  verifier-dependent bias and limited agreement under identical filtering. _Why
+  it matters here:_ it bears directly on Table B's claim that there is no shared
+  benchmark for binder design, and on the metrics primer's claim that the
+  discrimination evidence is single-lab only. _What has to be checked before
+  deciding:_ whether the head-to-head is on wet-lab binding or on in-silico
+  filter pass rates — the abstract suggests the latter, which would leave Table
+  B's claim intact in its experimental form but not as written. _Not a neutral
+  third party:_ its corresponding author, Wenzhi Xiao, is also corresponding
+  author on PXMeter (§7), so this is the third evaluation artifact from the same
+  ByteDance Seed group after PXMeter and PXDesignBench. _Not yet read —
+  everything above is from the abstract._
 
 # EXCLUDED
 
@@ -49,6 +66,27 @@ Two grounds for exclusion, and they differ in what is left behind:
   and are not quotable. The review is not obliged to re-cite what a work it
   cites already cites; a reader who wants the comparison has the citing paper.
 
+* **Gauss-Seidel projection** — `gauss_seidel_projection` ·
+  `10.48550/arXiv.2510.08946` — _excluded: nothing in the review uses it._ ICLR
+  2026; a differentiable projection mapping provisional diffusion coordinates
+  onto the nearest physically valid configuration, enforcing validity as a
+  strict constraint rather than a bias, with a 2-step model reported at the
+  accuracy of 200-step baselines. A real and peer-reviewed result, from a group
+  with no other presence in the corpus and adopted by no system here. Held a
+  **mention** whose only job was to be the fourth option in a physical-validity
+  thread that has since been cut as too low-level for a field review. In
+  `refs.bib` and the corpus, and quotable.
+* **ColabFold** — `colabfold` · `10.1038/s41592-022-01488-1` — _excluded: a
+  tool, carrying no claim the review leans on._ MMseqs2 homology search in front
+  of unmodified AF2 / AlphaFold-Multimer weights, plus the ColabFoldDB
+  environmental database and the Colab notebooks. Held a **meat** entry in the
+  instruments unit on two jobs, and neither survived the tier test: the
+  off-distribution claim it was credited with naming in 2022 is stated
+  independently by AlphaFold2's own paper, BindCraft, mBER and ESMFold2, so
+  ColabFold contributes a date; and its provenance fact is a table footnote
+  rather than an entry. That footnote is kept under Table A — the AF2 cells and
+  Table B's AF2 filters are ColabFold runs. In `refs.bib` and the corpus, and
+  quotable.
 * **DrugFlow** — `drugflow` · `10.48550/arXiv.2508.17815` · and **FLOWR** —
   `flowr` · `10.1038/s43588-026-00998-8` — _excluded: wrong modality._ Both are
   pocket-conditioned **small-molecule** generators, producing 3D atom types,

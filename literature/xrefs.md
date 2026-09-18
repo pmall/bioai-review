@@ -61,6 +61,13 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 - **Cites (5):** `posebusters` (9), `drugflow` (3), `alphafold3`, `alphafold2`, `rosettafold`
 - **Cited by (0):** —
 
+### `gauss_seidel_projection` — §-, 2026
+
+*Physically Valid Biomolecular Interaction Modeling with Gauss-Seidel Projection* · `10.48550/arXiv.2510.08946`
+
+- **Cites (9):** `boltz1` (51), `boltz2` (24), `posebusters` (11), `alphafold3` (10), `pxmeter` (4), `alphafold_multimer`, `rfdiffusion`, `alphafold2`, `rosettafold`
+- **Cited by (0):** —
+
 ### `moppit` — §-, 2024
 
 *moPPIt: De Novo Generation of Motif-Specific and Functionally Active Peptide Binders via Discrete Flow Matching* · `10.1101/2024.07.31.606098`
@@ -341,6 +348,13 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 - **Cites (19):** `rfdiffusion` (24), `bindcraft` (14), `alphaproteo` (11), `alphafold2` (6), `boltzdesign1` (6), `alphafold3` (5), `chai2` (5), `proteinmpnn` (5), `rfpeptides` (4), `afcycdesign` (3), `alphafold_multimer`, `boltz1`, `boltz2`, `chai1`, `colabfold`, `rosettafold_all_atom`, `esm2`, `latentx1`, `rosettafold3`
 - **Cited by (3):** `protenix_v2` (6), `boltzgen`, `protenix_v1`
 
+### `pxmeter` — §7, 2025
+
+*From Dataset Curation to Unified Evaluation: Revisiting Structure Prediction Benchmarks with PXMeter* · `10.1101/2025.07.17.664878`
+
+- **Cites (6):** `boltz1` (54), `chai1` (50), `posebusters` (13), `alphafold3` (7), `colabfold` (2), `alphafold_multimer`
+- **Cited by (4):** `opendde` (11), `protenix_v2` (9), `protenix_v1` (5), `gauss_seidel_projection` (4)
+
 ### `esm2` — §8, 2023
 
 *Evolutionary-scale prediction of atomic-level protein structure with a language model* · `10.1126/science.ade2574`
@@ -397,13 +411,6 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 - **Cites (8):** `alphafold3` (64), `boltz1` (31), `chai1` (29), `alphafold_multimer` (3), `boltz2` (2), `alphafold2`, `chai2`, `esm2`
 - **Cited by (3):** `protenix_v1` (33), `esmc` (30), `protenix_v2` (16)
 
-### `gauss_seidel_projection` — §IV, 2026
-
-*Physically Valid Biomolecular Interaction Modeling with Gauss-Seidel Projection* · `10.48550/arXiv.2510.08946`
-
-- **Cites (9):** `boltz1` (51), `boltz2` (24), `posebusters` (11), `alphafold3` (10), `pxmeter` (4), `alphafold_multimer`, `rfdiffusion`, `alphafold2`, `rosettafold`
-- **Cited by (0):** —
-
 ### `ipsae` — §IV, 2025
 
 *R\=es ipSAE loquuntur: What's wrong with AlphaFold's ipTM score and how to fix it* · `10.1101/2025.02.10.637595`
@@ -424,13 +431,6 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 
 - **Cites (0):** —
 - **Cited by (13):** `alphafold3` (34), `chai1` (16), `pxmeter` (13), `gauss_seidel_projection` (11), `flowr` (9), `protenix_v2` (8), `drugflow` (6), `esmc` (5), `rosettafold_all_atom` (4), `rosettafold3` (3), `boltz1` (2), `protenix_v1` (2), `boltz2`
-
-### `pxmeter` — §IV, 2025
-
-*From Dataset Curation to Unified Evaluation: Revisiting Structure Prediction Benchmarks with PXMeter* · `10.1101/2025.07.17.664878`
-
-- **Cites (6):** `boltz1` (54), `chai1` (50), `posebusters` (13), `alphafold3` (7), `colabfold` (2), `alphafold_multimer`
-- **Cited by (4):** `opendde` (11), `protenix_v2` (9), `protenix_v1` (5), `gauss_seidel_projection` (4)
 
 ## Not analysed
 
