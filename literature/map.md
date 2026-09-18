@@ -182,8 +182,10 @@ chain that folds against the rest, and the same machine is a generator. BoltzGen
 says so outright: _"a single all-atom diffusion model capable of performing both
 structure prediction and protein design"_. RFdiffusion reached the same place
 from the other direction, by fine-tuning RoseTTAFold — a predictor — into a
-generator of backbones. The two halves of this review are one technology used
-two ways.
+generator of backbones. That direction works because RoseTTAFold's 3D track runs
+all the way to the input, so a design constraint — a target to bind, an active
+site to hold — enters as coordinates rather than as pairwise distances. The two
+halves of this review are one technology used two ways.
 
 **Why the predictor alone was not enough.** A predictor answers a question you
 must already have asked: how does _this_ sequence fold against the target? It
@@ -480,62 +482,31 @@ their own sections, since neither has a design descendant to follow.
 
 # §2 — RoseTTAFold → RFdiffusion
 
-The Baker Lab / IPD line, kept whole: the structure predictors, the generative
-models fine-tuned from them, the sequence-design stage the whole field borrowed,
-and — newest — the optimizer that refines their output. Level 0 in its purest
-form for RFdiffusion 1/2 and their modality arms: one architecture serving
-prediction or generation depending on what it is fine-tuned for.
+The Baker Lab / IPD line, kept whole: the predictors, the generative models
+fine-tuned from them, the sequence-design stage the whole field borrowed, and
+the modality arms and refinement stage built on top of those.
 
-_Why it is second:_ the RoseTTAFold lineage explored every aspect of the
-problem, and that makes it the best teacher in the review. A reader who has been
-through it once has met prediction, the generative turn, inverse folding,
-antibodies, macrocycles and gradient optimization — the whole pipeline, in one
-architecture family, before any other lineage asks them to hold a partial view.
-It is also the one architecture developed independently of AlphaFold, so placing
-it second establishes early that this field has two origins rather than one.
+_Why it is second:_ it is the one lineage a reader can follow end to end —
+prediction, the generative turn, inverse folding, antibodies, macrocycles,
+gradient optimization, all inside one architecture family — and the one origin
+in the review developed independently of AlphaFold.
 
-**Section-defining fact:** the lineage is the only one in the review that is
-whole at both ends. Its _early_ predictors have left the conversation — nothing
-published since 2024 benchmarks against RF1 or RFAA, and the recent co-folding
-papers do not mention them — while as _generators_ they remain the reference the
-whole field cites. But the predictor track did not stop: **RF3 (2025) is
-current**, benchmarks directly against AF3, Boltz-2 and Chai-1, and is what
-RFOptimization takes its gradients from. So §2 is not a lineage that turned
-generative and abandoned prediction; it is the one lineage still shipping both,
-from one framework. _The two tracks' names collide:_ **RF3** (RoseTTAFold3) is
-the predictor, **RFdiffusion3** (RFD3) the generator. Siblings built on the same
-AtomWorks framework, not two versions of one model. Both diffuse — RF3 denoises
-coordinates for a **known** sequence, RFD3 invents a backbone with the sequence
-**unknown**, which is why RFD3 is followed by ProteinMPNN and RF3 is not.
+**Section-defining fact:** it is the only lineage still shipping both tracks.
+Its early predictors have left the conversation — nothing published since 2024
+benchmarks against RF1 or RFAA, and the recent co-folding papers do not mention
+them — while as _generators_ those same networks remain the reference the whole
+field cites. But the predictor track never stopped: **RF3 (2025) is current**,
+benchmarks directly against AF3, Boltz-2 and Chai-1, and is what RFOptimization
+takes its gradients from.
 
-**AtomWorks** — the IPD's data framework — is what RF3 and RFdiffusion3 are both
-built on, and that is its whole role here: one line, never a passage.
+_The two tracks' names collide:_ **RF3** (RoseTTAFold3) is the predictor,
+**RFdiffusion3** (RFD3) the generator — siblings, not two versions of one model.
+Both diffuse, but RF3 denoises coordinates for a **known** sequence while RFD3
+invents a backbone with the sequence **unknown**, which is why RFD3 is followed
+by ProteinMPNN and RF3 is not.
 
-**With RFOptimization, this lineage covers every stage of the problem** —
-predict, generate, inverse-fold, optimize, filter — and it is the only one that
-does. It is not a platform in §7's sense: RFO is a refinement stage rather than
-a second generation arm, and it is deliberately assembled from three lineages
-(RF3 + Boltz + AF3) rather than one, so §7 keeps the
-_first-to-compose-both-couplings_ claim on dates and on kind.
+## The predictors — RF3, and the line behind it
 
-- **RoseTTAFold (RF1)** — `rosettafold` · `10.1126/science.abj8754` ·
-  **backbone** — three-track (1D/2D/3D) network developed independently of AF2;
-  complex prediction emerged untrained from two-segment cropping. _Carries:_
-  §2's organizing fact — the one architecture in the review not derived from
-  AlphaFold, which is what makes this lineage a second origin rather than a
-  fork. It is also the network RFdiffusion is fine-tuned from, so the identity
-  beat's claim has its historical proof here. _Against:_ AF2, contemporaneously
-  and on the same problem — the comparison that establishes there were two
-  independent routes to the same result, and the reason the review has two
-  lineage origins to place rather than one. _Caveat:_ as a _predictor_ it has
-  left the conversation; nothing published since 2024 benchmarks against it. Its
-  standing in the review is as an ancestor. _Intermediate steps, map-only:_
-  RoseTTAFoldNA and RoseTTAFold2 (preprints; RF2 is RFAA's base network, and the
-  network RFpeptides adds cyclic encoding to). · **mention**
-- **RoseTTAFold All-Atom (RFAA)** — `rosettafold_all_atom` ·
-  `10.1126/science.adl2528` · **mention** — all-atom generalization published
-  two months _before_ AF3 and independently of it: the date that makes the two
-  origins a fact rather than a framing.
 - **RoseTTAFold3 (RF3)** — `rosettafold3` · `10.1101/2025.08.14.670328` ·
   **meat** — the lineage's current all-atom predictor, AF3-class with a
   diffusion structure stage, BSD with weights, benchmarked directly against AF3,
@@ -548,31 +519,92 @@ _first-to-compose-both-couplings_ claim on dates and on kind.
   with the argument that Boltz-1x's inference-time steering _"may shift the
   network outside the training distribution"_. One clause, because it is an
   implementation difference rather than a fork in the field.
-- **RFdiffusion** — `rfdiffusion` · `10.1038/s41586-023-06415-8` · **backbone**
-  _(inherits RF1)_ — the generative turn itself, and the most-cited design model
-  in the corpus. SE(3)-equivariant frame diffusion, fine-tuned from a predictor,
-  filtered by AF2 pAE. _Carries:_ three beats. **The identity beat's claim** in
-  its cleanest historical form — a predictor fine-tuned into a generator, with
-  nothing else changed. **The coupling beat's Level 1**, the pipeline this paper
-  established (backbone, then ProteinMPNN, then AF2 judges) which every section
-  from §3 to §7 either runs or argues with. And its **verdict on hallucination**
-  — the technique §6 runs on stronger predictors — which sent gradient design
-  quiet for two years. _Against:_ hallucination through RoseTTAFold — the Baker
-  lab's own predecessor, beaten on the Baker lab's own benchmark. RFOptimization
-  below reopens exactly that comparison, which is why this lineage ends on a
-  return to what it abandoned. _Caveat:_ its "in silico success" criterion is a
-  confidence-metric filter, so the designs-tested numbers attached to it are
-  in-silico rather than measured.
-  [GitHub](https://github.com/RosettaCommons/RFdiffusion)
-- **RFdiffusion2** — `rfdiffusion2` · `10.1038/s41592-025-02975-x` · **mention**
-  _(inherits RF1)_ — atom-level enzyme active-site scaffolding from
+- **RoseTTAFold All-Atom (RFAA)** — `rosettafold_all_atom` ·
+  `10.1126/science.adl2528` · **mention** — all-atom generalization published
+  two months _before_ AF3 and independently of it: the date that makes the two
+  origins a fact rather than a framing.
+- **RoseTTAFold2 (RF2)** — `rosettafold2` · `10.1101/2023.05.24.542179` ·
+  **meat** — RF1 rebuilt with AF2's ideas added one at a time, to find out which
+  of them the accuracy actually needs. _Carries:_ the test behind §2's
+  organizing fact. FAPE loss, recycling, distillation and depth mattered; AF2's
+  two signature modules — invariant point attention and triangle attention — did
+  not, and RF2 reaches AF2's accuracy on monomers and AF2-Multimer's on
+  complexes without either, scaling better past 1,000 residues. Its conclusion
+  is the one §2 is built on: _"excellent performance can be achieved with a
+  broader class of models"_ than the AF2 architecture nearly everything else
+  re-uses. Its discussion also gives the lineage's own reason why its predictors
+  fine-tune into generators — a 3D track running all the way to the input lets a
+  design constraint be encoded as coordinates rather than as pairwise distances.
+  It is RFAA's base network and the network RFpeptides adds cyclic positional
+  encoding to. _Caveat:_ never peer-reviewed, three years on.
+- **RoseTTAFold (RF1)** — `rosettafold` · `10.1126/science.abj8754` ·
+  **backbone** — three-track (1D/2D/3D) network developed independently of AF2;
+  complex prediction emerged untrained from two-segment cropping. _Carries:_
+  §2's organizing fact — the one architecture in the review not derived from
+  AlphaFold, which is what makes this lineage a second origin rather than a
+  fork. It is also the network RFdiffusion is fine-tuned from, so the identity
+  beat's claim has its historical proof here. _Against:_ AF2, contemporaneously
+  and on the same problem — the comparison that establishes there were two
+  independent routes to the same result, and the reason the review has two
+  lineage origins to place rather than one. _Caveat:_ as a _predictor_ it has
+  left the conversation; nothing published since 2024 benchmarks against it. Its
+  standing in the review is as an ancestor.
+
+## The generators — RFdiffusion3, and the line behind it
+
+- **RFdiffusion3 (RFD3)** — `rfdiffusion3` · `10.1101/2025.09.18.676967` ·
+  **meat** — transformer-based all-atom diffusion, adopting AF3's
+  non-equivariant approach. _Carries:_ the lineage's own break with Level 0 —
+  unlike RFdiffusion 1/2 it is not fine-tuned from a predictor but trained from
+  scratch, so the claim the identity beat rests on is weakest in the lineage
+  that established it.
+- **RFdiffusion2 (RFD2)** — `rfdiffusion2` · `10.1038/s41592-025-02975-x` ·
+  **mention** _(inherits RF1)_ — atom-level enzyme active-site scaffolding from
   functional-group positions, sequence-agnostic.
-- **RFdiffusion3** — `rfdiffusion3` · `10.1101/2025.09.18.676967` · **meat** —
-  transformer-based all-atom diffusion, adopting AF3's non-equivariant approach.
-  _Carries:_ the lineage's own break with Level 0 — unlike RFdiffusion 1/2 it is
-  not fine-tuned from a predictor but trained from scratch, so the claim the
-  identity beat rests on is weakest in the lineage that established it.
-  _Collision:_ AtomWorks is named once above; this entry does not re-explain it.
+- **RFdiffusion (RFD1)** — `rfdiffusion` · `10.1038/s41586-023-06415-8` ·
+  **backbone** _(inherits RF1)_ — the generative turn itself, and the most-cited
+  design model in the corpus. SE(3)-equivariant frame diffusion, fine-tuned from
+  a predictor, filtered by AF2 pAE. _Carries:_ three beats. **The identity
+  beat's claim** in its cleanest historical form — a predictor fine-tuned into a
+  generator, with nothing else changed. **The coupling beat's Level 1**, the
+  pipeline this paper established (backbone, then ProteinMPNN, then AF2 judges)
+  which every section from §3 to §7 either runs or argues with. And its
+  **verdict on hallucination** — the technique §6 runs on stronger predictors —
+  which sent gradient design quiet for two years. _Against:_ hallucination
+  through RoseTTAFold — the Baker lab's own predecessor, beaten on the Baker
+  lab's own benchmark. RFOptimization below reopens exactly that comparison,
+  which is why this lineage ends on a return to what it abandoned. _Caveat:_ its
+  "in silico success" criterion is a confidence-metric filter, so the
+  designs-tested numbers attached to it are in-silico rather than measured.
+  [GitHub](https://github.com/RosettaCommons/RFdiffusion)
+
+### The sequence stage — inverse folding
+
+**ProteinMPNN** · `proteinmpnn` · `10.1126/science.add2187` · **backbone** —
+**LigandMPNN** · `ligandmpnn` · `10.1038/s41592-025-02626-1` · **meat**
+
+A generator makes geometry, not sequence — two separate problems — and these two
+write the sequence onto the backbone the generator produced. ProteinMPNN is the
+autoregressive message-passing network that does it for a fixed backbone;
+LigandMPNN is the same network conditioned on ligand and nucleic-acid context:
+the all-atom extension of the stage, and the variant RFOptimization's cycling
+move runs alongside ProteinMPNN. They sit under the generators because that is
+what they were built for, but they are not this lineage's alone: **ProteinMPNN
+is the review's one piece of universally shared machinery**, run by §2–§7 across
+nine labs and both coupling levels.
+
+_Carries:_ the middle stage of the coupling beat's Level 1 — this is the paper
+that stopped sequence design being the bottleneck. Every "generate, then filter"
+pipeline in the review has this step in it, usually unremarked, and §6 exists
+precisely because Level 2 removes it. _Against:_ AlphaDesign, which substitutes
+a diffusion model of its own and benchmarks it as comparable — the corpus's one
+alternative, and the evidence that the field's dependence is adoption rather
+than necessity. _Caveat:_ ProteinMPNN's own paper notes that sequence recovery,
+the metric it is scored on, may not track whether the sequence folds.
+[GitHub](https://github.com/dauparas/ProteinMPNN)
+
+## The arms — antibodies, macrocycles, and the optimizer
+
 - **RFantibody** — `rfantibody` · `10.1038/s41586-025-09721-5` · **backbone**
   _(inherits RFdiffusion)_ — the lineage's antibody arm: a fine-tuned
   RFdiffusion designing VHHs, scFvs and full antibodies against chosen epitopes.
@@ -609,24 +641,6 @@ _first-to-compose-both-couplings_ claim on dates and on kind.
   §6_, where it is the one system that never relaxes the sequence. _Caveat:_
   **in silico only.** No wet-lab validation, no designs-tested denominator, no
   Table B row — the ceiling on how far the review leans on it.
-- **ProteinMPNN** — `proteinmpnn` · `10.1126/science.add2187` · **backbone** —
-  autoregressive message-passing network that writes a sequence for a fixed
-  backbone. **The review's one piece of universally shared machinery**: §2–§7
-  all run it, across nine labs and both coupling levels. _Carries:_ the middle
-  stage of the coupling beat's Level 1. A diffusion model generates geometry,
-  not sequence — two separate problems — and this paper is why the second one
-  stopped being the bottleneck. Every "generate, then filter" pipeline in the
-  review has this step in it, usually unremarked, and §6 exists precisely
-  because Level 2 removes it. _Against:_ AlphaDesign, which substitutes a
-  diffusion model of its own and benchmarks it as comparable — the corpus's one
-  alternative, and the evidence that the field's dependence is adoption rather
-  than necessity. _Caveat:_ its own paper notes that sequence recovery, the
-  metric it is scored on, may not track whether the sequence folds.
-  [GitHub](https://github.com/dauparas/ProteinMPNN)
-  - **LigandMPNN** — `ligandmpnn` · `10.1038/s41592-025-02626-1` · **meat** —
-    the same network conditioned on ligand and nucleic-acid context. _Carries:_
-    the all-atom extension of the inverse-folding stage — the variant
-    RFOptimization's cycling move runs alongside ProteinMPNN.
 
 # §3 — Boltz
 
