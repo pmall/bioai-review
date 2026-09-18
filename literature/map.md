@@ -35,13 +35,11 @@
 > A **mention** carries none of these: a mention is one sentence, and if it
 > needs a _Carries_ line it is not a mention.
 >
-> **One unit per draft.** After the layout block, the file is a flat sequence of
-> the review's units in the order they render — the introduction, the metrics
-> primer, the nine sections, the two tables, the conclusion. Each heading below
-> is one draft unit in `literature/writing-plan.md`, so there is no second
-> organization to reconcile there either. The layout block that opens the file
-> is the only thing never drafted on its own: the section order, and the rule
-> that lineages are not split by disclosure status.
+> **One unit per draft.** The file is a flat sequence of the review's units in
+> the order they render — the introduction, the metrics primer, the nine
+> sections, the two tables, the conclusion. Each heading below is one draft unit
+> in `literature/writing-plan.md`, so there is no second organization to
+> reconcile there either.
 >
 > **Everything the review left out is in `literature/candidates.md`** —
 > undecided works and examined-and-excluded ones, each with its reason. None of
@@ -73,46 +71,6 @@
 
 ______________________________________________________________________
 
-# The layout
-
-Two ordering decisions that belong to no single unit. Where either surfaces in
-the prose is `writing-plan.md`'s business; what they say is here.
-
-## Section order
-
-Per-lineage organization. Each section pairs a predictor with the design systems
-built on it, so a reader meets an architecture once and then follows it to its
-conclusion.
-
-**Two axes, used in sequence.** §1–5 are predominantly Level 1, so within that
-block the ordering principle is the **generative formalism**: diffusion first,
-then flow matching as its successor, then the models that do not say. §6–8 then
-escalate by **degree of integration**: first the Level-2 loop as a bare
-technique, portable and composable (§6); then a platform that composes both
-couplings into one product (§7); then the case where language model, folding
-head and design loop are not composed at all but are one model (§8). §9 steps
-outside the argument entirely.
-
-| #   | Section                                        | Covers                                                                                                      | Organizing fact                                                                                                                               |
-| --- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | **AlphaFold, and the open co-folding cluster** | AlphaFold2, AlphaFold3; OpenFold/OpenFold3; OpenDDE                                                         | prediction only; everything later is defined relative to it                                                                                   |
-| 2   | **RoseTTAFold → RFdiffusion**                  | RF1, RFAA, RF3/AtomWorks; RFdiffusion 1/2/3; RFantibody, RFpeptides; ProteinMPNN/LigandMPNN; RFOptimization | diffusion; the first prediction→generation turn; introduces inverse folding — and the only lineage still shipping predictors _and_ generators |
-| 3   | **Boltz**                                      | Boltz-1, Boltz-2, BoltzGen, BoltzProt-1/BoltzPPI, BoltzDesign1                                              | diffusion, stated outright — and the lineage that opened, then closed                                                                         |
-| 4   | **Chai**                                       | Chai-1, Chai-2                                                                                              | Chai-1 is a diffusion co-folder; Chai-2's _generator_ is undisclosed                                                                          |
-| 5   | **Flow matching**                              | FrameFlow, PPIFlow, OriginFlow, AtomFlow, D-Flow                                                            | the successor formalism — FrameFlow _"adapt[s] FrameDiff … to the flow-matching generative modeling paradigm"_                                |
-| 6   | **Inversion as a portable technique**          | BindCraft, BoltzDesign1, Germinal, mBER                                                                     | Level 2 as a bare method — four groups, three predictors, one technique                                                                       |
-| 7   | **Protenix**                                   | Protenix-v1, Protenix-v2, PXDesign-d and PXDesign-h                                                         | the first pipeline to _compose_ both couplings into one platform                                                                              |
-| 8   | **ESM**                                        | ESM-2/ESMFold, ESM-3, ESMC/ESMFold2 and its binder campaign                                                 | Level 2, fully integrated — the analytical climax                                                                                             |
-| 9   | **The closed frontier**                        | AlphaProteo, Latent-X 1/2; IsoDDE, Chai-3, SeedFold                                                         | benchmarked but unexplainable — a coda, not a step in the argument                                                                            |
-
-## Non-disclosure
-
-Chai-2 (§4), AlphaProteo (§9), Latent-X (§9) and IsoDDE (§9). Lineages are not
-fragmented by disclosure status, so Chai-2 stays in §4 and Boltz's closed models
-stay in §3, each with a pointer to §9.
-
-______________________________________________________________________
-
 # The introduction
 
 What the introduction establishes, in five beats: the problem this review is
@@ -120,6 +78,17 @@ about and what is in and out of scope; the apparatus §1–§9 are read through 
 how a co-folder is built, why that same machine is also a generator, and how
 tightly a generator can be bound to the predictor that grades it; and last, the
 limit on what a review of this literature can establish.
+
+**It closes on the order §1–§9 read in.** Each section pairs a predictor with
+the design systems built on it, so a reader meets an architecture once and then
+follows it to its conclusion. §1–5 are predominantly Level 1, and within that
+block the ordering principle is the **generative formalism**: diffusion first,
+then flow matching as its successor, then the models that do not say. §6–8 then
+escalate by **degree of integration**: the Level-2 loop as a bare technique,
+portable and composable (§6); a platform that composes both couplings into one
+product (§7); and the case where language model, folding head and design loop
+are not composed at all but are one model (§8). §9 steps outside the argument
+entirely.
 
 ## Scope — proteins and peptides, not small molecules
 

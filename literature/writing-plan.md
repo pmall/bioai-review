@@ -88,10 +88,10 @@ into. A draft is written from one heading and the corpus behind it; a part is
 the merge, and merging writes seams and one voice, never a rewrite of a draft.
 The introduction is written a beat at a time — five of them — because the beats
 have different sources and merging is where they are made to read as one. The
-map's layout block is the one heading with no draft. The three benchmarking
-units are three drafts rather than one because they have different sources,
-timing and positions in the final text. Excluded works are not a draft unit —
-they are a record in `candidates.md`, not a part of the review.
+three benchmarking units are three drafts rather than one because they have
+different sources, timing and positions in the final text. Excluded works are
+not a draft unit — they are a record in `candidates.md`, not a part of the
+review.
 
 | #   | Draft                                        | File                           | Source                                                  |
 | --- | -------------------------------------------- | ------------------------------ | ------------------------------------------------------- |
@@ -118,16 +118,15 @@ The parts they collapse into:
 
 | Part              | File                       | Merges                                                |
 | ----------------- | -------------------------- | ----------------------------------------------------- |
-| Introduction      | `drafts/parts/intro.md`    | drafts 1–5, plus the layout block's roadmap paragraph |
+| Introduction      | `drafts/parts/intro.md`    | drafts 1–5, plus the roadmap paragraph that closes it |
 | The nine sections | `drafts/parts/sections.md` | drafts 7–15                                           |
 
 Drafts 6 and 16–18 stand on their own; the metrics primer renders between the
 introduction and §1, and the rest close the review.
 
-**The layout block does not become a draft.** It turns into two things: a short
-roadmap paragraph closing the introduction, and the seam sentences between
-sections — the block supplies the two-axis logic, and each section's own _Why
-here_ line supplies the seam into it.
+**The seams between sections are written from the roadmap.** The introduction's
+closing paragraph supplies the two-axis logic, and each section's own _Why here_
+line supplies the seam into it.
 
 **The conclusion is written last, from the finished parts.** §9 is a coda and
 the disclosure beat sets up an ending, but the map states which questions the
@@ -216,7 +215,7 @@ instrument, and never sets a tier. Regenerate with
 
 Drafts merge into parts, parts into the review. No pass rewrites a draft.
 
-**The nine sections.** They group as the map's layout block describes: §1–5
+**The nine sections.** They group as the introduction's roadmap describes: §1–5
 ordered by generative formalism, §6–8 by degree of integration, §9 outside the
 argument. Assembling them means writing the two block seams and smoothing the
 handoffs — not re-editing section bodies.
@@ -237,7 +236,6 @@ stays content.
 | The coupling beat quotes the success criterion without unpacking its units                           | the primer owns the definitions and follows shortly; unpacking them mid-beat stalls the argument                                                |
 | The primer is written around the two families of metric, never as an alphabetical glossary           | a metric list is dead weight the reader skips; the families do the analytical work                                                              |
 | The Latent-X1 / RFpeptides head-to-head lands under Table B, not §9                                  | so it reads as evidence about measurement, not a point scored for Latent Labs                                                                   |
-| The map's layout block never becomes text                                                            | it turns into the intro's roadmap paragraph and the seams between sections                                                                      |
 | The conclusion's gaps subsection admits only limits a cataloged publication states                   | otherwise it becomes a wish list, which is the genre's standard filler                                                                          |
 | Developability and immunogenicity are the gaps subsection's, not §9's                                | Latent-X2 is the evidence but the point is about the field, not about Latent Labs                                                               |
 | §2 opens by separating RF3 (predictor) from RFdiffusion3 (generator)                                 | the names collide; the lineage's two tracks are unreadable otherwise                                                                            |
