@@ -723,13 +723,23 @@ commercial**, yet still publishes a paper and wet-lab numbers.
 Diffusion co-folding, then the strongest antibody-design result in the corpus
 from a generator whose mechanism is never stated.
 
-- **Chai-1** — `chai1` · `10.1101/2024.10.10.615955` · **meat** — AF3-derivative
-  carrying **both** of the anatomy beat's Stage-1 inputs: an MSA track and a
-  protein-LM track, either usable alone. Also adds experimentally-grounded
-  constraint features (pocket, contact, docking). _Carries:_ the qualifier the
-  anatomy beat needs — the MSA/PLM divide is a switch here, not a commitment,
-  which is why the review can say the divide is not a wall. The hinge §8
-  completes by removing the MSA entirely.
+- **Chai-1** — `chai1` · `10.1101/2024.10.10.615955` · **backbone** —
+  AF3-derivative carrying **both** of the anatomy beat's Stage-1 inputs: an MSA
+  track and a protein-LM track, either usable alone; adds experimentally
+  grounded constraint features (pocket, contact, docking), worth a
+  double-digit-point gain when supplied. _Carries:_ the qualifier the anatomy
+  beat needs — the MSA/PLM divide is a switch here, not a commitment, which is
+  why the review can say the divide is not a wall, and the hinge §8 completes by
+  removing the MSA entirely. On antibody-protein interfaces the switch costs
+  nothing: single-sequence Chai-1 matches full-MSA Chai-1 and both beat AF2.3
+  run with MSAs, which the paper puts down to antibodies' weak evolutionary
+  signal — and which is why Chai-2 below can design them without an MSA.
+  _Against:_ AlphaFold3, matched on PoseBusters, 77% ligand RMSD success against
+  76%. _Caveat:_ weights are non-commercial and commercial use runs through the
+  free web server — the middle of the openness axis, not Boltz's MIT. And the
+  paper could not benchmark against AF3 or ESM3 at all _"due to commercial use
+  restrictions"_, falling back to CASP15 against AF2.3: the disclosure limit
+  reaching into a published methods section.
   [GitHub](https://github.com/chaidiscovery/chai-lab)
 - **Chai-2** — `chai2` · `10.1101/2025.07.05.663018` · **backbone** _(inherits
   Chai-1, via a "Chai-1d" design prototype)_ — zero-shot antibody design at
