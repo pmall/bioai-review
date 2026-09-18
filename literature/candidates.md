@@ -27,24 +27,7 @@ ______________________________________________________________________
 
 # UNDECIDED
 
-- **ProtDBench** — `10.48550/arXiv.2605.04118` · arXiv, May 2026 (v2 22 May
-  2026), Liu, Ren, Guan, Gong, Sun, Chen, Xiao — "A Unified Benchmark of Protein
-  Binder Design and Evaluation". A standardized, throughput-aware evaluation
-  framework for binder design: fixed protocol and success criteria, ten targets,
-  open-source generative methods compared under a 24-hour compute budget, plus
-  cluster-level success criteria for structural diversity. Uses a wet-lab
-  annotated dataset to analyse structure predictors _as verifiers_ and reports
-  verifier-dependent bias and limited agreement under identical filtering. _Why
-  it matters here:_ it bears directly on Table B's claim that there is no shared
-  benchmark for binder design, and on the metrics primer's claim that the
-  discrimination evidence is single-lab only. _What has to be checked before
-  deciding:_ whether the head-to-head is on wet-lab binding or on in-silico
-  filter pass rates — the abstract suggests the latter, which would leave Table
-  B's claim intact in its experimental form but not as written. _Not a neutral
-  third party:_ its corresponding author, Wenzhi Xiao, is also corresponding
-  author on PXMeter (§7), so this is the third evaluation artifact from the same
-  ByteDance Seed group after PXMeter and PXDesignBench. _Not yet read —
-  everything above is from the abstract._
+_Empty — nothing is currently awaiting a decision._
 
 # EXCLUDED
 
@@ -66,6 +49,36 @@ Two grounds for exclusion, and they differ in what is left behind:
   and are not quotable. The review is not obliged to re-cite what a work it
   cites already cites; a reader who wants the comparison has the citing paper.
 
+* **ProtDBench** — `protdbench` · `10.48550/arXiv.2605.04118` — _excluded: not a
+  third party, and its head-to-head is in-silico only._ ICML 2026 (PMLR 306); a
+  standardized, throughput-aware evaluation framework for binder design, with
+  fixed targets, hotspots, filters and success criteria. Considered for Table B
+  alongside the Overath meta-analysis and fails on both counts the map would
+  have needed. _Not a third party:_ every author is ByteDance Seed or ex-Seed,
+  corresponding author Wenzhi Xiao, who is also corresponding author on PXMeter,
+  Protenix and PXDesign (§7) — and its verifier study concludes that Protenix
+  and Protenix-Mini enrich best, then adopts Protenix-Mini as ProtDBench's own
+  structural-consistency verifier. _Not a Table B row, and no help to the ones
+  there:_ the seven-method comparison (RFdiffusion-3, BoltzGen, Protpardelle-1c,
+  ODesign, PXDesign, BindCraft, BoltzDesign1) is scored entirely in silico —
+  AF2-IG-Easy filter pass rate, successful backbones per 24 h on one A100,
+  Foldseek cluster diversity, Protenix-Mini recapitulation. No assay, no
+  designs-tested denominator, no hit definition, which is the same exclusion
+  that keeps RFOptimization (§6) out of the table. Re-scoring seven systems'
+  computed output does not make their wet-lab campaigns comparable, so Table B's
+  claim stands unchanged. In `refs.bib` and the corpus, and quotable — two
+  things in it bear on the map and are cited from here rather than given an
+  entry: **(a)** the retrospective on RFdiffusion's released wet-lab outcomes
+  (Appendix B.5, Table 10) — six targets, 139 confirmed binders against 432
+  non-binders, already AF2-IG-prefiltered, AF2-IG precision 0.252 / recall
+  0.754, Protenix-Mini precision 0.479 / recall 0.420 — which is a cross-lab
+  discrimination measurement on someone else's designs; and **(b)** the finding
+  that verifiers recover largely distinct subsets of true binders under
+  identical filtering, with recall collapsing as more of them are required to
+  agree, which is PXDesign's filter-ensembling result (§7) extended to seven
+  verifiers and checked against wet-lab labels. _Also worth not re-deriving:_ it
+  excludes Latent-X, AlphaProteo, Chai-2 and SeedProteo from the head-to-head
+  outright, for shipping no code or weights.
 * **Gauss-Seidel projection** — `gauss_seidel_projection` ·
   `10.48550/arXiv.2510.08946` — _excluded: nothing in the review uses it._ ICLR
   2026; a differentiable projection mapping provisional diffusion coordinates

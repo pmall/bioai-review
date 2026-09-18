@@ -476,9 +476,12 @@ ipTM it ranks on predicts _whether_ a design binds but not _how tightly_. That
 is the sharpest consequence, because **the identity beat's collapsing budget is
 precisely the move out of the regime where enrichment suffices and into the one
 where it does not.** A field testing twenty designs per target needs the
-property its metrics have not been shown to have. _The evidence is thinner than
-the claim is sharp:_ three labs reporting on their own designs, no cross-lab
-measurement — which is Table B's finding arriving early.
+property its metrics have not been shown to have. _The evidence:_ three labs
+each reporting on their own designs, and one cross-lab test — the Overath
+meta-analysis under Table B, which re-scored 3,766 tested designs from six
+campaigns and found the best single score's average precision ranging from 0.1
+to 1 depending on the target. It holds the claim up and sharpens it: the score
+that discriminates on one target is not the one that discriminates on the next.
 
 ______________________________________________________________________
 
@@ -1285,23 +1288,22 @@ adjacent tables demonstrate that as no paragraph can. That asymmetry is the
 benchmarking units' finding and the disclosure beat's strongest empirical
 support.
 
-**The reason is not that nobody built one.** Several benchmarks for binder
-design have been proposed, each by a group with a system in the race and none
-adopted by the others — proliferation, not absence, and the sharper form of the
-same finding. The review names them rather than counting them, because the
-inventory is not what the tables measure: their rows are. _Undecided candidates
-are in `candidates.md`; none has been read, so this paragraph is a placeholder
-for what they turn out to be._
-
-**What building one afterwards reaches, and what it does not.** The **Overath
-binder meta-analysis** — `overath_meta` · `10.1101/2025.08.14.670059` ·
-**mention** — pooled 3,766 tested designs from six published studies and
-re-scored them under one pipeline. It shows what a retrospective common frame
-recovers and what it cannot: re-scoring reaches the designs, not the assays or
-the hit definitions, so it standardizes the filter and leaves the denominator
-and the hit definition exactly as each campaign reported them. Its designs are
-also the generation before the one this review centres on. _(Not the field's
-only such attempt — see `candidates.md`.)_
+**The one common frame anyone built, and how far it reaches.** The **Overath
+binder meta-analysis** — `overath_meta` · `10.1101/2025.08.14.670059` · **meat**
+— comes from a group with no design system of its own. It pooled 3,766 tested
+designs from six published campaigns across 15 targets, re-scored every one
+under a single pipeline, and asked which in-silico score predicts wet-lab
+binding; AF3's ipSAE came out the best single predictor. That is the corpus's
+only cross-lab test of the **filters**, as Latent-X1 (§9) is its only
+third-party wet-lab comparison of two **methods** — and it belongs here, after
+the lineages whose designs it scores. _Carries:_ the evidence behind the metrics
+primer's discrimination claim, which without it rests on three labs each
+reporting on their own designs. _What it reaches and what it does not:_
+re-scoring reaches the designs, not the assays or the hit definitions, so it
+standardizes the filter and leaves the denominator and the hit definition
+exactly as each campaign reported them — its own source table lists a different
+binding definition for nearly every campaign it pooled. Its designs are also the
+generation before the one this review centres on.
 
 ______________________________________________________________________
 
