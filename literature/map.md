@@ -110,6 +110,17 @@ results. It covers proteins and peptides binding protein targets; small
 molecules are a different problem and out of scope, for reasons the background
 gives.
 
+**These models are in production, at a volume where speed matters.** In one week
+of 2026, NVIDIA, Anthropic and the ESM side each shipped optimized inference
+kernels for the models this review covers — Boltz, Chai-1, Protenix, OpenFold,
+RoseTTAFold3, RFdiffusion, BindCraft, PXDesign, ESMFold2 — reporting two- to
+fourfold throughput gains. Nobody spends that on software nobody runs.
+_(map-only — blog posts and repository releases, no publication.)_
+[NVIDIA](https://developer.nvidia.com/blog/high-throughput-structure-prediction-with-bionemo-inference-runtime/)
+·
+[Anthropic](https://www.anthropic.com/research/claude-uplifts-biomolecular-modeling)
+· [kits](https://github.com/anthropics/uplifting-biomolecular-modeling)
+
 **The stake, in one number.** How many designs must be physically made before
 one binds. Screening-era and early computational work needed thousands to
 millions of candidates per target; current systems report tens. **The measure of
