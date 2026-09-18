@@ -35,11 +35,12 @@
 > A **mention** carries none of these: a mention is one sentence, and if it
 > needs a _Carries_ line it is not a mention.
 >
-> **One unit per draft.** The file is a flat sequence of the review's units in
-> the order they render — the introduction, the metrics primer, the nine
-> sections, the two tables, the conclusion. Each heading below is one draft unit
-> in `literature/writing-plan.md`, so there is no second organization to
-> reconcile there either.
+> **One unit per `#` heading.** The file is a flat sequence of the review's
+> units in the order they render — the introduction, the background, the metrics
+> primer, the nine sections, the two tables, the conclusion. A unit is either
+> one draft or, where its `##` beats have different sources, one draft per beat
+> merged into the unit; `literature/writing-plan.md` says which and there is no
+> second organization to reconcile there.
 >
 > **Everything the review left out is in `literature/candidates.md`** —
 > undecided works and examined-and-excluded ones, each with its reason. None of
@@ -73,22 +74,72 @@ ______________________________________________________________________
 
 # The introduction
 
-What the introduction establishes, in five beats: the problem this review is
-about and what is in and out of scope; the apparatus §1–§9 are read through —
-how a co-folder is built, why that same machine is also a generator, and how
-tightly a generator can be bound to the predictor that grades it; and last, the
-limit on what a review of this literature can establish.
+One unit, one draft. This is how the review opens: the problem, what changed,
+what the review covers, and how to read the numbers in it. The apparatus §1–§9
+are read through belongs to the background that follows; this unit hands the
+reader the problem and the stake, and names systems without explaining them.
 
-**It closes on the order §1–§9 read in.** Each section pairs a predictor with
-the design systems built on it, so a reader meets an architecture once and then
-follows it to its conclusion. §1–5 are predominantly Level 1, and within that
-block the ordering principle is the **generative formalism**: diffusion first,
-then flow matching as its successor, then the models that do not say. §6–8 then
-escalate by **degree of integration**: the Level-2 loop as a bare technique,
-portable and composable (§6); a platform that composes both couplings into one
-product (§7); and the case where language model, folding head and design loop
-are not composed at all but are one model (§8). §9 steps outside the argument
-entirely.
+**The problem is aim, not scale.** Acting on a protein target means having
+another molecule that binds it, and for protein targets that molecule is usually
+itself a protein or a peptide — an antibody, a nanobody, a minibinder, a
+macrocyclic peptide. Finding one has meant letting a library do the searching:
+immunize an animal, or screen 10¹² or more random sequences by display and keep
+whatever sticks. That works, and it is still how most binders are found. What it
+cannot do is aim. A library returns binders to whichever part of the target
+happens to be accessible or immunogenic, and RFantibody states the consequence
+plainly: _"no method currently exists to design novel, epitope-specific
+antibodies entirely in silico"_. The ambition behind everything in this review
+is to replace the library with a design: a binder invented for a site someone
+chose.
+
+**What changed is that structure prediction stopped being the open problem.**
+AlphaFold2 reached median 0.96 Å backbone accuracy at CASP14 against 2.8 Å for
+the next best method, and AlphaFold3 generalized the result from single chains
+to complexes of proteins, nucleic acids, ligands and ions. Prediction became a
+tool other work is built on rather than a question, and the field turned to
+design. The turn is smaller than it looks: a model that predicts how chains fold
+together is, with one chain left blank, a model that invents that chain. The two
+halves of this review are one technology used two ways, which is why they are
+reviewed together.
+
+**What this review is.** A map of that field for a reader entering it: the open
+lineages — AlphaFold, RoseTTAFold, Boltz, Chai, Protenix, ESM — each followed
+from its predictor to the design systems built on it, and the closed systems
+read as evidence about the field's evidence rather than as its strongest
+results. It covers proteins and peptides binding protein targets; small
+molecules are a different problem and out of scope, for reasons the background
+gives.
+
+**The stake, in one number.** How many designs must be physically made before
+one binds. Screening-era and early computational work needed thousands to
+millions of candidates per target; current systems report tens. **The measure of
+progress in this field is how few designs you must make to get a binder**, and
+§1–§9 are, read one way, a history of that number falling. _Collision:_ the
+numbers, the table and the argument are the identity beat's; the introduction
+states the number exists and what it means.
+
+**Two caveats the reader carries through the whole review**, both established
+later and both needed from the start.
+
+1. **Not one benchmark in this literature is uncontested.** Every instrument the
+   field measures itself with has a documented defect, and two numbers from two
+   papers were almost never produced under the same conditions. Tables A and B
+   are built to show this rather than hide it.
+1. **Campaigns choose their own targets and epitopes, and that choice alone
+   moves a hit rate across the full width of the literature's spread.** mBER
+   (§6) is the one campaign that did not choose, and it is the control every
+   other reported hit rate should be read against.
+
+**The roadmap.** Each of the nine sections pairs a predictor with the design
+systems built on it, so a reader meets an architecture once and then follows it
+to its conclusion; §9 steps outside the argument to the systems that publish
+results without methods. The metrics primer comes first, since §1 quotes its
+units. _Collision:_ the ordering principle behind §1–§5 and §6–§8 closes the
+background, where the vocabulary it uses has been defined.
+
+______________________________________________________________________
+
+# Background
 
 ## Scope — proteins and peptides, not small molecules
 
@@ -274,7 +325,7 @@ buys.
 Level 1 is still the field's default, and it is the origin of the standard
 success criterion — AlphaProteo's _"interchain AF2 pAE < 10, binder-aligned
 binder RMSD < 1 Å, pLDDT > 80"_ — quoted whole and left unpacked here; the
-metrics primer, which follows the introduction, defines its units.
+metrics primer, which follows this unit, defines its units.
 
 **Why MSA emancipation was the precondition for Level 2.** This is the one
 genuinely non-obvious claim in this unit. **An MSA is a database lookup on a
@@ -337,11 +388,22 @@ warning attached to it, and it is why §9 sits outside the argument instead of
 inside it — the review reads the closed systems as evidence about the field's
 evidence, not as its strongest results.
 
+## How §1–§9 are ordered
+
+**Two axes, one block each.** §1–§5 are predominantly Level 1, and within that
+block the ordering principle is the **generative formalism**: diffusion first,
+then flow matching as its successor, then the models that do not say. §6–§8 then
+escalate by **degree of integration**: the Level-2 loop as a bare technique,
+portable and composable (§6); a platform that composes both couplings into one
+product (§7); and the case where language model, folding head and design loop
+are not composed at all but are one model (§8). §9 steps outside the argument
+entirely.
+
 ______________________________________________________________________
 
 # The metrics primer
 
-Renders between the introduction and §1, because §1–§9 quote lDDT, DockQ,
+Renders between the background and §1, because §1–§9 quote lDDT, DockQ,
 PB-valid, pLDDT, pAE and ipTM from the start. It defines those units and nothing
 else.
 
