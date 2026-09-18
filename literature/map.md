@@ -624,27 +624,24 @@ the metric it is scored on, may not track whether the sequence folds.
   _(inherits RFdiffusion)_ — the lineage's macrocycle arm: RFdiffusion and RF2
   extended with a **cyclic relative positional encoding** so the generated chain
   closes head-to-tail; sequences from ProteinMPNN, filtered by refolding with
-  AfCycDesign and by Rosetta interface metrics. _Level 1._ _Carries:_ the low
-  end of the identity beat's budget — binders against every target from fewer
-  than twenty synthesized designs each, with crystal structures — and the cyclic
-  thread's **open** method. _Against:_ Latent-X1 (§9), which designed against
-  these targets and epitopes and re-synthesized these binders to measure in its
-  own assays. The corpus's only third-party wet-lab comparison of two design
-  methods runs through this entry. _Collision:_ that head-to-head is argued
-  under Table B, where its limits belong.
-  - **AfCycDesign** — `afcycdesign` · `10.1038/s41467-025-59940-7` · **meat** —
-    AlphaFold2 given a cyclic offset so the chain reads as closed: the critic
-    above, and where the cyclic thread starts. _Reviewed in full in §6_, where
-    it is the earliest loop of that kind.
-- **RFOptimization (RFO)** — `rfoptimization` · `10.64898/2026.09.04.749184` ·
-  **meat** — the lineage's optimizer: training-free refinement of finished
-  designs, with gradients taken from RF3 above. _Carries:_ this lineage's
-  completion of the stack — predict, generate, inverse-fold, optimize, filter,
-  all from one group — and the Baker lab returning, on its own AF3-class
-  predictor, to the technique RFdiffusion displaced above. _Reviewed in full in
-  §6_, where it is the one system that never relaxes the sequence. _Caveat:_
-  **in silico only.** No wet-lab validation, no designs-tested denominator, no
-  Table B row — the ceiling on how far the review leans on it.
+  AfCycDesign — AlphaFold2 given a cyclic offset so the chain reads as closed,
+  and where the cyclic thread starts (§6) — and by Rosetta interface metrics.
+  _Level 1._ _Carries:_ the low end of the identity beat's budget — binders
+  against every target from fewer than twenty synthesized designs each, with
+  crystal structures — and the cyclic thread's **open** method. _Against:_
+  Latent-X1 (§9), which designed against these targets and epitopes and
+  re-synthesized these binders to measure in its own assays. The corpus's only
+  third-party wet-lab comparison of two design methods runs through this entry.
+  _Collision:_ that head-to-head is argued under Table B, where its limits
+  belong.
+- **RFOptimization (RFO)** — _see §6_ — the lineage's optimizer: training-free
+  refinement of finished designs, with gradients taken from RF3 above.
+  _Carries:_ this lineage's completion of the stack — predict, generate,
+  inverse-fold, optimize, filter, all from one group — and the Baker lab
+  returning, on its own AF3-class predictor, to the technique RFdiffusion
+  displaced above. _Caveat:_ **in silico only.** No wet-lab validation, no
+  designs-tested denominator, no Table B row — the ceiling on how far the review
+  leans on it.
 
 # §3 — Boltz
 
@@ -714,9 +711,9 @@ commercial**, yet still publishes a paper and wet-lab numbers.
   above, so the result cannot be independently reproduced. _(BoltzPPI is the
   critic itself, no separate publication — resolves to the `boltzppi` keyword on
   this entry.)_
-- **BoltzDesign1** — `boltzdesign1` · `10.1101/2025.04.06.647261` · **meat** —
-  inverts the Boltz predictor for binder design. _Level 2; reviewed in full in
-  §6_, beside BindCraft, whose loop it reuses at a different attachment point.
+- **BoltzDesign1** — _see §6_ — inverts the Boltz predictor for binder design.
+  _Level 2_, beside BindCraft, whose loop it reuses at a different attachment
+  point.
 
 # §4 — Chai
 
@@ -757,9 +754,8 @@ from a generator whose mechanism is never stated.
   strongest antibody result in the corpus is the one the review can say least
   about — §9's argument arriving early, inside a lineage rather than in the
   coda.
-- **Chai-3 (2026)** — high-throughput commercial 3D foundation model. _(map-only
-  — no publication; discussed in §9.)_ · **mention**
-  [platform](https://lab.chaidiscovery.com/)
+- **Chai-3 (2026)** — high-throughput commercial 3D foundation model, no
+  publication. _see §9_ [platform](https://lab.chaidiscovery.com/)
 
 # §5 — Flow matching
 

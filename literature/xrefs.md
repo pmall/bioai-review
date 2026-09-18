@@ -181,13 +181,6 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 - **Cites (0):** —
 - **Cited by (0):** —
 
-### `afcycdesign` — §2, 2025
-
-*Cyclic peptide structure prediction and design using AlphaFold2* · `10.1038/s41467-025-59940-7`
-
-- **Cites (8):** `alphafold2` (19), `proteinmpnn` (17), `rosettafold` (3), `colabfold` (2), `alphadesign`, `alphafold3`, `rfdiffusion`, `rosettafold_all_atom`
-- **Cited by (8):** `rfpeptides` (28), `pxdesign` (3), `alphadesign`, `boltz2`, `halludesign`, `latentx1`, `protein_hunter`, `rosettafold2`
-
 ### `ligandmpnn` — §2, 2025
 
 *Atomic context-conditioned protein sequence design using LigandMPNN* · `10.1038/s41592-025-02626-1`
@@ -229,13 +222,6 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 
 - **Cites (15):** `ligandmpnn` (17), `proteinmpnn` (10), `rfdiffusion` (8), `alphafold3` (5), `rfdiffusion2` (5), `alphafold2` (2), `bindcraft` (2), `chai1` (2), `rosettafold` (2), `alphaproteo`, `boltzdesign1`, `rosettafold2`, `rosettafold_all_atom`, `chai2`, `rosettafold3`
 - **Cited by (5):** `protdbench` (11), `boltzgen` (2), `genie3` (2), `protein_hunter`, `rfoptimization`
-
-### `rfoptimization` — §2, 2026
-
-*RFOptimization: Guiding Design Optimization with All-Atom Structure Prediction* · `10.64898/2026.09.04.749184`
-
-- **Cites (20):** `ligandmpnn` (12), `proteinmpnn` (12), `protein_hunter` (11), `rfdiffusion` (10), `bindcraft` (9), `alphafold3` (6), `rosettafold3` (3), `alphafold2` (2), `boltz1` (2), `boltz2` (2), `boltzdesign1` (2), `halludesign` (2), `rfdiffusion2` (2), `rfpeptides` (2), `alphaproteo`, `openfold`, `protenix_v2`, `rfdiffusion3`, `rosettafold_all_atom`, `chai2`
-- **Cited by (0):** —
 
 ### `rfpeptides` — §2, 2025
 
@@ -285,13 +271,6 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 
 - **Cites (8):** `boltz1` (72), `alphafold3` (32), `chai1` (10), `alphafold2` (4), `colabfold` (3), `boltzdesign1`, `posebusters`, `afcycdesign`
 - **Cited by (18):** `boltzmol1` (31), `gauss_seidel_projection` (24), `boltzgen` (22), `openbind` (17), `proteina_complexa` (17), `protein_hunter` (16), `esmc` (7), `protenix_v1` (7), `boltzprot1` (5), `protdbench` (4), `genie3` (3), `mber` (3), `foldbench` (2), `protenix_v2` (2), `rfoptimization` (2), `latentx2`, `opendde`, `pxdesign`
-
-### `boltzdesign1` — §3, 2025
-
-*Boltzdesign1: Inverting All-Atom Structure Prediction Model for Generalized Biomolecular Binder Design* · `10.1101/2025.04.06.647261`
-
-- **Cites (8):** `ligandmpnn` (17), `alphafold3` (9), `boltz1` (9), `alphafold2` (4), `rfdiffusion` (4), `chai1` (2), `rosettafold_all_atom` (2), `alphadesign`
-- **Cited by (13):** `protdbench` (11), `pxdesign` (6), `proteina_complexa` (5), `halludesign` (3), `boltzgen` (2), `genie3` (2), `protein_hunter` (2), `rfoptimization` (2), `boltz2`, `esmc`, `latentx1`, `mber`, `rfdiffusion3`
 
 ### `boltzgen` — §3, 2025
 
@@ -356,12 +335,26 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 - **Cites (8):** `alphafold3` (9), `bindcraft` (6), `rfdiffusion` (6), `proteinmpnn` (4), `boltzgen` (2), `rfantibody`, `alphafold2`, `frameflow`
 - **Cited by (1):** `protenix_v2`
 
+### `afcycdesign` — §6, 2025
+
+*Cyclic peptide structure prediction and design using AlphaFold2* · `10.1038/s41467-025-59940-7`
+
+- **Cites (8):** `alphafold2` (19), `proteinmpnn` (17), `rosettafold` (3), `colabfold` (2), `alphadesign`, `alphafold3`, `rfdiffusion`, `rosettafold_all_atom`
+- **Cited by (8):** `rfpeptides` (28), `pxdesign` (3), `alphadesign`, `boltz2`, `halludesign`, `latentx1`, `protein_hunter`, `rosettafold2`
+
 ### `bindcraft` — §6, 2025
 
 *One-shot design of functional protein binders with BindCraft* · `10.1038/s41586-025-09429-6`
 
 - **Cites (7):** `rfdiffusion` (12), `alphafold3` (5), `proteinmpnn` (5), `alphafold2` (3), `alphaproteo` (2), `alphadesign`, `alphafold_multimer`
 - **Cited by (13):** `proteina_complexa` (58), `protdbench` (21), `pxdesign` (14), `rfoptimization` (9), `ppiflow` (6), `protein_hunter` (4), `opengerminal` (3), `germinal` (2), `ipsae` (2), `rfdiffusion3` (2), `esmc`, `opendde`, `rfantibody`
+
+### `boltzdesign1` — §6, 2025
+
+*Boltzdesign1: Inverting All-Atom Structure Prediction Model for Generalized Biomolecular Binder Design* · `10.1101/2025.04.06.647261`
+
+- **Cites (8):** `ligandmpnn` (17), `alphafold3` (9), `boltz1` (9), `alphafold2` (4), `rfdiffusion` (4), `chai1` (2), `rosettafold_all_atom` (2), `alphadesign`
+- **Cited by (13):** `protdbench` (11), `pxdesign` (6), `proteina_complexa` (5), `halludesign` (3), `boltzgen` (2), `genie3` (2), `protein_hunter` (2), `rfoptimization` (2), `boltz2`, `esmc`, `latentx1`, `mber`, `rfdiffusion3`
 
 ### `colabdesign` — §6, 2025
 
@@ -389,6 +382,13 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 *OpenGerminal: an open-source implementation of the Germinal antibody design pipeline* · `10.64898/2026.06.25.734527`
 
 - **Cites (7):** `germinal` (45), `chai1` (13), `alphafold_multimer` (5), `rfdiffusion` (4), `bindcraft` (3), `mber`, `rfantibody`
+- **Cited by (0):** —
+
+### `rfoptimization` — §6, 2026
+
+*RFOptimization: Guiding Design Optimization with All-Atom Structure Prediction* · `10.64898/2026.09.04.749184`
+
+- **Cites (20):** `ligandmpnn` (12), `proteinmpnn` (12), `protein_hunter` (11), `rfdiffusion` (10), `bindcraft` (9), `alphafold3` (6), `rosettafold3` (3), `alphafold2` (2), `boltz1` (2), `boltz2` (2), `boltzdesign1` (2), `halludesign` (2), `rfdiffusion2` (2), `rfpeptides` (2), `alphaproteo`, `openfold`, `protenix_v2`, `rfdiffusion3`, `rosettafold_all_atom`, `chai2`
 - **Cited by (0):** —
 
 ### `protenix_v1` — §7, 2026
