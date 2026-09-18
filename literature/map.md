@@ -91,16 +91,15 @@ scope — a molecule is a variable-size graph under hard valence rules, not a
 chain drawn from a fixed alphabet of twenty, so generating one takes different
 machinery and is judged on different benchmarks.
 
-**What the review does.** It reviews the models, lineage by lineage — AlphaFold,
-RoseTTAFold, Boltz, Chai, Protenix, ESM — each taken from its predictor through
-the design systems built on it, so an architecture is met once and then followed
-to what it produces, with its results and the caveats on them. §9 steps outside
-the open lineages to the closed systems, read as evidence about the field's
-evidence rather than as its strongest results. What comes before §1 is
-preparation for it: what a co-folder is, why prediction and generation are one
-machinery, how tightly a generator couples to its critic, what the field's
-disclosure limit does to its evidence, and the vocabulary its numbers are quoted
-in.
+**The models are followed lineage by lineage, from each predictor to the designs
+built on it.** AlphaFold, RoseTTAFold, Boltz, Chai, Protenix, ESM — so an
+architecture is met once and then traced to what it produces, with its results
+and the caveats on them. §9 steps outside the open lineages to the closed
+systems, read as evidence about the field's evidence rather than as its
+strongest results. What comes before §1 is preparation for it: what a co-folder
+is, why prediction and generation are one machinery, how tightly a generator
+couples to its critic, what the field's disclosure limit does to its evidence,
+and the vocabulary its numbers are quoted in.
 
 **The thread through all of it, in one number.** How many designs must be
 physically made before one binds. Screening-era and early computational work
