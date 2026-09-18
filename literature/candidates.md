@@ -30,60 +30,8 @@ ______________________________________________________________________
 _Surfaced 18 Sep 2026 from Anthropic's inference-optimization release
 (`anthropics/uplifting-biomolecular-modeling`), whose kit table is a third
 party's list of the open models the field actually runs. The predictive half of
-that list is already covered by the map; these three are the design-side models
-it names that the map does not._
-
-## Genie 3
-
-- **DOI:** `10.64898/2026.05.01.722168` (bioRxiv, 5 May 2026)
-- **Title:** *Fast and Ultra-Capable Protein Design: Advancing the Frontier
-  Through Atomistic SE(3)-Equivariance with Genie 3*
-- **Authors:** Lin, Y., Lee, M., Vermani, A., Jiang, E., De Cooman, S., Špeťko,
-  M. & AlQuraishi, M.
-- **Would go in:** §6 — as the counter-case its arc currently has no entry for —
-  or a home of its own beside §2's generators. All-atom SE(3)-equivariant
-  backbone diffusion, so Level 0/1, not Level 2.
-- **Why it might belong:** it argues directly against §6's *revived* step. The
-  paper's stated aim is to close the generation–hallucination gap, and it
-  benchmarks binder design head-to-head against BindCraft, RFdiffusion, BoltzGen
-  and Proteina-Complexa over 10 design problems, reporting the most successful
-  designs on 7 of 10 at a fixed 200-structure budget and holding that lead when
-  normalized by compute. §6 currently states that Level 2 returned and beat
-  generate-and-filter; this is a generator claiming the reverse, from a group
-  independent of both the Baker lab and BindCraft's. It also reports \<10%
-  design overlap with BindCraft, which is a *complementarity* claim rather than
-  a displacement claim, and the map has no place that makes that distinction.
-- **Why to check first:** the wet-lab evidence is thin — 8 designs against Nipah
-  glycoprotein G, one binder at KD ≈ 92 nM. That is an Adaptyv-competition
-  entry, not a campaign, so it may carry no Table B row and the whole entry
-  would rest on in-silico benchmarks. Also decide whether admitting it means
-  admitting the Genie 1/2 lineage behind it, which the map does not carry.
-- **Surfaced from:** the `genie3` kit (task: *backbone diffusion, binder
-  design*).
-
-## Proteina-Complexa
-
-- **DOI:** `10.48550/arXiv.2603.27950` (arXiv, 30 Mar 2026; ICLR 2026 oral)
-- **Title:** *Scaling Atomistic Protein Binder Design with Generative
-  Pretraining and Test-Time Compute*
-- **Authors:** Didi, K., Zhang, Z., Zhou, G., Reidenbach, D., Cao, Z., Cha, S.,
-  Geffner, T., Dallago, C., Tang, J., Bronstein, M. M., Steinegger, M.,
-  Kucukbenli, E., Vahdat, A. & Kreis, K. (NVIDIA)
-- **Would go in:** §5 — flow matching — as the first instance in that section
-  aimed at binders rather than at monomer backbones.
-- **Why it might belong:** fully atomistic binder design by partially latent
-  flow matching, extending La-Proteina, with inference-time optimization on top
-  of the generative prior — a Level-0 generator with a Level-1-style search
-  bolted on, which is a coupling the map's table does not currently have a row
-  for. It is also pretrained on Teddymer, a large synthetic binder–target set
-  built from *predicted* structures, which is a data-supply argument no other
-  entry makes.
-- **Why to check first:** the paper itself is in-silico only. The wet-lab weight
-  is external — Manifold Bio reports running it at ~1M designs against 127
-  targets with binders to 68% of them — and that campaign is Manifold's, the
-  same group as §6's mBER. Decide whether that evidence attaches here, to mBER,
-  or nowhere until it is published.
-- **Surfaced from:** the `complexa` kit (task: *binder generation*).
+that list is already covered by the map; of the design-side models it names,
+only Caliby is still open._
 
 ## Caliby
 
@@ -108,8 +56,8 @@ it names that the map does not._
 
 **Also on that list and deliberately not entered here:** `ef2inv` is the
 ESMFold2 binder-design campaign already in §8; `esm_if1` is inverse folding that
-ProteinMPNN's entry already covers; `mosaic` (with `joltz`) has no publication
-and no DOI, so it cannot be cataloged and can only ever be a _map-only_ line.
+ProteinMPNN's entry already covers; `mosaic` (with `joltz`) was a _map-only_
+line in §6 and is now excluded below.
 
 # EXCLUDED
 
@@ -161,6 +109,7 @@ Two grounds for exclusion, and they differ in what is left behind:
   verifiers and checked against wet-lab labels. _Also worth not re-deriving:_ it
   excludes Latent-X, AlphaProteo, Chai-2 and SeedProteo from the head-to-head
   outright, for shipping no code or weights.
+
 * **Gauss-Seidel projection** — `gauss_seidel_projection` ·
   `10.48550/arXiv.2510.08946` — _excluded: nothing in the review uses it._ ICLR
   2026; a differentiable projection mapping provisional diffusion coordinates
@@ -171,6 +120,7 @@ Two grounds for exclusion, and they differ in what is left behind:
   **mention** whose only job was to be the fourth option in a physical-validity
   thread that has since been cut as too low-level for a field review. In
   `refs.bib` and the corpus, and quotable.
+
 * **ColabFold** — `colabfold` · `10.1038/s41592-022-01488-1` — _excluded: a
   tool, carrying no claim the review leans on._ MMseqs2 homology search in front
   of unmodified AF2 / AlphaFold-Multimer weights, plus the ColabFoldDB
@@ -182,6 +132,7 @@ Two grounds for exclusion, and they differ in what is left behind:
   rather than an entry. That footnote is kept under Table A — the AF2 cells and
   Table B's AF2 filters are ColabFold runs. In `refs.bib` and the corpus, and
   quotable.
+
 * **DrugFlow** — `drugflow` · `10.48550/arXiv.2508.17815` · and **FLOWR** —
   `flowr` · `10.1038/s43588-026-00998-8` — _excluded: wrong modality._ Both are
   pocket-conditioned **small-molecule** generators, producing 3D atom types,
@@ -189,6 +140,7 @@ Two grounds for exclusion, and they differ in what is left behind:
   than binder design; the overlap is the flow-matching machinery, not the
   problem. Both are quoted in the scope beat for their discrete/continuous
   hybrid schemes — the evidence for the differentiability asymmetry.
+
 * **OpenBind, first release** — `openbind` · `10.64898/2026.08.27.747600` —
   _excluded: wrong modality._ An open experimental structure-affinity dataset
   and benchmark: 925 crystallographic binding events from 699 compounds against
@@ -207,6 +159,7 @@ Two grounds for exclusion, and they differ in what is left behind:
   does not earn the row: **one target**, on the target class §3–§8 do not design
   for, and the authors say the ordering may not generalise. A protein-ligand row
   needs a multi-target benchmark. In `refs.bib` and the corpus, and quotable.
+
 * **BoltzMol-1** — `boltzmol1` · `10.64898/2026.07.04.736485` — _excluded: wrong
   modality._ Small-molecule hit discovery over an optimized Boltz-2, API-only
   with no weights. It **screens catalogue compounds** rather than generating
@@ -214,11 +167,13 @@ Two grounds for exclusion, and they differ in what is left behind:
   DrugFlow and FLOWR out. Its one pull toward the map is that it is a second
   closed Boltz model, but §3's open→closed fork is established by BoltzProt-1
   alone. In `refs.bib` and the corpus, and quotable.
+
 * **ProtFlow** — `protflow` · `10.64898/2026.02.14.705870` — _excluded: not
   binder design._ Rectified flow matching in sequence space for general protein
   engineering; learns the global semantic distribution of protein space. The
   words "binder" and "binding" do not appear anywhere in the paper, and there is
   no target conditioning.
+
 * **moPPIt** — `moppit` · `10.1101/2024.07.31.606098` — _excluded: no lineage._
   A genetic algorithm iterating a pool from the PepMLM peptide language model,
   scored by BindEvaluator (an ESM-2 binding-site predictor) plus perplexity. No
@@ -228,11 +183,59 @@ Two grounds for exclusion, and they differ in what is left behind:
   no other corpus paper. _Recorded error, do not reintroduce:_ an earlier
   version of this map described moPPIt as discrete flow matching. That was
   wrong.
+
 * **SaProt** — `saprot` · `10.1101/2023.10.01.560349` — _excluded: neither half
   of the review._ A structure-aware protein language model (Foldseek 3Di
   alphabet, 441 tokens) with no folding head and no generative binder
   capability. It neither predicts 3D structure nor designs binders, and belongs
   to no lineage tracked here. Cited by one corpus paper.
+
+* **Genie 3** — `genie3` · `10.64898/2026.05.01.722168` — _excluded: no lineage
+  in the review, and its dispute is not the review's._ An SE(3)-equivariant
+  all-atom backbone diffusion model (AlQuraishi lab), target-conditioned and so
+  in scope by the rule, reporting the most successful designs on 7 of 10 of
+  AlphaProteo's binder problems at a fixed 200-structure budget against
+  BindCraft, RFdiffusion, BoltzGen and Proteina-Complexa, and holding that lead
+  normalized by GPU-hours. _Why it is out:_ the review is organized as predictor
+  lineages followed to the design systems built on them, and Genie descends from
+  none of the six. Admitting it on its benchmark result alone would make the
+  review a scoreboard between generation and hallucination — the log of disputes
+  `GOAL.md` rules out — and the coupling levels are an ordering of the material,
+  not a claim that tighter coupling wins, so there is no beat here for it to
+  overturn. _Reopen when:_ the Adaptyv Nipah competition is written up as
+  material in its own right; §6's joltz/mosaic line is the map's only Nipah
+  entry today, and it is in-silico only. Genie 3 is the wet-lab side of the same
+  competition — 1 binder in 8 designs at KD ≈ 92 nM — and reports RFdiffusion
+  3/60, BindCraft 1/100 and BoltzGen 2/288 there too. _How far that goes:_ the
+  assay is shared, the method attribution is not. Those three rates are scraped
+  from the competition site's self-reported method tags, which the paper says
+  may be missing and may reflect the entrants' choices rather than the models'.
+  So it is a common assay, not the controlled cross-method comparison the corpus
+  lacks. That is a different job from a section entry and needs no decision now.
+  Retrieved, parsed and in `refs.bib`, so quotable meanwhile; two numbers in it
+  bear on the conclusion without an entry — the in-silico oracles' precision
+  ceiling (maximum 12%, and no binder found at all for H3, TGFβ and TIE2) for
+  the fifth gap, and the Nipah rates above, carrying that caveat. _Provisional
+  claim corrected on reading:_ the Genie 3 / BindCraft design overlap is
+  reported qualitatively in a figure, not as the \<10% this file previously
+  recorded. _Preprint; re-check for a journal version._
+
+* **joltz / mosaic** — _no publication, no DOI; not cataloguable_ — _excluded:
+  its only claim on the review is a leaderboard score._ `joltz` ports Boltz-1/2
+  to JAX and makes them differentiable; `mosaic` (Escalante Bio) optimizes
+  against them — the Boltz counterpart to ColabDesign. Held a _map-only_ mention
+  in §6 until Sep 2026. _Why it is out:_ what put it there was the top
+  **in-silico** score in Adaptyv's Nipah binder competition (Jan 2026),
+  descending a Boltz-2 loss directly with no inverse-folding stage, and a
+  leaderboard result with no wet-lab outcome is not weight the review should
+  spend a line on. _What removing it cost, recorded so it is not rediscovered:_
+  it was the second group inverting Boltz, independent of BoltzDesign1's, and
+  §6's step 4 portability count went from seven groups to six when it left. The
+  architecture half of that claim is untouched — it rests on BoltzDesign1,
+  PXDesign-h (§7) and ESMFold2 (§8), none of them affected. _Reopen when:_ the
+  Adaptyv Nipah competition is written up, where it is the in-silico entrant
+  beside Genie 3's wet-lab one. Cannot enter `refs.bib` in any case, so it comes
+  back as a map-only line or not at all.
 
 ## Below the threshold
 
@@ -254,3 +257,13 @@ Two grounds for exclusion, and they differ in what is left behind:
   establish, and the map does not need them to say:_ cycling-based hallucination
   is an independently developed family rather than an RFO idiosyncrasy —
   HalluDesign is the Cao lab's, independent of Ovchinnikov's.
+
+- **Proteina-Complexa** — `10.48550/arXiv.2603.27950` (arXiv, 30 Mar 2026; ICLR
+  2026 oral; Didi et al., NVIDIA). Atomistic binder design by partially latent
+  flow matching, extending La-Proteina, with inference-time search over the
+  generative prior. Out for the same reason as Genie 3 above: it descends from
+  no predictor lineage the review follows, and §5 covers the formalism through
+  FrameFlow already. Its wet-lab weight was never its own — the million-design
+  campaign behind it is Manifold Bio's, and mBER (§6) carries that group with a
+  published paper. Not retrieved, so not quotable; Genie 3's benchmark of it is
+  cited from there if the number is ever wanted.
