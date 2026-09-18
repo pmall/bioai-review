@@ -93,27 +93,26 @@ units are three drafts rather than one because they have different sources,
 timing and positions in the final text. Excluded works are not a draft unit —
 they are a record in `candidates.md`, not a part of the review.
 
-| #   | Draft                                        | File                           | Source                                                           |
-| --- | -------------------------------------------- | ------------------------------ | ---------------------------------------------------------------- |
-| 1   | Scope                                        | `drafts/00-scope.md`           | The scope beat                                                   |
-| 2   | The founding bet                             | `drafts/01-anatomy.md`         | The anatomy beat                                                 |
-| 3   | Prediction and generation are one machine    | `drafts/02-identity.md`        | The identity beat                                                |
-| 4   | Generator–critic coupling                    | `drafts/03-coupling.md`        | The coupling beat                                                |
-| 5   | The disclosure limit                         | `drafts/04-frontier.md`        | The disclosure beat                                              |
-| 6   | Metrics primer                               | `drafts/05-metrics-primer.md`  | The metrics primer                                               |
-| 7   | §1 AlphaFold and the open co-folding cluster | `drafts/06-alphafold.md`       | §1                                                               |
-| 8   | §2 RoseTTAFold → RFdiffusion                 | `drafts/07-rosettafold.md`     | §2                                                               |
-| 9   | §3 Boltz                                     | `drafts/08-boltz.md`           | §3                                                               |
-| 10  | §4 Chai                                      | `drafts/09-chai.md`            | §4                                                               |
-| 11  | §5 Flow matching                             | `drafts/10-flow-matching.md`   | §5                                                               |
-| 12  | §6 Inversion as a portable technique         | `drafts/11-inversion.md`       | §6                                                               |
-| 13  | §7 Protenix                                  | `drafts/12-protenix.md`        | §7                                                               |
-| 14  | §8 ESM                                       | `drafts/13-esm.md`             | §8                                                               |
-| 15  | §9 The closed frontier                       | `drafts/14-closed-frontier.md` | §9                                                               |
-| 16  | What the field has not shown                 | `drafts/15-gaps.md`            | The gaps unit — four stated limits, written after §1–§9          |
-| 17  | Instruments                                  | `drafts/16-instruments.md`     | The instruments                                                  |
-| 18  | Tables A and B                               | `drafts/17-tables.md`          | Tables A and B — written after §1–§9                             |
-| 19  | Conclusion                                   | `drafts/18-conclusion.md`      | The conclusion — a stub; the map records the gap, not the answer |
+| #   | Draft                                        | File                           | Source                                                  |
+| --- | -------------------------------------------- | ------------------------------ | ------------------------------------------------------- |
+| 1   | Scope                                        | `drafts/00-scope.md`           | The scope beat                                          |
+| 2   | The founding bet                             | `drafts/01-anatomy.md`         | The anatomy beat                                        |
+| 3   | Prediction and generation are one machine    | `drafts/02-identity.md`        | The identity beat                                       |
+| 4   | Generator–critic coupling                    | `drafts/03-coupling.md`        | The coupling beat                                       |
+| 5   | The disclosure limit                         | `drafts/04-frontier.md`        | The disclosure beat                                     |
+| 6   | Metrics primer                               | `drafts/05-metrics-primer.md`  | The metrics primer                                      |
+| 7   | §1 AlphaFold and the open co-folding cluster | `drafts/06-alphafold.md`       | §1                                                      |
+| 8   | §2 RoseTTAFold → RFdiffusion                 | `drafts/07-rosettafold.md`     | §2                                                      |
+| 9   | §3 Boltz                                     | `drafts/08-boltz.md`           | §3                                                      |
+| 10  | §4 Chai                                      | `drafts/09-chai.md`            | §4                                                      |
+| 11  | §5 Flow matching                             | `drafts/10-flow-matching.md`   | §5                                                      |
+| 12  | §6 Inversion as a portable technique         | `drafts/11-inversion.md`       | §6                                                      |
+| 13  | §7 Protenix                                  | `drafts/12-protenix.md`        | §7                                                      |
+| 14  | §8 ESM                                       | `drafts/13-esm.md`             | §8                                                      |
+| 15  | §9 The closed frontier                       | `drafts/14-closed-frontier.md` | §9                                                      |
+| 16  | Instruments                                  | `drafts/15-instruments.md`     | The instruments                                         |
+| 17  | Tables A and B                               | `drafts/16-tables.md`          | Tables A and B — written after §1–§9                    |
+| 18  | Conclusion                                   | `drafts/17-conclusion.md`      | The conclusion, gaps subsection included — written last |
 
 The parts they collapse into:
 
@@ -122,7 +121,7 @@ The parts they collapse into:
 | Introduction      | `drafts/parts/intro.md`    | drafts 1–5, plus the layout block's roadmap paragraph |
 | The nine sections | `drafts/parts/sections.md` | drafts 7–15                                           |
 
-Drafts 6 and 16–19 stand on their own; the metrics primer renders between the
+Drafts 6 and 16–18 stand on their own; the metrics primer renders between the
 introduction and §1, and the rest close the review.
 
 **The layout block does not become a draft.** It turns into two things: a short
@@ -131,16 +130,16 @@ sections — the block supplies the two-axis logic, and each section's own _Why
 here_ line supplies the seam into it.
 
 **The conclusion is written last, from the finished parts.** §9 is a coda and
-the disclosure beat sets up an ending, but nothing in the map states what the
-review concludes — deliberately, and the stub there says so. What it concludes
-follows from the other drafts, so it is decided when they exist rather than
-planned in advance.
+the disclosure beat sets up an ending, but the map states which questions the
+conclusion gathers, not what it concludes. Its beats and its ending follow from
+the other drafts, so they are decided when those exist rather than planned in
+advance.
 
-**The gaps unit has a hard rule and it is the map's, not this file's:** a gap
-enters only when a publication in the catalog states it. The unit is four items
-long for that reason, and it is not the place to speculate about what comes
-next. It is drafted after §1–§9 because three of its four items are limits those
-sections establish and one is Tables A and B's.
+**Its gaps subsection has a hard rule and it is the map's, not this file's:** a
+gap enters only when a publication in the catalog states it. There are four for
+that reason, and they are not the place to speculate about what comes next.
+Three are limits §1–§9 establish and one is Tables A and B's, which is why the
+subsection cannot be drafted before them.
 
 ## Relative weight
 
@@ -223,8 +222,9 @@ argument. Assembling them means writing the two block seams and smoothing the
 handoffs — not re-editing section bodies.
 
 **The review.** The introduction, then the metrics primer, the nine sections,
-the gaps unit, the instruments and tables, the conclusion. Scope is argued in
-the scope beat; the exclusion log stays in `candidates.md` and is never drafted.
+the instruments and tables, then the conclusion with its gaps. Scope is argued
+in the scope beat; the exclusion log stays in `candidates.md` and is never
+drafted.
 
 ## Placement directives
 
@@ -238,8 +238,8 @@ stays content.
 | The primer is written around the two families of metric, never as an alphabetical glossary           | a metric list is dead weight the reader skips; the families do the analytical work                                                              |
 | The Latent-X1 / RFpeptides head-to-head lands under Table B, not §9                                  | so it reads as evidence about measurement, not a point scored for Latent Labs                                                                   |
 | The map's layout block never becomes text                                                            | it turns into the intro's roadmap paragraph and the seams between sections                                                                      |
-| The gaps unit admits only limits a cataloged publication states                                      | otherwise it becomes a wish list, which is the genre's standard filler                                                                          |
-| Developability and immunogenicity are the gaps unit's, not §9's                                      | Latent-X2 is the evidence but the point is about the field, not about Latent Labs                                                               |
+| The conclusion's gaps subsection admits only limits a cataloged publication states                   | otherwise it becomes a wish list, which is the genre's standard filler                                                                          |
+| Developability and immunogenicity are the gaps subsection's, not §9's                                | Latent-X2 is the evidence but the point is about the field, not about Latent Labs                                                               |
 | §2 opens by separating RF3 (predictor) from RFdiffusion3 (generator)                                 | the names collide; the lineage's two tracks are unreadable otherwise                                                                            |
 | AtomWorks gets one line, never a passage                                                             | it is training infrastructure, not a model or an instrument; its role is that RF3 and RFdiffusion3 both come out of it                          |
 | Level 2 is introduced as the _oldest_ idea in the review, not the newest                             | the §6 arc depends on the reader knowing it was tried and abandoned first                                                                       |

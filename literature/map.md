@@ -37,12 +37,11 @@
 >
 > **One unit per draft.** After the layout block, the file is a flat sequence of
 > the review's units in the order they render — the introduction, the metrics
-> primer, the nine sections, the gaps unit, the instruments, the two tables, the
-> conclusion. Each heading below is one draft unit in
-> `literature/writing-plan.md`, so there is no second organization to reconcile
-> there either. The layout block that opens the file is the only thing never
-> drafted on its own: the section order, and the rule that lineages are not
-> split by disclosure status.
+> primer, the nine sections, the instruments, the two tables, the conclusion.
+> Each heading below is one draft unit in `literature/writing-plan.md`, so there
+> is no second organization to reconcile there either. The layout block that
+> opens the file is the only thing never drafted on its own: the section order,
+> and the rule that lineages are not split by disclosure status.
 >
 > **Everything the review left out is in `literature/candidates.md`** —
 > undecided works and examined-and-excluded ones, each with its reason. None of
@@ -712,9 +711,9 @@ not need it.)_
   the refolding oracle BoltzGen and BoltzProt-1 filter with, which is its role
   here. _Carries:_ the corpus's only affinity prediction — and its scope. The
   module is protein-ligand, and its own paper states it does not handle
-  multimeric binding partners, which is why the gaps unit can say no system here
-  predicts protein-protein affinity. _Caveat:_ its benchmark numbers carry a
-  temporal-leakage caveat flagged independently by ESMC, Protenix-v1 and
+  multimeric binding partners, which is why the conclusion's gaps can say no
+  system here predicts protein-protein affinity. _Caveat:_ its benchmark numbers
+  carry a temporal-leakage caveat flagged independently by ESMC, Protenix-v1 and
   Protenix-v2 — stated with the instruments.
 - **BoltzGen** — `boltzgen` · `10.1101/2025.11.20.689494` · **backbone**
   _(inherits Boltz)_ — unified generative design across proteins, peptides,
@@ -942,7 +941,7 @@ The arc to carry into the section:
   off-distribution for that model, which the annealing and 5-model ensembling
   appear to compensate for. Its own paper adds a second: the ipTM it ranks on
   predicts _whether_ a design binds but does not track _how tightly_ — the
-  filters-predict-binding-not-affinity gap the gaps unit states.
+  filters-predict-binding-not-affinity gap the conclusion states.
 - **BoltzDesign1** — `boltzdesign1` · `10.1101/2025.04.06.647261` · **meat** —
   the same inversion moved from AlphaFold2 to the Boltz all-atom predictor (§3).
   _Level:_ 2, continuous. _Attachment:_ the trunk. _Carries:_ the first answer
@@ -967,7 +966,7 @@ The arc to carry into the section:
   clear the ipSAE threshold alongside its binders — the discrimination failure
   the metrics primer reconciles. And it states that how far design success
   depends on the quality of the antigen model remains an open question, which is
-  the gaps unit's structure-availability entry. _(mBER below also carries a PLM
+  the conclusion's structure-availability gap. _(mBER below also carries a PLM
   prior, but as a fixed logit bias rather than a live gradient — a distinction
   worth a clause, not a passage.)_
   - **OpenGerminal** — `opengerminal` · `10.64898/2026.06.25.734527` ·
@@ -1133,7 +1132,7 @@ everything else. **Two tiers, and they are not the same problem.**
   comparison; and it covers one pair of methods on one modality. Its own
   headline rates are self-reported and the corpus's highest. _Collision:_ the
   head-to-head is argued in full under Table B, where its limits belong.
-  **Latent-X2 carries the gaps unit's developability entry**, not this one.
+  **Latent-X2 carries the conclusion's developability gap**, not this one.
 - **Back-references:** **Chai-2**'s generator (§4) and **BoltzProt-1** (§3)
   belong to this tier and are reviewed in their own lineages. Boltz is the
   tier's most informative case, because the same lab's earlier models are open
@@ -1153,50 +1152,6 @@ For all of Tier 2, every number this review can cite was measured by a
 competitor. The disclosure beat's symmetry lands here: Isomorphic authors are
 core contributors on the AlphaFold3 paper, so the review opens on the published
 half of that organisation's work and closes on the half that stopped publishing.
-
-______________________________________________________________________
-
-# What the field has not shown
-
-A short unit, placed after §9 because every item in it is a question §1–§9 raise
-and none of them answer. **Each entry is a limit the corpus states about
-itself** — no gap is asserted here that a paper in `refs.bib` does not name, and
-each points at the entry where the evidence sits.
-
-**1. Binding is not the endpoint, and almost nothing here optimizes past it.**
-Every system in §1–§8 generates, filters and reports on _binding_. Latent-X2
-(§9) states the problem directly: campaigns fail _"not because they lack
-binding, but because binding alone is insufficient when clinical success demands
-developability and low immunogenicity"_, and it reports developability profiles
-and what it claims is the first low-immunogenicity demonstration for an
-AI-generated antibody. _The awkward part, and the reason this is a unit rather
-than a caveat:_ the one system in the review that optimizes past binding is a
-closed one. The disclosure beat's uncomfortable direction, arriving a second
-time.
-
-**2. No system here predicts protein-protein binding affinity.** The filters are
-binary. BindCraft (§6) says so of its own: AF2 ipTM is a strong predictor of
-_whether_ a design binds and does not track _how tightly_. The corpus's one
-affinity module is Boltz-2's (§3), which is protein-ligand and whose own paper
-states it does not handle multimeric binding partners. So the field designs
-binders it cannot rank by strength, and affinity appears in Table B only as an
-outcome measured in a wet lab after the fact.
-
-**3. Design success against targets with no experimental structure is
-untested.** Germinal (§6) names it: how far design success depends on the
-quality of the antigen model _"remains an open question"_. Every campaign in
-Table B designed against solved or confidently predicted structures. What the
-methods do on the targets that most need them is not in the corpus.
-
-**4. There is no shared benchmark for binder design, and one third-party wet-lab
-comparison exists in the whole corpus.** Both facts are established elsewhere —
-the first under Tables A and B, the second in §2's RFpeptides entry and §9's
-Latent-X1 entry. This unit does not re-argue them; it collects them as what they
-are, the measurement gap the review's caveats keep running into.
-
-_What this unit is not._ Not a wish list, not a speculation about what comes
-next, and not a place for limitations already attached to an entry. A gap enters
-here only when a publication in the catalog states it and no section owns it.
 
 ______________________________________________________________________
 
@@ -1380,12 +1335,60 @@ ______________________________________________________________________
 
 # The conclusion
 
-**Deliberately empty, and recorded so the gap is visible.** §9 is a coda and the
-disclosure beat sets up an ending, but what the review concludes follows from
-the units above rather than preceding them, so it is settled once they exist.
-What it has to land, all of it already argued above and none of it resolved: the
-open-versus-closed question the disclosure beat opens and §9 leaves standing;
-the two threads, which are paid off in §8 and under Table B but not closed; the
-identity beat's designs-tested number, whose trajectory is the review's spine
-and has no shared instrument to measure it against; and the four gaps, which are
-where the conclusion has its material if it wants any.
+**Where the review's open questions are gathered, not where new ones are
+raised.** Everything it lands is already argued above and none of it is
+resolved: the open-versus-closed question the disclosure beat opens and §9
+leaves standing; the two threads, which are paid off in §8 and under Table B but
+not closed; the identity beat's designs-tested number, whose trajectory is the
+review's spine and has no shared instrument to measure it against; and the four
+gaps below, which are the conclusion's material.
+
+**Order of the beats, and how it ends, are not settled** — they follow from the
+units above rather than preceding them, so they are decided once those exist.
+
+## What the field has not shown
+
+Four gaps, each a question §1–§9 raise and none of them answer. They sit here
+rather than after §9 because two of the four rest on Tables A and B, which a
+reader has not met before this point.
+
+**Each entry is a limit the corpus states about itself** — no gap is asserted
+here that a paper in `refs.bib` does not name, and each points at the entry
+where the evidence sits. That rule is the conclusion's discipline for this
+material, and what keeps it from becoming a wish list.
+
+**1. Binding is not the endpoint, and almost nothing here optimizes past it.**
+Every system in §1–§8 generates, filters and reports on _binding_. Latent-X2
+(§9) states the problem directly: campaigns fail _"not because they lack
+binding, but because binding alone is insufficient when clinical success demands
+developability and low immunogenicity"_, and it reports developability profiles
+and what it claims is the first low-immunogenicity demonstration for an
+AI-generated antibody. _The awkward part, and the reason this is its own beat
+rather than a caveat:_ the one system in the review that optimizes past binding
+is a closed one. The disclosure beat's uncomfortable direction, arriving a
+second time.
+
+**2. No system here predicts protein-protein binding affinity.** The filters are
+binary. BindCraft (§6) says so of its own: AF2 ipTM is a strong predictor of
+_whether_ a design binds and does not track _how tightly_. The corpus's one
+affinity module is Boltz-2's (§3), which is protein-ligand and whose own paper
+states it does not handle multimeric binding partners. So the field designs
+binders it cannot rank by strength, and affinity appears in Table B only as an
+outcome measured in a wet lab after the fact.
+
+**3. Design success against targets with no experimental structure is
+untested.** Germinal (§6) names it: how far design success depends on the
+quality of the antigen model _"remains an open question"_. Every campaign in
+Table B designed against solved or confidently predicted structures. What the
+methods do on the targets that most need them is not in the corpus.
+
+**4. There is no shared benchmark for binder design, and one third-party wet-lab
+comparison exists in the whole corpus.** Both facts are established elsewhere —
+the first under Tables A and B, the second in §2's RFpeptides entry and §9's
+Latent-X1 entry. The conclusion does not re-argue them; it collects them as what
+they are, the measurement gap the review's caveats keep running into.
+
+_What this subsection is not._ Not a wish list, not a speculation about what
+comes next, and not a place for limitations already attached to an entry. A gap
+enters here only when a publication in the catalog states it and no section owns
+it.
