@@ -52,7 +52,8 @@ are the ones a reader should come away able to name:
 | §7      | PXDesign                                                          |
 | §8      | ESM-2/ESMFold · ESMC/ESMFold2 · the ESMFold2 binder campaign      |
 | §9      | Latent-X1                                                         |
-| Primer  | FoldBench · PoseBusters · ipSAE                                   |
+| Primer  | PoseBusters · ipSAE                                               |
+| Tables  | FoldBench                                                         |
 
 Everything else in `map.md` — roughly thirty further works — appears in support
 of a claim or not at all. **That is not a demotion**; the invariant that every

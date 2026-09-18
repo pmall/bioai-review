@@ -344,71 +344,66 @@ ______________________________________________________________________
 
 Renders between the background and §1, because §1–§9 quote lDDT, DockQ,
 PB-valid, pLDDT, pAE and ipTM from the start. It defines those units and nothing
-else.
+else, grouped by the publication that introduced them. The first three
+paragraphs judge a prediction from outside — against a solved structure, or
+against physics; the last three are the model's own estimates, which need no
+solved structure — the only kind the design sections can use, since a designed
+binder has none.
 
-**Metrics that compare a prediction to a real structure.** An experimentally
-solved structure is the reference, and the metric says how close the prediction
-came. **lDDT** compares local interatomic distances without superposing the two
-structures, so a correct domain in the wrong pose still scores. **TM-score**
-measures overall fold similarity, normalized for length, and comes from
-AlphaFold2 (§1). **DockQ** reduces interface quality to one number between 0 and
-1, with a conventional success threshold well below 1. **RMSD** is the plain
-distance in ångströms between two sets of atom positions, and which two sets is
-the whole question: against a solved structure it measures accuracy, but design
-pipelines also call RMSD the comparison of a designed backbone against a
-re-prediction of its own sequence, where both sides are computed and nothing
-experimental is involved. **PB-valid** is the odd one in this family — not
-accuracy but a pass/fail verdict on physical plausibility, bundling
-chemical-validity, geometry, energy and clash tests.
+**lDDT** — `lddt` · `10.1093/bioinformatics/btt473` · **mention** — compares
+local interatomic distances without superposing the two structures, so a correct
+domain in the wrong pose still scores. **TM-score** — `tm_score` ·
+`10.1002/prot.20264` · **mention** — measures overall fold similarity,
+normalized for length. **RMSD** — `kabsch` · `10.1107/S0567739476001873` ·
+**mention** — is the plain distance in ångströms between two sets of atom
+positions after the best superposition, which Kabsch's algorithm computes; which
+two sets is the whole question — against a solved structure it measures
+accuracy, but design pipelines also call RMSD the comparison of a designed
+backbone against a re-prediction of its own sequence, where nothing experimental
+is involved.
 
-- **FoldBench** — `foldbench` · `10.1038/s41467-025-67127-3` · **backbone** —
-  peer-reviewed all-atom prediction benchmark spanning monomers,
-  protein-protein, antibody-antigen, protein-ligand and protein-nucleic
-  interfaces. It defines lDDT, DockQ and predictive RMSD as this review uses
-  them, including DockQ's success threshold, and is the shared evaluation set
-  behind the AF3 / Protenix / Boltz / ESMFold2 / OpenDDE comparisons. _Carries:_
-  the units and the benchmark column of Table A.
-- **PoseBusters** — `posebusters` · `10.1039/D3SC04185A` · **backbone** —
-  physical and chemical validity checks plus a benchmark set. It defines
-  PB-valid, which AF3, Chai-1, Boltz-1 and Protenix all report. _Carries:_ the
-  unit AF3-class physical validity is argued in. _(PoseBusters V2 is a
-  benchmark-set revision, not a separate publication; map-only.)_ · **mention**
+**DockQ** — `dockq` · `10.1371/journal.pone.0161879` · **mention** — reduces
+interface quality to one number between 0 and 1, with a conventional success
+threshold well below 1.
 
-**Metrics the model produces about itself.** These need no solved structure:
-each is the model's own estimate of how much to trust its answer, and each is a
-guess at one of the measurements above. **pLDDT** guesses its own lDDT, per
-residue; **pTM** guesses its own TM-score for the whole prediction; **PAE** is a
-matrix rather than a score, predicting in ångströms how far off each residue
-pair will land. All three come from AlphaFold2 (§1), which published the fit
-between each guess and the quantity it estimates. AlphaFold-Multimer (§1) added
-the interface versions, computed over interchain residue pairs only: **ipTM**,
-which scores the interface rather than the chains, and the **pAE / iPAE**
-reduction of the PAE matrix that gives the canonical criterion its `< 10`. This
-family is what the design sections run on: a designed binder has no solved
-structure by definition, so nothing in the first family can be computed for it.
+**PoseBusters** — `posebusters` · `10.1039/D3SC04185A` · **backbone** —
+introduced **PB-valid**, which is not accuracy but a pass/fail verdict on
+physical plausibility, bundling chemical-validity, geometry, energy and clash
+tests, with a benchmark set to run it on. AF3, Chai-1, Boltz-1 and Protenix all
+report it. _Carries:_ the unit AF3-class physical validity is argued in.
+_(PoseBusters V2 is a benchmark-set revision, not a separate publication;
+map-only.)_
 
-- **ipSAE** — `ipsae` · `10.1101/2025.02.10.637595` · **backbone** — ipTM
-  restricted to the well-predicted interchain pairs, which removes ipTM's
-  dependence on how the input was trimmed. _Carries:_ the unit the design half
-  has converged on — Germinal (§6) reports its threshold and the Overath
-  meta-analysis (Table B) scores designs with it.
+**AlphaFold2** introduced three self-estimates and published the fit between
+each and the quantity it estimates. **pLDDT** guesses its own lDDT, per residue;
+**pTM** guesses its own TM-score for the whole prediction; **PAE** is a matrix
+rather than a score, predicting in ångströms how far off each residue pair will
+land.
 
-**The roster** — every unit the review quotes, and where its definition comes
-from.
+**AlphaFold-Multimer** added the interface versions, computed over interchain
+residue pairs only: **ipTM**, which scores the interface rather than the chains,
+and the **pAE / iPAE** reduction of the PAE matrix that gives the canonical
+criterion its `< 10`.
 
-| Unit           | Compared to      | What it measures                                                                                | Defined by              |
-| -------------- | ---------------- | ----------------------------------------------------------------------------------------------- | ----------------------- |
-| **lDDT**       | a real structure | local interatomic distances, no superposition                                                   | FoldBench               |
-| **TM-score**   | a real structure | global fold similarity, length-normalized                                                       | AlphaFold2 (§1)         |
-| **DockQ**      | a real structure | interface quality as one 0–1 number                                                             | FoldBench               |
-| **RMSD**       | whatever it says | Å deviation between two sets of atom positions — accuracy only when one set is a real structure | FoldBench               |
-| **PB-valid**   | nothing          | physical plausibility, pass/fail                                                                | PoseBusters             |
-| **pLDDT**      | itself           | per-residue guess at its own lDDT                                                               | AlphaFold2 (§1)         |
-| **pTM**        | itself           | guess at its own TM-score                                                                       | AlphaFold2 (§1)         |
-| **PAE**        | itself           | predicted error in Å per residue pair — a matrix, not a score                                   | AlphaFold2 (§1)         |
-| **ipTM**       | itself           | pTM over interchain pairs only                                                                  | AlphaFold-Multimer (§1) |
-| **pAE / iPAE** | itself           | PAE over interchain pairs only                                                                  | AlphaFold-Multimer (§1) |
-| **ipSAE**      | itself           | ipTM over the well-predicted interchain pairs only                                              | ipSAE                   |
+**ipSAE** — `ipsae` · `10.1101/2025.02.10.637595` · **backbone** — restricts
+ipTM to the well-predicted interchain pairs, which removes its dependence on how
+the input was trimmed. _Carries:_ the unit the design half has converged on —
+Germinal (§6) reports its threshold and the Overath meta-analysis (Table B)
+scores designs with it.
+
+| Unit           | Compared to      | What it measures                                                                                | Introduced by      |
+| -------------- | ---------------- | ----------------------------------------------------------------------------------------------- | ------------------ |
+| **lDDT**       | a real structure | local interatomic distances, no superposition                                                   | lDDT               |
+| **TM-score**   | a real structure | global fold similarity, length-normalized                                                       | TM-score           |
+| **RMSD**       | whatever it says | Å deviation between two sets of atom positions — accuracy only when one set is a real structure | Kabsch             |
+| **DockQ**      | a real structure | interface quality as one 0–1 number                                                             | DockQ              |
+| **PB-valid**   | nothing          | physical plausibility, pass/fail                                                                | PoseBusters        |
+| **pLDDT**      | itself           | per-residue guess at its own lDDT                                                               | AlphaFold2         |
+| **pTM**        | itself           | guess at its own TM-score                                                                       | AlphaFold2         |
+| **PAE**        | itself           | predicted error in Å per residue pair — a matrix, not a score                                   | AlphaFold2         |
+| **ipTM**       | itself           | pTM over interchain pairs only                                                                  | AlphaFold-Multimer |
+| **pAE / iPAE** | itself           | PAE over interchain pairs only                                                                  | AlphaFold-Multimer |
+| **ipSAE**      | itself           | ipTM over the well-predicted interchain pairs only                                              | ipSAE              |
 
 ______________________________________________________________________
 
@@ -967,12 +962,12 @@ instrument the same lineage built.
   makes this section a platform rather than a model line. The lineage ships the
   predictor, both design arms **and** the instrument its competitors are
   measured on, and §7's numbers are partly its own measurements of other
-  people's models. _Against:_ FoldBench (the metrics primer), the other
-  multi-model prediction benchmark — and Protenix-v1's common-intersection
-  critique of it is this group arguing for its own instrument, which the review
-  states rather than adjudicates. _Caveat:_ its uptake is real but narrow —
-  OpenDDE (§1) benchmarks on PXMeter-AB and follows its data protocol to curate
-  its own set, and that is the only third-party adoption in the corpus.
+  people's models. _Against:_ FoldBench (Tables A and B), the other multi-model
+  prediction benchmark — and Protenix-v1's common-intersection critique of it is
+  this group arguing for its own instrument, which the review states rather than
+  adjudicates. _Caveat:_ its uptake is real but narrow — OpenDDE (§1) benchmarks
+  on PXMeter-AB and follows its data protocol to curate its own set, and that is
+  the only third-party adoption in the corpus.
   [GitHub](https://github.com/bytedance/PXMeter)
 - **Protenix-v1** — `protenix_v1` · `10.64898/2026.02.05.703733` · **meat** —
   ByteDance Seed's open all-atom model matching AF3 under matched cutoff, scale
@@ -1143,6 +1138,13 @@ leaderboard — the exact misreading they exist to prevent. The tables therefore
 make their own construction visible: **the provenance columns are not
 decoration, they are the point**, and a cell without a stated benchmark, cutoff
 and measurer has no entry.
+
+- **FoldBench** — `foldbench` · `10.1038/s41467-025-67127-3` · **backbone** —
+  peer-reviewed all-atom prediction benchmark spanning monomers,
+  protein-protein, antibody-antigen, protein-ligand and protein-nucleic
+  interfaces, scored in lDDT, DockQ and RMSD. It is the shared evaluation set
+  behind the AF3 / Protenix / Boltz / ESMFold2 / OpenDDE comparisons. _Carries:_
+  the benchmark column of Table A.
 
 ## Table A — structure prediction accuracy
 
