@@ -1362,6 +1362,79 @@ gaps below, which are the conclusion's material.
 **Order of the beats, and how it ends, are not settled** — they follow from the
 units above rather than preceding them, so they are decided once those exist.
 
+## The outside view — the field is trying to make drugs
+
+**Opens the conclusion.** The five gaps below are internal to the corpus: each
+is a limit a paper in `refs.bib` states about its own work. This beat is the
+frame they sit in, and it is the one question the review cannot answer from
+inside its own sources — whether any of this has reached a patient.
+
+**The systems say what they are for.** BoltzGen (§3) opens on it — _"de-novo
+binder design offers considerable potential for automating drug discovery"_ —
+and it is not alone: Chai-2 (§4) optimizes designs _"for specific therapeutic
+requirements such as species cross-reactivity"_, BindCraft (§6) reduces IgE
+binding to birch allergen _"in patient-derived samples"_, Latent-X2 (§9) reports
+developability _"that match or exceed those of approved antibody therapeutics"_,
+and mBER (§6) places binder discovery as _"a critical step"_ in _"the
+development of protein therapeutics"_. The therapeutic endpoint is the stated
+goal of this field, not an outside standard imported to judge it.
+
+**Bender et al., _AI in drug discovery_** — `bender_perspective` ·
+`10.1038/s41573-026-01496-2` · **backbone** — is where that goal is audited.
+_Nature Reviews Drug Discovery_ Perspective, Aug 2026; sixteen authors across
+academia, pharma and biotech, 221 references. It weighs a decade of AI in drug
+R&D against the only endpoint it accepts — delivering _"safer and more
+efficacious medicines to patients faster"_ — and finds that _"evidence of their
+clinically relevant impact is, so far, disappointingly limited"_, while
+_"progress with AI-based technological capabilities is much more encouraging"_.
+
+_Carries the beat's organizing distinction:_ **model validation against process
+validation**. A model is validated inside its own box, on a held-out split of
+its training data; a process is validated by whether the decision downstream of
+the model got better. AlphaFold is one of its few unambiguous successes, and it
+is successful _"in the context of model validation — in this case, protein
+folding — and not necessarily process validation in a drug discovery setting"_.
+**Every result in §1–§9 is model validation in that sense**, including the
+wet-lab ones: a measured hit rate validates the generator, and no campaign in
+the corpus is followed into the decision it was meant to improve. That is the
+sentence the five gaps below are particular cases of.
+
+_And the review's half of the field is the favourable half, which sharpens the
+charge rather than excusing it._ Bender et al. attributes part of the recent
+rise in approval rates to _"increasing investment in the development of biologic
+modalities that have higher average clinical success rates and superior
+intellectual property protection status than small-molecule drugs"_ — the
+modality §1–§9 design for. Its Table 3 states the limit for that modality
+directly, in the row naming RFdiffusion, ProteinMPNN, BoltzGen and Chai-2:
+_"although binding is relatively easier to predict, functional effects and
+developability also remain challenges"_. **Gap 1 below is that sentence in the
+corpus's own terms**, and its Box 1 — _"a ligand, too, is not a drug"_, >10⁶
+bioactive ligands in ChEMBL and PubChem against ~10³ marketed drugs — is the
+small-molecule statement of the same distance.
+
+_Where else it meets the gaps._ **Box 2** splits model use into selection,
+deselection and quantification settings and holds that the metric must match the
+setting — every Level-1 filter in §6–§8 is a selection setting scored by a
+generic threshold — which is **gap 5** in general form, reinforced by _"every
+model is a local model"_ for out-of-distribution use. Its recommendation that
+benchmarking _"move on from model validation and instead focus on their ability
+to improve decision making"_ is **gap 4** asked of the whole field rather than
+of this corpus. And it corroborates the disclosure beat from outside, reporting
+that _"open-source models in the area of co-folding have largely caught up with
+closed-source developments"_ while dismissing **IsoDDE** (§9, tier 2) in the
+review's own terms, as an in-house development whose authors _"offer few
+technical details and hence do not allow independent verification of the results
+obtained"_.
+
+_Caveats._ It is a **Perspective**, the catalog's only secondary source,
+admitted because this question cannot be answered from inside the corpus. Its
+evidence base is small molecules and the clinical pipeline; proteins and
+peptides are one row of one table, and the developability half of that row rests
+on a single benchmark preprint the corpus does not hold (FLAb2, undecided in
+`candidates.md`). So it supplies the argument and not the measurement — it
+establishes what the field has not been asked to show, not how far any system
+here would fall short if it were.
+
 ## What the field has not shown
 
 Five gaps, each a question §1–§9 raise and none of them answer. They sit here
