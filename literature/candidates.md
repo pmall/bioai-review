@@ -9,7 +9,7 @@ it, and nothing here is drafted. Two states:
 
 - **Undecided** — surfaced while reading the corpus, not yet judged. Not in
   `refs.bib` and not in `corpus/`.
-- **Excluded** — retrieved, parsed and then judged out of scope. These _stay_ in
+- **Excluded** — retrieved, parsed and then judged out. These _stay_ in
   `refs.bib` and `corpus/`: the catalog records what was obtained, the map
   records what is in scope. An excluded work can still be quoted in the review —
   the exclusion is from the argument's structure, not from the bibliography.
@@ -27,37 +27,9 @@ ______________________________________________________________________
 
 # UNDECIDED
 
-_Surfaced 18 Sep 2026 from Anthropic's inference-optimization release
-(`anthropics/uplifting-biomolecular-modeling`), whose kit table is a third
-party's list of the open models the field actually runs. The predictive half of
-that list is already covered by the map; of the design-side models it names,
-only Caliby is still open._
+_Nothing undecided._
 
-## Caliby
-
-- **DOI:** `10.1101/2025.09.30.679633` (bioRxiv, 2 Oct 2025)
-- **Title:** *Ensemble-conditioned protein sequence design with Caliby*
-- **Authors:** Shuai, R. W., Lu, T., Bhatti, S., Kouba, P. & Huang, P.-S.
-- **Would go in:** §2, as a **mention** under ProteinMPNN beside LigandMPNN.
-  Nothing larger.
-- **Why it might belong:** ProteinMPNN is the sequence stage the whole Level-1
-  pipeline borrows, and the map presents it with no current challenger. Caliby
-  is a Potts-model designer conditioned on an *ensemble* of backbone conformers
-  rather than one, and claims to beat ProteinMPNN on AF2 self-consistency while
-  scaling better across conformers. Its SolubleCaliby variant reports making
-  binder backbones designable that SolubleMPNN judged undesignable, which is the
-  only part touching the review's subject directly.
-- **Why to check first:** sequence design with no target conditioning is out of
-  scope by the rule below; it enters, if at all, only as a qualifier on
-  ProteinMPNN's standing. Its binder evidence is a designability metric on
-  Protpardelle-1c backbones, not binders tested against a target, and
-  Protpardelle is not in the map.
-- **Surfaced from:** the `caliby` kit (task: *sequence design*).
-
-**Also on that list and deliberately not entered here:** `ef2inv` is the
-ESMFold2 binder-design campaign already in §8; `esm_if1` is inverse folding that
-ProteinMPNN's entry already covers; `mosaic` (with `joltz`) was a _map-only_
-line in §6 and is now excluded below.
+______________________________________________________________________
 
 # EXCLUDED
 
@@ -65,21 +37,20 @@ Judged out, with the reason stated. Recorded rather than deleted: an exclusion
 with a stated reason is part of the review's method, and keeping them prevents
 re-litigating the same decision later.
 
-Two grounds for exclusion, and they differ in what is left behind:
+_Scope rule applied:_ in scope = generates a **protein or peptide binder
+conditioned on a target**, or predicts the structure such a system designs
+against. Out of scope = a different modality (small molecules), or sequence
+generation with no target conditioning. A work can also be in scope and still be
+out, for carrying no claim the review leans on, or for belonging to no lineage
+the review follows.
 
-- **Out of scope** — retrieved, parsed, then judged out. These remain in
-  `refs.bib` and `literature/corpus/`, and may still be quoted. _Scope rule
-  applied:_ in scope = generates a **protein or peptide binder conditioned on a
-  target**, or predicts the structure such a system designs against. Out of
-  scope = a different modality (small molecules), or sequence generation with no
-  target conditioning.
-- **Below the threshold** — in scope, but carrying no claim the review leans on.
-  Judged out on the abstract and on how the corpus itself cites them, without
-  being retrieved, so these are **not** in `refs.bib` or `literature/corpus/`
-  and are not quotable. The review is not obliged to re-cite what a work it
-  cites already cites; a reader who wants the comparison has the citing paper.
+Every work here that has a publication was retrieved and parsed before being
+judged, so it is in `refs.bib` and `literature/corpus/` and may still be quoted
+— its bib key stands in front of its DOI. What it may not do is carry a claim
+the review leans on; the review is not obliged to re-cite what a work it cites
+already cites.
 
-* **ProtDBench** — `protdbench` · `10.48550/arXiv.2605.04118` — _excluded: not a
+- **ProtDBench** — `protdbench` · `10.48550/arXiv.2605.04118` — _excluded: not a
   third party, and its head-to-head is in-silico only._ ICML 2026 (PMLR 306); a
   standardized, throughput-aware evaluation framework for binder design, with
   fixed targets, hotspots, filters and success criteria. Considered for Table B
@@ -96,21 +67,20 @@ Two grounds for exclusion, and they differ in what is left behind:
   designs-tested denominator, no hit definition, which is the same exclusion
   that keeps RFOptimization (§6) out of the table. Re-scoring seven systems'
   computed output does not make their wet-lab campaigns comparable, so Table B's
-  claim stands unchanged. In `refs.bib` and the corpus, and quotable — two
-  things in it bear on the map and are cited from here rather than given an
-  entry: **(a)** the retrospective on RFdiffusion's released wet-lab outcomes
-  (Appendix B.5, Table 10) — six targets, 139 confirmed binders against 432
-  non-binders, already AF2-IG-prefiltered, AF2-IG precision 0.252 / recall
-  0.754, Protenix-Mini precision 0.479 / recall 0.420 — which is a cross-lab
-  discrimination measurement on someone else's designs; and **(b)** the finding
-  that verifiers recover largely distinct subsets of true binders under
-  identical filtering, with recall collapsing as more of them are required to
-  agree, which is PXDesign's filter-ensembling result (§7) extended to seven
-  verifiers and checked against wet-lab labels. _Also worth not re-deriving:_ it
-  excludes Latent-X, AlphaProteo, Chai-2 and SeedProteo from the head-to-head
-  outright, for shipping no code or weights.
+  claim stands unchanged. Two things in it bear on the map and are cited from
+  here rather than given an entry: **(a)** the retrospective on RFdiffusion's
+  released wet-lab outcomes (Appendix B.5, Table 10) — six targets, 139
+  confirmed binders against 432 non-binders, already AF2-IG-prefiltered, AF2-IG
+  precision 0.252 / recall 0.754, Protenix-Mini precision 0.479 / recall 0.420 —
+  which is a cross-lab discrimination measurement on someone else's designs; and
+  **(b)** the finding that verifiers recover largely distinct subsets of true
+  binders under identical filtering, with recall collapsing as more of them are
+  required to agree, which is PXDesign's filter-ensembling result (§7) extended
+  to seven verifiers and checked against wet-lab labels. _Also worth not
+  re-deriving:_ it excludes Latent-X, AlphaProteo, Chai-2 and SeedProteo from
+  the head-to-head outright, for shipping no code or weights.
 
-* **Gauss-Seidel projection** — `gauss_seidel_projection` ·
+- **Gauss-Seidel projection** — `gauss_seidel_projection` ·
   `10.48550/arXiv.2510.08946` — _excluded: nothing in the review uses it._ ICLR
   2026; a differentiable projection mapping provisional diffusion coordinates
   onto the nearest physically valid configuration, enforcing validity as a
@@ -118,10 +88,9 @@ Two grounds for exclusion, and they differ in what is left behind:
   accuracy of 200-step baselines. A real and peer-reviewed result, from a group
   with no other presence in the corpus and adopted by no system here. Held a
   **mention** whose only job was to be the fourth option in a physical-validity
-  thread that has since been cut as too low-level for a field review. In
-  `refs.bib` and the corpus, and quotable.
+  thread that has since been cut as too low-level for a field review.
 
-* **ColabFold** — `colabfold` · `10.1038/s41592-022-01488-1` — _excluded: a
+- **ColabFold** — `colabfold` · `10.1038/s41592-022-01488-1` — _excluded: a
   tool, carrying no claim the review leans on._ MMseqs2 homology search in front
   of unmodified AF2 / AlphaFold-Multimer weights, plus the ColabFoldDB
   environmental database and the Colab notebooks. Held a **meat** entry in the
@@ -130,10 +99,9 @@ Two grounds for exclusion, and they differ in what is left behind:
   independently by AlphaFold2's own paper, BindCraft, mBER and ESMFold2, so
   ColabFold contributes a date; and its provenance fact is a table footnote
   rather than an entry. That footnote is kept under Table A — the AF2 cells and
-  Table B's AF2 filters are ColabFold runs. In `refs.bib` and the corpus, and
-  quotable.
+  Table B's AF2 filters are ColabFold runs.
 
-* **DrugFlow** — `drugflow` · `10.48550/arXiv.2508.17815` · and **FLOWR** —
+- **DrugFlow** — `drugflow` · `10.48550/arXiv.2508.17815` · and **FLOWR** —
   `flowr` · `10.1038/s43588-026-00998-8` — _excluded: wrong modality._ Both are
   pocket-conditioned **small-molecule** generators, producing 3D atom types,
   coordinates and bond topology for a ligand. Structure-based drug design rather
@@ -141,7 +109,7 @@ Two grounds for exclusion, and they differ in what is left behind:
   problem. Both are quoted in the scope beat for their discrete/continuous
   hybrid schemes — the evidence for the differentiability asymmetry.
 
-* **OpenBind, first release** — `openbind` · `10.64898/2026.08.27.747600` —
+- **OpenBind, first release** — `openbind` · `10.64898/2026.08.27.747600` —
   _excluded: wrong modality._ An open experimental structure-affinity dataset
   and benchmark: 925 crystallographic binding events from 699 compounds against
   enteroviral 2A protease, affinities for 601, from one antiviral campaign.
@@ -158,23 +126,23 @@ Two grounds for exclusion, and they differ in what is left behind:
   Table A asks for, and Protenix-v1 leads at both Top-25 and Top-1. It still
   does not earn the row: **one target**, on the target class §3–§8 do not design
   for, and the authors say the ordering may not generalise. A protein-ligand row
-  needs a multi-target benchmark. In `refs.bib` and the corpus, and quotable.
+  needs a multi-target benchmark.
 
-* **BoltzMol-1** — `boltzmol1` · `10.64898/2026.07.04.736485` — _excluded: wrong
+- **BoltzMol-1** — `boltzmol1` · `10.64898/2026.07.04.736485` — _excluded: wrong
   modality._ Small-molecule hit discovery over an optimized Boltz-2, API-only
   with no weights. It **screens catalogue compounds** rather than generating
   binders, so it fails the scope rule twice over — the same exclusion that keeps
   DrugFlow and FLOWR out. Its one pull toward the map is that it is a second
   closed Boltz model, but §3's open→closed fork is established by BoltzProt-1
-  alone. In `refs.bib` and the corpus, and quotable.
+  alone.
 
-* **ProtFlow** — `protflow` · `10.64898/2026.02.14.705870` — _excluded: not
+- **ProtFlow** — `protflow` · `10.64898/2026.02.14.705870` — _excluded: not
   binder design._ Rectified flow matching in sequence space for general protein
   engineering; learns the global semantic distribution of protein space. The
   words "binder" and "binding" do not appear anywhere in the paper, and there is
   no target conditioning.
 
-* **moPPIt** — `moppit` · `10.1101/2024.07.31.606098` — _excluded: no lineage._
+- **moPPIt** — `moppit` · `10.1101/2024.07.31.606098` — _excluded: no lineage._
   A genetic algorithm iterating a pool from the PepMLM peptide language model,
   scored by BindEvaluator (an ESM-2 binding-site predictor) plus perplexity. No
   diffusion, no flow matching, no structure input at all; AlphaFold2-Multimer
@@ -184,13 +152,13 @@ Two grounds for exclusion, and they differ in what is left behind:
   version of this map described moPPIt as discrete flow matching. That was
   wrong.
 
-* **SaProt** — `saprot` · `10.1101/2023.10.01.560349` — _excluded: neither half
+- **SaProt** — `saprot` · `10.1101/2023.10.01.560349` — _excluded: neither half
   of the review._ A structure-aware protein language model (Foldseek 3Di
   alphabet, 441 tokens) with no folding head and no generative binder
   capability. It neither predicts 3D structure nor designs binders, and belongs
   to no lineage tracked here. Cited by one corpus paper.
 
-* **Genie 3** — `genie3` · `10.64898/2026.05.01.722168` — _excluded: no lineage
+- **Genie 3** — `genie3` · `10.64898/2026.05.01.722168` — _excluded: no lineage
   in the review, and its dispute is not the review's._ An SE(3)-equivariant
   all-atom backbone diffusion model (AlQuraishi lab), target-conditioned and so
   in scope by the rule, reporting the most successful designs on 7 of 10 of
@@ -212,15 +180,14 @@ Two grounds for exclusion, and they differ in what is left behind:
   may be missing and may reflect the entrants' choices rather than the models'.
   So it is a common assay, not the controlled cross-method comparison the corpus
   lacks. That is a different job from a section entry and needs no decision now.
-  Retrieved, parsed and in `refs.bib`, so quotable meanwhile; two numbers in it
-  bear on the conclusion without an entry — the in-silico oracles' precision
-  ceiling (maximum 12%, and no binder found at all for H3, TGFβ and TIE2) for
-  the fifth gap, and the Nipah rates above, carrying that caveat. _Provisional
-  claim corrected on reading:_ the Genie 3 / BindCraft design overlap is
-  reported qualitatively in a figure, not as the \<10% this file previously
-  recorded. _Preprint; re-check for a journal version._
+  Two numbers in it bear on the conclusion without an entry — the in-silico
+  oracles' precision ceiling (maximum 12%, and no binder found at all for H3,
+  TGFβ and TIE2) for the fifth gap, and the Nipah rates above, carrying that
+  caveat. _Provisional claim corrected on reading:_ the Genie 3 / BindCraft
+  design overlap is reported qualitatively in a figure, not as the \<10% this
+  file previously recorded. _Preprint; re-check for a journal version._
 
-* **joltz / mosaic** — _no publication, no DOI; not cataloguable_ — _excluded:
+- **joltz / mosaic** — _no publication, no DOI; not cataloguable_ — _excluded:
   its only claim on the review is a leaderboard score._ `joltz` ports Boltz-1/2
   to JAX and makes them differentiable; `mosaic` (Escalante Bio) optimizes
   against them — the Boltz counterpart to ColabDesign. Held a _map-only_ mention
@@ -237,33 +204,58 @@ Two grounds for exclusion, and they differ in what is left behind:
   beside Genie 3's wet-lab one. Cannot enter `refs.bib` in any case, so it comes
   back as a map-only line or not at all.
 
-## Below the threshold
+- **Protein Hunter** — `protein_hunter` · `10.1101/2025.10.10.681530` —
+  _excluded: cycling, not gradient, and no room at that weight._ Hallucination
+  inside a diffusion co-folder: starting from an all-X sequence, Boltz-2
+  hallucinates a plausible structure, improved through _"iterative sequence
+  re-design and structure re-prediction"_ with SolubleMPNN. It never
+  backpropagates into the design variable — the paper's own contrast is with
+  BindCraft and BoltzDesign1, whose _"reliance on gradient decent leads to slow
+  convergence"_ — so it cannot join the Level-2 roster without blurring the axis
+  §6–§8 escalate along, and as a cycling method it would enter §6 at a weight
+  the section does not have room for beside BindCraft, BoltzDesign1 and
+  Germinal. Its one remaining claim was being RFOptimization's only external
+  baseline, and that comparison is RFOptimization's own and cited there; §2 and
+  §6 carry the lineage's optimizer completely without it. _Preprint; re-check
+  for a journal version._
 
-- **Protein Hunter** — `10.1101/2025.10.10.681530` (bioRxiv, 10 Oct 2025; Cho,
-  Rangel, Bhardwaj & Ovchinnikov) · and **HalluDesign** —
-  `10.1101/2025.11.08.686881` (bioRxiv, 9 Nov 2025; Fang et al., Cao lab). Both
-  were considered for §6 and both are **cycling, not gradient** — Protein Hunter
-  hallucinates from an all-X sequence and improves it through _"iterative
-  sequence re-design and structure re-prediction"_, HalluDesign is _"fine-tune
-  free, forward-pass only"_. Neither backpropagates into the design variable, so
-  neither can join the Level-2 roster without blurring the axis §6–§8 escalate
-  along; and as cycling methods they would enter §6 at a weight the section does
-  not have room for beside BindCraft, BoltzDesign1 and Germinal. Protein
-  Hunter's one remaining claim was that it is RFOptimization's only external
-  baseline (7.50% three-model consensus pass against RFO's 12.08%; ~178 GPU-min
-  per filter-passing design against RFO's ~26 and BindCraft's ~34 GPU-h). That
-  comparison is RFOptimization's own and is cited there; §2 and §6 carry the
-  lineage's optimizer completely without it. _What their existence does
-  establish, and the map does not need them to say:_ cycling-based hallucination
-  is an independently developed family rather than an RFO idiosyncrasy —
-  HalluDesign is the Cao lab's, independent of Ovchinnikov's.
+- **HalluDesign** — `halludesign` · `10.1101/2025.11.08.686881` — _excluded:
+  same ground as Protein Hunter above._ The same move on an AlphaFold3-style
+  predictor, _"fine-tune free, forward-pass only"_, which the paper sets against
+  the _"gradient-based backpropagation methods"_ it classifies the field into.
+  _What its existence establishes, and the map does not need it to say:_
+  cycling-based hallucination is an independently developed family rather than
+  an RFOptimization idiosyncrasy — this is the Cao lab's, independent of
+  Ovchinnikov's. _Preprint; re-check for a journal version._
 
-- **Proteina-Complexa** — `10.48550/arXiv.2603.27950` (arXiv, 30 Mar 2026; ICLR
-  2026 oral; Didi et al., NVIDIA). Atomistic binder design by partially latent
-  flow matching, extending La-Proteina, with inference-time search over the
+- **Caliby** — `caliby` · `10.1101/2025.09.30.679633` — _out by the scope rule,
+  and no lineage in the review._ A sequence designer: ProteinMPNN's architecture
+  rewired to emit a Potts model — per-position and per-pair amino-acid scores,
+  sampled for a low-energy sequence — so that several backbone conformers can be
+  averaged into one scoring function, the ensemble generated by partially
+  re-diffusing the input with Protpardelle-1c. It writes sequences with no
+  target conditioning, which the scope rule above excludes, and it descends from
+  no predictor lineage the review follows: Protpardelle is not in the map, and
+  there is no wet lab. §2 presents ProteinMPNN's standing as adoption rather
+  than necessity through AlphaDesign already. _Surfaced 18 Sep 2026 from
+  Anthropic's inference-optimization release
+  (`anthropics/uplifting-biomolecular-modeling`), whose kit table lists the open
+  models the field runs; sweeping it left Caliby as the only design-side name
+  not already judged — `ef2inv` is the ESMFold2 campaign in §8, `esm_if1` is
+  covered by ProteinMPNN's entry, `mosaic` (with `joltz`) is excluded above._
+  _Preprint; re-check for a journal version._
+
+- **Proteina-Complexa** — `proteina_complexa` · `10.48550/arXiv.2603.27950` —
+  _excluded: no lineage in the review._ ICLR 2026; atomistic binder design by
+  partially latent flow matching, extending La-Proteina, pretrained on
+  _Teddymer_, a synthetic binder-target dataset built from domain-domain
+  contacts in predicted monomers, then optimized at inference time over that
   generative prior. Out for the same reason as Genie 3 above: it descends from
   no predictor lineage the review follows, and §5 covers the formalism through
-  FrameFlow already. Its wet-lab weight was never its own — the million-design
-  campaign behind it is Manifold Bio's, and mBER (§6) carries that group with a
-  published paper. Not retrieved, so not quotable; Genie 3's benchmark of it is
-  cited from there if the number is ever wanted.
+  FrameFlow already. It also has **no wet lab** — the paper states its
+  evaluations are in-silico only and names experimental validation as future
+  work — so it cannot carry a beat the design sections rest on. _Provisional
+  claim corrected on reading:_ this file previously credited the wet-lab
+  campaign behind it to Manifold Bio, with mBER (§6) carrying the group. That
+  was wrong on both counts — the work is NVIDIA, Mila, Oxford and Seoul
+  National, and there is no campaign.
