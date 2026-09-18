@@ -6,6 +6,13 @@ Deep-learning models that predict protein structure and design proteins or
 peptides binding a target protein — the co-folding predictors and the design
 systems built on them.
 
+**In scope** = generates a protein or peptide binder conditioned on a target, or
+predicts the structure such a system designs against. **Out of scope** = a
+different modality (small molecules), or sequence generation with no target
+conditioning. The field moves fast — explosive in 2026 — so references dated
+before 2025 are generally out of scope, except where they belong to an active
+lineage whose full history is kept for understanding (ESM, RoseTTAFold).
+
 ## The goal
 
 Show a curious newcomer that landscape and give them the keys to understand it.

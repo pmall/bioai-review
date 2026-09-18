@@ -86,7 +86,7 @@ the two disagree, tier wins.
 Two layers: **drafts**, one per map heading, and the **parts** they collapse
 into. A draft is written from one heading and the corpus behind it; a part is
 the merge, and merging writes seams and one voice, never a rewrite of a draft.
-The background is written a beat at a time — five of them — because the beats
+The background is written a beat at a time — four of them — because the beats
 have different sources and merging is where they are made to read as one. The
 introduction is a single draft: it opens the review and has one voice from the
 start. The three benchmarking units are three drafts rather than one because
@@ -97,32 +97,31 @@ the review.
 | #   | Draft                                        | File                           | Source                                                  |
 | --- | -------------------------------------------- | ------------------------------ | ------------------------------------------------------- |
 | 1   | Introduction                                 | `drafts/00-introduction.md`    | The introduction                                        |
-| 2   | Scope                                        | `drafts/01-scope.md`           | The scope beat                                          |
-| 3   | The founding bet                             | `drafts/02-anatomy.md`         | The anatomy beat                                        |
-| 4   | Prediction and generation are one machine    | `drafts/03-identity.md`        | The identity beat                                       |
-| 5   | Generator–critic coupling                    | `drafts/04-coupling.md`        | The coupling beat                                       |
-| 6   | The disclosure limit                         | `drafts/05-frontier.md`        | The disclosure beat                                     |
-| 7   | Metrics primer                               | `drafts/06-metrics-primer.md`  | The metrics primer                                      |
-| 8   | §1 AlphaFold and the open co-folding cluster | `drafts/07-alphafold.md`       | §1                                                      |
-| 9   | §2 RoseTTAFold → RFdiffusion                 | `drafts/08-rosettafold.md`     | §2                                                      |
-| 10  | §3 Boltz                                     | `drafts/09-boltz.md`           | §3                                                      |
-| 11  | §4 Chai                                      | `drafts/10-chai.md`            | §4                                                      |
-| 12  | §5 Flow matching                             | `drafts/11-flow-matching.md`   | §5                                                      |
-| 13  | §6 Inversion as a portable technique         | `drafts/12-inversion.md`       | §6                                                      |
-| 14  | §7 Protenix                                  | `drafts/13-protenix.md`        | §7                                                      |
-| 15  | §8 ESM                                       | `drafts/14-esm.md`             | §8                                                      |
-| 16  | §9 The closed frontier                       | `drafts/15-closed-frontier.md` | §9                                                      |
-| 17  | Tables A and B                               | `drafts/16-tables.md`          | Tables A and B — written after §1–§9                    |
-| 18  | Conclusion                                   | `drafts/17-conclusion.md`      | The conclusion, gaps subsection included — written last |
+| 2   | The founding bet                             | `drafts/01-anatomy.md`         | The anatomy beat                                        |
+| 3   | Prediction and generation are one machine    | `drafts/02-identity.md`        | The identity beat                                       |
+| 4   | Generator–critic coupling                    | `drafts/03-coupling.md`        | The coupling beat                                       |
+| 5   | The disclosure limit                         | `drafts/04-frontier.md`        | The disclosure beat                                     |
+| 6   | Metrics primer                               | `drafts/05-metrics-primer.md`  | The metrics primer                                      |
+| 7   | §1 AlphaFold and the open co-folding cluster | `drafts/06-alphafold.md`       | §1                                                      |
+| 8   | §2 RoseTTAFold → RFdiffusion                 | `drafts/07-rosettafold.md`     | §2                                                      |
+| 9   | §3 Boltz                                     | `drafts/08-boltz.md`           | §3                                                      |
+| 10  | §4 Chai                                      | `drafts/09-chai.md`            | §4                                                      |
+| 11  | §5 Flow matching                             | `drafts/10-flow-matching.md`   | §5                                                      |
+| 12  | §6 Inversion as a portable technique         | `drafts/11-inversion.md`       | §6                                                      |
+| 13  | §7 Protenix                                  | `drafts/12-protenix.md`        | §7                                                      |
+| 14  | §8 ESM                                       | `drafts/13-esm.md`             | §8                                                      |
+| 15  | §9 The closed frontier                       | `drafts/14-closed-frontier.md` | §9                                                      |
+| 16  | Tables A and B                               | `drafts/15-tables.md`          | Tables A and B — written after §1–§9                    |
+| 17  | Conclusion                                   | `drafts/16-conclusion.md`      | The conclusion, gaps subsection included — written last |
 
 The parts they collapse into:
 
 | Part              | File                         | Merges                                                       |
 | ----------------- | ---------------------------- | ------------------------------------------------------------ |
-| Background        | `drafts/parts/background.md` | drafts 2–6, plus the ordering paragraph that closes the unit |
-| The nine sections | `drafts/parts/sections.md`   | drafts 8–16                                                  |
+| Background        | `drafts/parts/background.md` | drafts 2–5, plus the ordering paragraph that closes the unit |
+| The nine sections | `drafts/parts/sections.md`   | drafts 7–15                                                  |
 
-Drafts 1, 7 and 17–18 stand on their own; the introduction opens the review, the
+Drafts 1, 6 and 16–17 stand on their own; the introduction opens the review, the
 metrics primer renders between the background and §1, and the rest close it.
 
 **The seams between sections are written from the ordering paragraph** that
@@ -222,8 +221,8 @@ block seams and smoothing the handoffs — not re-editing section bodies.
 
 **The review.** The introduction, the background, then the metrics primer, the
 nine sections, the two tables, then the conclusion with its gaps. Scope is
-argued in the background's scope beat; the exclusion log stays in
-`candidates.md` and is never drafted.
+stated in the introduction; the exclusion log stays in `candidates.md` and is
+never drafted.
 
 ## Placement directives
 

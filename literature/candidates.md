@@ -106,8 +106,7 @@ already cites.
   pocket-conditioned **small-molecule** generators, producing 3D atom types,
   coordinates and bond topology for a ligand. Structure-based drug design rather
   than binder design; the overlap is the flow-matching machinery, not the
-  problem. Both are quoted in the scope beat for their discrete/continuous
-  hybrid schemes — the evidence for the differentiability asymmetry.
+  problem.
 
 - **OpenBind, first release** — `openbind` · `10.64898/2026.08.27.747600` —
   _excluded: wrong modality._ An open experimental structure-affinity dataset

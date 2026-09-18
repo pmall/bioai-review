@@ -94,6 +94,13 @@ of rediscovered each time a section is drafted.
   argument does not lean on is a _mention_; an obscure one that anchors a
   section is _backbone_. Never derive a tier from `xrefs.md` — in-degree there
   is confounded by publication age and is corpus-internal.
+- **Structural weight is read as importance in the field, so it is weighed
+  separately from the tier.** A row in a taxonomy table looks like a category of
+  the field; the last rung of a ladder looks like where the field currently
+  ends. The test is whether the field will still remember the work in a few
+  months — a very recent short preprint with no wet lab will not, so it gets no
+  structural position, however distinct its idea. Keep the substance in its home
+  section and demote it in overview material to a clause or a named variant.
 - **Tier is per-claim, so state which claim.** Where it is not self-evident from
   the entry, name the beat or organizing fact the work carries. That is what
   makes a tier checkable, and re-derivable when the argument moves.

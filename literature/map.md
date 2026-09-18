@@ -1,28 +1,21 @@
 # Literature Map
 
-> The living entry point of the review, ordered exactly as the final review will
-> read, so there is no second organization to reconcile. The conventions it
-> obeys — tiers, the map ↔ catalog invariant, _map-only_, what may and may not
-> go inside an entry — are defined once in `AGENTS.md` and not restated here.
-> What follows is specific to this review.
->
 > **This file is the review minus its prose** — every publication and every
-> claim the review makes, structured in reading order. Instructions addressed to
-> whoever writes that prose live in `literature/writing-plan.md`, not here.
+> claim the review makes, in the order the final review will read. Its
+> conventions are defined once in `AGENTS.md`; what the drafter does with it is
+> in `literature/writing-plan.md`; what is in scope is in `GOAL.md`.
 >
-> **Claims here, evidence in the corpus.** The map states _what the review
+> **Claims here, evidence in the corpus.** The map says _what the review
 > asserts_; `literature/corpus/` holds what proves it. "Changing only the filter
 > roughly doubles the confirmed-binder rate" is a claim and belongs in an entry;
 > the figure, the cutoff, the assay and the caveat that travels with them are
-> read out of the parsed text at writing time. The consequence is the test the
-> writing plan states: a section draft that could have been written from the map
-> alone has failed. The failure in the other direction is an entry that records
-> only a work's _role_ — where it sits, what it is contrasted with — and never
-> says what it claims.
+> read out of the parsed paper at writing time. So a section draft that could
+> have been written from the map alone has failed — and so has an entry that
+> says only where a work sits and never what it claims.
 >
 > **Entry schema.** Every entry opens with name · bib key · DOI · tier, then one
-> or two sentences of what the work is. Anything further uses this vocabulary
-> and no other, so that a missing line is visible rather than merely absent:
+> or two sentences of what the work is. Anything further uses these lines and no
+> others, so that a missing one is visible rather than merely absent:
 >
 > | Line                     | Holds                                                                       | Required on                         |
 > | ------------------------ | --------------------------------------------------------------------------- | ----------------------------------- |
@@ -30,45 +23,13 @@
 > | _Against:_               | what the work is contrasted with — the comparison the prose is built around | **backbone**                        |
 > | _Caveat:_                | the limit that travels with the claim wherever it is cited                  | where one exists                    |
 > | _Collision:_             | material this entry does **not** own, and where it is owned                 | where two units could both claim it |
-> | _Level:_ / _Attachment:_ | the two coordinates of the coupling beat's taxonomy                         | design systems only                 |
+> | _Level:_ / _Attachment:_ | how tightly it couples to its critic, and where its gradient stops          | design systems only                 |
 >
 > A **mention** carries none of these: a mention is one sentence, and if it
 > needs a _Carries_ line it is not a mention.
 >
-> **One unit per `#` heading.** The file is a flat sequence of the review's
-> units in the order they render — the introduction, the background, the metrics
-> primer, the nine sections, the two tables, the conclusion. A unit is either
-> one draft or, where its `##` beats have different sources, one draft per beat
-> merged into the unit; `literature/writing-plan.md` says which and there is no
-> second organization to reconcile there.
->
-> **Everything the review left out is in `literature/candidates.md`** —
-> undecided works and examined-and-excluded ones, each with its reason. None of
-> it is drafted, so none of it is here. A work excluded from the argument may
-> still be _quoted_ in it, and carries its bib key inline like any other
-> citation.
->
-> **Coupling levels — the review's spine,** argued in the coupling beat and the
-> axis §6–§8 escalate along: **Level 0** — the generator _is_ a repurposed
-> predictor (inherited weights). An attribute of an entry, not a section; marked
-> _(inherits …)_. **Level 1** — generate, then filter with a critic, no
-> gradient. Two regimes: _confidence-as-critic_, the field's default, against
-> _trained-critic_ (§3). **Level 2** — backpropagate the predictor's loss into
-> the design variable. Two regimes as well, and the distinction is the design
-> variable, not the gradient: _continuous relaxation_, where the sequence is a
-> simplex the optimizer descends (BindCraft, Germinal, BoltzDesign1, PXDesign-h,
-> ESMFold2), against _discrete gradient-guided search_, where it stays one-hot
-> and the gradient only proposes and ranks point mutations (RFOptimization,
-> whose stated reason is that a continuous representation is an attack surface
-> the optimizer will exploit).
->
-> **Scope.** In scope = generates a **protein or peptide binder conditioned on a
-> target**, or predicts the structure such a system designs against. Out of
-> scope = a different modality (small molecules), or sequence generation with no
-> target conditioning. The field moves fast — explosive in 2026 — so references
-> dated before 2025 are generally out of scope, except where they belong to an
-> active lineage whose full history is kept for understanding (ESM,
-> RoseTTAFold).
+> **One unit per `#` heading**, in the order they render. A `##` heading inside
+> a unit is a **beat**: one piece of it, with its own sources.
 
 ______________________________________________________________________
 
@@ -121,69 +82,37 @@ releases, no publication.)_
 [Anthropic](https://www.anthropic.com/research/claude-uplifts-biomolecular-modeling)
 · [kits](https://github.com/anthropics/uplifting-biomolecular-modeling)
 
+**The review is about one problem: given a target protein, design a new protein
+or peptide that binds it.** Antibodies, nanobodies, VHHs, scFvs, minibinders and
+macrocyclic peptides are one object here, because that is what they are to every
+model in the review: a chain of amino acids, judged by how it folds against the
+target. Small molecules are the other half of binder discovery and are out of
+scope — a molecule is a variable-size graph under hard valence rules, not a
+chain drawn from a fixed alphabet of twenty, so generating one takes different
+machinery and is judged on different benchmarks.
+
 **What the review does.** It reviews the models, lineage by lineage — AlphaFold,
 RoseTTAFold, Boltz, Chai, Protenix, ESM — each taken from its predictor through
 the design systems built on it, so an architecture is met once and then followed
 to what it produces, with its results and the caveats on them. §9 steps outside
 the open lineages to the closed systems, read as evidence about the field's
-evidence rather than as its strongest results. It covers proteins and peptides
-binding protein targets; small molecules are a different problem and out of
-scope, for reasons the background gives. What comes before §1 is preparation for
-it: what a co-folder is, why prediction and generation are one machinery, how
-tightly a generator couples to its critic, what the field's disclosure limit
-does to its evidence, and the vocabulary its numbers are quoted in.
+evidence rather than as its strongest results. What comes before §1 is
+preparation for it: what a co-folder is, why prediction and generation are one
+machinery, how tightly a generator couples to its critic, what the field's
+disclosure limit does to its evidence, and the vocabulary its numbers are quoted
+in.
 
 **The thread through all of it, in one number.** How many designs must be
 physically made before one binds. Screening-era and early computational work
 needed thousands to millions of candidates per target; current systems report
-tens. **The measure of progress in this field is how few designs you must make
-to get a binder**, and §1–§9 are, read one way, a history of that number
-falling. _Collision:_ the numbers, the table and the argument are the identity
-beat's; the introduction says the number exists and what it measures.
+tens. The measure of progress in this field is how few designs you must make to
+get a binder, and §1–§9 are, read one way, a history of that number falling.
+_Collision:_ the numbers, the table and the argument are the identity beat's;
+the introduction says the number exists and what it measures.
 
 ______________________________________________________________________
 
 # Background
-
-## Scope — proteins and peptides, not small molecules
-
-This review covers one problem. **Given a target protein, and usually a chosen
-site on it, design a new protein or peptide that binds there.** Antibodies,
-nanobodies, VHHs, scFvs, minibinders and macrocyclic peptides are all the same
-problem here, because to every model in the review they are the same object: a
-chain of amino acids, judged by how it folds against the target.
-
-Small molecules are the other half of binder discovery, and they are out of
-scope. The reason is not that their papers live elsewhere. It is that a sequence
-is a far easier thing to search than a molecule, in two specific ways, and the
-second of them is what most of this review is about.
-
-**Binding degrades gently along a sequence.** Change one atom of a small
-molecule and its potency can collapse — the activity-cliff problem — so a
-small-molecule generator has to land exactly right rather than merely close.
-Boltz-2, whose affinity module is aimed at small molecules, describes the
-difficulty as _"distinguishing subtle differences in binding affinity among
-closely related analogues"_. Protein binders are far more forgiving between
-neighbouring sequences, and that tolerance is the only reason the field's
-standard move — generate many candidates, keep the ones a predictor likes —
-works at all.
-
-**A sequence can be differentiated; a molecule cannot.** This is the deeper
-reason, and it is the mechanism the coupling beat is built on. A protein
-sequence relaxes cleanly into a continuous object: a probability distribution
-over the 20 amino acids at each of _L_ positions. Every point in that space is
-still a valid input to a structure predictor, so a design loop can hand the
-predictor a blurred sequence, read how wrong the resulting structure is, and
-step downhill. That is what BindCraft does through AlphaFold2, on an *L*×20
-gradient over amino-acid choices; what Germinal does over antibody CDR logits;
-and what the ESMFold2 binder campaign does through a protein language model and
-a folding head at once. A molecule is a variable-size graph with hard valence
-rules, and almost nothing between two molecules is itself a molecule, so
-small-molecule generators build discrete machinery exactly where proteins need
-none (`drugflow`, `flowr` — both excluded by modality, cited here for the
-contrast). Whether a gradient loop is reachable for small molecules at all is
-open, and this review does not settle it; the asymmetry is real, and it is why
-the two halves of binder discovery are not one field.
 
 ## The founding bet, and how a co-folder is built
 
@@ -230,6 +159,16 @@ how many forward passes one sample costs:
 - **Flow matching — §5.** An ODE rather than an SDE, with _"straighter sampling
   trajectories"_, so far fewer steps buy the same sample: FrameFlow reports 2×
   designability at 5× fewer sampling steps.
+
+**Both formalisms are borrowed from image generation, and what differs is only
+what gets noised.** AF3 calls its structure stage _"a relatively standard
+diffusion approach"_ and cites the image-generation literature for it; where an
+image model denoises pixels, AF3's module is _"trained to receive 'noised'
+atomic coordinates and then predict the true coordinates"_. The formalism is
+borrowed, the purpose is not — that module replaced AF2's structure module and
+runs whether or not anything is being designed. Image generation then made the
+same diffusion → flow-matching move for the same reasons of speed and
+simplicity, which is why §5 reads as a successor rather than an alternative.
 
 That is the machine. Its limit is where the identity beat starts: a predictor
 tells you what a _given_ sequence folds into. It does not tell you which
@@ -294,42 +233,50 @@ across the full width of the literature's spread**, and every hit rate the
 review quotes is read against it. Its hits are phage-display enrichments —
 BoltzProt-1's _screening hits_, not confirmed binders.
 
-**The generative machinery was borrowed from image generation, and the field
-said so.** RFdiffusion introduces the technique as _"denoising diffusion
-probabilistic models (DDPMs), a powerful class of machine learning models
-recently demonstrated to generate new photorealistic images in response to
-text"_. The parallel is the field's own and it earns its place twice: it orients
-any reader who has met Stable Diffusion, and it explains the formalism shift in
-§5, because image generation made the same diffusion → flow-matching move for
-the same reasons of speed and simplicity.
-
-The analogy breaks exactly where this field becomes interesting: **image
-generation has no AlphaFold.** Nothing scores whether a generated image is
-_correct_, so image models are judged by human preference and cannot close a
-loop on their own objective. Protein design can, because it has a predictor to
-grade against — and how tightly that loop is closed is the coupling beat. The
-borrowed machinery was the easy half; the critic is the part with no counterpart
-in the source field.
+**Image generation has no AlphaFold.** Both formalisms in the structure stage
+are borrowed from it (the founding bet), and that is where the resemblance
+stops: nothing scores whether a generated image is _correct_, so image models
+are judged by human preference and cannot close a loop on their own objective.
+Protein design can, because it has a predictor to grade against — and how
+tightly that loop is closed is the coupling beat. The borrowed machinery was the
+easy half; the critic is the part with no counterpart in the source field.
 
 ## How tightly the generator is coupled to its critic
 
 Every system in this review pairs something that proposes sequences with
 something that judges them. What separates them is how tightly the two are
-bound, and that is the axis §6–§8 escalate along. The levels themselves are
-defined in this file's header; what follows is what each one costs and what it
-buys.
+bound, and §6–§8 are ordered by it.
+
+**Level 0** — the generator _is_ a predictor, with its weights reused. An
+attribute of an entry rather than a section, marked _(inherits …)_. **Level 1**
+— generate, then filter with a critic, no gradient: either the predictor's own
+confidence scores, which is the field's default, or a critic trained to answer
+whether a design binds (§3). **Level 2** — backpropagate the predictor's loss
+into the sequence being designed, held as a blurred distribution over amino
+acids. RFOptimization (§2) is the one system that leaves the sequence as real
+amino acids and uses the gradient only to rank point mutations.
+
+What follows is what each level costs and what it buys.
 
 | Route                                                                 | What is optimized                                      | Where the critic sits | Corpus examples                                                                            |
 | --------------------------------------------------------------------- | ------------------------------------------------------ | --------------------- | ------------------------------------------------------------------------------------------ |
 | **Level 0** — the generator _is_ a predictor                          | the model's own sampling                               | inside the model      | BoltzGen (§3); RFdiffusion 1/2, fine-tuned from RF1 (§2) — the identity beat               |
 | **Level 1** — backbone, then inverse folding, then a predictor judges | nothing is optimized; designs are sampled and filtered | after the fact        | RFdiffusion → ProteinMPNN → AF2 (§2); RFpeptides, BoltzGen, PXDesign-d, Protenix-v2 design |
-| **Level 2, continuous** — descend a relaxed sequence                  | an *L*×20 simplex, annealed to one-hot                 | inside the loss       | BindCraft, Germinal, BoltzDesign1 (§6); PXDesign-h (§7); ESMFold2 (§8)                     |
-| **Level 2, discrete** — gradients only rank point mutations           | a sequence that stays one-hot throughout               | inside the loss       | RFOptimization (§2, §6)                                                                    |
+| **Level 2** — descend a relaxed sequence                              | an *L*×20 simplex, annealed to one-hot                 | inside the loss       | BindCraft, Germinal, BoltzDesign1 (§6); PXDesign-h (§7); ESMFold2 (§8)                     |
 
 Level 1 is still the field's default, and it is the origin of the standard
 success criterion — AlphaProteo's _"interchain AF2 pAE < 10, binder-aligned
 binder RMSD < 1 Å, pLDDT > 80"_ — quoted whole and left unpacked here; the
 metrics primer, which follows this unit, defines its units.
+
+**What makes Level 2 possible at all is that a sequence relaxes.** A chain still
+being designed can be held as a probability distribution over the 20 amino acids
+at each of _L_ positions, and every point in that space is still a valid input
+to a structure predictor. So a design loop can hand the predictor a blurred
+sequence, read how wrong the resulting structure is, and step downhill —
+BindCraft through AlphaFold2, Germinal over antibody CDR logits, ESMFold2
+through a language model and a folding head at once. Level 2 is not a training
+trick; it is what this representation permits and a discrete one does not.
 
 **Why MSA emancipation was the precondition for Level 2.** This is the one
 genuinely non-obvious claim in this unit. **An MSA is a database lookup on a
@@ -354,15 +301,14 @@ it.
 
 **And the filter, not the generator, is where the hit rate lives.** Level 1 says
 "filter", and the field long read that as the predictor's own confidence head.
-Three systems say otherwise, which is why Level 1 splits into two regimes in the
-header. BoltzPPI (§3) replaces BoltzGen's confidence metrics with a critic
-trained to answer "will this bind", and roughly doubles the confirmed-binder
-rate with the generator untouched. PXDesign (§7) finds that Protenix and AF2-IG
-filters retain _different_ true positives. RFOptimization (§2, §6) treats
-agreement with a single predictor as the failure mode itself, mixing three
-predictor families across the loop and holding one of them out as an independent
-check — and it is the one that moves the response out of the filter and into the
-optimizer.
+Three systems say otherwise, which is why Level 1 has two forms above.
+RFOptimization (§2) treats agreement with a single predictor as the failure mode
+itself, mixing three predictor families across its loop and holding one of them
+out as an independent check. PXDesign (§7) finds that Protenix and AF2-IG
+filters retain _different_ true positives. And BoltzPPI (§3) replaces BoltzGen's
+confidence metrics with a critic trained to answer "will this bind", roughly
+doubling the confirmed-binder rate with the generator untouched — the same
+designs, a different judge.
 
 ## The disclosure limit
 
@@ -608,13 +554,13 @@ _first-to-compose-both-couplings_ claim on dates and on kind.
   diffusion structure stage, BSD with weights, benchmarked directly against AF3,
   Boltz-2 and Chai-1. _Carries:_ the evidence for the section-defining fact —
   this lineage never stopped shipping predictors — and it is the model
-  RFOptimization takes its gradients from, so the corpus's only discrete Level-2
-  system runs on something the review can cite. _Carries:_ also the
-  learned-features answer to AF3's physical-validity problem — more ligand
-  chiral centres correct than AF3 or Boltz-2 without guidance, with the argument
-  that Boltz-1x's inference-time steering _"may shift the network outside the
-  training distribution"_. One clause, because it is an implementation
-  difference rather than a fork in the field.
+  RFOptimization takes its gradients from, so the review's one gradient
+  optimizer that keeps the sequence discrete runs on something it can cite.
+  _Carries:_ also the learned-features answer to AF3's physical-validity problem
+  — more ligand chiral centres correct than AF3 or Boltz-2 without guidance,
+  with the argument that Boltz-1x's inference-time steering _"may shift the
+  network outside the training distribution"_. One clause, because it is an
+  implementation difference rather than a fork in the field.
 - **RFdiffusion** — `rfdiffusion` · `10.1038/s41586-023-06415-8` · **backbone**
   _(inherits RF1)_ — the generative turn itself, and the most-cited design model
   in the corpus. SE(3)-equivariant frame diffusion, fine-tuned from a predictor,
@@ -625,10 +571,10 @@ _first-to-compose-both-couplings_ claim on dates and on kind.
   from §3 to §7 either runs or argues with. And **step 2 of §6's arc**: its
   verdict on hallucination, which sent Level 2 quiet for two years. _Against:_
   hallucination through RoseTTAFold — the Baker lab's own predecessor, beaten on
-  the Baker lab's own benchmark. That is the comparison §6 later reopens, and it
-  is why §6 can be written as a return rather than an arrival. _Caveat:_ its "in
-  silico success" criterion is a confidence-metric filter, so the designs-tested
-  numbers attached to it are in-silico rather than measured.
+  the Baker lab's own benchmark. RFOptimization below reopens exactly that
+  comparison, which is why this lineage ends on a return to what it abandoned.
+  _Caveat:_ its "in silico success" criterion is a confidence-metric filter, so
+  the designs-tested numbers attached to it are in-silico rather than measured.
   [GitHub](https://github.com/RosettaCommons/RFdiffusion)
 - **RFdiffusion2** — `rfdiffusion2` · `10.1038/s41592-025-02975-x` · **mention**
   _(inherits RF1)_ — atom-level enzyme active-site scaffolding from
@@ -666,9 +612,25 @@ _first-to-compose-both-couplings_ claim on dates and on kind.
     — AlphaFold2 given a cyclic offset so the chain reads as closed; the critic
     above, and where the cyclic thread starts.
 - **RFOptimization (RFO)** — `rfoptimization` · `10.64898/2026.09.04.749184` ·
-  **meat** — training-free refinement of existing designs. _Level 2; reviewed in
-  §6._ Listed here because it completes this lineage's stack — predict,
-  generate, inverse-fold, optimize, filter, all from one group.
+  **meat** — the lineage's attempt at optimizing a design by backpropagation:
+  training-free refinement of existing designs, with gradients taken from RF3.
+  The Baker lab returning, on its own AF3-class predictor, to the technique
+  RFdiffusion displaced above (§6 tells that technique's history). _Level:_ 2.
+  _Attachment:_ the trunk plus the confidence heads — iPAE, pLDDT and iPTM,
+  whose path back to the input stays differentiable when the coordinate path
+  does not. _Carries:_ this lineage's completion of the stack — predict,
+  generate, inverse-fold, optimize, filter, all from one group — and the
+  review's one **discrete** answer to gradient design: the sequence stays
+  one-hot and the gradient only proposes and ranks point mutations, on the
+  stated grounds that a continuous relaxation is an attack surface the optimizer
+  will exploit. Every other gradient system in the review (§6–§8) relaxes the
+  sequence instead. _Against:_ BindCraft, which it reports beating on cost per
+  filter-passing design. Its cross-lineage construction — gradients from RF3,
+  cycling through Boltz, AF3 held out as an independent check — treats agreement
+  with a single predictor as the failure mode, and is the only system in the
+  review moving that response into the optimizer rather than the filter.
+  _Caveat:_ **in silico only.** No wet-lab validation, no designs-tested
+  denominator, no Table B row — the ceiling on how far the review leans on it.
 - **ProteinMPNN** — `proteinmpnn` · `10.1126/science.add2187` · **backbone** —
   autoregressive message-passing network that writes a sequence for a fixed
   backbone. **The review's one piece of universally shared machinery**: §2–§7
@@ -869,42 +831,29 @@ _Why it comes before §7 and §8:_ a pipeline is a composition of techniques and
 the reader should meet the part before the assembly. §8 is the limit case with
 nothing left to compose, which is why it ends the argument rather than §9.
 
-**The section owns two things, and they are orthogonal.** Every Level-2 system
-differs from every other on exactly two coordinates, which is why the entries
-below all carry both and why no other section needs them:
+**What the section owns is one question: where the gradient attaches.** Every
+system here descends a relaxed *L*×20 simplex annealed to one-hot, so what they
+disagree about is where in the predictor the gradient is taken. The coupling
+beat states why the question exists; here are the answers, and they are the
+clearest case in the review of the field arguing with itself about a mechanism.
 
-1. **The design variable** — a relaxed *L*×20 simplex annealed to one-hot
-   (_continuous_: BindCraft, BoltzDesign1, Germinal, mBER, PXDesign-h,
-   ESMFold2), against a sequence that stays one-hot while the gradient only
-   proposes and ranks mutations (_discrete_: RFOptimization alone).
-1. **The attachment point** — where in the predictor the gradient is taken. The
-   coupling beat states why the question exists; here is the answer, and it is
-   the clearest case in the review of the field arguing with itself about a
-   mechanism.
-   - **Attach to the trunk.** BoltzDesign1 stop-gradients the diffusion module
-     and optimizes the Pairformer's distogram directly, because it _"represents
-     the probability distribution of atomic distances that the diffusion model
-     later samples from"_ — optimize the distribution, not a sampled structure.
-   - **Attach to the trunk and the confidence heads.** RFOptimization applies
-     the same stop-gradient and adds iPAE, pLDDT and iPTM, because the
-     confidence path back to the input stays differentiable when the coordinate
-     path does not.
-   - **Shorten the trajectory until it can be crossed.** Protenix's two-step ODE
-     sampler is short enough to traverse, so PXDesign-h (§7) backpropagates
-     through the whole model, which it says permits _"end-to-end backpropagation
-     of gradients from all confidence metrics, rather than being limited to
-     contact loss derived from Pairformer outputs"_ — naming BoltzDesign1 as the
-     limitation it beats.
-   - **Or never face the question.** AlphaFold2 has no diffusion stage, so
-     BindCraft, Germinal and mBER take the whole network and never choose.
+- **Attach to the trunk.** BoltzDesign1 stop-gradients the diffusion module and
+  optimizes the Pairformer's distogram directly, because it _"represents the
+  probability distribution of atomic distances that the diffusion model later
+  samples from"_ — optimize the distribution, not a sampled structure.
+- **Shorten the trajectory until it can be crossed.** Protenix's two-step ODE
+  sampler is short enough to traverse, so PXDesign-h (§7) backpropagates through
+  the whole model, which it says permits _"end-to-end backpropagation of
+  gradients from all confidence metrics, rather than being limited to contact
+  loss derived from Pairformer outputs"_ — naming BoltzDesign1 as the limitation
+  it beats.
+- **Or never face the question.** AlphaFold2 has no diffusion stage, so
+  BindCraft, Germinal and mBER take the whole network and never choose.
 
-**The two coordinates are independent, and that is the section's analytical
-payoff.** BoltzDesign1 and RFOptimization attach in the same place and differ in
-the design variable; BindCraft and PXDesign-h share the design variable and
-differ in the attachment point. Any system in the review can be located on both
-axes, which is what makes §6 a category rather than a list — and PXDesign
-benchmarking itself against exactly BindCraft and BoltzDesign1 (§7) is the field
-agreeing that it is one.
+**The answers are replies to each other, which is what makes §6 a category
+rather than a list.** PXDesign-h names BoltzDesign1's trunk-only limit as the
+thing it beats, and PXDesign benchmarks itself against exactly BindCraft and
+BoltzDesign1 (§7) — the field agreeing that these are one family.
 
 _This is also what §5's formalism shift bought beyond sampling speed:_ flow
 matching is what made the structure stage short enough to reopen to a design
@@ -923,17 +872,14 @@ The arc to carry into the section:
 1. _Revived._ It returns on predictors strong enough to be run single-sequence
    without falling off-distribution — the precondition argued in the coupling
    beat.
-1. _Portable._ Counting the systems housed in §2, §7 and §8, it now runs on five
-   predictor families across six groups. _The claim has to be stated carefully,
+1. _Portable._ Counting the systems housed in §7 and §8, it now runs on four
+   predictor families across five groups. _The claim has to be stated carefully,
    and this is the only place it is stated._ On the AlphaFold family the
    portability is one codebase being retargeted — BindCraft, Germinal and mBER
    all run ColabDesign — so those three add _groups_, not architectures. What
    the claim about **architectures** actually rests on is the three systems that
    left that codebase: BoltzDesign1 here, PXDesign-h (§7) and the ESMFold2
    campaign (§8).
-1. _Conceded._ RFOptimization closes the arc: the Baker lab returns to the
-   technique it abandoned in step 2, on its own AF3-class predictor, and reports
-   beating BindCraft on cost per filter-passing design.
 
 - **AlphaDesign** — `alphadesign` · `10.1038/s44320-025-00119-z` · **mention** —
   hallucination through AlphaFold2 searched by an evolutionary algorithm, not a
@@ -1004,21 +950,6 @@ The arc to carry into the section:
   this entry does not restate it. _Caveat:_ its hits are phage-display
   enrichments — BoltzProt-1's _screening hits_, not confirmed binders, with no
   affinity quantification.
-- **RFOptimization** — `rfoptimization` · `10.64898/2026.09.04.749184` ·
-  **meat** — gradient-guided mutation through RF3, refining existing designs
-  rather than generating them. _Home section §2._ _Level:_ 2, **discrete** — the
-  only instance in the corpus. The sequence stays one-hot and the gradient only
-  proposes and ranks mutations, on the stated grounds that a continuous
-  relaxation is an attack surface the optimizer will exploit. _Attachment:_
-  trunk plus confidence heads — the same place as BoltzDesign1, so the two
-  isolate the design variable cleanly. _Carries:_ the header's second Level-2
-  regime, and the close of §6's arc — the Baker lab returning to what it
-  abandoned in step 2. Its cross-lineage construction (gradients from RF3,
-  cycling through Boltz, AF3 held out as an independent check) treats agreement
-  with a single predictor as the failure mode, and is the only system moving
-  that response into the optimizer rather than the filter. _Caveat:_ **in silico
-  only.** No wet-lab validation, no designs-tested denominator, no Table B row.
-  That is the ceiling on how far the review leans on it.
 
 # §7 — Protenix
 
@@ -1129,11 +1060,14 @@ than a tenth step.
     with annealing and ensembling. Single-sequence **is** ESMFold2's native
     regime, so the off-distribution problem the coupling beat opens does not
     arise. MSA emancipation was never an accuracy story — it set the ceiling on
-    coupling, and this is the ceiling. _Against:_ §6's composed systems, and
-    Germinal in particular: the same sequence prior, reached with one model
-    instead of two. _Caveat:_ self-chosen targets and a self-reported hit rate,
-    the corpus's highest outside §9. Table B's provenance columns apply here as
-    everywhere. _(module of the ESMC release — no separate publication.)_
+    coupling, and this is the ceiling. It is also the far end of the relaxed
+    sequence: a distribution over amino acids fed to a 6-billion-parameter
+    language model, where RFOptimization (§2) refuses the relaxation outright.
+    _Against:_ §6's composed systems, and Germinal in particular: the same
+    sequence prior, reached with one model instead of two. _Caveat:_ self-chosen
+    targets and a self-reported hit rate, the corpus's highest outside §9. Table
+    B's provenance columns apply here as everywhere. _(module of the ESMC
+    release — no separate publication.)_
 
 # §9 — The closed frontier
 
