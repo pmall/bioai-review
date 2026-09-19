@@ -22,8 +22,11 @@ ENTRY_RE = re.compile(r"@(\w+)\{([^,]+),(.*?)\n\}\n", re.S)
 # map.md is one "# " heading per draft unit; the three benchmarking units
 # (primer, instruments, tables) share the label they had as Part IV.
 SECTION_RE = re.compile(
-    r"^# (?:§(\d)|(The metrics primer|The instruments|Tables A and B))\b.*$", re.M
+    r"^# (?:§(\d)|(The metrics primer|The instruments|Tables A and B|Background))\b.*$",
+    re.M,
 )
+# entries defined inside the background unit rather than a numbered section
+SECTION_LABELS = {"Background": "BG"}
 # a map line that *defines* an entry, e.g. "* **Boltz-1** — `boltz1` · `10....`"
 DEFINITION_RE = re.compile(r"^\s*\*\s+\*\*.*?`([a-z0-9_]+)`", re.M)
 
@@ -83,7 +86,10 @@ def load_catalog(repo_root: Path) -> dict[str, dict]:
 def load_sections(repo_root: Path, papers: dict[str, dict]) -> None:
     """Tag each paper with the map section(s) that define an entry for it."""
     text = (repo_root / "literature" / "map.md").read_text()
-    bounds = [(m.start(), m.group(1) or "IV") for m in SECTION_RE.finditer(text)]
+    bounds = [
+        (m.start(), m.group(1) or SECTION_LABELS.get(m.group(2), "IV"))
+        for m in SECTION_RE.finditer(text)
+    ]
     for paper in papers.values():
         paper["sections"] = []
     def label_at(pos: int) -> str | None:

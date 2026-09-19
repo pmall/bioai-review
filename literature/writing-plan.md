@@ -38,7 +38,7 @@ exactly that, and this section is where it becomes an instruction to the writer.
 | **meat**     | Named in a sentence or two while a backbone claim is being made; its numbers may be quoted           | Removing it weakens a claim's evidence; it does not leave a hole in the narrative       |
 | **mention**  | A clause, or a parenthetical. No mechanism, no numbers in the prose — numbers go to Table A or B     | It can be read past without loss                                                        |
 
-**Twenty publications carry the review.** They are the backbone set, and they
+**Nineteen publications carry the review.** They are the backbone set, and they
 are the ones a reader should come away able to name:
 
 | Section | Gets a passage                                                    |
@@ -47,11 +47,10 @@ are the ones a reader should come away able to name:
 | §2      | RoseTTAFold · RFdiffusion · RFantibody · RFpeptides · ProteinMPNN |
 | §3      | Boltz-1 · BoltzGen · BoltzProt-1                                  |
 | §4      | Chai-2                                                            |
-| §5      | FrameFlow                                                         |
-| §6      | BindCraft · Germinal                                              |
-| §7      | PXDesign                                                          |
-| §8      | ESM-2/ESMFold · ESMC/ESMFold2 · the ESMFold2 binder campaign      |
-| §9      | Latent-X1                                                         |
+| §5      | BindCraft · Germinal                                              |
+| §6      | PXDesign                                                          |
+| §7      | ESM-2/ESMFold · ESMC/ESMFold2 · the ESMFold2 binder campaign      |
+| §8      | Latent-X1                                                         |
 | Primer  | PoseBusters · ipSAE                                               |
 | Tables  | FoldBench                                                         |
 
@@ -74,8 +73,8 @@ not about the prose owing each one a turn.
    Interest is not weight. A finding earns prose in proportion to what rests on
    it, and `map.md` states what rests on each entry under _Carries_.
 1. **Cataloguing under the guise of completeness.** Listing five flow-matching
-   papers because the corpus holds five. §5's own entry says what to do instead:
-   one argument, four examples named in support.
+   papers because the corpus holds five. The background's flow-matching bullet
+   says what to do instead: one formalism explained, four named in support.
 
 **Where the map over-supplies, cut rather than expand.** Some entries carry more
 material than their tier warrants, because the underlying paper is recent and
@@ -107,38 +106,37 @@ the review.
 | 8   | §2 RoseTTAFold → RFdiffusion                 | `drafts/07-rosettafold.md`     | §2                                                      |
 | 9   | §3 Boltz                                     | `drafts/08-boltz.md`           | §3                                                      |
 | 10  | §4 Chai                                      | `drafts/09-chai.md`            | §4                                                      |
-| 11  | §5 Flow matching                             | `drafts/10-flow-matching.md`   | §5                                                      |
-| 12  | §6 Design by backpropagation                 | `drafts/11-inversion.md`       | §6                                                      |
-| 13  | §7 Protenix                                  | `drafts/12-protenix.md`        | §7                                                      |
-| 14  | §8 ESM                                       | `drafts/13-esm.md`             | §8                                                      |
-| 15  | §9 The closed frontier                       | `drafts/14-closed-frontier.md` | §9                                                      |
-| 16  | Tables A and B                               | `drafts/15-tables.md`          | Tables A and B — written after §1–§9                    |
-| 17  | Conclusion                                   | `drafts/16-conclusion.md`      | The conclusion, gaps subsection included — written last |
+| 11  | §5 Design by backpropagation                 | `drafts/10-inversion.md`       | §5                                                      |
+| 12  | §6 Protenix                                  | `drafts/11-protenix.md`        | §6                                                      |
+| 13  | §7 ESM                                       | `drafts/12-esm.md`             | §7                                                      |
+| 14  | §8 The closed frontier                       | `drafts/13-closed-frontier.md` | §8                                                      |
+| 15  | Tables A and B                               | `drafts/14-tables.md`          | Tables A and B — written after §1–§8                    |
+| 16  | Conclusion                                   | `drafts/15-conclusion.md`      | The conclusion, gaps subsection included — written last |
 
 The parts they collapse into:
 
-| Part              | File                         | Merges                                                       |
-| ----------------- | ---------------------------- | ------------------------------------------------------------ |
-| Background        | `drafts/parts/background.md` | drafts 2–5, plus the ordering paragraph that closes the unit |
-| The nine sections | `drafts/parts/sections.md`   | drafts 7–15                                                  |
+| Part               | File                         | Merges                                                       |
+| ------------------ | ---------------------------- | ------------------------------------------------------------ |
+| Background         | `drafts/parts/background.md` | drafts 2–5, plus the ordering paragraph that closes the unit |
+| The eight sections | `drafts/parts/sections.md`   | drafts 7–14                                                  |
 
-Drafts 1, 6 and 16–17 stand on their own; the introduction opens the review, the
+Drafts 1, 6 and 15–16 stand on their own; the introduction opens the review, the
 metrics primer renders between the background and §1, and the rest close it.
 
 **The seams between sections are written from the ordering paragraph** that
 closes the background: it supplies the two-axis logic, and each section's own
 _Why here_ line supplies the seam into it.
 
-**The conclusion is written last, from the finished parts.** §9 is a coda and
+**The conclusion is written last, from the finished parts.** §8 is a coda and
 the disclosure beat sets up an ending, but the map states which questions the
 conclusion gathers, not what it concludes. Its beats and its ending follow from
 the other drafts, so they are decided when those exist rather than planned in
 advance.
 
 **Its gaps subsection has a hard rule and it is the map's, not this file's:** a
-gap enters only when a publication in the catalog states it. There are four for
-that reason, and they are not the place to speculate about what comes next.
-Three are limits §1–§9 establish and one is Tables A and B's, which is why the
+gap enters only when a publication in the catalog states it. There are five for
+that reason, and they are not the place to speculate about what comes next. Two
+are limits §1–§8 establish and three rest on Tables A and B, which is why the
 subsection cannot be drafted before them.
 
 ## Relative weight
@@ -148,9 +146,9 @@ a share to one decimal place is precision the review does not have, and a table
 of them gets maintained instead of the argument.
 
 **The one check worth making.** §2 is the heaviest section and §1 next, because
-they carry the most backbones; §6, §7 and §9 are the lightest. If a draft comes
+they carry the most backbones; §5, §6 and §8 are the lightest. If a draft comes
 back the other way round, the recency inversion has happened, and the fix is to
-cut the recent material rather than argue for it. §1–§9 should come to roughly
+cut the recent material rather than argue for it. §1–§8 should come to roughly
 two thirds of the review, which is right for a review whose argument is the
 section order.
 
@@ -172,7 +170,7 @@ with the claim wherever it is cited, and _Collision_ says what this section must
 not restate. A backbone passage that states what a system _is_ without stating
 what it is **against** has described a paper instead of making an argument.
 
-Every section makes the same four moves, in this order. This is what keeps nine
+Every section makes the same four moves, in this order. This is what keeps eight
 independently drafted sections reading as one review:
 
 1. **The claim.** What this lineage or technique contributed, stated as a
@@ -194,16 +192,16 @@ from `literature/corpus/`, not from the map entry.
 lines — owns / references / must not restate — copied from the map, not
 reinvented. The standing assignments: ipTM and pAE definitions to the primer,
 ProteinMPNN to §2, AtomWorks to §2 in one line, the trained-critic result to §3,
-BoltzDesign1's analysis to §6, mBER's unchosen-targets argument to the identity
-beat, the physical-validity thread to §7 and all benchmark caveats to Table A,
-and the disclosure argument to §9.
+BoltzDesign1's analysis to §5, mBER's unchosen-targets argument to the identity
+beat, the physical-validity thread to §6 and all benchmark caveats to Table A,
+and the disclosure argument to §8.
 
 ## Using xrefs
 
 `literature/xrefs.md` answers one question: which paper to read when writing
 about another. BoltzProt-1 names BoltzGen 57 times — that is §3's central
 comparison, and that passage is where the draft's material is. OpenGerminal
-names Germinal 45 times, §6's. Latent-X1 names RFdiffusion 50 times, what §9
+names Germinal 45 times, §5's. Latent-X1 names RFdiffusion 50 times, what §8
 measures itself against.
 
 A high count means the papers argue with each other; it never means agreement or
@@ -215,12 +213,12 @@ instrument, and never sets a tier. Regenerate with
 
 Drafts merge into parts, parts into the review. No pass rewrites a draft.
 
-**The nine sections.** §1–5 are ordered by generative formalism, §6–8 by degree
-of integration, §9 outside the argument. Assembling them means writing the two
+**The eight sections.** §1–4 are ordered by generative formalism, §5–7 by degree
+of integration, §8 outside the argument. Assembling them means writing the two
 block seams and smoothing the handoffs — not re-editing section bodies.
 
 **The review.** The introduction, the background, then the metrics primer, the
-nine sections, the two tables, then the conclusion with its gaps. Scope is
+eight sections, the two tables, then the conclusion with its gaps. Scope is
 stated in the introduction; the exclusion log stays in `candidates.md` and is
 never drafted.
 
@@ -231,17 +229,17 @@ stays content.
 
 | Directive                                                                                                  | Why                                                                                                                                             |
 | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| The metrics primer renders between the background and §1                                                   | §§1–9 quote pAE, pLDDT, ipTM and PB-valid from the start, and the coupling beat has already raised the question the primer answers              |
+| The metrics primer renders between the background and §1                                                   | §§1–8 quote pAE, pLDDT, ipTM and PB-valid from the start, and the coupling beat has already raised the question the primer answers              |
 | The coupling beat quotes the success criterion without unpacking its units                                 | the primer owns the definitions and follows shortly; unpacking them mid-beat stalls the argument                                                |
 | The primer is written around the two families of metric, never as an alphabetical glossary                 | a metric list is dead weight the reader skips; the families do the analytical work                                                              |
-| The Latent-X1 / RFpeptides head-to-head lands under Table B, not §9                                        | so it reads as evidence about measurement, not a point scored for Latent Labs                                                                   |
+| The Latent-X1 / RFpeptides head-to-head lands under Table B, not §8                                        | so it reads as evidence about measurement, not a point scored for Latent Labs                                                                   |
 | The conclusion's gaps subsection admits only limits a cataloged publication states                         | otherwise it becomes a wish list, which is the genre's standard filler                                                                          |
-| Developability and immunogenicity are the gaps subsection's, not §9's                                      | Latent-X2 is the evidence but the point is about the field, not about Latent Labs                                                               |
+| Developability and immunogenicity are the gaps subsection's, not §8's                                      | Latent-X2 is the evidence but the point is about the field, not about Latent Labs                                                               |
 | §2 opens by separating RF3 (predictor) from RFdiffusion3 (generator)                                       | the names collide; the lineage's two tracks are unreadable otherwise                                                                            |
-| The ordering of §1–§9 closes the background, not the introduction                                          | it is stated in the coupling levels' vocabulary, which the coupling beat defines a few paragraphs earlier                                       |
+| The ordering of §1–§8 closes the background, not the introduction                                          | it is stated in the coupling levels' vocabulary, which the coupling beat defines a few paragraphs earlier                                       |
 | AtomWorks gets one line, never a passage                                                                   | it is training infrastructure, not a model or an instrument; its role is that RF3 and RFdiffusion3 both come out of it                          |
 | Table B is sorted by designs-tested, never by hit rate                                                     | the denominator is the identity beat's argument; hit-rate order makes it a leaderboard                                                          |
 | Table B's hit-definition column is mandatory                                                               | BoltzProt-1's screening-hit / confirmed-binder split means the percentages measure different events                                             |
 | No cell enters Table A or B without a stated benchmark, cutoff and measurer                                | the provenance columns are the defence against a leaderboard reading                                                                            |
 | Benchmark caveats are stated once in Table A's defect column and pointed at, never relitigated per section | three documented defects, one per prediction instrument, plus Overath's own on the design side                                                  |
-| The physical-validity thread is stated once, in §7                                                         | four groups assert four answers and only one pair has been measured against the other; per-section retelling implies more agreement than exists |
+| The physical-validity thread is stated once, in §6                                                         | four groups assert four answers and only one pair has been measured against the other; per-section retelling implies more agreement than exists |

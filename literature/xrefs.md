@@ -33,11 +33,11 @@ Nothing in the corpus cites these 5, and they are not new enough for
 that to be an artifact of publication date — worth a sentence in the draft that
 covers them. Papers from this year are omitted: their zero carries no signal.
 
-- `atomflow` (§5, 2024)
+- `atomflow` (§BG, 2024)
 - `caliby` (§-, 2025)
-- `colabdesign` (§6, 2025)
+- `colabdesign` (§5, 2025)
 - `moppit` (§-, 2024)
-- `originflow` (§5, 2025)
+- `originflow` (§BG, 2025)
 
 ## Per publication
 
@@ -300,180 +300,180 @@ covers them. Papers from this year are omitted: their zero carries no signal.
 - **Cites (10):** `chai1` (19), `dockq` (15), `colabfold` (9), `alphafold3` (3), `alphaproteo` (2), `rfdiffusion` (2), `alphafold_multimer`, `boltz1`, `rosettafold_all_atom`, `esm2`
 - **Cited by (15):** `pxdesign` (5), `protenix_v2` (4), `mber` (2), `bender_perspective`, `foldbench`, `protdbench`, `proteina_complexa`, `boltzgen`, `germinal`, `halludesign`, `latentx1`, `latentx2`, `protenix_v1`, `rfdiffusion3`, `rfoptimization`
 
-### `atomflow` — §5, 2024
-
-*Design of Ligand-Binding Proteins with Atomic Flow Matching* · `10.48550/arXiv.2409.12080`
-
-- **Cites (8):** `rfdiffusion` (11), `ligandmpnn` (3), `alphafold2` (2), `alphafold3` (2), `openfold` (2), `frameflow`, `rosettafold_all_atom`, `esm2`
-- **Cited by (0):** —
-
-### `dflow` — §5, 2026
-
-*D-Flow: Multi-modality Flow Matching for D-peptide Design* · `10.1109/JBHI.2026.3683934`
-
-- **Cites (5):** `rfdiffusion` (6), `proteinmpnn` (2), `tm_score`, `alphafold2`, `frameflow`
-- **Cited by (0):** —
-
-### `frameflow` — §5, 2023
-
-*Fast protein backbone generation with SE(3) flow matching* · `10.48550/arXiv.2310.05297`
-
-- **Cites (4):** `rfdiffusion` (6), `proteinmpnn` (2), `alphafold2`, `esm2`
-- **Cited by (10):** `genie3` (8), `atomflow`, `boltzgen`, `rfdiffusion2`, `dflow`, `drugflow`, `originflow`, `ppiflow`, `rfantibody`, `rosettafold3`
-
-### `originflow` — §5, 2025
-
-*Robust and Reliable de novo Protein Design: A Flow-Matching-Based Protein Generative Model Achieves Remarkably High Success Rates* · `10.1101/2025.04.29.651154`
-
-- **Cites (8):** `rfdiffusion` (9), `alphafold3` (4), `proteinmpnn` (2), `rosettafold` (2), `alphafold2`, `rosettafold_all_atom`, `esm2`, `frameflow`
-- **Cited by (0):** —
-
-### `ppiflow` — §5, 2026
-
-*High-Affinity Protein Binder Design via Flow Matching and In Silico Maturation* · `10.64898/2026.01.19.700484`
-
-- **Cites (8):** `alphafold3` (9), `bindcraft` (6), `rfdiffusion` (6), `proteinmpnn` (4), `boltzgen` (2), `rfantibody`, `alphafold2`, `frameflow`
-- **Cited by (1):** `protenix_v2`
-
-### `afcycdesign` — §6, 2025
+### `afcycdesign` — §5, 2025
 
 *Cyclic peptide structure prediction and design using AlphaFold2* · `10.1038/s41467-025-59940-7`
 
 - **Cites (8):** `alphafold2` (19), `proteinmpnn` (17), `rosettafold` (3), `colabfold` (2), `alphadesign`, `alphafold3`, `rfdiffusion`, `rosettafold_all_atom`
 - **Cited by (8):** `rfpeptides` (28), `pxdesign` (3), `alphadesign`, `boltz2`, `halludesign`, `latentx1`, `protein_hunter`, `rosettafold2`
 
-### `bindcraft` — §6, 2025
+### `bindcraft` — §5, 2025
 
 *One-shot design of functional protein binders with BindCraft* · `10.1038/s41586-025-09429-6`
 
 - **Cites (7):** `rfdiffusion` (12), `alphafold3` (5), `proteinmpnn` (5), `alphafold2` (3), `alphaproteo` (2), `alphadesign`, `alphafold_multimer`
 - **Cited by (13):** `proteina_complexa` (58), `protdbench` (21), `pxdesign` (14), `rfoptimization` (9), `ppiflow` (6), `protein_hunter` (4), `opengerminal` (3), `germinal` (2), `ipsae` (2), `rfdiffusion3` (2), `esmc`, `opendde`, `rfantibody`
 
-### `boltzdesign1` — §6, 2025
+### `boltzdesign1` — §5, 2025
 
 *Boltzdesign1: Inverting All-Atom Structure Prediction Model for Generalized Biomolecular Binder Design* · `10.1101/2025.04.06.647261`
 
 - **Cites (8):** `ligandmpnn` (17), `alphafold3` (9), `boltz1` (9), `alphafold2` (4), `rfdiffusion` (4), `chai1` (2), `rosettafold_all_atom` (2), `alphadesign`
 - **Cited by (13):** `protdbench` (11), `pxdesign` (6), `proteina_complexa` (5), `halludesign` (3), `boltzgen` (2), `genie3` (2), `protein_hunter` (2), `rfoptimization` (2), `boltz2`, `esmc`, `latentx1`, `mber`, `rfdiffusion3`
 
-### `colabdesign` — §6, 2025
+### `colabdesign` — §5, 2025
 
 *sokrypton/ColabDesign* · `10.5281/zenodo.13309080`
 
 - **Cites (0):** —
 - **Cited by (0):** —
 
-### `germinal` — §6, 2026
+### `germinal` — §5, 2026
 
 *Efficient generation of epitope-targeted antibodies with Germinal* · `10.1038/s41587-026-03187-0`
 
 - **Cites (17):** `rfdiffusion` (4), `proteinmpnn` (3), `alphafold3` (2), `bindcraft` (2), `boltzgen` (2), `ipsae` (2), `mber` (2), `alphadesign`, `alphafold_multimer`, `alphaproteo`, `latentx2`, `protenix_v1`, `alphafold2`, `chai2`, `overath_meta`, `rfantibody`, `rosettafold`
 - **Cited by (2):** `opengerminal` (45), `boltzgen`
 
-### `mber` — §6, 2025
+### `mber` — §5, 2025
 
 *mBER: Controllable de novo antibody design with million-scale experimental screening* · `10.1101/2025.09.26.678877`
 
 - **Cites (8):** `alphafold_multimer` (18), `rfantibody` (11), `alphafold3` (3), `boltz2` (3), `rfdiffusion` (3), `chai2` (2), `alphadesign`, `boltzdesign1`
 - **Cited by (3):** `germinal` (2), `opengerminal`, `protenix_v2`
 
-### `opengerminal` — §6, 2026
+### `opengerminal` — §5, 2026
 
 *OpenGerminal: an open-source implementation of the Germinal antibody design pipeline* · `10.64898/2026.06.25.734527`
 
 - **Cites (7):** `germinal` (45), `chai1` (13), `alphafold_multimer` (5), `rfdiffusion` (4), `bindcraft` (3), `mber`, `rfantibody`
 - **Cited by (0):** —
 
-### `rfoptimization` — §6, 2026
+### `rfoptimization` — §5, 2026
 
 *RFOptimization: Guiding Design Optimization with All-Atom Structure Prediction* · `10.64898/2026.09.04.749184`
 
 - **Cites (20):** `ligandmpnn` (12), `proteinmpnn` (12), `protein_hunter` (11), `rfdiffusion` (10), `bindcraft` (9), `alphafold3` (6), `rosettafold3` (3), `alphafold2` (2), `boltz1` (2), `boltz2` (2), `boltzdesign1` (2), `halludesign` (2), `rfdiffusion2` (2), `rfpeptides` (2), `alphaproteo`, `openfold`, `protenix_v2`, `rfdiffusion3`, `rosettafold_all_atom`, `chai2`
 - **Cited by (0):** —
 
-### `protenix_v1` — §7, 2026
+### `protenix_v1` — §6, 2026
 
 *Protenix-v1: Toward High-Accuracy Open-Source Biomolecular Structure Prediction* · `10.64898/2026.02.05.703733`
 
 - **Cites (14):** `lddt` (40), `alphafold3` (33), `foldbench` (33), `chai1` (31), `boltz1` (28), `dockq` (16), `boltz2` (7), `pxmeter` (5), `colabfold` (3), `posebusters` (2), `boltzgen`, `pxdesign`, `chai2`, `rosettafold3`
 - **Cited by (5):** `atlasfold` (16), `protenix_v2` (14), `openbind` (5), `esmc` (3), `germinal`
 
-### `protenix_v2` — §7, 2026
+### `protenix_v2` — §6, 2026
 
 *Protenix-v2: Broadening the Reach of Structure Prediction and Biomolecular Design* · `10.64898/2026.04.10.717613`
 
 - **Cites (17):** `foldbench` (16), `protenix_v1` (14), `alphafold3` (10), `boltz1` (10), `pxmeter` (9), `posebusters` (8), `pxdesign` (6), `chai2` (4), `boltzgen` (3), `boltz2` (2), `chai1`, `colabfold`, `latentx2`, `mber`, `alphafold2`, `latentx1`, `ppiflow`
 - **Cited by (3):** `boltzprot1` (7), `opendde` (5), `rfoptimization`
 
-### `pxdesign` — §7, 2025
+### `pxdesign` — §6, 2025
 
 *PXDesign: Fast, Modular, and Accurate De Novo Design of Protein Binders* · `10.1101/2025.08.15.670450`
 
 - **Cites (20):** `rfdiffusion` (24), `bindcraft` (14), `alphaproteo` (11), `alphafold2` (6), `boltzdesign1` (6), `alphafold3` (5), `chai2` (5), `proteinmpnn` (5), `rfpeptides` (4), `afcycdesign` (3), `alphafold_multimer`, `boltz1`, `boltz2`, `chai1`, `colabfold`, `openfold`, `rosettafold_all_atom`, `esm2`, `latentx1`, `rosettafold3`
 - **Cited by (6):** `protdbench` (16), `protenix_v2` (6), `proteina_complexa` (2), `boltzgen`, `halludesign`, `protenix_v1`
 
-### `pxmeter` — §7, 2025
+### `pxmeter` — §6, 2025
 
 *From Dataset Curation to Unified Evaluation: Revisiting Structure Prediction Benchmarks with PXMeter* · `10.1101/2025.07.17.664878`
 
 - **Cites (8):** `boltz1` (54), `chai1` (50), `lddt` (34), `dockq` (32), `posebusters` (13), `alphafold3` (7), `colabfold` (2), `alphafold_multimer`
 - **Cited by (4):** `opendde` (11), `protenix_v2` (9), `protenix_v1` (5), `gauss_seidel_projection` (4)
 
-### `atlasfold` — §8, 2026
+### `atlasfold` — §7, 2026
 
 *AtlasFold: Protein structure prediction with metagenomic-scale language models* · `10.64898/2026.09.04.749352`
 
 - **Cites (17):** `alphafold3` (40), `alphafold2` (31), `esmc` (19), `lddt` (17), `boltz1` (16), `esm2` (16), `protenix_v1` (16), `foldbench` (15), `alphafold_multimer` (14), `dockq` (14), `tm_score` (10), `rosettafold2` (9), `rosettafold` (8), `openfold` (6), `colabfold` (4), `esm3` (2), `chai1`
 - **Cited by (0):** —
 
-### `esm2` — §8, 2023
+### `esm2` — §7, 2023
 
 *Evolutionary-scale prediction of atomic-level protein structure with a language model* · `10.1126/science.ade2574`
 
 - **Cites (2):** `alphafold_multimer`, `openfold`
 - **Cited by (22):** `atlasfold` (16), `esmc` (14), `moppit` (7), `alphafold3`, `alphaproteo`, `atomflow`, `caliby`, `chai1`, `chai2`, `esm3`, `foldbench`, `frameflow`, `genie3`, `halludesign`, `ligandmpnn`, `openfold`, `originflow`, `protdbench`, `pxdesign`, `rfdiffusion2`, `rosettafold2`, `rosettafold_all_atom`
 
-### `esm3` — §8, 2025
+### `esm3` — §7, 2025
 
 *Simulating 500 million years of evolution with a language model* · `10.1126/science.ads0018`
 
 - **Cites (6):** `saprot` (2), `alphafold2`, `alphafold3`, `rfdiffusion`, `esm2`, `kabsch`
 - **Cited by (7):** `chai1` (3), `atlasfold` (2), `esmc` (2), `moppit`, `alphaproteo`, `caliby`, `latentx1`
 
-### `esmc` — §8, 2026
+### `esmc` — §7, 2026
 
 *Language Modeling Materializes a World Model of Protein Biology* · `10.64898/2026.06.03.729735`
 
 - **Cites (16):** `foldbench` (30), `alphafold3` (14), `esm2` (14), `boltz2` (7), `colabfold` (6), `posebusters` (5), `chai1` (4), `protenix_v1` (3), `boltz1` (2), `esm3` (2), `alphafold2`, `alphafold_multimer`, `alphaproteo`, `bindcraft`, `boltzdesign1`, `rosettafold`
 - **Cited by (2):** `atlasfold` (19), `opendde`
 
-### `alphaproteo` — §9, 2024
+### `alphaproteo` — §8, 2024
 
 *De novo design of high-affinity protein binders with AlphaProteo* · `10.48550/arXiv.2409.08022`
 
 - **Cites (9):** `rfdiffusion` (52), `alphafold2` (5), `alphafold3` (5), `proteinmpnn` (3), `alphafold_multimer`, `rosettafold`, `rosettafold_all_atom`, `esm2`, `esm3`
 - **Cited by (14):** `latentx1` (17), `proteina_complexa` (16), `pxdesign` (11), `protdbench` (5), `genie3` (4), `bindcraft` (2), `chai2` (2), `overath_meta` (2), `boltzgen`, `esmc`, `germinal`, `latentx2`, `rfdiffusion3`, `rfoptimization`
 
-### `latentx1` — §9, 2025
+### `latentx1` — §8, 2025
 
 *Latent-X: An Atom-level Frontier Model for De Novo Protein Binder Design* · `10.48550/arXiv.2507.19375`
 
 - **Cites (12):** `rfdiffusion` (50), `rfpeptides` (34), `chai1` (19), `alphaproteo` (17), `alphafold3` (10), `proteinmpnn` (5), `alphafold2` (4), `boltzdesign1`, `lddt`, `afcycdesign`, `chai2`, `esm3`
 - **Cited by (6):** `latentx2` (8), `boltzgen`, `protdbench`, `proteina_complexa`, `protenix_v2`, `pxdesign`
 
-### `latentx2` — §9, 2025
+### `latentx2` — §8, 2025
 
 *Drug-like antibodies with low immunogenicity in human panels designed with Latent-X2* · `10.48550/arXiv.2512.20263`
 
 - **Cites (8):** `latentx1` (8), `alphafold3`, `alphaproteo`, `boltz2`, `boltzgen`, `chai1`, `rfdiffusion`, `chai2`
 - **Cited by (2):** `germinal`, `protenix_v2`
 
-### `opendde` — §9, 2026
+### `opendde` — §8, 2026
 
 *Folding, Reasoning, and Scaling with Open-source Drug Discovery Engine* · `10.48550/arXiv.2607.03787`
 
 - **Cites (11):** `alphafold3` (21), `boltz1` (15), `chai1` (15), `pxmeter` (11), `protenix_v2` (5), `bindcraft`, `boltz2`, `boltzgen`, `rfdiffusion`, `esmc`, `proteina_complexa`
 - **Cited by (0):** —
+
+### `atomflow` — §BG, 2024
+
+*Design of Ligand-Binding Proteins with Atomic Flow Matching* · `10.48550/arXiv.2409.12080`
+
+- **Cites (8):** `rfdiffusion` (11), `ligandmpnn` (3), `alphafold2` (2), `alphafold3` (2), `openfold` (2), `frameflow`, `rosettafold_all_atom`, `esm2`
+- **Cited by (0):** —
+
+### `dflow` — §BG, 2026
+
+*D-Flow: Multi-modality Flow Matching for D-peptide Design* · `10.1109/JBHI.2026.3683934`
+
+- **Cites (5):** `rfdiffusion` (6), `proteinmpnn` (2), `tm_score`, `alphafold2`, `frameflow`
+- **Cited by (0):** —
+
+### `frameflow` — §BG, 2023
+
+*Fast protein backbone generation with SE(3) flow matching* · `10.48550/arXiv.2310.05297`
+
+- **Cites (4):** `rfdiffusion` (6), `proteinmpnn` (2), `alphafold2`, `esm2`
+- **Cited by (10):** `genie3` (8), `atomflow`, `boltzgen`, `rfdiffusion2`, `dflow`, `drugflow`, `originflow`, `ppiflow`, `rfantibody`, `rosettafold3`
+
+### `originflow` — §BG, 2025
+
+*Robust and Reliable de novo Protein Design: A Flow-Matching-Based Protein Generative Model Achieves Remarkably High Success Rates* · `10.1101/2025.04.29.651154`
+
+- **Cites (8):** `rfdiffusion` (9), `alphafold3` (4), `proteinmpnn` (2), `rosettafold` (2), `alphafold2`, `rosettafold_all_atom`, `esm2`, `frameflow`
+- **Cited by (0):** —
+
+### `ppiflow` — §BG, 2026
+
+*High-Affinity Protein Binder Design via Flow Matching and In Silico Maturation* · `10.64898/2026.01.19.700484`
+
+- **Cites (8):** `alphafold3` (9), `bindcraft` (6), `rfdiffusion` (6), `proteinmpnn` (4), `boltzgen` (2), `rfantibody`, `alphafold2`, `frameflow`
+- **Cited by (1):** `protenix_v2`
 
 ### `aintibody` — §IV, 2026
 

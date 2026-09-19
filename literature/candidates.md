@@ -57,7 +57,7 @@ already cites.
   alongside the Overath meta-analysis and fails on both counts the map would
   have needed. _Not a third party:_ every author is ByteDance Seed or ex-Seed,
   corresponding author Wenzhi Xiao, who is also corresponding author on PXMeter,
-  Protenix and PXDesign (§7) — and its verifier study concludes that Protenix
+  Protenix and PXDesign (§6) — and its verifier study concludes that Protenix
   and Protenix-Mini enrich best, then adopts Protenix-Mini as ProtDBench's own
   structural-consistency verifier. _Not a Table B row, and no help to the ones
   there:_ the seven-method comparison (RFdiffusion-3, BoltzGen, Protpardelle-1c,
@@ -65,7 +65,7 @@ already cites.
   AF2-IG-Easy filter pass rate, successful backbones per 24 h on one A100,
   Foldseek cluster diversity, Protenix-Mini recapitulation. No assay, no
   designs-tested denominator, no hit definition, which is the same exclusion
-  that keeps RFOptimization (§6) out of the table. Re-scoring seven systems'
+  that keeps RFOptimization (§5) out of the table. Re-scoring seven systems'
   computed output does not make their wet-lab campaigns comparable, so Table B's
   claim stands unchanged. Two things in it bear on the map and are cited from
   here rather than given an entry: **(a)** the retrospective on RFdiffusion's
@@ -75,7 +75,7 @@ already cites.
   which is a cross-lab discrimination measurement on someone else's designs; and
   **(b)** the finding that verifiers recover largely distinct subsets of true
   binders under identical filtering, with recall collapsing as more of them are
-  required to agree, which is PXDesign's filter-ensembling result (§7) extended
+  required to agree, which is PXDesign's filter-ensembling result (§6) extended
   to seven verifiers and checked against wet-lab labels. _Also worth not
   re-deriving:_ it excludes Latent-X, AlphaProteo, Chai-2 and SeedProteo from
   the head-to-head outright, for shipping no code or weights.
@@ -123,7 +123,7 @@ already cites.
   AlphaFold3, Boltz-1, Boltz-2, OpenFold3-p2, Protenix-v1, RoseTTAFold3 — on one
   shared precomputed MSA with stated cutoffs, which is exactly the provenance
   Table A asks for, and Protenix-v1 leads at both Top-25 and Top-1. It still
-  does not earn the row: **one target**, on the target class §3–§8 do not design
+  does not earn the row: **one target**, on the target class §3–§7 do not design
   for, and the authors say the ordering may not generalise. A protein-ligand row
   needs a multi-target benchmark.
 
@@ -170,7 +170,7 @@ already cites.
   `GOAL.md` rules out — and the coupling levels are an ordering of the material,
   not a claim that tighter coupling wins, so there is no beat here for it to
   overturn. _Reopen when:_ the Adaptyv Nipah competition is written up as
-  material in its own right; §6's joltz/mosaic line is the map's only Nipah
+  material in its own right; §5's joltz/mosaic line is the map's only Nipah
   entry today, and it is in-silico only. Genie 3 is the wet-lab side of the same
   competition — 1 binder in 8 designs at KD ≈ 92 nM — and reports RFdiffusion
   3/60, BindCraft 1/100 and BoltzGen 2/288 there too. _How far that goes:_ the
@@ -190,9 +190,9 @@ already cites.
   below the weight the review spends a line on._ AF2 confidence scores as a
   fitness function searched by an evolutionary algorithm, with an autoregressive
   diffusion model of its own redesigning the surviving sequences. Held a
-  **mention** in §6 until Sep 2026, as the non-gradient version of the same
+  **mention** in §5 until Sep 2026, as the non-gradient version of the same
   arrangement. _Why it is out:_ the field does not remember it — no system in
-  the corpus builds on it, and §6 is about the gradient, which this replaces
+  the corpus builds on it, and §5 is about the gradient, which this replaces
   with a search. _What it still carries:_ ProteinMPNN's entry (§2) cites it as
   the corpus's one alternative sequence designer, so it stays in `refs.bib` and
   the corpus and may still be quoted there.
@@ -201,13 +201,13 @@ already cites.
   its only claim on the review is a leaderboard score._ `joltz` ports Boltz-1/2
   to JAX and makes them differentiable; `mosaic` (Escalante Bio) optimizes
   against them — the Boltz counterpart to ColabDesign. Held a _map-only_ mention
-  in §6 until Sep 2026. _Why it is out:_ what put it there was the top
+  in §5 until Sep 2026. _Why it is out:_ what put it there was the top
   **in-silico** score in Adaptyv's Nipah binder competition (Jan 2026),
   descending a Boltz-2 loss directly with no inverse-folding stage, and a
   leaderboard result with no wet-lab outcome is not weight the review should
   spend a line on. _What removing it cost, recorded so it is not rediscovered:_
   it was the second group inverting Boltz, independent of BoltzDesign1's — the
-  only loss in §6 of a group, not of an attachment point. _Reopen when:_ the
+  only loss in §5 of a group, not of an attachment point. _Reopen when:_ the
   Adaptyv Nipah competition is written up, where it is the in-silico entrant
   beside Genie 3's wet-lab one. Cannot enter `refs.bib` in any case, so it comes
   back as a map-only line or not at all.
@@ -220,11 +220,11 @@ already cites.
   backpropagates into the design variable — the paper's own contrast is with
   BindCraft and BoltzDesign1, whose _"reliance on gradient decent leads to slow
   convergence"_ — so it cannot join the Level-2 roster without blurring the axis
-  §6–§8 escalate along, and as a cycling method it would enter §6 at a weight
+  §5–§7 escalate along, and as a cycling method it would enter §5 at a weight
   the section does not have room for beside BindCraft, BoltzDesign1 and
   Germinal. Its one remaining claim was being RFOptimization's only external
   baseline, and that comparison is RFOptimization's own and cited there; §2 and
-  §6 carry the lineage's optimizer completely without it. _Preprint; re-check
+  §5 carry the lineage's optimizer completely without it. _Preprint; re-check
   for a journal version._
 
 - **HalluDesign** — `halludesign` · `10.1101/2025.11.08.686881` — _excluded:
@@ -249,7 +249,7 @@ already cites.
   Anthropic's inference-optimization release
   (`anthropics/uplifting-biomolecular-modeling`), whose kit table lists the open
   models the field runs; sweeping it left Caliby as the only design-side name
-  not already judged — `ef2inv` is the ESMFold2 campaign in §8, `esm_if1` is
+  not already judged — `ef2inv` is the ESMFold2 campaign in §7, `esm_if1` is
   covered by ProteinMPNN's entry, `mosaic` (with `joltz`) is excluded above._
   _Preprint; re-check for a journal version._
 
@@ -259,11 +259,11 @@ already cites.
   _Teddymer_, a synthetic binder-target dataset built from domain-domain
   contacts in predicted monomers, then optimized at inference time over that
   generative prior. Out for the same reason as Genie 3 above: it descends from
-  no predictor lineage the review follows, and §5 covers the formalism through
-  FrameFlow already. It also has **no wet lab** — the paper states its
-  evaluations are in-silico only and names experimental validation as future
-  work — so it cannot carry a beat the design sections rest on. _Provisional
-  claim corrected on reading:_ this file previously credited the wet-lab
-  campaign behind it to Manifold Bio, with mBER (§6) carrying the group. That
-  was wrong on both counts — the work is NVIDIA, Mila, Oxford and Seoul
+  no predictor lineage the review follows, and the background covers the
+  formalism through FrameFlow already. It also has **no wet lab** — the paper
+  states its evaluations are in-silico only and names experimental validation as
+  future work — so it cannot carry a beat the design sections rest on.
+  _Provisional claim corrected on reading:_ this file previously credited the
+  wet-lab campaign behind it to Manifold Bio, with mBER (§5) carrying the group.
+  That was wrong on both counts — the work is NVIDIA, Mila, Oxford and Seoul
   National, and there is no campaign.

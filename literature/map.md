@@ -94,7 +94,7 @@ machinery and is judged on different benchmarks.
 **The models are followed lineage by lineage, from each predictor to the designs
 built on it.** AlphaFold, RoseTTAFold, Boltz, Chai, Protenix, ESM — so an
 architecture is met once and then traced to what it produces, with its results
-and the caveats on them. §9 steps outside the open lineages to the closed
+and the caveats on them. §8 steps outside the open lineages to the closed
 systems, read as evidence about the field's evidence rather than as its
 strongest results. What comes before §1 is preparation for it: what a co-folder
 is, why prediction and generation are one machinery, how tightly a generator
@@ -105,7 +105,7 @@ and the vocabulary its numbers are quoted in.
 physically made before one binds. Screening-era and early computational work
 needed thousands to millions of candidates per target; current systems report
 tens. The measure of progress in this field is how few designs you must make to
-get a binder, and §1–§9 are, read one way, a history of that number falling.
+get a binder, and §1–§8 are, read one way, a history of that number falling.
 _Collision:_ the numbers, the table and the argument are the identity beat's;
 the introduction says the number exists and what it measures.
 
@@ -137,7 +137,7 @@ runs the length of the review:
   evolutionary depth looked up on demand. AlphaFold2 and AlphaFold3,
   RoseTTAFold, Boltz, Protenix.
 - **A protein language model**, which has the same statistics in its weights, so
-  a single sequence is enough. ESM-2 with ESMFold, then ESMC with ESMFold2 (§8).
+  a single sequence is enough. ESM-2 with ESMFold, then ESMC with ESMFold2 (§7).
 
 The divide is not a wall — Chai-1 (§4) carries both tracks and runs on either —
 but which of the two a model is built around is the thread this review follows
@@ -155,9 +155,16 @@ how many forward passes one sample costs:
   sampled along a long stochastic denoising trajectory. FrameFlow, the paper
   that recast this problem as flow matching, puts the cost at _"∼1000 model
   forward passes ... to produce high-quality samples"_.
-- **Flow matching — §5.** An ODE rather than an SDE, with _"straighter sampling
-  trajectories"_, so far fewer steps buy the same sample: FrameFlow reports 2×
-  designability at 5× fewer sampling steps.
+- **Flow matching — an ODE rather than an SDE**, with _"straighter sampling
+  trajectories"_, so far fewer steps buy the same sample: FrameFlow —
+  `frameflow` · `10.48550/arXiv.2310.05297` · **meat** — recasts FrameDiff this
+  way and reports 2× designability at 5× fewer sampling steps, on unconditional
+  monomers rather than binders. _Carries:_ the step-count premise quoted in the
+  bullet above, which the coupling beat's Level-2 argument rests on. Four
+  target-conditioned binder generators in the catalog are built on the formalism
+  — PPIFlow (`ppiflow`), OriginFlow (`originflow`), AtomFlow (`atomflow`),
+  D-Flow (`dflow`), each **mention** — and nothing in the corpus cites them, so
+  it has traction as a method and none as a lineage.
 
 **Both formalisms are borrowed from image generation, and what differs is only
 what gets noised.** AF3 calls its structure stage _"a relatively standard
@@ -167,7 +174,8 @@ atomic coordinates and then predict the true coordinates"_. The formalism is
 borrowed, the purpose is not — that module replaced AF2's structure module and
 runs whether or not anything is being designed. Image generation then made the
 same diffusion → flow-matching move for the same reasons of speed and
-simplicity, which is why §5 reads as a successor rather than an alternative.
+simplicity, which is why these papers present flow matching as diffusion's
+successor rather than as an alternative to it.
 
 That is the machine. Its limit is where the identity beat starts: a predictor
 tells you what a _given_ sequence folds into. It does not tell you which
@@ -213,7 +221,7 @@ quantitative spine.
 The hit rates in the same papers sharpen it: 16% for Chai-2 on de novo
 antibodies, up to 48% and 16–88% on GPCRs for Protenix-v2's VHH-Fc designs, 70%
 for ESMFold2's minibinders. **The measure of progress in this field is how few
-designs you must make to get a binder**, and the nine sections are, read one
+designs you must make to get a binder**, and the eight sections are, read one
 way, a history of that number falling.
 
 Those percentages do not all count the same event. BoltzProt-1 separates
@@ -224,7 +232,7 @@ larger number.
 
 **And the one campaign that did not choose its targets.** Every number above
 comes from a campaign whose targets and epitopes its own authors selected. mBER
-(§6) is the exception — a million-scale VHH campaign against hundreds of human
+(§5) is the exception — a million-scale VHH campaign against hundreds of human
 cell-surface proteins, hotspots drawn at random — and its median per-design hit
 rate lands two orders of magnitude below the headline numbers, at the same
 coupling level and on the same predictor as Germinal. The spread _inside_ that
@@ -246,7 +254,7 @@ easy half; the critic is the part with no counterpart in the source field.
 
 Every system in this review pairs something that proposes sequences with
 something that judges them. What separates them is how tightly the two are
-bound, and §6–§8 are ordered by it.
+bound, and §5–§7 are ordered by it.
 
 **Level 0** — the generator _is_ a predictor, with its weights reused. An
 attribute of an entry rather than a section, marked _(inherits …)_. **Level 1**
@@ -254,7 +262,7 @@ attribute of an entry rather than a section, marked _(inherits …)_. **Level 1*
 confidence scores, which is the field's default, or a critic trained to answer
 whether a design binds (§3). **Level 2** — backpropagate the predictor's loss
 into the sequence being designed, held as a blurred distribution over amino
-acids. RFOptimization (§6) is the one system that leaves the sequence as real
+acids. RFOptimization (§5) is the one system that leaves the sequence as real
 amino acids and uses the gradient only to rank point mutations.
 
 What follows is what each level costs and what it buys.
@@ -263,7 +271,7 @@ What follows is what each level costs and what it buys.
 | --------------------------------------------------------------------- | ------------------------------------------------------ | --------------------- | ------------------------------------------------------------------------------------------ |
 | **Level 0** — the generator _is_ a predictor                          | the model's own sampling                               | inside the model      | BoltzGen (§3); RFdiffusion 1/2, fine-tuned from RF1 (§2) — the identity beat               |
 | **Level 1** — backbone, then inverse folding, then a predictor judges | nothing is optimized; designs are sampled and filtered | after the fact        | RFdiffusion → ProteinMPNN → AF2 (§2); RFpeptides, BoltzGen, PXDesign-d, Protenix-v2 design |
-| **Level 2** — descend a relaxed sequence                              | an *L*×20 simplex, annealed to one-hot                 | inside the loss       | BindCraft, Germinal, BoltzDesign1 (§6); PXDesign-h (§7); ESMFold2 (§8)                     |
+| **Level 2** — descend a relaxed sequence                              | an *L*×20 simplex, annealed to one-hot                 | inside the loss       | BindCraft, Germinal, BoltzDesign1 (§5); PXDesign-h (§6); ESMFold2 (§7)                     |
 
 Level 1 is still the field's default, and it is the origin of the standard
 success criterion — AlphaProteo's _"interchain AF2 pAE < 10, binder-aligned
@@ -296,16 +304,16 @@ design loop can backpropagate through the whole network. AF3-class models
 replaced the structure module with diffusion and broke that — not because
 diffusion is undifferentiable, but because unrolling a thousand denoising steps
 to get a gradient is impossible. The corpus holds three answers to that one
-architectural fact, and they are the substance of §6; this unit's business is
+architectural fact, and they are the substance of §5; this unit's business is
 that the question exists and that the anatomy beat's architecture is what raises
 it.
 
 **And the filter, not the generator, is where the hit rate lives.** Level 1 says
 "filter", and the field long read that as the predictor's own confidence head.
 Three systems say otherwise, which is why Level 1 has two forms above.
-RFOptimization (§6) treats agreement with a single predictor as the failure mode
+RFOptimization (§5) treats agreement with a single predictor as the failure mode
 itself, mixing three predictor families across its loop and holding one of them
-out as an independent check. PXDesign (§7) finds that Protenix and AF2-IG
+out as an independent check. PXDesign (§6) finds that Protenix and AF2-IG
 filters retain _different_ true positives. And BoltzPPI (§3) replaces BoltzGen's
 confidence metrics with a critic trained to answer "will this bind", roughly
 doubling the confirmed-binder rate with the generator untouched — the same
@@ -325,7 +333,7 @@ own frontier closed: Boltz-1, Boltz-2 and BoltzGen stay MIT, while BoltzProt-1
 ships API-only with no weights. It is the one lineage where the review holds the
 before _and_ the after, both with papers.
 
-The symmetry that gives §9 its force: **AlphaFold3 is a Google DeepMind _and
+The symmetry that gives §8 its force: **AlphaFold3 is a Google DeepMind _and
 Isomorphic Labs_ paper**, so the review opens on the published half of that
 organisation's work and closes on the half that stopped publishing.
 
@@ -335,7 +343,7 @@ hit definition, so a hit rate is self-reported by the party whose method cannot
 be inspected. And the correlation runs backwards: the papers disclosing most are
 not the ones reporting the highest numbers, so the most impressive result is
 systematically the least checkable. That is this beat's finding rather than a
-warning attached to it, and it is why §9 sits outside the argument instead of
+warning attached to it, and it is why §8 sits outside the argument instead of
 inside it — the review reads the closed systems as evidence about the field's
 evidence, not as its strongest results.
 
@@ -343,7 +351,7 @@ ______________________________________________________________________
 
 # The metrics primer
 
-Renders between the background and §1, because §1–§9 quote lDDT, DockQ,
+Renders between the background and §1, because §1–§8 quote lDDT, DockQ,
 PB-valid, pLDDT, pAE and ipTM from the start. It defines those units and nothing
 else, grouped by the publication that introduced them. The first three
 paragraphs judge a prediction from outside — against a solved structure, or
@@ -389,7 +397,7 @@ criterion its `< 10`.
 **ipSAE** — `ipsae` · `10.1101/2025.02.10.637595` · **backbone** — restricts
 ipTM to the well-predicted interchain pairs, which removes its dependence on how
 the input was trimmed. _Carries:_ the unit the design half has converged on —
-Germinal (§6) reports its threshold and the Overath meta-analysis (Table B)
+Germinal (§5) reports its threshold and the Overath meta-analysis (Table B)
 scores designs with it.
 
 | Unit           | Compared to      | What it measures                                                                                | Introduced by      |
@@ -425,31 +433,31 @@ since neither has a design descendant to follow.
   single-chain predictor at experimental accuracy, and the model that cashed the
   MSA-as-coevolution bet. _Carries:_ three facts the review is built on. The
   anatomy beat's **Stage 1** — trunk, distogram, coevolution wager — is AF2's
-  design, and every co-folder in §3, §4, §7 and §9 is a variation on it. Its
+  design, and every co-folder in §3, §4, §6 and §8 is a variation on it. Its
   **single regression pass** is the structure stage everything after it
   replaced. And because the whole network is differentiable, it is the **only
   predictor a design loop can invert without choosing an attachment point** —
-  the fact §6 is built on and the reason BindCraft exists. It is also the
-  standard post-hoc filter across §2–§5 and §7: the review's first model and its
+  the fact §5 is built on and the reason BindCraft exists. It is also the
+  standard post-hoc filter across §2–§4 and §6: the review's first model and its
   most-used critic. _Against:_ the CASP14 field it displaced — which is why the
   coevolution bet is treated as settled rather than argued, and why every later
   contrast in the review is drawn with AF2 rather than with anything before it.
   _Caveat:_ it is weakest run single-sequence, which its own paper documents —
-  the regime §6 then operates it in. _Collision:_ the anatomy beat owns the
+  the regime §5 then operates it in. _Collision:_ the anatomy beat owns the
   CASP14 margin and the statement of the bet; this entry owns the three
   consequences above.
 - **AlphaFold-Multimer** — `alphafold_multimer` · `10.1101/2021.10.04.463034` ·
   **backbone** — AF2 retrained on complexes, and the complex predictor the
-  review actually runs on: §6 does not invert AlphaFold2, it inverts this. Kept
+  review actually runs on: §5 does not invert AlphaFold2, it inverts this. Kept
   despite the pre-2025 rule under the active-lineage exception. _Carries:_
   **ipTM**, the unit half the review's numbers are denominated in — load-bearing
-  for §2–§7 and for both benchmarking units, not only §6. Every "the field's
+  for §2–§6 and for both benchmarking units, not only §5. Every "the field's
   standard filter" claim resolves to a metric this paper defined. _Against:_ AF2
   itself. It is the evidence that complex prediction needed its own training
   rather than following from single-chain accuracy — which is what makes the
   binder problem a distinct problem and not a corollary of folding. _Caveat:_
   never peer-reviewed. The field's most-used complex predictor has no journal
-  version — a disclosure gap of a different kind from §9's.
+  version — a disclosure gap of a different kind from §8's.
 - **OpenFold** — `openfold` · `10.1038/s41592-024-02272-z` · **mention** —
   AlQuraishi Lab's open retraining of AlphaFold2, and the source of the
   distillation set Boltz-1 trains on.
@@ -463,11 +471,11 @@ since neither has a design descendant to follow.
   reproduce. _Carries:_ the review's second structural fact — replacing AF2's
   structure module with **diffusion** broke end-to-end differentiability, and
   the three answers to that one decision (attach to the trunk, attach to the
-  confidence heads, shorten the trajectory) are what §2, §6 and §7 disagree
+  confidence heads, shorten the trajectory) are what §2, §5 and §6 disagree
   about. It also carries the openness thread's opening: closed weights are the
-  stated motivating gap behind Boltz-1, Protenix and OpenFold3, so §3 and §7
+  stated motivating gap behind Boltz-1, Protenix and OpenFold3, so §3 and §6
   exist as answers to this paper. _Against:_ AF2, on both counts — more
-  modalities, at the cost of the property §6 depends on. The review's central
+  modalities, at the cost of the property §5 depends on. The review's central
   trade, stated by the same lab in two papers. _Caveat:_ diffusion brought a
   failure mode AF2 did not have — sampled coordinates can be chemically
   impossible — and "PB-valid" enters the literature here as the test for it.
@@ -478,7 +486,7 @@ since neither has a design descendant to follow.
   including its reproduction of AF3's MGnify-based 13M-sequence distillation set
   — making it the only co-folder in the review that can be retrained from
   scratch rather than only run. Downloadable and reproducible are different
-  claims, and §9 weighs the closed systems against the second one. _Against:_
+  claims, and §8 weighs the closed systems against the second one. _Against:_
   AlphaFold3, which it targets bitwise. _Caveat:_ a software release, not a
   publication — its benchmark claims are self-reported, and the one technical
   report covers the superseded preview2 weights rather than the current
@@ -572,8 +580,8 @@ by ProteinMPNN and RF3 is not.
   beat's claim** in its cleanest historical form — a predictor fine-tuned into a
   generator, with nothing else changed. **The coupling beat's Level 1**, the
   pipeline this paper established (backbone, then ProteinMPNN, then AF2 judges)
-  which every section from §3 to §7 either runs or argues with. And its
-  **verdict on hallucination** — the technique §6 runs on stronger predictors —
+  which every section from §3 to §6 either runs or argues with. And its
+  **verdict on hallucination** — the technique §5 runs on stronger predictors —
   which sent gradient design quiet for two years. _Against:_ hallucination
   through RoseTTAFold — the Baker lab's own predecessor, beaten on the Baker
   lab's own benchmark. RFOptimization below reopens exactly that comparison,
@@ -594,12 +602,12 @@ LigandMPNN is the same network conditioned on ligand and nucleic-acid context:
 the all-atom extension of the stage, and the variant RFOptimization's cycling
 move runs alongside ProteinMPNN. They sit under the generators because that is
 what they were built for, but they are not this lineage's alone: **ProteinMPNN
-is the review's one piece of universally shared machinery**, run by §2–§7 across
+is the review's one piece of universally shared machinery**, run by §2–§6 across
 nine labs and both coupling levels.
 
 _Carries:_ the middle stage of the coupling beat's Level 1 — this is the paper
 that stopped sequence design being the bottleneck. Every "generate, then filter"
-pipeline in the review has this step in it, usually unremarked, and §6 exists
+pipeline in the review has this step in it, usually unremarked, and §5 exists
 precisely because Level 2 removes it. _Against:_ AlphaDesign, which substitutes
 a diffusion model of its own and benchmarks it as comparable — the corpus's one
 alternative, and the evidence that the field's dependence is adoption rather
@@ -615,7 +623,7 @@ the metric it is scored on, may not track whether the sequence folds.
   _Carries:_ the concession that **the screen remains**. It pairs design with
   yeast-display library screening and says so, which makes it the honest
   baseline the identity beat's collapsing-budget table is measured against — and
-  the paper §3, §4 and §6 cite when claiming they no longer need library
+  the paper §3, §4 and §5 cite when claiming they no longer need library
   selection. _Against:_ immunization and random library screening, which it
   states cannot be aimed at a chosen epitope. That framing is what the whole
   design half inherits. _Collision:_ the identity beat quotes its statement of
@@ -625,16 +633,16 @@ the metric it is scored on, may not track whether the sequence folds.
   extended with a **cyclic relative positional encoding** so the generated chain
   closes head-to-tail; sequences from ProteinMPNN, filtered by refolding with
   AfCycDesign — AlphaFold2 given a cyclic offset so the chain reads as closed,
-  and where the cyclic thread starts (§6) — and by Rosetta interface metrics.
+  and where the cyclic thread starts (§5) — and by Rosetta interface metrics.
   _Level 1._ _Carries:_ the low end of the identity beat's budget — binders
   against every target from fewer than twenty synthesized designs each, with
   crystal structures — and the cyclic thread's **open** method. _Against:_
-  Latent-X1 (§9), which designed against these targets and epitopes and
+  Latent-X1 (§8), which designed against these targets and epitopes and
   re-synthesized these binders to measure in its own assays. The corpus's only
   third-party wet-lab comparison of two design methods runs through this entry.
   _Collision:_ that head-to-head is argued under Table B, where its limits
   belong.
-- **RFOptimization (RFO)** — _see §6_ — the lineage's optimizer: training-free
+- **RFOptimization (RFO)** — _see §5_ — the lineage's optimizer: training-free
   refinement of finished designs, with gradients taken from RF3 above.
   _Carries:_ this lineage's completion of the stack — predict, generate,
   inverse-fold, optimize, filter, all from one group — and the Baker lab
@@ -648,7 +656,7 @@ the metric it is scored on, may not track whether the sequence folds.
 Diffusion, stated outright: BoltzGen is _"a single all-atom diffusion model
 capable of performing both structure prediction and protein design"_ — Level 0
 in its cleanest published form. The section also carries the **trained-critic**
-refinement to Level 1, the **open→closed fork** the disclosure beat and §9 turn
+refinement to Level 1, the **open→closed fork** the disclosure beat and §8 turn
 on, and the corpus's only affinity model.
 
 _Why it precedes Chai:_ this lineage publishes the mechanism of its generator
@@ -662,13 +670,13 @@ commercial**, yet still publishes a paper and wet-lab numbers.
 - **Boltz-1** — `boltz1` · `10.1101/2024.11.19.624167` · **backbone** — the
   first fully open (MIT) AF3-class co-folder, and the paper that made AF3's
   architecture something the rest of the field could build on. _Carries:_ the
-  openness thread's opening. §6's BoltzDesign1, §3's own BoltzGen and a good
+  openness thread's opening. §5's BoltzDesign1, §3's own BoltzGen and a good
   part of the design literature exist because these weights were downloadable —
   and the thread it opens is the one the disclosure beat closes on this same
   lineage. **Boltz-1x** adds Feynman-Kac inference-time steering, the corpus's
   first answer to AF3's physical-validity problem. _Against:_ AlphaFold3, which
   it reproduces and releases. The comparison is not about accuracy; it is about
-  what a downloadable model makes possible downstream, and §3, §6 and §7 are the
+  what a downloadable model makes possible downstream, and §3, §5 and §6 are the
   evidence. _Collision:_ RF3 (§2) owns the objection to inference-time steering
   and the learned-features alternative to it.
   [GitHub](https://github.com/jwohlwend/boltz)
@@ -711,7 +719,7 @@ commercial**, yet still publishes a paper and wet-lab numbers.
   above, so the result cannot be independently reproduced. _(BoltzPPI is the
   critic itself, no separate publication — resolves to the `boltzppi` keyword on
   this entry.)_
-- **BoltzDesign1** — _see §6_ — inverts the Boltz predictor for binder design.
+- **BoltzDesign1** — _see §5_ — inverts the Boltz predictor for binder design.
   _Level 2_, beside BindCraft, whose loop it reuses at a different attachment
   point.
 
@@ -726,7 +734,7 @@ from a generator whose mechanism is never stated.
   grounded constraint features (pocket, contact, docking), worth a
   double-digit-point gain when supplied. _Carries:_ the qualifier the anatomy
   beat needs — the MSA/PLM divide is a switch here, not a commitment, which is
-  why the review can say the divide is not a wall, and the hinge §8 completes by
+  why the review can say the divide is not a wall, and the hinge §7 completes by
   removing the MSA entirely. On antibody-protein interfaces the switch costs
   nothing: single-sequence Chai-1 matches full-MSA Chai-1 and both beat AF2.3
   run with MSAs, which the paper puts down to antibodies' weak evolutionary
@@ -752,75 +760,12 @@ from a generator whose mechanism is never stated.
   paper describes only the _folding_ submodule (Chai-2f, _"a similar
   architecture as Chai-1"_). **The generative mechanism is never stated.** The
   strongest antibody result in the corpus is the one the review can say least
-  about — §9's argument arriving early, inside a lineage rather than in the
+  about — §8's argument arriving early, inside a lineage rather than in the
   coda.
 - **Chai-3 (2026)** — high-throughput commercial 3D foundation model, no
-  publication. _see §9_ [platform](https://lab.chaidiscovery.com/)
+  publication. _see §8_ [platform](https://lab.chaidiscovery.com/)
 
-# §5 — Flow matching
-
-Presented in these papers as the successor to diffusion rather than an
-alternative — FrameFlow explicitly recasts FrameDiff as SE(3) flow matching and
-reports 2× designability at 5× fewer sampling steps. All five generate protein
-or peptide binders conditioned on a target; flow-matching papers that generate
-small molecules or unconditioned sequences are excluded (`candidates.md`).
-
-_Not a lineage:_ the five cite RFdiffusion far more than they cite each other,
-so they are five independent responses to one problem, and the section is
-organized by what each does differently rather than chronologically.
-
-_Why it comes after the diffusion sections, not before:_ flow matching only
-reads as a successor once the reader has seen diffusion doing real work, and
-FrameFlow is literally FrameDiff reformulated, so the section opens by
-re-deriving something familiar rather than introducing a parallel formalism
-cold.
-
-- **FrameFlow** — `frameflow` · `10.48550/arXiv.2310.05297` · **backbone** —
-  recasts FrameDiff as SE(3) flow matching; the methodological ancestor of the
-  rest of this section. _Carries:_ the section's whole argument, and the
-  coupling beat's step-count premise. It is the paper that puts diffusion's cost
-  on the record — _"∼1000 model forward passes"_ — and reports the ODE
-  formulation buying better designability at a fraction of the steps. The
-  coupling beat then draws the consequence: a trajectory short enough to cross
-  is a trajectory a design gradient can cross. _Against:_ FrameDiff, which it is
-  a reformulation of — the same model, the same problem, one formalism swapped.
-  That is why §5 can open by re-deriving something familiar instead of
-  introducing a parallel formalism cold. _Caveat:_ its numbers are unconditional
-  monomer designability, not target-conditioned binder design, so the step-count
-  claim transfers to §7 but the quality claim does not.
-- **PPIFlow** — `ppiflow` · `10.64898/2026.01.19.700484` · **mention** — SE(3)
-  flow matching with in-silico maturation, for binders and single-domain
-  antibodies.
-- **OriginFlow** — `originflow` · `10.1101/2025.04.29.651154` · **mention** —
-  combines an SDE with flow matching. _Its self-reported hit rate is among the
-  corpus's highest and belongs in Table B, not in the prose._
-- **AtomFlow** — `atomflow` · `10.48550/arXiv.2409.12080` · **mention** — atomic
-  flow matching over unified biotokens, for ligand-binding pockets.
-- **D-Flow** — `dflow` · `10.1109/JBHI.2026.3683934` · **mention** — full-atom
-  flow matching for D-peptide binders; borderline on modality, kept by the scope
-  rule.
-
-**This is not a lineage.** Only FrameFlow has traction; the other four are cited
-by nothing else in the corpus, and `xrefs.md` shows them pointing at §2 rather
-than at each other — five independent responses to one problem, not a
-succession.
-
-**It is a section nonetheless, and that is settled.** §1–§5 are ordered by
-generative formalism — diffusion, then its successor, then the models that do
-not say — so folding flow matching into §2–§4 would remove the middle term of
-the review's own ordering axis and leave §4's "does not say" with nothing to sit
-after. A reader of this field also arrives expecting the formalism covered. It
-is therefore the review's **shortest** section: one argument, one paper
-analysed, four named in support.
-
-**The section's claim.** Flow matching's ODE formulation shortens the structure
-stage enough for PXDesign-h (§7) to backpropagate through a whole AF3-class
-model, which BoltzDesign1 could not do through diffusion. The formalism shift
-matters here because it **reopened the network to a design gradient** — not
-because it made sampling cheaper. The other four papers are the evidence that
-the move was general rather than one group's preference.
-
-# §6 — Design by backpropagation
+# §5 — Design by backpropagation
 
 The first designs the field made by running a predictor backwards. Each system
 here takes a structure predictor it did not train, picks a point inside it to
@@ -831,8 +776,8 @@ runs afterwards to tidy the result. Nothing in the assembly was built for the
 other parts: someone else's predictor, someone else's sequence model, a loop
 written by hand.
 
-_Why it comes before §7 and §8:_ §7 ships the predictor and the design loop as
-one product, §8 collapses them into a single model. The reader should meet the
+_Why it comes before §6 and §7:_ §6 ships the predictor and the design loop as
+one product, §7 collapses them into a single model. The reader should meet the
 parts bolted together before seeing them fused.
 
 - **ColabDesign** — `colabdesign` · `10.5281/zenodo.13309080` · **mention** —
@@ -886,7 +831,7 @@ parts bolted together before seeing them fused.
     single-sequence mode, and Rosetta relaxes and scores the interface.
     300–3,000 trajectories per 100 designs passing filters.
   - _Carries:_ the loop in its fullest form — the other entries here vary one of
-    its parts — and it is the system PXDesign-h (§7) benchmarks against.
+    its parts — and it is the system PXDesign-h (§6) benchmarks against.
   - _Caveat:_ AF2 runs single-sequence on the designed chain, off-distribution
     for that model, which the annealing and the five-model swap appear to
     compensate for. Its own paper adds that the ipTM it ranks on predicts
@@ -931,7 +876,7 @@ parts bolted together before seeing them fused.
   - _Afterwards:_ AbMPNN redesigns non-interface CDR residues; filtering and
     ranking leave 43–101 designs per antigen for testing.
   - _Carries:_ the arrangement where the sequence prior is a live gradient
-    rather than a fixed bias, which §8 reaches with one model instead of two.
+    rather than a fixed bias, which §7 reaches with one model instead of two.
   - _Caveat:_ its nonbinders clear the ipSAE threshold alongside its binders, so
     that filter does not separate them — the conclusion's fifth gap. Its antigen
     structures are AF3 predictions, and it states that how far design success
@@ -983,7 +928,7 @@ parts bolted together before seeing them fused.
     gradients recomputed after each acceptance. The persistent state is always a
     chemically valid sequence, on the stated grounds that a continuous
     relaxation is an attack surface the optimizer will exploit. Every other
-    system in §6–§8 relaxes it.
+    system in §5–§7 relaxes it.
   - _Second move:_ with equal probability the optimizer instead cycles — the
     current sequence folded by Boltz, redesigned by LigandMPNN — so
     gradient-guided edits and structure-conditioned resampling interleave, and
@@ -995,12 +940,12 @@ parts bolted together before seeing them fused.
   - _Caveat:_ **in silico only.** No wet-lab validation, no designs-tested
     denominator, no Table B row — the ceiling on how far the review leans on it.
 
-# §7 — Protenix
+# §6 — Protenix
 
 The first full assembly. One lineage ships the predictor, a Level-1 diffusion
-arm and a Level-2 hallucination arm as a single platform — the couplings of §1–6
+arm and a Level-2 hallucination arm as a single platform — the couplings of §1–5
 stop being alternatives and become two modes of one product, chosen per target.
-It is also where §6's technique gets benchmarked from the outside — with an
+It is also where §5's technique gets benchmarked from the outside — with an
 instrument the same lineage built.
 
 - **PXMeter** — `pxmeter` · `10.1101/2025.07.17.664878` · **meat** — ByteDance
@@ -1010,11 +955,11 @@ instrument the same lineage built.
   the fourth response in the physical-validity thread. _Carries:_ the fact that
   makes this section a platform rather than a model line. The lineage ships the
   predictor, both design arms **and** the instrument its competitors are
-  measured on, and §7's numbers are partly its own measurements of other
+  measured on, and §6's numbers are partly its own measurements of other
   people's models. _Against:_ FoldBench (Tables A and B), the other multi-model
   prediction benchmark — and Protenix-v1's common-intersection critique of it is
   this group arguing for its own instrument, which the review states rather than
-  adjudicates. _Caveat:_ its uptake is real but narrow — OpenDDE (§9) benchmarks
+  adjudicates. _Caveat:_ its uptake is real but narrow — OpenDDE (§8) benchmarks
   on PXMeter-AB and follows its data protocol to curate its own set, and that is
   the only third-party adoption in the corpus.
   [GitHub](https://github.com/bytedance/PXMeter)
@@ -1036,20 +981,21 @@ instrument the same lineage built.
   two modes of one product**, chosen per target rather than argued over.
   - **PXDesign-d** — diffusion arm. _Level:_ 1 _(inherits Protenix)_.
   - **PXDesign-h** — hallucination arm. _Level:_ 2, continuous. _Attachment:_
-    end-to-end through the two-step flow — the attachment no §6 system could
-    take. _Carries:_ the composition claim — everything §1–§6 presented as
-    competing answers appears here as configuration — and the
-    **filter-ensembling finding**: Protenix and AF2-IG filters retain
-    _different_ true positives with limited overlap, the other half of the
-    coupling beat's critic-quality argument alongside BoltzPPI. _Against:_
-    BindCraft and BoltzDesign1, benchmarked head-to-head. That is the evidence
-    §6 is a real category rather than the review's own grouping, and it is the
-    corpus's clearest instance of the field arguing about where a Level-2
+    end-to-end through Protenix's **2-step ODE sampler**, which replaces the
+    200-step diffusion decoder and is what makes the gradient affordable — the
+    attachment no §5 system could take. _Carries:_ the composition claim —
+    everything §1–§5 presented as competing answers appears here as
+    configuration — and the **filter-ensembling finding**: Protenix and AF2-IG
+    filters retain _different_ true positives with limited overlap, the other
+    half of the coupling beat's critic-quality argument alongside BoltzPPI.
+    _Against:_ BindCraft and BoltzDesign1, benchmarked head-to-head. That is the
+    evidence §5 is a real category rather than the review's own grouping, and it
+    is the corpus's clearest instance of the field arguing about where a Level-2
     gradient should attach. _Caveat:_ the head-to-head is run by the system
     being promoted, so it belongs in Table B's self-reported column like every
     other in-house comparison.
 
-# §8 — ESM
+# §7 — ESM
 
 **The analytical climax, and the section that closes the review's longest
 thread.** Two things land here at once: the MSA/PLM divide opened in the anatomy
@@ -1057,10 +1003,10 @@ beat and followed since §1 resolves in favour of the language model, and the
 coupling axis reaches its limit case — language model, folding head and design
 loop are one system, with nothing left to compose.
 
-_Why it comes last in the argument:_ §6 met Level 2 as a predictor with an
-optimizer bolted on, §7 as one mode of a platform. Here it is not a technique
+_Why it comes last in the argument:_ §5 met Level 2 as a predictor with an
+optimizer bolted on, §6 as one mode of a platform. Here it is not a technique
 applied to a predictor at all. The escalation has nowhere further to go, which
-is why §9 is a coda rather than a tenth step.
+is why §8 is a coda rather than a ninth step.
 
 - **ESM-2 & ESMFold** — `esm2` · `10.1126/science.ade2574` · **backbone** — the
   founding single-sequence predictor: structure emerges from masked-LM scaling
@@ -1070,7 +1016,7 @@ is why §9 is a coda rather than a tenth step.
   _retrieved_ at inference; this paper established that it can live in the
   weights instead — and the coupling beat's precondition for Level 2 depends on
   that alternative existing. _Against:_ AlphaFold2 with an MSA, which it did not
-  match. That is the point: the trade was accuracy for independence, and §8
+  match. That is the point: the trade was accuracy for independence, and §7
   exists because ESMC later closed the gap rather than because this paper won.
   _Caveat:_ the gap it traded away is real and was the standing objection to
   single-sequence prediction for three years; the review should state it rather
@@ -1090,7 +1036,7 @@ is why §9 is a coda rather than a tenth step.
   with the MSA encoder detachable and kept only as a rescue path for
   high-perplexity sequences. The retrieval step is no longer the price of
   accuracy, which is what licenses the campaign below. _Against:_ AF3 with an
-  MSA, on antibody-antigen — the target class §3–§8 actually design for, which
+  MSA, on antibody-antigen — the target class §3–§7 actually design for, which
   is why the comparison settles the thread rather than scoring a point.
   _Caveat:_ it flags the temporal-leakage problem in Boltz-2's numbers, so its
   own comparisons should be read under Table A's defect note like everyone's —
@@ -1100,24 +1046,24 @@ is why §9 is a coda rather than a tenth step.
   - **ESMFold2 binder design campaign** — **backbone**. _Level:_ 2, continuous.
     _Attachment:_ the language model **and** the folding head — the tightest
     coupling in the corpus, with nothing left to compose. _Carries:_ the claim
-    that the penalty is gone. Every §6 system inverts a predictor outside the
+    that the penalty is gone. Every §5 system inverts a predictor outside the
     regime it was trained in; BindCraft runs AF2 single-sequence and compensates
     with annealing and ensembling. Single-sequence **is** ESMFold2's native
     regime, so the off-distribution problem the coupling beat opens does not
     arise. MSA emancipation was never an accuracy story — it set the ceiling on
     coupling, and this is the ceiling. It is also the far end of the relaxed
     sequence: a distribution over amino acids fed to a 6-billion-parameter
-    language model, where RFOptimization (§6) refuses the relaxation outright.
-    _Against:_ §6's composed systems, and Germinal in particular: the same
+    language model, where RFOptimization (§5) refuses the relaxation outright.
+    _Against:_ §5's composed systems, and Germinal in particular: the same
     sequence prior, reached with one model instead of two. _Caveat:_ self-chosen
-    targets and a self-reported hit rate, the corpus's highest outside §9. Table
+    targets and a self-reported hit rate, the corpus's highest outside §8. Table
     B's provenance columns apply here as everywhere. _(module of the ESMC
     release — no separate publication.)_
 
-# §9 — The closed frontier
+# §8 — The closed frontier
 
 A coda, not a step in the argument. Systems that publish benchmarks and withhold
-mechanisms — placed last because they cannot be analysed the way §1–8 analyse
+mechanisms — placed last because they cannot be analysed the way §1–7 analyse
 everything else. **Two tiers, and they are not the same problem.**
 
 **Tier 1 — published, results disclosed, mechanism withheld.**
@@ -1137,15 +1083,15 @@ everything else. **Two tiers, and they are not the same problem.**
   Labs' atom-level binder design platform: macrocycles and minibinders (X1),
   then drug-like low-immunogenicity antibodies (X2). Architecture credited only
   as _"our proprietary architecture"_; filters on ipTM/pAE and self-consistency.
-  The one design lineage in this map with no predictor parent in §1–§8.
-  _Carries:_ §9's one checkable result, and the awkward direction the disclosure
+  The one design lineage in this map with no predictor parent in §1–§7.
+  _Carries:_ §8's one checkable result, and the awkward direction the disclosure
   beat has to absorb. Latent-X1 designed macrocycles against **RFpeptides'** own
   targets and epitopes, re-synthesized RFpeptides' published best binders, and
   measured them in its own assays — the corpus's only third-party wet-lab
   comparison of two design methods. The mechanism-withholding system did the
   more disciplined experiment. _Against:_ RFpeptides (§2), which is why the
   entry exists here rather than as a line in Table B — and against the rest of
-  §9, since it is the only tier-1 system that can be checked against an open
+  §8, since it is the only tier-1 system that can be checked against an open
   method at all. _Caveat:_ two, and they are what keep the comparison honest.
   Only the _binders_ were re-measured, while the hit rates it contrasts with are
   RFpeptides' literature-reported ones, so that half is not a matched-assay
@@ -1190,7 +1136,7 @@ ______________________________________________________________________
 
 # Tables A and B — planned, not yet filled
 
-Two tables close the review, gathering the numbers spread across §1–§9 so a
+Two tables close the review, gathering the numbers spread across §1–§8 so a
 reader sees the whole field at once. **Numbers are deliberately not entered
 here** — the map does not carry per-paper figures; they are gathered from the
 corpus when the tables are written.
@@ -1211,7 +1157,7 @@ and measurer has no entry.
 
 ## Table A — structure prediction accuracy
 
-_Rows:_ the predictors of §1, §3, §4, §7, §8, §9 — AlphaFold2/3,
+_Rows:_ the predictors of §1, §3, §4, §6, §7, §8 — AlphaFold2/3,
 AlphaFold-Multimer, OpenDDE, OpenFold3, Boltz-1/2, Chai-1, Protenix-v1/v2,
 ESMFold/ESMFold2, plus the RoseTTAFold pair from §2 as the historical baseline.
 _Columns:_ model · benchmark and version · training cutoff · target class ·
@@ -1219,7 +1165,7 @@ metric · **who measured it**.
 
 _Target class is the axis that matters,_ not a single aggregate — split at
 minimum into monomer, protein-protein, **antibody-antigen**, protein-ligand,
-protein-nucleic. Antibody-antigen carries the most weight: most systems in §3–§8
+protein-nucleic. Antibody-antigen carries the most weight: most systems in §3–§7
 design antibodies or nanobodies, so that is the accuracy their critics actually
 run on, and a model leading on monomers while trailing there is a weak critic
 for this review's purposes. Only a split table shows it.
@@ -1250,10 +1196,10 @@ differently paper to paper.
 ## Table B — quality of generated binders
 
 _Rows:_ the design systems — RFdiffusion, RFantibody, RFpeptides, BoltzGen,
-BoltzProt-1, PXDesign-d/h, Protenix-v2 design, Chai-2, the flow-matching five,
-BindCraft, BoltzDesign1, Germinal, mBER, the ESMFold2 campaign, AlphaProteo,
-Latent-X1/X2. _RFOptimization cannot be one:_ in-silico success rates only, so
-no designs-tested denominator and no hit definition. It sits beneath the table
+BoltzProt-1, PXDesign-d/h, Protenix-v2 design, Chai-2, BindCraft, BoltzDesign1,
+Germinal, mBER, the ESMFold2 campaign, AlphaProteo, Latent-X1/X2.
+_RFOptimization cannot be one:_ in-silico success rates only, so no
+designs-tested denominator and no hit definition. It sits beneath the table
 instead — the corpus's first system to claim a design advance on refolding
 statistics alone. _Columns:_ system · coupling level · target class and count ·
 **designs tested per target** · **hit definition** · assay · hit rate · affinity
@@ -1271,7 +1217,7 @@ reports as binders"_. Its own percentages are confirmed-binder rates; most
 others quoted in this map are on the looser definition. Without the column the
 table compares two different events and calls it progress.
 
-**The one documented exception.** Latent-X1 (§9) designed macrocycles against
+**The one documented exception.** Latent-X1 (§8) designed macrocycles against
 RFpeptides' own targets and epitopes, re-synthesized RFpeptides' published best
 binders, and measured them in its own assays alongside its own designs — the
 corpus's only third-party wet-lab comparison of two design methods. Two limits
@@ -1298,7 +1244,7 @@ binder meta-analysis** — `overath_meta` · `10.1101/2025.08.14.670059` · **me
 designs from six published campaigns across 15 targets, re-scored every one
 under a single pipeline, and asked which in-silico score predicts wet-lab
 binding; AF3's ipSAE came out the best single predictor. That is the corpus's
-only cross-lab test of the **filters**, as Latent-X1 (§9) is its only
+only cross-lab test of the **filters**, as Latent-X1 (§8) is its only
 third-party wet-lab comparison of two **methods** — and it belongs here, after
 the lineages whose designs it scores. _Carries:_ the cross-lab evidence under
 the conclusion's fifth gap, which without it rests on three labs each reporting
@@ -1326,7 +1272,7 @@ random. _What it does to Table B's claim:_ nothing, and the paper states why —
 it notes "the absence of several prominent groups that have publicly reported
 strong computational antibody design capabilities", so the systems in this table
 were measured neither here nor against each other. Its one contact with a map
-lineage is the challenge-1 winner, a **Protenix**-derived pairformer (§7) with a
+lineage is the challenge-1 winner, a **Protenix**-derived pairformer (§6) with a
 DPO fitness head, disclosed in the paper's Methods with code released. _What it
 found:_ the best design, 95 pM, was statistically indistinguishable from the
 best antibody the wet-lab campaign produced (113 pM), a non-ML consensus of the
@@ -1348,8 +1294,8 @@ ______________________________________________________________________
 
 **Where the review's open questions are gathered, not where new ones are
 raised.** Everything it lands is already argued above and none of it is
-resolved: the open-versus-closed question the disclosure beat opens and §9
-leaves standing; the two threads, which are paid off in §8 and under Table B but
+resolved: the open-versus-closed question the disclosure beat opens and §8
+leaves standing; the two threads, which are paid off in §7 and under Table B but
 not closed; the identity beat's designs-tested number, whose trajectory is the
 review's spine and has no shared instrument to measure it against; and the five
 gaps below, which are the conclusion's material.
@@ -1367,10 +1313,10 @@ inside its own sources — whether any of this has reached a patient.
 **The systems say what they are for.** BoltzGen (§3) opens on it — _"de-novo
 binder design offers considerable potential for automating drug discovery"_ —
 and it is not alone: Chai-2 (§4) optimizes designs _"for specific therapeutic
-requirements such as species cross-reactivity"_, BindCraft (§6) reduces IgE
-binding to birch allergen _"in patient-derived samples"_, Latent-X2 (§9) reports
+requirements such as species cross-reactivity"_, BindCraft (§5) reduces IgE
+binding to birch allergen _"in patient-derived samples"_, Latent-X2 (§8) reports
 developability _"that match or exceed those of approved antibody therapeutics"_,
-and mBER (§6) places binder discovery as _"a critical step"_ in _"the
+and mBER (§5) places binder discovery as _"a critical step"_ in _"the
 development of protein therapeutics"_. The therapeutic endpoint is the stated
 goal of this field, not an outside standard imported to judge it.
 
@@ -1389,7 +1335,7 @@ its training data; a process is validated by whether the decision downstream of
 the model got better. AlphaFold is one of its few unambiguous successes, and it
 is successful _"in the context of model validation — in this case, protein
 folding — and not necessarily process validation in a drug discovery setting"_.
-**Every result in §1–§9 is model validation in that sense**, including the
+**Every result in §1–§8 is model validation in that sense**, including the
 wet-lab ones: a measured hit rate validates the generator, and no campaign in
 the corpus is followed into the decision it was meant to improve. That is the
 sentence the five gaps below are particular cases of.
@@ -1399,7 +1345,7 @@ charge rather than excusing it._ Bender et al. attributes part of the recent
 rise in approval rates to _"increasing investment in the development of biologic
 modalities that have higher average clinical success rates and superior
 intellectual property protection status than small-molecule drugs"_ — the
-modality §1–§9 design for. Its Table 3 states the limit for that modality
+modality §1–§8 design for. Its Table 3 states the limit for that modality
 directly, in the row naming RFdiffusion, ProteinMPNN, BoltzGen and Chai-2:
 _"although binding is relatively easier to predict, functional effects and
 developability also remain challenges"_. **Gap 1 below is that sentence in the
@@ -1409,14 +1355,14 @@ small-molecule statement of the same distance.
 
 _Where else it meets the gaps._ **Box 2** splits model use into selection,
 deselection and quantification settings and holds that the metric must match the
-setting — every Level-1 filter in §6–§8 is a selection setting scored by a
+setting — every Level-1 filter in §5–§7 is a selection setting scored by a
 generic threshold — which is **gap 5** in general form, reinforced by _"every
 model is a local model"_ for out-of-distribution use. Its recommendation that
 benchmarking _"move on from model validation and instead focus on their ability
 to improve decision making"_ is **gap 4** asked of the whole field rather than
 of this corpus. And it corroborates the disclosure beat from outside, reporting
 that _"open-source models in the area of co-folding have largely caught up with
-closed-source developments"_ while dismissing **IsoDDE** (§9, tier 2) in the
+closed-source developments"_ while dismissing **IsoDDE** (§8, tier 2) in the
 review's own terms, as an in-house development whose authors _"offer few
 technical details and hence do not allow independent verification of the results
 obtained"_.
@@ -1432,8 +1378,8 @@ here would fall short if it were.
 
 ## What the field has not shown
 
-Five gaps, each a question §1–§9 raise and none of them answer. They sit here
-rather than after §9 because three of the five rest on Tables A and B, which a
+Five gaps, each a question §1–§8 raise and none of them answer. They sit here
+rather than after §8 because three of the five rest on Tables A and B, which a
 reader has not met before this point.
 
 **Each entry is a limit the corpus states about itself** — no gap is asserted
@@ -1442,8 +1388,8 @@ where the evidence sits. That rule is the conclusion's discipline for this
 material, and what keeps it from becoming a wish list.
 
 **1. Binding is not the endpoint, and almost nothing here optimizes past it.**
-Every system in §1–§8 generates, filters and reports on _binding_. Latent-X2
-(§9) states the problem directly: campaigns fail _"not because they lack
+Every system in §1–§7 generates, filters and reports on _binding_. Latent-X2
+(§8) states the problem directly: campaigns fail _"not because they lack
 binding, but because binding alone is insufficient when clinical success demands
 developability and low immunogenicity"_, and it reports developability profiles
 and what it claims is the first low-immunogenicity demonstration for an
@@ -1453,7 +1399,7 @@ is a closed one. The disclosure beat's uncomfortable direction, arriving a
 second time.
 
 **2. No system here predicts protein-protein binding affinity.** The filters are
-binary. BindCraft (§6) says so of its own: AF2 ipTM is a strong predictor of
+binary. BindCraft (§5) says so of its own: AF2 ipTM is a strong predictor of
 _whether_ a design binds and does not track _how tightly_. The corpus's one
 affinity module is Boltz-2's (§3), which is protein-ligand and whose own paper
 states it does not handle multimeric binding partners. So the field designs
@@ -1461,7 +1407,7 @@ binders it cannot rank by strength, and affinity appears in Table B only as an
 outcome measured in a wet lab after the fact.
 
 **3. Design success against targets with no experimental structure is
-untested.** Germinal (§6) names it: how far design success depends on the
+untested.** Germinal (§5) names it: how far design success depends on the
 quality of the antigen model _"remains an open question"_. Every campaign in
 Table B designed against solved or confidently predicted structures. What the
 methods do on the targets that most need them is not in the corpus.
@@ -1473,13 +1419,13 @@ the second under AIntibody there, which ran 29 organizations through one assay
 suite and records that the groups publicly claiming the strongest design
 capabilities did not enter. Inside the corpus the only third-party wet-lab
 comparison of two design _methods_ remains Latent-X1's, in §2's RFpeptides entry
-and §9's. The conclusion does not re-argue any of it; it collects them as what
+and §8's. The conclusion does not re-argue any of it; it collects them as what
 they are, the measurement gap the review's caveats keep running into.
 
 **5. The filters have not been shown to work on the individual design.** Every
 Level-1 pipeline selects designs on a confidence metric, and two papers report
-the same limit from opposite directions. Germinal (§6) finds its nonbinders
-clearing the ipSAE threshold alongside its binders. mBER (§6) finds the opposite
+the same limit from opposite directions. Germinal (§5) finds its nonbinders
+clearing the ipSAE threshold alongside its binders. mBER (§5) finds the opposite
 at million-design scale, hit rates climbing with ipTM. Both hold: across a
 population a confidence score enriches, on any one design it does not
 discriminate. The Overath meta-analysis (Table B) is the only cross-lab test and
