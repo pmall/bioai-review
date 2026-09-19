@@ -1131,7 +1131,7 @@ optimizer bolted on, §6 as one mode of a platform. Here it is not a technique
 applied to a predictor at all. The escalation has nowhere further to go, which
 is why §8 is a coda rather than a ninth step.
 
-- **ESM-2 & ESMFold** — `esm2` · `10.1126/science.ade2574` · **backbone** — the
+- **ESM-2 & ESMFold** — `esm2` · `10.1126/science.ade2574` · **meat** — the
   founding single-sequence predictor: structure emerges from masked-LM scaling
   alone, with no MSA and no templates at inference. Enabled the ESM Metagenomic
   Atlas (a database, out of scope). _Carries:_ the other half of the anatomy
@@ -1144,44 +1144,59 @@ is why §8 is a coda rather than a ninth step.
   _Caveat:_ the gap it traded away is real and was the standing objection to
   single-sequence prediction for three years; the review should state it rather
   than read the lineage backwards from its conclusion.
-- **ESM-3** — `esm3` · `10.1126/science.ads0018` · **mention** — multimodal
-  promptable PLM over sequence, structure and function. A lineage step.
-- **AtlasFold** — `atlasfold` · `10.64898/2026.09.04.749352` · **mention** — a
-  second group reaching the same route independently, and the only one that
-  releases it whole: training code, training data, stage checkpoints and
-  weights, all MIT. _(Preprint, 7 Sep 2026 — too recent to have been taken up by
-  anything else here.)_
+- **ESM-3** — `esm3` · `10.1126/science.ads0018` · **meat** — the lineage's
+  generative turn: sequence, structure and function as three tracks of discrete
+  tokens in one masked-token model, so any track can be prompted and any track
+  generated. Trained at 1.4B, 7B and 98B parameters over 2.78 billion natural
+  proteins. _Carries:_ the PLM instance of the background beat's identity — one
+  set of weights predicts and generates, with no design head bolted on — and the
+  evidence that ESM-2's accuracy trade was already closing before ESMC closed
+  it: at 98B it beats ESMFold at single-sequence prediction, 0.880 against 0.861
+  LDDT on CAMEO. Its esmGFP is the corpus's only wet-lab-confirmed de novo
+  protein whose function is not binding — prompted from six chromophore
+  residues, 58% identity to the nearest known fluorescent protein, bright on the
+  plate reader. _Caveat:_ only ESM3-open, the small model, is downloadable, and
+  for academic use only; the 98B model is API-only, which is why Chai-1's paper
+  could not benchmark against it (§4).
 - **ESMC & ESMFold2** — `esmc` · `10.64898/2026.06.03.729735` · **backbone** —
-  Biohub / EvolutionaryScale's ~2.8B-sequence LM plus a folding head on its
-  frozen representations. _Covers ESMFold2 and ESMFold2-Fast — modules of this
-  release, no separate paper._ _Carries:_ the resolution of the anatomy beat's
-  divide — single-sequence antibody-antigen accuracy **matching AF3-with-MSA**,
-  with the MSA encoder detachable and kept only as a rescue path for
-  high-perplexity sequences. The retrieval step is no longer the price of
-  accuracy, which is what licenses the campaign below. _Against:_ AF3 with an
-  MSA, on antibody-antigen — the target class §3–§7 actually design for, which
-  is why the comparison settles the thread rather than scoring a point.
-  _Caveat:_ it flags the temporal-leakage problem in Boltz-2's numbers, so its
-  own comparisons should be read under Table A's defect note like everyone's —
-  and its own margin over AF3 is inside the error bars, reversing sign when
-  AtlasFold re-runs the same benchmark. "Matching" is the claim that survives
-  both runs; "exceeding" is not.
-  - **ESMFold2 binder design campaign** — **backbone**. _Level:_ 2, continuous.
-    _Attachment:_ the language model **and** the folding head — the tightest
-    coupling in the corpus, with nothing left to compose. _Carries:_ the claim
-    that the penalty is gone. Every §5 system inverts a predictor outside the
-    regime it was trained in; BindCraft runs AF2 single-sequence and compensates
-    with annealing and ensembling. Single-sequence **is** ESMFold2's native
-    regime, so the off-distribution problem the coupling beat opens does not
-    arise. MSA emancipation was never an accuracy story — it set the ceiling on
-    coupling, and this is the ceiling. It is also the far end of the relaxed
-    sequence: a distribution over amino acids fed to a 6-billion-parameter
-    language model, where RFOptimization (§5) refuses the relaxation outright.
-    _Against:_ §5's composed systems, and Germinal in particular: the same
-    sequence prior, reached with one model instead of two. _Caveat:_ self-chosen
-    targets and a self-reported hit rate, the corpus's highest outside §8. Table
-    B's provenance columns apply here as everywhere. _(module of the ESMC
-    release — no separate publication.)_
+  Biohub / EvolutionaryScale's ~2.8B-sequence LM, a folding head on its frozen
+  representations, and a binder design campaign run through both — one release,
+  no separate papers for ESMFold2, ESMFold2-Fast or the campaign. _Level:_ 2,
+  continuous. _Attachment:_ the language model **and** the folding head, the
+  tightest coupling in the corpus, with nothing left to compose.
+  - _Prediction:_ single-sequence antibody-antigen accuracy **matching
+    AF3-with-MSA**, with the MSA encoder detachable and kept only as a rescue
+    path for high-perplexity sequences.
+  - _Design:_ binders optimized by descending a relaxed sequence — a
+    distribution over amino acids fed to a 6-billion-parameter language model,
+    the far end of the relaxation RFOptimization (§5) refuses outright.
+  - _Carries:_ one claim per half. The prediction half resolves the anatomy
+    beat's divide: the retrieval step is no longer the price of accuracy, which
+    is what licenses the design half. The design half carries the claim that the
+    coupling penalty is gone — every §5 system inverts a predictor outside the
+    regime it was trained in, and BindCraft runs AF2 single-sequence and
+    compensates with annealing and ensembling, whereas single-sequence **is**
+    ESMFold2's native regime, so the off-distribution problem the coupling beat
+    opens does not arise. MSA emancipation was never an accuracy story — it set
+    the ceiling on coupling, and this is the ceiling.
+  - _Against:_ AF3 with an MSA, on antibody-antigen — the target class §3–§7
+    actually design for, which is why the comparison settles the thread rather
+    than scoring a point. For the design half, §5's composed systems and
+    Germinal in particular: the same sequence prior, reached with one model
+    instead of two.
+  - _Caveat:_ it flags the temporal-leakage problem in Boltz-2's numbers, so its
+    own comparisons should be read under Table A's defect note like everyone's —
+    and its own margin over AF3 is inside the error bars, reversing sign when
+    AtlasFold re-runs the same benchmark. "Matching" is the claim that survives
+    both runs; "exceeding" is not. The campaign adds self-chosen targets and a
+    self-reported hit rate, the corpus's highest outside §8, so Table B's
+    provenance columns apply here as everywhere.
+- **AtlasFold** — `atlasfold` · `10.64898/2026.09.04.749352` · **mention** — the
+  route is not one lab's: a second group reaches single-sequence folding from a
+  language model independently, and is the only one to release it whole —
+  training code, training data, stage checkpoints and weights, all MIT. It is
+  also the independent re-run behind the caveat above. _(Preprint, 7 Sep 2026 —
+  too recent to have been taken up by anything else here.)_
 
 # §8 — The closed frontier
 
