@@ -1010,8 +1010,8 @@ benchmarks them against §5's own systems on an instrument it built and publishe
 itself. Boltz (§3) ships one coupling and varies the critic under it; here both
 couplings are configuration, and the ruler is part of the delivery.
 
-- **Protenix-v1** — `protenix_v1` · `10.64898/2026.02.05.703733` · **meat** —
-  ByteDance Seed's open all-atom model, the second answer to AF3's closed
+- **Protenix-v1** — `protenix_v1` · `10.64898/2026.02.05.703733` · **backbone**
+  — ByteDance Seed's open all-atom model, the second answer to AF3's closed
   weights after Boltz-1, and the predictor every arm below attaches to.
   _Carries:_ three things. The **matched-conditions** framing — same training
   cutoff, model scale and inference budget as AF3 — which makes "matches AF3" a
@@ -1026,10 +1026,17 @@ couplings are configuration, and the ruler is part of the delivery.
   different subset — Boltz-1 on 252 interfaces, Chai-1 on 251, 237 shared — and
   restricting to the shared set flips which of the two leads. Its own bootstrap
   puts the 95% CI of a single 5×5 run at 49.3–56.3% DockQ success, wider than
-  the gaps such tables are read for. _Caveat:_ the matched-conditions claim
-  covers the strict-cutoff model only; the variant recommended for applied use,
-  Protenix-v1-20250630, trains past that cutoff and is not the one in the
-  controlled comparison. [GitHub](https://github.com/bytedance/Protenix)
+  the gaps such tables are read for. _Against:_ AlphaFold3, under conditions it
+  holds fixed — same cutoff, same scale, same inference budget — which is what
+  makes this the section's organizing fact: the open/closed accuracy gap is a
+  resourcing difference, not an architectural one, and §6's design arms are
+  built on a predictor that has shown it. _Collision:_ Boltz-1 (§3) owns the
+  openness thread's opening, the argument that downloadable weights are what
+  made the design literature possible; this entry owns the accuracy claim, and
+  only under matched conditions. _Caveat:_ that claim covers the strict-cutoff
+  model only; the variant recommended for applied use, Protenix-v1-20250630,
+  trains past that cutoff and is not the one in the controlled comparison.
+  [GitHub](https://github.com/bytedance/Protenix)
 - **PXDesign** — `pxdesign` · `10.1101/2025.08.15.670450` · **backbone** — the
   section's reason for existing: the first system to ship **both couplings as
   two modes of one product**, chosen per target rather than argued over.
