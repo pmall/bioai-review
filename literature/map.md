@@ -962,12 +962,102 @@ optimizer walks under.
 
 # §6 — Protenix
 
-The first full assembly. One lineage ships the predictor, a Level-1 diffusion
-arm and a Level-2 hallucination arm as a single platform — the couplings of §1–5
-stop being alternatives and become two modes of one product, chosen per target.
-It is also where §5's technique gets benchmarked from the outside — with an
-instrument the same lineage built.
+The first full assembly, and the lineage that made §5's technique affordable.
+AlphaFold3-style models decode structure in a 200-step diffusion pass that
+cannot be backpropagated through; Protenix replaces it with a **2-step ODE
+sampler**, so a Level-2 gradient runs end to end through the whole predictor
+instead of stopping at a trunk. On that one change the lineage ships a diffusion
+arm and a hallucination arm as two modes of one product — the couplings of §1–5
+stop being alternatives and become configuration, chosen per target — then
+benchmarks them against §5's own systems on an instrument it built and published
+itself. Boltz (§3) ships one coupling and varies the critic under it; here both
+couplings are configuration, and the ruler is part of the delivery.
 
+- **Protenix-v1** — `protenix_v1` · `10.64898/2026.02.05.703733` · **meat** —
+  ByteDance Seed's open all-atom model, the second answer to AF3's closed
+  weights after Boltz-1, and the predictor every arm below attaches to.
+  _Carries:_ three things. The **matched-conditions** framing — same training
+  cutoff, model scale and inference budget as AF3 — which makes "matches AF3" a
+  checkable claim rather than a leaderboard position, and whose verdict is
+  split: ahead of AF3 on protein-protein and antibody-antigen interfaces, behind
+  it on protein-ligand and protein-DNA. The **inference-time scaling** result —
+  accuracy rising roughly log-linearly with sampling budget, a behaviour AF3 has
+  and prior open models largely did not — which is the baseline v2's efficiency
+  claim below is measured against. And the **common-intersection critique** of
+  FoldBench, which lands in Table A's defect column: models fail or run out of
+  memory on different targets, so the published aggregates score each model on a
+  different subset — Boltz-1 on 252 interfaces, Chai-1 on 251, 237 shared — and
+  restricting to the shared set flips which of the two leads. Its own bootstrap
+  puts the 95% CI of a single 5×5 run at 49.3–56.3% DockQ success, wider than
+  the gaps such tables are read for. _Caveat:_ the matched-conditions claim
+  covers the strict-cutoff model only; the variant recommended for applied use,
+  Protenix-v1-20250630, trains past that cutoff and is not the one in the
+  controlled comparison. [GitHub](https://github.com/bytedance/Protenix)
+- **PXDesign** — `pxdesign` · `10.1101/2025.08.15.670450` · **backbone** — the
+  section's reason for existing: the first system to ship **both couplings as
+  two modes of one product**, chosen per target rather than argued over.
+  Nanomolar hit rates of 20–73% on five of six targets, 2–6× AlphaProteo's.
+  - **PXDesign-d** — diffusion arm, generating Cartesian coordinates from a DiT
+    backbone rather than the SE(3)-equivariant or frame representations
+    RFdiffusion and AlphaProteo use. _Level:_ 1 _(inherits Protenix)_.
+  - **PXDesign-h** — hallucination arm. _Level:_ 2, continuous. _Attachment:_
+    end-to-end through the **2-step ODE sampler**, which replaces the 200-step
+    diffusion decoder and is what makes the gradient affordable — the attachment
+    no §5 system could take. Sequences are optimized against an ensemble of five
+    Protenix models resampled each step, BindCraft's five-weight-set defence
+    against overfitting one critic, carried into this lineage.
+  - _Carries:_ the composition claim — everything §1–§5 presented as competing
+    answers appears here as configuration — and the **filter-ensembling
+    finding**: Protenix and AF2-IG filters retain _different_ true positives
+    with surprisingly little overlap, the other half of the coupling beat's
+    critic-quality argument alongside BoltzPPI.
+  - _Against:_ BindCraft and BoltzDesign1, benchmarked head-to-head. That is the
+    evidence §5 is a real category rather than the review's own grouping, and it
+    is the corpus's clearest instance of the field arguing about where a Level-2
+    gradient should attach.
+  - _Caveat:_ the head-to-head is run by the system being promoted, so it
+    belongs in Table B's self-reported column like every other in-house
+    comparison. Its own filtering analysis adds that confidence thresholds do
+    not transfer across targets — gains on one target cost gains on another.
+- **Protenix-v2** — `protenix_v2` · `10.64898/2026.04.10.717613` · **backbone**
+  — the platform's current state: the predictor improved, and the design half
+  carried from PXDesign's miniproteins to antibodies. _Level:_ 1 _(inherits
+  Protenix)_.
+  - _Prediction:_ 9–13 point antibody-antigen success gains over v1 at DockQ >
+    0.23 across three benchmark collections, and the payoff of v1's scaling
+    result — v2 at 5 seeds beats v1 at 1,000. It also finds the PoseBusters
+    criterion itself incomplete (Table A): predictions pass it with twisted
+    amides and flat sp3 centres, which is why PXMeter v1.1.0 adds planarity
+    checks, and under the stricter criterion almost every model scores lower.
+  - _Design:_ target-conditioned generation with epitope-specific and
+    site-agnostic modes, across miniproteins, VHH, Fv and full mAb. Every
+    antigen in its novelty-controlled panel produced a confirmed binder, at
+    BLI-confirmed hit rates of 2–48%; on four GPCRs — small, flexible
+    extracellular epitopes that conventional antibody discovery struggles with —
+    16–88% in VHH-Fc and up to 50% in mAb, at 16–30 designs tested per target.
+  - _Carries:_ the second independent demonstration that zero-shot antibody
+    design works at a two-dozen-design budget, and the one that closes the
+    disclosure gap Chai-2 leaves open — the mechanism is described and the
+    predictor is downloadable. It extends the regime past soluble monomers to
+    GPCRs and past VHH to full mAb, which is the review's evidence that the
+    collapsing budget is a property of the field rather than of one lab's
+    targets. It also independently replicates mBER's (§5) epitope finding, from
+    a group that then chose its epitopes anyway — two epitopes on the same
+    antigen give hit rates of 4% and 48%, after which the paper adopts Chai-2's
+    practice of targeting native ligand-binding interfaces.
+  - _Against:_ Chai-2 and BoltzGen, whose target-selection regimes it built its
+    own panel out of — BoltzGen's 30%-identity low-homology monomers and
+    Chai-2's novelty filter on SAbDab — so the comparison is in the panel rather
+    than in a shared assay.
+  - _Collision:_ Chai-2 (§4) owns the collapsing budget's low end and the claim
+    that the screen has been removed; this entry owns its corroboration, its
+    extension to a hard target class, and the open-mechanism contrast.
+  - _Caveat:_ its targets were drawn from what was in stock for immediate assay
+    and its epitopes were selected, the exact opposite of mBER's control, so
+    these rates sit at the self-chosen end of Table B. It reports no
+    head-to-head against Chai-2 because the overlapping targets were published
+    in a different antibody format, and its rankers are compared against a
+    single human expert on one target.
 - **PXMeter** — `pxmeter` · `10.1101/2025.07.17.664878` · **meat** — ByteDance
   Seed's open evaluation toolkit and hand-curated PDB benchmark set, basis of
   the PXM family, benchmarking Chai-1, Boltz-1 and Protenix. v1.1.0 extends
@@ -975,45 +1065,14 @@ instrument the same lineage built.
   the fourth response in the physical-validity thread. _Carries:_ the fact that
   makes this section a platform rather than a model line. The lineage ships the
   predictor, both design arms **and** the instrument its competitors are
-  measured on, and §6's numbers are partly its own measurements of other
-  people's models. _Against:_ FoldBench (Tables A and B), the other multi-model
+  measured on, so §6's numbers are partly its own measurements of other people's
+  models. _Against:_ FoldBench (Tables A and B), the other multi-model
   prediction benchmark — and Protenix-v1's common-intersection critique of it is
   this group arguing for its own instrument, which the review states rather than
   adjudicates. _Caveat:_ its uptake is real but narrow — OpenDDE (§8) benchmarks
   on PXMeter-AB and follows its data protocol to curate its own set, and that is
   the only third-party adoption in the corpus.
   [GitHub](https://github.com/bytedance/PXMeter)
-- **Protenix-v1** — `protenix_v1` · `10.64898/2026.02.05.703733` · **meat** —
-  ByteDance Seed's open all-atom model matching AF3 under matched cutoff, scale
-  and inference budget — the second answer to AF3's closed weights, after
-  Boltz-1. _Carries:_ the common-intersection critique of FoldBench, which lands
-  in Table A's defect column; and the matched-conditions framing that makes
-  "matches AF3" a checkable claim rather than a leaderboard position.
-  [GitHub](https://github.com/bytedance/Protenix)
-- **Protenix-v2** — `protenix_v2` · `10.64898/2026.04.10.717613` · **meat** —
-  both halves in one paper, which is why the lineage reads as a platform rather
-  than a model. _Prediction:_ antibody-antigen gains over v1, plus the finding
-  that the PoseBusters criterion is itself incomplete (Table A). _Design:_
-  target-conditioned generation across miniproteins, VHH and Fv, with
-  epitope-specific and site-agnostic modes. _Level:_ 1 _(inherits Protenix)_.
-- **PXDesign** — `pxdesign` · `10.1101/2025.08.15.670450` · **backbone** — the
-  section's reason for existing: the first system to ship **both couplings as
-  two modes of one product**, chosen per target rather than argued over.
-  - **PXDesign-d** — diffusion arm. _Level:_ 1 _(inherits Protenix)_.
-  - **PXDesign-h** — hallucination arm. _Level:_ 2, continuous. _Attachment:_
-    end-to-end through Protenix's **2-step ODE sampler**, which replaces the
-    200-step diffusion decoder and is what makes the gradient affordable — the
-    attachment no §5 system could take. _Carries:_ the composition claim —
-    everything §1–§5 presented as competing answers appears here as
-    configuration — and the **filter-ensembling finding**: Protenix and AF2-IG
-    filters retain _different_ true positives with limited overlap, the other
-    half of the coupling beat's critic-quality argument alongside BoltzPPI.
-    _Against:_ BindCraft and BoltzDesign1, benchmarked head-to-head. That is the
-    evidence §5 is a real category rather than the review's own grouping, and it
-    is the corpus's clearest instance of the field arguing about where a Level-2
-    gradient should attach. _Caveat:_ the head-to-head is run by the system
-    being promoted, so it belongs in Table B's self-reported column like every
-    other in-house comparison.
 
 # §7 — ESM
 
