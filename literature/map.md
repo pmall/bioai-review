@@ -780,6 +780,12 @@ _Why it comes before §6 and §7:_ §6 ships the predictor and the design loop a
 one product, §7 collapses them into a single model. The reader should meet the
 parts bolted together before seeing them fused.
 
+## The loop, on AlphaFold2
+
+The canonical form, on the one predictor a design loop can invert without
+choosing an attachment point: the library everything here calls, the smallest
+modification anyone made to it, and the system that fills out every stage.
+
 - **ColabDesign** — `colabdesign` · `10.5281/zenodo.13309080` · **mention** —
   the bolt-on half, as a library: input preparation for AlphaFold2, losses on
   its outputs, the gradient path back to the input sequence, and ready-made
@@ -836,27 +842,69 @@ parts bolted together before seeing them fused.
     for that model, which the annealing and the five-model swap appear to
     compensate for. Its own paper adds that the ipTM it ranks on predicts
     _whether_ a design binds but not _how tightly_.
+
+## Where the gradient stops when the predictor diffuses
+
+A diffusion structure stage cannot be unrolled for a gradient, so neither of
+these takes one through it. Both read the loss off the trunk's distogram and the
+confidence heads instead — the same wall, two escapes — and both have to argue
+that optimizing the distribution the sampler draws from is optimizing the
+structure.
+
 - **BoltzDesign1** — `boltzdesign1` · `10.1101/2025.04.06.647261` · **meat** —
   the same arrangement on Boltz-1 (§3), gradient taken from the trunk only.
-  - _Gradient:_ a diffusion module cannot be unrolled for a gradient, so one is
-    not taken through it: a stop-gradient is placed on the diffusion module and
-    the loss is read from the Pairformer's distogram — inter-chain and
-    intra-chain contact losses over its 64 distance bins — optionally with the
-    confidence module in the loop as well, gradients running confidence →
-    Pairformer → sequence. The distogram _"represents the probability
-    distribution of atomic distances that the diffusion model later samples
-    from"_, so this optimizes the distribution rather than one sampled
-    structure. The paper checks the substitution: on BindCraft's own 212
-    binders, Pairformer contacts match the diffusion module's with P@K > 0.5 for
-    76% of designs, and contact loss tracks pLDDT and inter-pAE. For
-    nucleic-acid targets it does not, and the confidence module carries the loss
-    instead.
+  - _Gradient:_ a stop-gradient is placed on the diffusion module and the loss
+    is read from the Pairformer's distogram — inter-chain and intra-chain
+    contact losses over its 64 distance bins — optionally with the confidence
+    module in the loop as well, gradients running confidence → Pairformer →
+    sequence. The distogram _"represents the probability distribution of atomic
+    distances that the diffusion model later samples from"_, so this optimizes
+    the distribution rather than one sampled structure. The paper checks the
+    substitution: on BindCraft's own 212 binders, Pairformer contacts match the
+    diffusion module's with P@K > 0.5 for 76% of designs, and contact loss
+    tracks pLDDT and inter-pAE. For nucleic-acid targets it does not, and the
+    confidence module carries the loss instead.
   - _Sequence update:_ BindCraft's four stages, reimplemented, with a softmax
     warm-up first because raw logits start off-distribution for this model.
   - _Afterwards:_ LigandMPNN optionally redesigns the surface with interface
     residues fixed, or initializes the logits before optimization.
   - _Caveat:_ it shares senior authors with BindCraft, so the two are one
     research programme porting one method, not two independent data points.
+- **RFOptimization (RFO)** — `rfoptimization` · `10.64898/2026.09.04.749184` ·
+  **meat** — the odd one out, twice over: it never relaxes the sequence, and it
+  does not design from scratch. It takes a finished design and improves it,
+  using gradients from RF3 (§2) only to rank point mutations on a sequence that
+  stays discrete throughout.
+  - _Gradient:_ the escape BoltzDesign1 did not take — the objectives are
+    written as differentiable surrogates on the distogram and the confidence
+    heads — iPAE, pLDDT, iPTM — whose path back to the input stays open when the
+    coordinate path does not.
+  - _Sequence update:_ mutation logits are built from the negative normalized
+    gradient, the residue already present penalized so a proposal is a real
+    substitution; the proposal is trimmed to a single position and accepted or
+    rejected by Metropolis–Hastings under an annealed temperature, with
+    gradients recomputed after each acceptance. The persistent state is always a
+    chemically valid sequence, on the stated grounds that a continuous
+    relaxation is an attack surface the optimizer will exploit. Every other
+    system in §5–§7 relaxes it.
+  - _Second move:_ with equal probability the optimizer instead cycles — the
+    current sequence folded by Boltz, redesigned by LigandMPNN — so
+    gradient-guided edits and structure-conditioned resampling interleave, and
+    AF3 is held out as an independent check. Agreement with a single predictor
+    is treated as the failure mode itself, and this is the only system in the
+    review answering that in the optimizer rather than in the filter.
+  - _Against:_ BindCraft, which it reports beating on cost per filter-passing
+    design.
+  - _Caveat:_ **in silico only.** No wet-lab validation, no designs-tested
+    denominator, no Table B row — the ceiling on how far the review leans on it.
+
+## A second prior on the sequence
+
+Confidence alone does not say a designed sequence is a plausible protein, so
+both of these add a language model to say it. The difference is whether that
+prior moves: a live gradient merged with the structural one, or a fixed bias the
+optimizer walks under.
+
 - **Germinal** — `germinal` · `10.1038/s41587-026-03187-0` · **backbone** —
   AlphaFold-Multimer, whole network, with a second gradient merged into the
   first. Antibody CDRs on a user-supplied framework.
@@ -911,34 +959,6 @@ parts bolted together before seeing them fused.
     one target's rate from 0.4% overall to 7.5% at its best hotspot.
   - _Caveat:_ its hits are phage-display enrichments — screening hits, not
     confirmed binders, with no affinity quantification.
-- **RFOptimization (RFO)** — `rfoptimization` · `10.64898/2026.09.04.749184` ·
-  **meat** — the odd one out, twice over: it never relaxes the sequence, and it
-  does not design from scratch. It takes a finished design and improves it,
-  using gradients from RF3 (§2) only to rank point mutations on a sequence that
-  stays discrete throughout.
-  - _Gradient:_ BoltzDesign1's wall, and a different escape. RF3's diffusion
-    module cannot be backpropagated through, so the objectives are written as
-    differentiable surrogates on the distogram and the confidence heads — iPAE,
-    pLDDT, iPTM — whose path back to the input stays open when the coordinate
-    path does not.
-  - _Sequence update:_ mutation logits are built from the negative normalized
-    gradient, the residue already present penalized so a proposal is a real
-    substitution; the proposal is trimmed to a single position and accepted or
-    rejected by Metropolis–Hastings under an annealed temperature, with
-    gradients recomputed after each acceptance. The persistent state is always a
-    chemically valid sequence, on the stated grounds that a continuous
-    relaxation is an attack surface the optimizer will exploit. Every other
-    system in §5–§7 relaxes it.
-  - _Second move:_ with equal probability the optimizer instead cycles — the
-    current sequence folded by Boltz, redesigned by LigandMPNN — so
-    gradient-guided edits and structure-conditioned resampling interleave, and
-    AF3 is held out as an independent check. Agreement with a single predictor
-    is treated as the failure mode itself, and this is the only system in the
-    review answering that in the optimizer rather than in the filter.
-  - _Against:_ BindCraft, which it reports beating on cost per filter-passing
-    design.
-  - _Caveat:_ **in silico only.** No wet-lab validation, no designs-tested
-    denominator, no Table B row — the ceiling on how far the review leans on it.
 
 # §6 — Protenix
 
