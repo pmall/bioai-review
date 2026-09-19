@@ -1202,9 +1202,13 @@ is why §8 is a coda rather than a ninth step.
 
 A coda, not a step in the argument. Systems that publish benchmarks and withhold
 mechanisms — placed last because they cannot be analysed the way §1–7 analyse
-everything else. **Two tiers, and they are not the same problem.**
+everything else. Nothing here is backbone: a coda carries no beat of the
+argument, and where one of these works does carry one, it is carried in the
+section that owns it.
 
-**Tier 1 — published, results disclosed, mechanism withheld.**
+## Published without a mechanism
+
+Results, benchmarks and a paper; the generator described in a clause.
 
 - **AlphaProteo** — `alphaproteo` · `10.48550/arXiv.2409.08022` · **meat** —
   DeepMind generative engine plus a multi-stage filter for picomolar/nanomolar
@@ -1216,7 +1220,7 @@ everything else. **Two tiers, and they are not the same problem.**
   _Caveat:_ the criterion is the field's rather than this paper's; what is
   proprietary is the generator, and the filter it publishes is the part everyone
   already ran.
-- **Latent-X1** — `latentx1` · `10.48550/arXiv.2507.19375` · **backbone** · and
+- **Latent-X1** — `latentx1` · `10.48550/arXiv.2507.19375` · **meat** · and
   **Latent-X2** — `latentx2` · `10.48550/arXiv.2512.20263` · **meat** — Latent
   Labs' atom-level binder design platform: macrocycles and minibinders (X1),
   then drug-like low-immunogenicity antibodies (X2). Architecture credited only
@@ -1229,43 +1233,48 @@ everything else. **Two tiers, and they are not the same problem.**
   comparison of two design methods. The mechanism-withholding system did the
   more disciplined experiment. _Against:_ RFpeptides (§2), which is why the
   entry exists here rather than as a line in Table B — and against the rest of
-  §8, since it is the only tier-1 system that can be checked against an open
-  method at all. _Caveat:_ two, and they are what keep the comparison honest.
-  Only the _binders_ were re-measured, while the hit rates it contrasts with are
-  RFpeptides' literature-reported ones, so that half is not a matched-assay
-  comparison; and it covers one pair of methods on one modality. Its own
-  headline rates are self-reported and the corpus's highest. _Collision:_ the
-  head-to-head is argued in full under Table B, where its limits belong.
-  **Latent-X2 carries the conclusion's developability gap**, not this one.
+  §8, since it is the only mechanism-withholding system that can be checked
+  against an open method at all. _Caveat:_ two, and they are what keep the
+  comparison honest. Only the _binders_ were re-measured, while the hit rates it
+  contrasts with are RFpeptides' literature-reported ones, so that half is not a
+  matched-assay comparison; and it covers one pair of methods on one modality.
+  Its own headline rates are self-reported and the corpus's highest.
+  _Collision:_ the head-to-head is argued in full under Table B, where its
+  limits belong. **Latent-X2 carries the conclusion's developability gap**, not
+  this one.
 - **Back-references:** **Chai-2**'s generator (§4) and **BoltzProt-1** (§3)
-  belong to this tier and are reviewed in their own lineages. Boltz is the
-  tier's most informative case, because the same lab's earlier models are open
-  and in the corpus — the comparison the other entries do not permit.
+  belong here and are reviewed in their own lineages. Boltz is the most
+  informative case, because the same lab's earlier models are open and in the
+  corpus — the comparison the other entries do not permit.
 
-**Tier 2 — no publication at all, known only through other people's
-benchmarks.**
+## Not published at all
 
+No paper, no weights, no mechanism: these exist in the review only as points on
+somebody else's benchmark, which is why the model that ran the benchmark opens
+the beat.
+
+- **OpenDDE** — `opendde` · `10.48550/arXiv.2607.03787` · **meat** — the
+  instrument this beat is written from, and an open model in its own right: an
+  Apache-2.0 all-atom co-folder that builds on Protenix-v1 and OpenFold3 and
+  scales past them — a Pairformer three times wider than AlphaFold3's, an
+  atom-level refinement stage before diffusion, and prediction and design
+  trained as one task. _Carries:_ what it _measured_. Its scaling curve is the
+  only public evidence about IsoDDE, and its antibody-antigen head-to-head of
+  AlphaFold3, Boltz-1, Chai-1, Protenix-v1 and OpenFold3 is the corpus's most
+  complete third-party comparison, which Table A's "who measured it" column
+  rests on. _Caveat:_ in its own words _"not as a complete drug-discovery
+  system"_ — design is roadmap only, so it belongs to the prediction half
+  throughout. And it is a competitor measuring competitors: the comparison is
+  third-party but not disinterested.
+  [GitHub](https://github.com/aurekaresearch/OpenDDE)
 - **IsoDDE** (Isomorphic Labs) — the frontier reference at the top of OpenDDE's
   scaling curve. Everything the review can say about it was measured by a
   competitor, which OpenDDE itself states as a limit on what can be concluded.
   _(map-only — private, no publication.)_ · **mention**
-- **OpenDDE** — `opendde` · `10.48550/arXiv.2607.03787` · **meat** — the open
-  challenger to IsoDDE: an Apache-2.0 all-atom co-folding model that builds on
-  Protenix-v1 and OpenFold3 and scales past them — a Pairformer three times
-  wider than AlphaFold3's, an atom-level refinement stage before diffusion, and
-  prediction and design trained as one task. It is not closed itself; it sits
-  here because IsoDDE is the model it defines itself against. _Carries:_ what it
-  _measured_. Its scaling curve is the only public evidence about IsoDDE, and
-  its antibody-antigen head-to-head of AlphaFold3, Boltz-1, Chai-1, Protenix-v1
-  and OpenFold3 is the corpus's most complete third-party comparison, which
-  Table A's "who measured it" column rests on. _Caveat:_ in its own words _"not
-  as a complete drug-discovery system"_ — design is roadmap only, so it belongs
-  to the prediction half throughout.
-  [GitHub](https://github.com/aurekaresearch/OpenDDE)
 - **Chai-3** and **SeedFold** — a commercial web platform and a point on
   OpenDDE's scaling curve respectively. _(map-only.)_ · **mention**
 
-For all of Tier 2, every number this review can cite was measured by a
+For everything in this beat, every number the review can cite was measured by a
 competitor. The disclosure beat's symmetry lands here: Isomorphic authors are
 core contributors on the AlphaFold3 paper, so the review opens on the published
 half of that organisation's work and closes on the half that stopped publishing.
