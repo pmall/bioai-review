@@ -474,11 +474,26 @@ since neither has a design descendant to follow.
   confidence heads, shorten the trajectory) are what §2, §5 and §6 disagree
   about. It also carries the openness thread's opening: closed weights are the
   stated motivating gap behind Boltz-1, Protenix and OpenFold3, so §3 and §6
-  exist as answers to this paper. _Against:_ AF2, on both counts — more
-  modalities, at the cost of the property §5 depends on. The review's central
-  trade, stated by the same lab in two papers. _Caveat:_ diffusion brought a
-  failure mode AF2 did not have — sampled coordinates can be chemically
-  impossible — and "PB-valid" enters the literature here as the test for it.
+  exist as answers to this paper. And it opens the **seed-budget** thread: its
+  antibody-antigen gain is reported from predictions top-ranked over **1,000
+  seeds** rather than the usual 5, with quality still climbing at 1,000 — the
+  behaviour Protenix-v1 (§6) reproduces in an open model and Protenix-v2 then
+  collapses back to 5 seeds. _Against:_ AF2, on both counts — more modalities,
+  at the cost of the property §5 depends on. The review's central trade, stated
+  by the same lab in two papers. On the ligand half it is measured against
+  classical docking instead: on PoseBusters' 428 structures it beats Vina and
+  RoseTTAFold All-Atom while taking no structural input, where the docking tools
+  are handed the solved pocket. _Caveat:_ diffusion brought failure modes AF2
+  did not have, and this paper's own limitations section is where the review's
+  physical-validity thread starts. Sampled coordinates can be chemically
+  impossible — a 4.4% chirality violation rate on PoseBusters **after** a
+  chirality penalty is added to the ranking, plus clashes that ranking reduces
+  without eliminating — and "PB-valid" enters the literature here as the test
+  for it. Generation also hallucinates order into disordered regions, which AF3
+  answers by cross-distilling from AF2 predictions. Two limits carry further:
+  predictions are static PDB-like structures, not conformational ensembles, and
+  accuracy still falls with MSA depth exactly as AlphaFold-Multimer's does — the
+  dependence §7 sets out to remove.
 - **OpenFold3** — `openfold3` · `10.5281/zenodo.17485509` · **meat** —
   Apache-2.0 AF3 reproduction released with weights, training code and training
   data. _Carries:_ the far end of the openness axis. Boltz-1's openness is a
@@ -617,7 +632,7 @@ the metric it is scored on, may not track whether the sequence folds.
 
 ## The arms — antibodies, macrocycles, and the optimizer
 
-- **RFantibody** — `rfantibody` · `10.1038/s41586-025-09721-5` · **backbone**
+- **RFantibody** — `rfantibody` · `10.1038/s41586-025-09721-5` · **meat**
   _(inherits RFdiffusion)_ — the lineage's antibody arm: a fine-tuned
   RFdiffusion designing VHHs, scFvs and full antibodies against chosen epitopes.
   _Carries:_ the concession that **the screen remains**. It pairs design with
@@ -628,7 +643,7 @@ the metric it is scored on, may not track whether the sequence folds.
   states cannot be aimed at a chosen epitope. That framing is what the whole
   design half inherits. _Collision:_ the identity beat quotes its statement of
   the epitope gap; this entry owns the concession, not the gap.
-- **RFpeptides** — `rfpeptides` · `10.1038/s41589-025-01929-w` · **backbone**
+- **RFpeptides** — `rfpeptides` · `10.1038/s41589-025-01929-w` · **meat**
   _(inherits RFdiffusion)_ — the lineage's macrocycle arm: RFdiffusion and RF2
   extended with a **cyclic relative positional encoding** so the generated chain
   closes head-to-tail; sequences from ProteinMPNN, filtered by refolding with
@@ -696,13 +711,35 @@ commercial**, yet still publishes a paper and wet-lab numbers.
 - **BoltzGen** — `boltzgen` · `10.1101/2025.11.20.689494` · **backbone**
   _(inherits Boltz)_ — unified generative design across proteins, peptides,
   nanobodies, antibodies and small molecules, filtered by refolding with
-  Boltz-2. _Level 1, confidence-as-critic._ _Carries:_ the identity beat's claim
-  in its published form. RFdiffusion demonstrated it historically by
-  fine-tuning; BoltzGen states it as a design principle — _"a single all-atom
-  diffusion model capable of performing both structure prediction and protein
-  design"_ — and is the cleanest Level 0 in the corpus. _Against:_ BoltzProt-1
-  below, which beats it by changing only the critic. The two are the same
-  generator, which is what makes the comparison worth the section.
+  Boltz-2, released MIT with weights, data and training code. _Level 1,
+  confidence-as-critic._
+  - _Carries:_ the identity beat's claim in its published form. RFdiffusion
+    demonstrated it historically by fine-tuning; BoltzGen states it as a design
+    principle — _"a single all-atom diffusion model capable of performing both
+    structure prediction and protein design"_ — and is the cleanest Level 0 in
+    the corpus. The claim is evidenced rather than asserted: the same weights
+    that design also fold, matching Boltz-2 on Boltz-2's own test set. And it
+    carries the corpus's broadest wet-lab evidence for that claim: eight
+    campaigns over 26 targets, from disordered proteins to small molecules. On
+    nine **novel** targets — nothing in the PDB with over 30% identity in a
+    bound context — 15 or fewer designs per target give nanomolar binders for 6
+    of 9, in both nanobody and miniprotein format. On five established targets,
+    4 of 5 in each format, with picomolar hits on PDGFR. These are the rates
+    BoltzProt-1's filter is swapped into.
+  - _Against:_ BoltzProt-1 below, which beats it by changing only the critic.
+    The two are the same generator, which is what makes the comparison worth the
+    section.
+  - _Caveat:_ two the paper discloses itself. Generation diversity collapses for
+    binders of length 73–76, where it samples ubiquitin almost exclusively — a
+    memorization artefact of ubiquitin's 900+ PDB entries. And an earlier
+    version, BoltzGenv0, mis-assigned fixed binder residues to the target, so
+    refolding could only recapitulate the design and the ranking scores carried
+    no filtering power: hit rates of 0/7 on two targets where the fixed version
+    gets 1/7 and 7/7. That is an accidental ablation of the critic with the
+    generator untouched, and it points the same way as BoltzProt-1. It also
+    declines the framing the rest of the field uses — binder design is not
+    _"zero-shot"_ or _"plug-and-play"_, and users are told to inspect structures
+    and rerun.
 - **BoltzProt-1** — `boltzprot1` · `10.64898/2026.06.23.733997` · **backbone**
   _(inherits BoltzGen)_ — a refined BoltzGen ranked by **BoltzPPI**, a critic
   trained to answer "will this bind" rather than a confidence head reused as
